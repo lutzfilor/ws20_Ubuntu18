@@ -1,0 +1,15 @@
+Port/Signal     Bitwidth    Direction   Destination                 Description
+HBREQ           1           output      Arbiter                     multi master, Transfer request
+HGRANT          1           input                                   multi master, Transfer grant
+HADDR           32          output      Decoder,Slave
+HBURST          3           output      Slave
+HNONSEC         1           output      Decoder,Slave
+HEXCL           1           output      Exclusive Access Monitor
+HMASTER         N           output      Exclusive Access Monitor    #exclusive threads
+HMASTLOCK       1           output      Arbiter,Slave               multi master, Transfer not preemptible
+HPROT           7           output      Slave
+HSIZE           3           output      Slave
+HTRANS          2           output      Slave
+HWRITE          1           output      Slave
+HWRITE          N           output      Slave                       8,16,32,64,128,256,512,1024 bit
+

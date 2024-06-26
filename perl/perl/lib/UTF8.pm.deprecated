@@ -1,0 +1,88 @@
+package UTF8;
+# File          UTF8.pm
+#
+# Refactored    01/21/2019          
+# Author        Lutz Filor
+# 
+# Synopsys      UTF8::read_utf8()   Reading UTF-8 text files    ->  text arrary
+#
+#               UTF8::write_utf8()  Writing text array          ->  UTF-8 encoded file
+
+
+use lib             qw  (   ../lib );                                                 # Relative path to User Modules
+use Dbg             qw  (   debug subroutine    );
+
+#---------------------------------------------------------------------------
+# I N T E R F A C E
+
+use Exporter qw (import);
+use parent 'Exporter';                              # replaces base; base is deprecated
+
+
+our @EXPORT    =    qw(     read_utf8
+                      ); # UTF-8 encoded Files
+
+our @EXPORT_OK =    qw(     read_utf8
+                            read_utf8_slurp
+                            read_utf8_string
+                            write_utf8
+                      ); # UTF-8 encoded Files
+
+our %EXPORT_TAGS = ( ALL => [ @EXPORT_OK ]
+                   );
+
+#----------------------------------------------------------------------------
+# C O N S T A N T S
+
+#----------------------------------------------------------------------------
+# S U B R O U T I N S
+
+sub   read_utf8 {
+      my    (   $f  )   =   @_;
+      open (my $fh,'<:encoding(UTF-8)',"$f")
+      || die " Cannot open file $f";                # Part of the document
+      #printf STDERR "%s\n",$f;
+      my @text=<$fh>;                               # Read file into array buffer
+      close (  $fh );
+      return @text;                                 # Return array buffer
+}#sub read_utf8
+
+
+sub   read_utf8_slurp   {
+      my    (   $f  )   =   @_;
+      open (my $fh,'<:encoding(UTF-8)',"$f")
+      || die " Cannot open file $f";                # Part of the document
+      #printf STDERR "%s\n",$f;
+      my $text=do { local $/; <$fh>};               # Read file into stringbuffer
+      printf STDERR "%5s%s%s\n",'','SizeofString ', length $text;
+      close (  $fh );
+      return $text;        
+}#sub read_utf8_slurp
+
+
+sub   read_utf8_string  {                           # EXPERIMENTAL
+      my    (   $f  )   =   @_;
+      open (my $fh,'<:encoding(UTF-8)',"$f")
+      || die " Cannot open file $f";                # Part of the document
+      my $data;
+      while ( my $line = <$fh> ) {
+          chomp($line);
+          $data .= $line;
+      }#while
+      return $data;
+}#sub read_utf8_string
+
+
+sub   write_utf8 {
+      my    (   $a_ref                              # tmp array buffer -> file
+            ,   $file_name)   = @_;                 # 
+      open(my $fh,'>:encoding(UTF-8)',$file_name);
+      foreach my $line ( @{$a_ref} ) {
+         printf $fh "%s\n",$line;
+      }#foreach
+      close( $fh );      
+}#sub write_utf8
+
+#----------------------------------------------------------------------------
+# End of module
+1;

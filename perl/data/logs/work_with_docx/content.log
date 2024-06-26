@@ -1,0 +1,1123 @@
+     /home/lutz/ws/perl/projects/DOCX/word/document.xml
+ 1   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ 2   <w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas"
+ 3       xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex"
+ 4       xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex"
+ 5       xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex"
+ 6       xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex"
+ 7       xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex"
+ 8       xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex"
+ 9       xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex"
+10       xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex"
+11       xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex"
+12       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+13       xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink"
+14       xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d"
+15       xmlns:o="urn:schemas-microsoft-com:office:office"
+16       xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+17       xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"
+18       xmlns:v="urn:schemas-microsoft-com:vml"
+19       xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing"
+20       xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+21       xmlns:w10="urn:schemas-microsoft-com:office:word"
+22       xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+23       xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+24       xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml"
+25       xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex"
+26       xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid"
+27       xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+28       xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+29       xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup"
+30       xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk"
+31       xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml"
+32       xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape"
+33       mc:Ignorable="w14 w15 w16se w16cid w16 w16cex wp14">
+34       <w:body>
+35           <w:p w14:paraId="4ACBBF29" w14:textId="45F27FC3" w:rsidR="002D2F32" w:rsidRDefault="00F05D69">
+36               <w:r>
+37                   <w:t xml:space="preserve">Mein </w:t>
+38               </w:r>
+39               <w:proofErr w:type="spellStart"/>
+40               <w:r>
+41                   <w:t>erstes</w:t>
+42               </w:r>
+43               <w:proofErr w:type="spellEnd"/>
+44               <w:r>
+45                   <w:t xml:space="preserve"> Document</w:t>
+46               </w:r>
+47               <w:r w:rsidR="00CC6D86">
+48                   <w:t xml:space="preserve"> -derivative</w:t>
+49               </w:r>
+50           </w:p>
+51           <w:sectPr w:rsidR="002D2F32">
+52               <w:pgSz w:w="12240" w:h="15840"/>
+53               <w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="720" w:footer="720" w:gutter="0"/>
+54               <w:cols w:space="720"/>
+55               <w:docGrid w:linePitch="360"/>
+56           </w:sectPr>
+57       </w:body>
+58   </w:document>
+
+
+     /home/lutz/ws/perl/projects/DOCX/word/styles.xml
+  1  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  2  <w:styles xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  3      xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+  4      xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+  5      xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+  6      xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml"
+  7      xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex"
+  8      xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid"
+  9      xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+ 10      xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+ 11      mc:Ignorable="w14 w15 w16se w16cid w16 w16cex">
+ 12      <w:docDefaults>
+ 13          <w:rPrDefault>
+ 14              <w:rPr>
+ 15                  <w:rFonts w:asciiTheme="minorHAnsi" w:eastAsiaTheme="minorHAnsi" w:hAnsiTheme="minorHAnsi" w:cstheme="minorBidi"/>
+ 16                  <w:sz w:val="22"/>
+ 17                  <w:szCs w:val="22"/>
+ 18                  <w:lang w:val="en-US" w:eastAsia="en-US" w:bidi="ar-SA"/>
+ 19              </w:rPr>
+ 20          </w:rPrDefault>
+ 21          <w:pPrDefault>
+ 22              <w:pPr>
+ 23                  <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+ 24              </w:pPr>
+ 25          </w:pPrDefault>
+ 26      </w:docDefaults>
+ 27      <w:latentStyles w:defLockedState="0" w:defUIPriority="99" w:defSemiHidden="0" w:defUnhideWhenUsed="0" w:defQFormat="0" w:count="376">
+ 28          <w:lsdException w:name="Normal" w:uiPriority="0" w:qFormat="1"/>
+ 29          <w:lsdException w:name="heading 1" w:uiPriority="9" w:qFormat="1"/>
+ 30          <w:lsdException w:name="heading 2" w:semiHidden="1" w:uiPriority="9" w:unhideWhenUsed="1" w:qFormat="1"/>
+ 31          <w:lsdException w:name="heading 3" w:semiHidden="1" w:uiPriority="9" w:unhideWhenUsed="1" w:qFormat="1"/>
+ 32          <w:lsdException w:name="heading 4" w:semiHidden="1" w:uiPriority="9" w:unhideWhenUsed="1" w:qFormat="1"/>
+ 33          <w:lsdException w:name="heading 5" w:semiHidden="1" w:uiPriority="9" w:unhideWhenUsed="1" w:qFormat="1"/>
+ 34          <w:lsdException w:name="heading 6" w:semiHidden="1" w:uiPriority="9" w:unhideWhenUsed="1" w:qFormat="1"/>
+ 35          <w:lsdException w:name="heading 7" w:semiHidden="1" w:uiPriority="9" w:unhideWhenUsed="1" w:qFormat="1"/>
+ 36          <w:lsdException w:name="heading 8" w:semiHidden="1" w:uiPriority="9" w:unhideWhenUsed="1" w:qFormat="1"/>
+ 37          <w:lsdException w:name="heading 9" w:semiHidden="1" w:uiPriority="9" w:unhideWhenUsed="1" w:qFormat="1"/>
+ 38          <w:lsdException w:name="index 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 39          <w:lsdException w:name="index 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 40          <w:lsdException w:name="index 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 41          <w:lsdException w:name="index 4" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 42          <w:lsdException w:name="index 5" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 43          <w:lsdException w:name="index 6" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 44          <w:lsdException w:name="index 7" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 45          <w:lsdException w:name="index 8" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 46          <w:lsdException w:name="index 9" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 47          <w:lsdException w:name="toc 1" w:semiHidden="1" w:uiPriority="39" w:unhideWhenUsed="1"/>
+ 48          <w:lsdException w:name="toc 2" w:semiHidden="1" w:uiPriority="39" w:unhideWhenUsed="1"/>
+ 49          <w:lsdException w:name="toc 3" w:semiHidden="1" w:uiPriority="39" w:unhideWhenUsed="1"/>
+ 50          <w:lsdException w:name="toc 4" w:semiHidden="1" w:uiPriority="39" w:unhideWhenUsed="1"/>
+ 51          <w:lsdException w:name="toc 5" w:semiHidden="1" w:uiPriority="39" w:unhideWhenUsed="1"/>
+ 52          <w:lsdException w:name="toc 6" w:semiHidden="1" w:uiPriority="39" w:unhideWhenUsed="1"/>
+ 53          <w:lsdException w:name="toc 7" w:semiHidden="1" w:uiPriority="39" w:unhideWhenUsed="1"/>
+ 54          <w:lsdException w:name="toc 8" w:semiHidden="1" w:uiPriority="39" w:unhideWhenUsed="1"/>
+ 55          <w:lsdException w:name="toc 9" w:semiHidden="1" w:uiPriority="39" w:unhideWhenUsed="1"/>
+ 56          <w:lsdException w:name="Normal Indent" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 57          <w:lsdException w:name="footnote text" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 58          <w:lsdException w:name="annotation text" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 59          <w:lsdException w:name="header" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 60          <w:lsdException w:name="footer" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 61          <w:lsdException w:name="index heading" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 62          <w:lsdException w:name="caption" w:semiHidden="1" w:uiPriority="35" w:unhideWhenUsed="1" w:qFormat="1"/>
+ 63          <w:lsdException w:name="table of figures" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 64          <w:lsdException w:name="envelope address" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 65          <w:lsdException w:name="envelope return" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 66          <w:lsdException w:name="footnote reference" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 67          <w:lsdException w:name="annotation reference" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 68          <w:lsdException w:name="line number" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 69          <w:lsdException w:name="page number" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 70          <w:lsdException w:name="endnote reference" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 71          <w:lsdException w:name="endnote text" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 72          <w:lsdException w:name="table of authorities" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 73          <w:lsdException w:name="macro" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 74          <w:lsdException w:name="toa heading" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 75          <w:lsdException w:name="List" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 76          <w:lsdException w:name="List Bullet" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 77          <w:lsdException w:name="List Number" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 78          <w:lsdException w:name="List 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 79          <w:lsdException w:name="List 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 80          <w:lsdException w:name="List 4" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 81          <w:lsdException w:name="List 5" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 82          <w:lsdException w:name="List Bullet 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 83          <w:lsdException w:name="List Bullet 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 84          <w:lsdException w:name="List Bullet 4" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 85          <w:lsdException w:name="List Bullet 5" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 86          <w:lsdException w:name="List Number 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 87          <w:lsdException w:name="List Number 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 88          <w:lsdException w:name="List Number 4" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 89          <w:lsdException w:name="List Number 5" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 90          <w:lsdException w:name="Title" w:uiPriority="10" w:qFormat="1"/>
+ 91          <w:lsdException w:name="Closing" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 92          <w:lsdException w:name="Signature" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 93          <w:lsdException w:name="Default Paragraph Font" w:semiHidden="1" w:uiPriority="1" w:unhideWhenUsed="1"/>
+ 94          <w:lsdException w:name="Body Text" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 95          <w:lsdException w:name="Body Text Indent" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 96          <w:lsdException w:name="List Continue" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 97          <w:lsdException w:name="List Continue 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 98          <w:lsdException w:name="List Continue 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+ 99          <w:lsdException w:name="List Continue 4" w:semiHidden="1" w:unhideWhenUsed="1"/>
+100          <w:lsdException w:name="List Continue 5" w:semiHidden="1" w:unhideWhenUsed="1"/>
+101          <w:lsdException w:name="Message Header" w:semiHidden="1" w:unhideWhenUsed="1"/>
+102          <w:lsdException w:name="Subtitle" w:uiPriority="11" w:qFormat="1"/>
+103          <w:lsdException w:name="Salutation" w:semiHidden="1" w:unhideWhenUsed="1"/>
+104          <w:lsdException w:name="Date" w:semiHidden="1" w:unhideWhenUsed="1"/>
+105          <w:lsdException w:name="Body Text First Indent" w:semiHidden="1" w:unhideWhenUsed="1"/>
+106          <w:lsdException w:name="Body Text First Indent 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+107          <w:lsdException w:name="Note Heading" w:semiHidden="1" w:unhideWhenUsed="1"/>
+108          <w:lsdException w:name="Body Text 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+109          <w:lsdException w:name="Body Text 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+110          <w:lsdException w:name="Body Text Indent 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+111          <w:lsdException w:name="Body Text Indent 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+112          <w:lsdException w:name="Block Text" w:semiHidden="1" w:unhideWhenUsed="1"/>
+113          <w:lsdException w:name="Hyperlink" w:semiHidden="1" w:unhideWhenUsed="1"/>
+114          <w:lsdException w:name="FollowedHyperlink" w:semiHidden="1" w:unhideWhenUsed="1"/>
+115          <w:lsdException w:name="Strong" w:uiPriority="22" w:qFormat="1"/>
+116          <w:lsdException w:name="Emphasis" w:uiPriority="20" w:qFormat="1"/>
+117          <w:lsdException w:name="Document Map" w:semiHidden="1" w:unhideWhenUsed="1"/>
+118          <w:lsdException w:name="Plain Text" w:semiHidden="1" w:unhideWhenUsed="1"/>
+119          <w:lsdException w:name="E-mail Signature" w:semiHidden="1" w:unhideWhenUsed="1"/>
+120          <w:lsdException w:name="HTML Top of Form" w:semiHidden="1" w:unhideWhenUsed="1"/>
+121          <w:lsdException w:name="HTML Bottom of Form" w:semiHidden="1" w:unhideWhenUsed="1"/>
+122          <w:lsdException w:name="Normal (Web)" w:semiHidden="1" w:unhideWhenUsed="1"/>
+123          <w:lsdException w:name="HTML Acronym" w:semiHidden="1" w:unhideWhenUsed="1"/>
+124          <w:lsdException w:name="HTML Address" w:semiHidden="1" w:unhideWhenUsed="1"/>
+125          <w:lsdException w:name="HTML Cite" w:semiHidden="1" w:unhideWhenUsed="1"/>
+126          <w:lsdException w:name="HTML Code" w:semiHidden="1" w:unhideWhenUsed="1"/>
+127          <w:lsdException w:name="HTML Definition" w:semiHidden="1" w:unhideWhenUsed="1"/>
+128          <w:lsdException w:name="HTML Keyboard" w:semiHidden="1" w:unhideWhenUsed="1"/>
+129          <w:lsdException w:name="HTML Preformatted" w:semiHidden="1" w:unhideWhenUsed="1"/>
+130          <w:lsdException w:name="HTML Sample" w:semiHidden="1" w:unhideWhenUsed="1"/>
+131          <w:lsdException w:name="HTML Typewriter" w:semiHidden="1" w:unhideWhenUsed="1"/>
+132          <w:lsdException w:name="HTML Variable" w:semiHidden="1" w:unhideWhenUsed="1"/>
+133          <w:lsdException w:name="Normal Table" w:semiHidden="1" w:unhideWhenUsed="1"/>
+134          <w:lsdException w:name="annotation subject" w:semiHidden="1" w:unhideWhenUsed="1"/>
+135          <w:lsdException w:name="No List" w:semiHidden="1" w:unhideWhenUsed="1"/>
+136          <w:lsdException w:name="Outline List 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
+137          <w:lsdException w:name="Outline List 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+138          <w:lsdException w:name="Outline List 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+139          <w:lsdException w:name="Table Simple 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
+140          <w:lsdException w:name="Table Simple 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+141          <w:lsdException w:name="Table Simple 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+142          <w:lsdException w:name="Table Classic 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
+143          <w:lsdException w:name="Table Classic 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+144          <w:lsdException w:name="Table Classic 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+145          <w:lsdException w:name="Table Classic 4" w:semiHidden="1" w:unhideWhenUsed="1"/>
+146          <w:lsdException w:name="Table Colorful 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
+147          <w:lsdException w:name="Table Colorful 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+148          <w:lsdException w:name="Table Colorful 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+149          <w:lsdException w:name="Table Columns 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
+150          <w:lsdException w:name="Table Columns 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+151          <w:lsdException w:name="Table Columns 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+152          <w:lsdException w:name="Table Columns 4" w:semiHidden="1" w:unhideWhenUsed="1"/>
+153          <w:lsdException w:name="Table Columns 5" w:semiHidden="1" w:unhideWhenUsed="1"/>
+154          <w:lsdException w:name="Table Grid 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
+155          <w:lsdException w:name="Table Grid 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+156          <w:lsdException w:name="Table Grid 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+157          <w:lsdException w:name="Table Grid 4" w:semiHidden="1" w:unhideWhenUsed="1"/>
+158          <w:lsdException w:name="Table Grid 5" w:semiHidden="1" w:unhideWhenUsed="1"/>
+159          <w:lsdException w:name="Table Grid 6" w:semiHidden="1" w:unhideWhenUsed="1"/>
+160          <w:lsdException w:name="Table Grid 7" w:semiHidden="1" w:unhideWhenUsed="1"/>
+161          <w:lsdException w:name="Table Grid 8" w:semiHidden="1" w:unhideWhenUsed="1"/>
+162          <w:lsdException w:name="Table List 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
+163          <w:lsdException w:name="Table List 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+164          <w:lsdException w:name="Table List 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+165          <w:lsdException w:name="Table List 4" w:semiHidden="1" w:unhideWhenUsed="1"/>
+166          <w:lsdException w:name="Table List 5" w:semiHidden="1" w:unhideWhenUsed="1"/>
+167          <w:lsdException w:name="Table List 6" w:semiHidden="1" w:unhideWhenUsed="1"/>
+168          <w:lsdException w:name="Table List 7" w:semiHidden="1" w:unhideWhenUsed="1"/>
+169          <w:lsdException w:name="Table List 8" w:semiHidden="1" w:unhideWhenUsed="1"/>
+170          <w:lsdException w:name="Table 3D effects 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
+171          <w:lsdException w:name="Table 3D effects 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+172          <w:lsdException w:name="Table 3D effects 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+173          <w:lsdException w:name="Table Contemporary" w:semiHidden="1" w:unhideWhenUsed="1"/>
+174          <w:lsdException w:name="Table Elegant" w:semiHidden="1" w:unhideWhenUsed="1"/>
+175          <w:lsdException w:name="Table Professional" w:semiHidden="1" w:unhideWhenUsed="1"/>
+176          <w:lsdException w:name="Table Subtle 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
+177          <w:lsdException w:name="Table Subtle 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+178          <w:lsdException w:name="Table Web 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
+179          <w:lsdException w:name="Table Web 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+180          <w:lsdException w:name="Table Web 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+181          <w:lsdException w:name="Balloon Text" w:semiHidden="1" w:unhideWhenUsed="1"/>
+182          <w:lsdException w:name="Table Grid" w:uiPriority="39"/>
+183          <w:lsdException w:name="Table Theme" w:semiHidden="1" w:unhideWhenUsed="1"/>
+184          <w:lsdException w:name="Placeholder Text" w:semiHidden="1"/>
+185          <w:lsdException w:name="No Spacing" w:uiPriority="1" w:qFormat="1"/>
+186          <w:lsdException w:name="Light Shading" w:uiPriority="60"/>
+187          <w:lsdException w:name="Light List" w:uiPriority="61"/>
+188          <w:lsdException w:name="Light Grid" w:uiPriority="62"/>
+189          <w:lsdException w:name="Medium Shading 1" w:uiPriority="63"/>
+190          <w:lsdException w:name="Medium Shading 2" w:uiPriority="64"/>
+191          <w:lsdException w:name="Medium List 1" w:uiPriority="65"/>
+192          <w:lsdException w:name="Medium List 2" w:uiPriority="66"/>
+193          <w:lsdException w:name="Medium Grid 1" w:uiPriority="67"/>
+194          <w:lsdException w:name="Medium Grid 2" w:uiPriority="68"/>
+195          <w:lsdException w:name="Medium Grid 3" w:uiPriority="69"/>
+196          <w:lsdException w:name="Dark List" w:uiPriority="70"/>
+197          <w:lsdException w:name="Colorful Shading" w:uiPriority="71"/>
+198          <w:lsdException w:name="Colorful List" w:uiPriority="72"/>
+199          <w:lsdException w:name="Colorful Grid" w:uiPriority="73"/>
+200          <w:lsdException w:name="Light Shading Accent 1" w:uiPriority="60"/>
+201          <w:lsdException w:name="Light List Accent 1" w:uiPriority="61"/>
+202          <w:lsdException w:name="Light Grid Accent 1" w:uiPriority="62"/>
+203          <w:lsdException w:name="Medium Shading 1 Accent 1" w:uiPriority="63"/>
+204          <w:lsdException w:name="Medium Shading 2 Accent 1" w:uiPriority="64"/>
+205          <w:lsdException w:name="Medium List 1 Accent 1" w:uiPriority="65"/>
+206          <w:lsdException w:name="Revision" w:semiHidden="1"/>
+207          <w:lsdException w:name="List Paragraph" w:uiPriority="34" w:qFormat="1"/>
+208          <w:lsdException w:name="Quote" w:uiPriority="29" w:qFormat="1"/>
+209          <w:lsdException w:name="Intense Quote" w:uiPriority="30" w:qFormat="1"/>
+210          <w:lsdException w:name="Medium List 2 Accent 1" w:uiPriority="66"/>
+211          <w:lsdException w:name="Medium Grid 1 Accent 1" w:uiPriority="67"/>
+212          <w:lsdException w:name="Medium Grid 2 Accent 1" w:uiPriority="68"/>
+213          <w:lsdException w:name="Medium Grid 3 Accent 1" w:uiPriority="69"/>
+214          <w:lsdException w:name="Dark List Accent 1" w:uiPriority="70"/>
+215          <w:lsdException w:name="Colorful Shading Accent 1" w:uiPriority="71"/>
+216          <w:lsdException w:name="Colorful List Accent 1" w:uiPriority="72"/>
+217          <w:lsdException w:name="Colorful Grid Accent 1" w:uiPriority="73"/>
+218          <w:lsdException w:name="Light Shading Accent 2" w:uiPriority="60"/>
+219          <w:lsdException w:name="Light List Accent 2" w:uiPriority="61"/>
+220          <w:lsdException w:name="Light Grid Accent 2" w:uiPriority="62"/>
+221          <w:lsdException w:name="Medium Shading 1 Accent 2" w:uiPriority="63"/>
+222          <w:lsdException w:name="Medium Shading 2 Accent 2" w:uiPriority="64"/>
+223          <w:lsdException w:name="Medium List 1 Accent 2" w:uiPriority="65"/>
+224          <w:lsdException w:name="Medium List 2 Accent 2" w:uiPriority="66"/>
+225          <w:lsdException w:name="Medium Grid 1 Accent 2" w:uiPriority="67"/>
+226          <w:lsdException w:name="Medium Grid 2 Accent 2" w:uiPriority="68"/>
+227          <w:lsdException w:name="Medium Grid 3 Accent 2" w:uiPriority="69"/>
+228          <w:lsdException w:name="Dark List Accent 2" w:uiPriority="70"/>
+229          <w:lsdException w:name="Colorful Shading Accent 2" w:uiPriority="71"/>
+230          <w:lsdException w:name="Colorful List Accent 2" w:uiPriority="72"/>
+231          <w:lsdException w:name="Colorful Grid Accent 2" w:uiPriority="73"/>
+232          <w:lsdException w:name="Light Shading Accent 3" w:uiPriority="60"/>
+233          <w:lsdException w:name="Light List Accent 3" w:uiPriority="61"/>
+234          <w:lsdException w:name="Light Grid Accent 3" w:uiPriority="62"/>
+235          <w:lsdException w:name="Medium Shading 1 Accent 3" w:uiPriority="63"/>
+236          <w:lsdException w:name="Medium Shading 2 Accent 3" w:uiPriority="64"/>
+237          <w:lsdException w:name="Medium List 1 Accent 3" w:uiPriority="65"/>
+238          <w:lsdException w:name="Medium List 2 Accent 3" w:uiPriority="66"/>
+239          <w:lsdException w:name="Medium Grid 1 Accent 3" w:uiPriority="67"/>
+240          <w:lsdException w:name="Medium Grid 2 Accent 3" w:uiPriority="68"/>
+241          <w:lsdException w:name="Medium Grid 3 Accent 3" w:uiPriority="69"/>
+242          <w:lsdException w:name="Dark List Accent 3" w:uiPriority="70"/>
+243          <w:lsdException w:name="Colorful Shading Accent 3" w:uiPriority="71"/>
+244          <w:lsdException w:name="Colorful List Accent 3" w:uiPriority="72"/>
+245          <w:lsdException w:name="Colorful Grid Accent 3" w:uiPriority="73"/>
+246          <w:lsdException w:name="Light Shading Accent 4" w:uiPriority="60"/>
+247          <w:lsdException w:name="Light List Accent 4" w:uiPriority="61"/>
+248          <w:lsdException w:name="Light Grid Accent 4" w:uiPriority="62"/>
+249          <w:lsdException w:name="Medium Shading 1 Accent 4" w:uiPriority="63"/>
+250          <w:lsdException w:name="Medium Shading 2 Accent 4" w:uiPriority="64"/>
+251          <w:lsdException w:name="Medium List 1 Accent 4" w:uiPriority="65"/>
+252          <w:lsdException w:name="Medium List 2 Accent 4" w:uiPriority="66"/>
+253          <w:lsdException w:name="Medium Grid 1 Accent 4" w:uiPriority="67"/>
+254          <w:lsdException w:name="Medium Grid 2 Accent 4" w:uiPriority="68"/>
+255          <w:lsdException w:name="Medium Grid 3 Accent 4" w:uiPriority="69"/>
+256          <w:lsdException w:name="Dark List Accent 4" w:uiPriority="70"/>
+257          <w:lsdException w:name="Colorful Shading Accent 4" w:uiPriority="71"/>
+258          <w:lsdException w:name="Colorful List Accent 4" w:uiPriority="72"/>
+259          <w:lsdException w:name="Colorful Grid Accent 4" w:uiPriority="73"/>
+260          <w:lsdException w:name="Light Shading Accent 5" w:uiPriority="60"/>
+261          <w:lsdException w:name="Light List Accent 5" w:uiPriority="61"/>
+262          <w:lsdException w:name="Light Grid Accent 5" w:uiPriority="62"/>
+263          <w:lsdException w:name="Medium Shading 1 Accent 5" w:uiPriority="63"/>
+264          <w:lsdException w:name="Medium Shading 2 Accent 5" w:uiPriority="64"/>
+265          <w:lsdException w:name="Medium List 1 Accent 5" w:uiPriority="65"/>
+266          <w:lsdException w:name="Medium List 2 Accent 5" w:uiPriority="66"/>
+267          <w:lsdException w:name="Medium Grid 1 Accent 5" w:uiPriority="67"/>
+268          <w:lsdException w:name="Medium Grid 2 Accent 5" w:uiPriority="68"/>
+269          <w:lsdException w:name="Medium Grid 3 Accent 5" w:uiPriority="69"/>
+270          <w:lsdException w:name="Dark List Accent 5" w:uiPriority="70"/>
+271          <w:lsdException w:name="Colorful Shading Accent 5" w:uiPriority="71"/>
+272          <w:lsdException w:name="Colorful List Accent 5" w:uiPriority="72"/>
+273          <w:lsdException w:name="Colorful Grid Accent 5" w:uiPriority="73"/>
+274          <w:lsdException w:name="Light Shading Accent 6" w:uiPriority="60"/>
+275          <w:lsdException w:name="Light List Accent 6" w:uiPriority="61"/>
+276          <w:lsdException w:name="Light Grid Accent 6" w:uiPriority="62"/>
+277          <w:lsdException w:name="Medium Shading 1 Accent 6" w:uiPriority="63"/>
+278          <w:lsdException w:name="Medium Shading 2 Accent 6" w:uiPriority="64"/>
+279          <w:lsdException w:name="Medium List 1 Accent 6" w:uiPriority="65"/>
+280          <w:lsdException w:name="Medium List 2 Accent 6" w:uiPriority="66"/>
+281          <w:lsdException w:name="Medium Grid 1 Accent 6" w:uiPriority="67"/>
+282          <w:lsdException w:name="Medium Grid 2 Accent 6" w:uiPriority="68"/>
+283          <w:lsdException w:name="Medium Grid 3 Accent 6" w:uiPriority="69"/>
+284          <w:lsdException w:name="Dark List Accent 6" w:uiPriority="70"/>
+285          <w:lsdException w:name="Colorful Shading Accent 6" w:uiPriority="71"/>
+286          <w:lsdException w:name="Colorful List Accent 6" w:uiPriority="72"/>
+287          <w:lsdException w:name="Colorful Grid Accent 6" w:uiPriority="73"/>
+288          <w:lsdException w:name="Subtle Emphasis" w:uiPriority="19" w:qFormat="1"/>
+289          <w:lsdException w:name="Intense Emphasis" w:uiPriority="21" w:qFormat="1"/>
+290          <w:lsdException w:name="Subtle Reference" w:uiPriority="31" w:qFormat="1"/>
+291          <w:lsdException w:name="Intense Reference" w:uiPriority="32" w:qFormat="1"/>
+292          <w:lsdException w:name="Book Title" w:uiPriority="33" w:qFormat="1"/>
+293          <w:lsdException w:name="Bibliography" w:semiHidden="1" w:uiPriority="37" w:unhideWhenUsed="1"/>
+294          <w:lsdException w:name="TOC Heading" w:semiHidden="1" w:uiPriority="39" w:unhideWhenUsed="1" w:qFormat="1"/>
+295          <w:lsdException w:name="Plain Table 1" w:uiPriority="41"/>
+296          <w:lsdException w:name="Plain Table 2" w:uiPriority="42"/>
+297          <w:lsdException w:name="Plain Table 3" w:uiPriority="43"/>
+298          <w:lsdException w:name="Plain Table 4" w:uiPriority="44"/>
+299          <w:lsdException w:name="Plain Table 5" w:uiPriority="45"/>
+300          <w:lsdException w:name="Grid Table Light" w:uiPriority="40"/>
+301          <w:lsdException w:name="Grid Table 1 Light" w:uiPriority="46"/>
+302          <w:lsdException w:name="Grid Table 2" w:uiPriority="47"/>
+303          <w:lsdException w:name="Grid Table 3" w:uiPriority="48"/>
+304          <w:lsdException w:name="Grid Table 4" w:uiPriority="49"/>
+305          <w:lsdException w:name="Grid Table 5 Dark" w:uiPriority="50"/>
+306          <w:lsdException w:name="Grid Table 6 Colorful" w:uiPriority="51"/>
+307          <w:lsdException w:name="Grid Table 7 Colorful" w:uiPriority="52"/>
+308          <w:lsdException w:name="Grid Table 1 Light Accent 1" w:uiPriority="46"/>
+309          <w:lsdException w:name="Grid Table 2 Accent 1" w:uiPriority="47"/>
+310          <w:lsdException w:name="Grid Table 3 Accent 1" w:uiPriority="48"/>
+311          <w:lsdException w:name="Grid Table 4 Accent 1" w:uiPriority="49"/>
+312          <w:lsdException w:name="Grid Table 5 Dark Accent 1" w:uiPriority="50"/>
+313          <w:lsdException w:name="Grid Table 6 Colorful Accent 1" w:uiPriority="51"/>
+314          <w:lsdException w:name="Grid Table 7 Colorful Accent 1" w:uiPriority="52"/>
+315          <w:lsdException w:name="Grid Table 1 Light Accent 2" w:uiPriority="46"/>
+316          <w:lsdException w:name="Grid Table 2 Accent 2" w:uiPriority="47"/>
+317          <w:lsdException w:name="Grid Table 3 Accent 2" w:uiPriority="48"/>
+318          <w:lsdException w:name="Grid Table 4 Accent 2" w:uiPriority="49"/>
+319          <w:lsdException w:name="Grid Table 5 Dark Accent 2" w:uiPriority="50"/>
+320          <w:lsdException w:name="Grid Table 6 Colorful Accent 2" w:uiPriority="51"/>
+321          <w:lsdException w:name="Grid Table 7 Colorful Accent 2" w:uiPriority="52"/>
+322          <w:lsdException w:name="Grid Table 1 Light Accent 3" w:uiPriority="46"/>
+323          <w:lsdException w:name="Grid Table 2 Accent 3" w:uiPriority="47"/>
+324          <w:lsdException w:name="Grid Table 3 Accent 3" w:uiPriority="48"/>
+325          <w:lsdException w:name="Grid Table 4 Accent 3" w:uiPriority="49"/>
+326          <w:lsdException w:name="Grid Table 5 Dark Accent 3" w:uiPriority="50"/>
+327          <w:lsdException w:name="Grid Table 6 Colorful Accent 3" w:uiPriority="51"/>
+328          <w:lsdException w:name="Grid Table 7 Colorful Accent 3" w:uiPriority="52"/>
+329          <w:lsdException w:name="Grid Table 1 Light Accent 4" w:uiPriority="46"/>
+330          <w:lsdException w:name="Grid Table 2 Accent 4" w:uiPriority="47"/>
+331          <w:lsdException w:name="Grid Table 3 Accent 4" w:uiPriority="48"/>
+332          <w:lsdException w:name="Grid Table 4 Accent 4" w:uiPriority="49"/>
+333          <w:lsdException w:name="Grid Table 5 Dark Accent 4" w:uiPriority="50"/>
+334          <w:lsdException w:name="Grid Table 6 Colorful Accent 4" w:uiPriority="51"/>
+335          <w:lsdException w:name="Grid Table 7 Colorful Accent 4" w:uiPriority="52"/>
+336          <w:lsdException w:name="Grid Table 1 Light Accent 5" w:uiPriority="46"/>
+337          <w:lsdException w:name="Grid Table 2 Accent 5" w:uiPriority="47"/>
+338          <w:lsdException w:name="Grid Table 3 Accent 5" w:uiPriority="48"/>
+339          <w:lsdException w:name="Grid Table 4 Accent 5" w:uiPriority="49"/>
+340          <w:lsdException w:name="Grid Table 5 Dark Accent 5" w:uiPriority="50"/>
+341          <w:lsdException w:name="Grid Table 6 Colorful Accent 5" w:uiPriority="51"/>
+342          <w:lsdException w:name="Grid Table 7 Colorful Accent 5" w:uiPriority="52"/>
+343          <w:lsdException w:name="Grid Table 1 Light Accent 6" w:uiPriority="46"/>
+344          <w:lsdException w:name="Grid Table 2 Accent 6" w:uiPriority="47"/>
+345          <w:lsdException w:name="Grid Table 3 Accent 6" w:uiPriority="48"/>
+346          <w:lsdException w:name="Grid Table 4 Accent 6" w:uiPriority="49"/>
+347          <w:lsdException w:name="Grid Table 5 Dark Accent 6" w:uiPriority="50"/>
+348          <w:lsdException w:name="Grid Table 6 Colorful Accent 6" w:uiPriority="51"/>
+349          <w:lsdException w:name="Grid Table 7 Colorful Accent 6" w:uiPriority="52"/>
+350          <w:lsdException w:name="List Table 1 Light" w:uiPriority="46"/>
+351          <w:lsdException w:name="List Table 2" w:uiPriority="47"/>
+352          <w:lsdException w:name="List Table 3" w:uiPriority="48"/>
+353          <w:lsdException w:name="List Table 4" w:uiPriority="49"/>
+354          <w:lsdException w:name="List Table 5 Dark" w:uiPriority="50"/>
+355          <w:lsdException w:name="List Table 6 Colorful" w:uiPriority="51"/>
+356          <w:lsdException w:name="List Table 7 Colorful" w:uiPriority="52"/>
+357          <w:lsdException w:name="List Table 1 Light Accent 1" w:uiPriority="46"/>
+358          <w:lsdException w:name="List Table 2 Accent 1" w:uiPriority="47"/>
+359          <w:lsdException w:name="List Table 3 Accent 1" w:uiPriority="48"/>
+360          <w:lsdException w:name="List Table 4 Accent 1" w:uiPriority="49"/>
+361          <w:lsdException w:name="List Table 5 Dark Accent 1" w:uiPriority="50"/>
+362          <w:lsdException w:name="List Table 6 Colorful Accent 1" w:uiPriority="51"/>
+363          <w:lsdException w:name="List Table 7 Colorful Accent 1" w:uiPriority="52"/>
+364          <w:lsdException w:name="List Table 1 Light Accent 2" w:uiPriority="46"/>
+365          <w:lsdException w:name="List Table 2 Accent 2" w:uiPriority="47"/>
+366          <w:lsdException w:name="List Table 3 Accent 2" w:uiPriority="48"/>
+367          <w:lsdException w:name="List Table 4 Accent 2" w:uiPriority="49"/>
+368          <w:lsdException w:name="List Table 5 Dark Accent 2" w:uiPriority="50"/>
+369          <w:lsdException w:name="List Table 6 Colorful Accent 2" w:uiPriority="51"/>
+370          <w:lsdException w:name="List Table 7 Colorful Accent 2" w:uiPriority="52"/>
+371          <w:lsdException w:name="List Table 1 Light Accent 3" w:uiPriority="46"/>
+372          <w:lsdException w:name="List Table 2 Accent 3" w:uiPriority="47"/>
+373          <w:lsdException w:name="List Table 3 Accent 3" w:uiPriority="48"/>
+374          <w:lsdException w:name="List Table 4 Accent 3" w:uiPriority="49"/>
+375          <w:lsdException w:name="List Table 5 Dark Accent 3" w:uiPriority="50"/>
+376          <w:lsdException w:name="List Table 6 Colorful Accent 3" w:uiPriority="51"/>
+377          <w:lsdException w:name="List Table 7 Colorful Accent 3" w:uiPriority="52"/>
+378          <w:lsdException w:name="List Table 1 Light Accent 4" w:uiPriority="46"/>
+379          <w:lsdException w:name="List Table 2 Accent 4" w:uiPriority="47"/>
+380          <w:lsdException w:name="List Table 3 Accent 4" w:uiPriority="48"/>
+381          <w:lsdException w:name="List Table 4 Accent 4" w:uiPriority="49"/>
+382          <w:lsdException w:name="List Table 5 Dark Accent 4" w:uiPriority="50"/>
+383          <w:lsdException w:name="List Table 6 Colorful Accent 4" w:uiPriority="51"/>
+384          <w:lsdException w:name="List Table 7 Colorful Accent 4" w:uiPriority="52"/>
+385          <w:lsdException w:name="List Table 1 Light Accent 5" w:uiPriority="46"/>
+386          <w:lsdException w:name="List Table 2 Accent 5" w:uiPriority="47"/>
+387          <w:lsdException w:name="List Table 3 Accent 5" w:uiPriority="48"/>
+388          <w:lsdException w:name="List Table 4 Accent 5" w:uiPriority="49"/>
+389          <w:lsdException w:name="List Table 5 Dark Accent 5" w:uiPriority="50"/>
+390          <w:lsdException w:name="List Table 6 Colorful Accent 5" w:uiPriority="51"/>
+391          <w:lsdException w:name="List Table 7 Colorful Accent 5" w:uiPriority="52"/>
+392          <w:lsdException w:name="List Table 1 Light Accent 6" w:uiPriority="46"/>
+393          <w:lsdException w:name="List Table 2 Accent 6" w:uiPriority="47"/>
+394          <w:lsdException w:name="List Table 3 Accent 6" w:uiPriority="48"/>
+395          <w:lsdException w:name="List Table 4 Accent 6" w:uiPriority="49"/>
+396          <w:lsdException w:name="List Table 5 Dark Accent 6" w:uiPriority="50"/>
+397          <w:lsdException w:name="List Table 6 Colorful Accent 6" w:uiPriority="51"/>
+398          <w:lsdException w:name="List Table 7 Colorful Accent 6" w:uiPriority="52"/>
+399          <w:lsdException w:name="Mention" w:semiHidden="1" w:unhideWhenUsed="1"/>
+400          <w:lsdException w:name="Smart Hyperlink" w:semiHidden="1" w:unhideWhenUsed="1"/>
+401          <w:lsdException w:name="Hashtag" w:semiHidden="1" w:unhideWhenUsed="1"/>
+402          <w:lsdException w:name="Unresolved Mention" w:semiHidden="1" w:unhideWhenUsed="1"/>
+403          <w:lsdException w:name="Smart Link" w:semiHidden="1" w:unhideWhenUsed="1"/>
+404      </w:latentStyles>
+405      <w:style w:type="paragraph" w:default="1" w:styleId="Normal">
+406          <w:name w:val="Normal"/>
+407          <w:qFormat/>
+408      </w:style>
+409      <w:style w:type="character" w:default="1" w:styleId="DefaultParagraphFont">
+410          <w:name w:val="Default Paragraph Font"/>
+411          <w:uiPriority w:val="1"/>
+412          <w:semiHidden/>
+413          <w:unhideWhenUsed/>
+414      </w:style>
+415      <w:style w:type="table" w:default="1" w:styleId="TableNormal">
+416          <w:name w:val="Normal Table"/>
+417          <w:uiPriority w:val="99"/>
+418          <w:semiHidden/>
+419          <w:unhideWhenUsed/>
+420          <w:tblPr>
+421              <w:tblInd w:w="0" w:type="dxa"/>
+422              <w:tblCellMar>
+423                  <w:top w:w="0" w:type="dxa"/>
+424                  <w:left w:w="108" w:type="dxa"/>
+425                  <w:bottom w:w="0" w:type="dxa"/>
+426                  <w:right w:w="108" w:type="dxa"/>
+427              </w:tblCellMar>
+428          </w:tblPr>
+429      </w:style>
+430      <w:style w:type="numbering" w:default="1" w:styleId="NoList">
+431          <w:name w:val="No List"/>
+432          <w:uiPriority w:val="99"/>
+433          <w:semiHidden/>
+434          <w:unhideWhenUsed/>
+435      </w:style>
+436  </w:styles>
+
+
+     /home/lutz/ws/perl/projects/DOCX/word/settings.xml
+ 1   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ 2   <w:settings xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ 3       xmlns:o="urn:schemas-microsoft-com:office:office"
+ 4       xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+ 5       xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"
+ 6       xmlns:v="urn:schemas-microsoft-com:vml"
+ 7       xmlns:w10="urn:schemas-microsoft-com:office:word"
+ 8       xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+ 9       xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+10       xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml"
+11       xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex"
+12       xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid"
+13       xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+14       xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+15       xmlns:sl="http://schemas.openxmlformats.org/schemaLibrary/2006/main"
+16       mc:Ignorable="w14 w15 w16se w16cid w16 w16cex">
+17       <w:zoom w:percent="140"/>
+18       <w:proofState w:spelling="clean" w:grammar="clean"/>
+19       <w:defaultTabStop w:val="720"/>
+20       <w:characterSpacingControl w:val="doNotCompress"/>
+21       <w:compat>
+22           <w:compatSetting w:name="compatibilityMode" w:uri="http://schemas.microsoft.com/office/word" w:val="15"/>
+23           <w:compatSetting w:name="overrideTableStyleFontSizeAndJustification" w:uri="http://schemas.microsoft.com/office/word" w:val="1"/>
+24           <w:compatSetting w:name="enableOpenTypeFeatures" w:uri="http://schemas.microsoft.com/office/word" w:val="1"/>
+25           <w:compatSetting w:name="doNotFlipMirrorIndents" w:uri="http://schemas.microsoft.com/office/word" w:val="1"/>
+26           <w:compatSetting w:name="differentiateMultirowTableHeaders" w:uri="http://schemas.microsoft.com/office/word" w:val="1"/>
+27           <w:compatSetting w:name="useWord2013TrackBottomHyphenation" w:uri="http://schemas.microsoft.com/office/word" w:val="0"/>
+28       </w:compat>
+29       <w:rsids>
+30           <w:rsidRoot w:val="00F05D69"/>
+31           <w:rsid w:val="002D2F32"/>
+32           <w:rsid w:val="00CC6D86"/>
+33           <w:rsid w:val="00F05D69"/>
+34       </w:rsids>
+35       <m:mathPr>
+36           <m:mathFont m:val="Cambria Math"/>
+37           <m:brkBin m:val="before"/>
+38           <m:brkBinSub m:val="--"/>
+39           <m:smallFrac m:val="0"/>
+40           <m:dispDef/>
+41           <m:lMargin m:val="0"/>
+42           <m:rMargin m:val="0"/>
+43           <m:defJc m:val="centerGroup"/>
+44           <m:wrapIndent m:val="1440"/>
+45           <m:intLim m:val="subSup"/>
+46           <m:naryLim m:val="undOvr"/>
+47       </m:mathPr>
+48       <w:themeFontLang w:val="en-US"/>
+49       <w:clrSchemeMapping w:bg1="light1"
+50           w:t1="dark1"
+51           w:bg2="light2"
+52           w:t2="dark2"
+53           w:accent1="accent1"
+54           w:accent2="accent2"
+55           w:accent3="accent3"
+56           w:accent4="accent4"
+57           w:accent5="accent5"
+58           w:accent6="accent6"
+59           w:hyperlink="hyperlink"
+60           w:followedHyperlink="followedHyperlink"/>
+61       <w:shapeDefaults>
+62           <o:shapedefaults v:ext="edit" spidmax="1026"/>
+63           <o:shapelayout v:ext="edit">
+64               <o:idmap v:ext="edit" data="1"/>
+65           </o:shapelayout>
+66       </w:shapeDefaults>
+67       <w:decimalSymbol w:val="."/>
+68       <w:listSeparator w:val=","/>
+69       <w14:docId w14:val="6AC4CF33"/>
+70       <w15:chartTrackingRefBased/>
+71       <w15:docId w15:val="{76192C07-456B-44B9-836A-033431A4BE23}"/>
+72   </w:settings>
+
+
+     /home/lutz/ws/perl/projects/DOCX/word/webSettings.xml
+1    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+2    <w:webSettings xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+3        xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+4        xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+5        xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+6        xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml"
+7        xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex"
+8        xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid"
+9        xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+10        xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+11        mc:Ignorable="w14 w15 w16se w16cid w16 w16cex">
+12        <w:optimizeForBrowser/>
+13        <w:allowPNG/>
+14    </w:webSettings>
+
+
+     /home/lutz/ws/perl/projects/DOCX/word/fontTable.xml
+ 1   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ 2   <w:fonts xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ 3       xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+ 4       xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+ 5       xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+ 6       xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml"
+ 7       xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex"
+ 8       xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid"
+ 9       xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+10       xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+11       mc:Ignorable="w14 w15 w16se w16cid w16 w16cex">
+12       <w:font w:name="Calibri">
+13           <w:panose1 w:val="020F0502020204030204"/>
+14           <w:charset w:val="00"/>
+15           <w:family w:val="swiss"/>
+16           <w:pitch w:val="variable"/>
+17           <w:sig w:usb0="E4002EFF" w:usb1="C000247B" w:usb2="00000009" w:usb3="00000000" w:csb0="000001FF" w:csb1="00000000"/>
+18       </w:font>
+19       <w:font w:name="Times New Roman">
+20           <w:panose1 w:val="02020603050405020304"/>
+21           <w:charset w:val="00"/>
+22           <w:family w:val="roman"/>
+23           <w:pitch w:val="variable"/>
+24           <w:sig w:usb0="E0002EFF" w:usb1="C000785B" w:usb2="00000009" w:usb3="00000000" w:csb0="000001FF" w:csb1="00000000"/>
+25       </w:font>
+26       <w:font w:name="Calibri Light">
+27           <w:panose1 w:val="020F0302020204030204"/>
+28           <w:charset w:val="00"/>
+29           <w:family w:val="swiss"/>
+30           <w:pitch w:val="variable"/>
+31           <w:sig w:usb0="E4002EFF" w:usb1="C000247B" w:usb2="00000009" w:usb3="00000000" w:csb0="000001FF" w:csb1="00000000"/>
+32       </w:font>
+33   </w:fonts>
+
+
+     /home/lutz/ws/perl/projects/DOCX/word/theme/theme1.xml
+  1  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  2  <a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="Office Theme">
+  3      <a:themeElements>
+  4          <a:clrScheme name="Office">
+  5              <a:dk1>
+  6                  <a:sysClr val="windowText" lastClr="000000"/>
+  7              </a:dk1>
+  8              <a:lt1>
+  9                  <a:sysClr val="window" lastClr="FFFFFF"/>
+ 10              </a:lt1>
+ 11              <a:dk2>
+ 12                  <a:srgbClr val="44546A"/>
+ 13              </a:dk2>
+ 14              <a:lt2>
+ 15                  <a:srgbClr val="E7E6E6"/>
+ 16              </a:lt2>
+ 17              <a:accent1>
+ 18                  <a:srgbClr val="4472C4"/>
+ 19              </a:accent1>
+ 20              <a:accent2>
+ 21                  <a:srgbClr val="ED7D31"/>
+ 22              </a:accent2>
+ 23              <a:accent3>
+ 24                  <a:srgbClr val="A5A5A5"/>
+ 25              </a:accent3>
+ 26              <a:accent4>
+ 27                  <a:srgbClr val="FFC000"/>
+ 28              </a:accent4>
+ 29              <a:accent5>
+ 30                  <a:srgbClr val="5B9BD5"/>
+ 31              </a:accent5>
+ 32              <a:accent6>
+ 33                  <a:srgbClr val="70AD47"/>
+ 34              </a:accent6>
+ 35              <a:hlink>
+ 36                  <a:srgbClr val="0563C1"/>
+ 37              </a:hlink>
+ 38              <a:folHlink>
+ 39                  <a:srgbClr val="954F72"/>
+ 40              </a:folHlink>
+ 41          </a:clrScheme>
+ 42          <a:fontScheme name="Office">
+ 43              <a:majorFont>
+ 44                  <a:latin typeface="Calibri Light" panose="020F0302020204030204"/>
+ 45                  <a:ea typeface=""/>
+ 46                  <a:cs typeface=""/>
+ 47                  <a:font script="Jpan" typeface="游ゴシック Light"/>
+ 48                  <a:font script="Hang" typeface="맑은 고딕"/>
+ 49                  <a:font script="Hans" typeface="等线 Light"/>
+ 50                  <a:font script="Hant" typeface="新細明體"/>
+ 51                  <a:font script="Arab" typeface="Times New Roman"/>
+ 52                  <a:font script="Hebr" typeface="Times New Roman"/>
+ 53                  <a:font script="Thai" typeface="Angsana New"/>
+ 54                  <a:font script="Ethi" typeface="Nyala"/>
+ 55                  <a:font script="Beng" typeface="Vrinda"/>
+ 56                  <a:font script="Gujr" typeface="Shruti"/>
+ 57                  <a:font script="Khmr" typeface="MoolBoran"/>
+ 58                  <a:font script="Knda" typeface="Tunga"/>
+ 59                  <a:font script="Guru" typeface="Raavi"/>
+ 60                  <a:font script="Cans" typeface="Euphemia"/>
+ 61                  <a:font script="Cher" typeface="Plantagenet Cherokee"/>
+ 62                  <a:font script="Yiii" typeface="Microsoft Yi Baiti"/>
+ 63                  <a:font script="Tibt" typeface="Microsoft Himalaya"/>
+ 64                  <a:font script="Thaa" typeface="MV Boli"/>
+ 65                  <a:font script="Deva" typeface="Mangal"/>
+ 66                  <a:font script="Telu" typeface="Gautami"/>
+ 67                  <a:font script="Taml" typeface="Latha"/>
+ 68                  <a:font script="Syrc" typeface="Estrangelo Edessa"/>
+ 69                  <a:font script="Orya" typeface="Kalinga"/>
+ 70                  <a:font script="Mlym" typeface="Kartika"/>
+ 71                  <a:font script="Laoo" typeface="DokChampa"/>
+ 72                  <a:font script="Sinh" typeface="Iskoola Pota"/>
+ 73                  <a:font script="Mong" typeface="Mongolian Baiti"/>
+ 74                  <a:font script="Viet" typeface="Times New Roman"/>
+ 75                  <a:font script="Uigh" typeface="Microsoft Uighur"/>
+ 76                  <a:font script="Geor" typeface="Sylfaen"/>
+ 77                  <a:font script="Armn" typeface="Arial"/>
+ 78                  <a:font script="Bugi" typeface="Leelawadee UI"/>
+ 79                  <a:font script="Bopo" typeface="Microsoft JhengHei"/>
+ 80                  <a:font script="Java" typeface="Javanese Text"/>
+ 81                  <a:font script="Lisu" typeface="Segoe UI"/>
+ 82                  <a:font script="Mymr" typeface="Myanmar Text"/>
+ 83                  <a:font script="Nkoo" typeface="Ebrima"/>
+ 84                  <a:font script="Olck" typeface="Nirmala UI"/>
+ 85                  <a:font script="Osma" typeface="Ebrima"/>
+ 86                  <a:font script="Phag" typeface="Phagspa"/>
+ 87                  <a:font script="Syrn" typeface="Estrangelo Edessa"/>
+ 88                  <a:font script="Syrj" typeface="Estrangelo Edessa"/>
+ 89                  <a:font script="Syre" typeface="Estrangelo Edessa"/>
+ 90                  <a:font script="Sora" typeface="Nirmala UI"/>
+ 91                  <a:font script="Tale" typeface="Microsoft Tai Le"/>
+ 92                  <a:font script="Talu" typeface="Microsoft New Tai Lue"/>
+ 93                  <a:font script="Tfng" typeface="Ebrima"/>
+ 94              </a:majorFont>
+ 95              <a:minorFont>
+ 96                  <a:latin typeface="Calibri" panose="020F0502020204030204"/>
+ 97                  <a:ea typeface=""/>
+ 98                  <a:cs typeface=""/>
+ 99                  <a:font script="Jpan" typeface="游明朝"/>
+100                  <a:font script="Hang" typeface="맑은 고딕"/>
+101                  <a:font script="Hans" typeface="等线"/>
+102                  <a:font script="Hant" typeface="新細明體"/>
+103                  <a:font script="Arab" typeface="Arial"/>
+104                  <a:font script="Hebr" typeface="Arial"/>
+105                  <a:font script="Thai" typeface="Cordia New"/>
+106                  <a:font script="Ethi" typeface="Nyala"/>
+107                  <a:font script="Beng" typeface="Vrinda"/>
+108                  <a:font script="Gujr" typeface="Shruti"/>
+109                  <a:font script="Khmr" typeface="DaunPenh"/>
+110                  <a:font script="Knda" typeface="Tunga"/>
+111                  <a:font script="Guru" typeface="Raavi"/>
+112                  <a:font script="Cans" typeface="Euphemia"/>
+113                  <a:font script="Cher" typeface="Plantagenet Cherokee"/>
+114                  <a:font script="Yiii" typeface="Microsoft Yi Baiti"/>
+115                  <a:font script="Tibt" typeface="Microsoft Himalaya"/>
+116                  <a:font script="Thaa" typeface="MV Boli"/>
+117                  <a:font script="Deva" typeface="Mangal"/>
+118                  <a:font script="Telu" typeface="Gautami"/>
+119                  <a:font script="Taml" typeface="Latha"/>
+120                  <a:font script="Syrc" typeface="Estrangelo Edessa"/>
+121                  <a:font script="Orya" typeface="Kalinga"/>
+122                  <a:font script="Mlym" typeface="Kartika"/>
+123                  <a:font script="Laoo" typeface="DokChampa"/>
+124                  <a:font script="Sinh" typeface="Iskoola Pota"/>
+125                  <a:font script="Mong" typeface="Mongolian Baiti"/>
+126                  <a:font script="Viet" typeface="Arial"/>
+127                  <a:font script="Uigh" typeface="Microsoft Uighur"/>
+128                  <a:font script="Geor" typeface="Sylfaen"/>
+129                  <a:font script="Armn" typeface="Arial"/>
+130                  <a:font script="Bugi" typeface="Leelawadee UI"/>
+131                  <a:font script="Bopo" typeface="Microsoft JhengHei"/>
+132                  <a:font script="Java" typeface="Javanese Text"/>
+133                  <a:font script="Lisu" typeface="Segoe UI"/>
+134                  <a:font script="Mymr" typeface="Myanmar Text"/>
+135                  <a:font script="Nkoo" typeface="Ebrima"/>
+136                  <a:font script="Olck" typeface="Nirmala UI"/>
+137                  <a:font script="Osma" typeface="Ebrima"/>
+138                  <a:font script="Phag" typeface="Phagspa"/>
+139                  <a:font script="Syrn" typeface="Estrangelo Edessa"/>
+140                  <a:font script="Syrj" typeface="Estrangelo Edessa"/>
+141                  <a:font script="Syre" typeface="Estrangelo Edessa"/>
+142                  <a:font script="Sora" typeface="Nirmala UI"/>
+143                  <a:font script="Tale" typeface="Microsoft Tai Le"/>
+144                  <a:font script="Talu" typeface="Microsoft New Tai Lue"/>
+145                  <a:font script="Tfng" typeface="Ebrima"/>
+146              </a:minorFont>
+147          </a:fontScheme>
+148          <a:fmtScheme name="Office">
+149              <a:fillStyleLst>
+150                  <a:solidFill>
+151                      <a:schemeClr val="phClr"/>
+152                  </a:solidFill>
+153                  <a:gradFill rotWithShape="1">
+154                      <a:gsLst>
+155                          <a:gs pos="0">
+156                              <a:schemeClr val="phClr">
+157                                  <a:lumMod val="110000"/>
+158                                  <a:satMod val="105000"/>
+159                                  <a:tint val="67000"/>
+160                              </a:schemeClr>
+161                          </a:gs>
+162                          <a:gs pos="50000">
+163                              <a:schemeClr val="phClr">
+164                                  <a:lumMod val="105000"/>
+165                                  <a:satMod val="103000"/>
+166                                  <a:tint val="73000"/>
+167                              </a:schemeClr>
+168                          </a:gs>
+169                          <a:gs pos="100000">
+170                              <a:schemeClr val="phClr">
+171                                  <a:lumMod val="105000"/>
+172                                  <a:satMod val="109000"/>
+173                                  <a:tint val="81000"/>
+174                              </a:schemeClr>
+175                          </a:gs>
+176                      </a:gsLst>
+177                      <a:lin ang="5400000" scaled="0"/>
+178                  </a:gradFill>
+179                  <a:gradFill rotWithShape="1">
+180                      <a:gsLst>
+181                          <a:gs pos="0">
+182                              <a:schemeClr val="phClr">
+183                                  <a:satMod val="103000"/>
+184                                  <a:lumMod val="102000"/>
+185                                  <a:tint val="94000"/>
+186                              </a:schemeClr>
+187                          </a:gs>
+188                          <a:gs pos="50000">
+189                              <a:schemeClr val="phClr">
+190                                  <a:satMod val="110000"/>
+191                                  <a:lumMod val="100000"/>
+192                                  <a:shade val="100000"/>
+193                              </a:schemeClr>
+194                          </a:gs>
+195                          <a:gs pos="100000">
+196                              <a:schemeClr val="phClr">
+197                                  <a:lumMod val="99000"/>
+198                                  <a:satMod val="120000"/>
+199                                  <a:shade val="78000"/>
+200                              </a:schemeClr>
+201                          </a:gs>
+202                      </a:gsLst>
+203                      <a:lin ang="5400000" scaled="0"/>
+204                  </a:gradFill>
+205              </a:fillStyleLst>
+206              <a:lnStyleLst>
+207                  <a:ln w="6350" cap="flat" cmpd="sng" algn="ctr">
+208                      <a:solidFill>
+209                          <a:schemeClr val="phClr"/>
+210                      </a:solidFill>
+211                      <a:prstDash val="solid"/>
+212                      <a:miter lim="800000"/>
+213                  </a:ln>
+214                  <a:ln w="12700" cap="flat" cmpd="sng" algn="ctr">
+215                      <a:solidFill>
+216                          <a:schemeClr val="phClr"/>
+217                      </a:solidFill>
+218                      <a:prstDash val="solid"/>
+219                      <a:miter lim="800000"/>
+220                  </a:ln>
+221                  <a:ln w="19050" cap="flat" cmpd="sng" algn="ctr">
+222                      <a:solidFill>
+223                          <a:schemeClr val="phClr"/>
+224                      </a:solidFill>
+225                      <a:prstDash val="solid"/>
+226                      <a:miter lim="800000"/>
+227                  </a:ln>
+228              </a:lnStyleLst>
+229              <a:effectStyleLst>
+230                  <a:effectStyle>
+231                      <a:effectLst/>
+232                  </a:effectStyle>
+233                  <a:effectStyle>
+234                      <a:effectLst/>
+235                  </a:effectStyle>
+236                  <a:effectStyle>
+237                      <a:effectLst>
+238                          <a:outerShdw blurRad="57150" dist="19050" dir="5400000" algn="ctr" rotWithShape="0">
+239                              <a:srgbClr val="000000">
+240                                  <a:alpha val="63000"/>
+241                              </a:srgbClr>
+242                          </a:outerShdw>
+243                      </a:effectLst>
+244                  </a:effectStyle>
+245              </a:effectStyleLst>
+246              <a:bgFillStyleLst>
+247                  <a:solidFill>
+248                      <a:schemeClr val="phClr"/>
+249                  </a:solidFill>
+250                  <a:solidFill>
+251                      <a:schemeClr val="phClr">
+252                          <a:tint val="95000"/>
+253                          <a:satMod val="170000"/>
+254                      </a:schemeClr>
+255                  </a:solidFill>
+256                  <a:gradFill rotWithShape="1">
+257                      <a:gsLst>
+258                          <a:gs pos="0">
+259                              <a:schemeClr val="phClr">
+260                                  <a:tint val="93000"/>
+261                                  <a:satMod val="150000"/>
+262                                  <a:shade val="98000"/>
+263                                  <a:lumMod val="102000"/>
+264                              </a:schemeClr>
+265                          </a:gs>
+266                          <a:gs pos="50000">
+267                              <a:schemeClr val="phClr">
+268                                  <a:tint val="98000"/>
+269                                  <a:satMod val="130000"/>
+270                                  <a:shade val="90000"/>
+271                                  <a:lumMod val="103000"/>
+272                              </a:schemeClr>
+273                          </a:gs>
+274                          <a:gs pos="100000">
+275                              <a:schemeClr val="phClr">
+276                                  <a:shade val="63000"/>
+277                                  <a:satMod val="120000"/>
+278                              </a:schemeClr>
+279                          </a:gs>
+280                      </a:gsLst>
+281                      <a:lin ang="5400000" scaled="0"/>
+282                  </a:gradFill>
+283              </a:bgFillStyleLst>
+284          </a:fmtScheme>
+285      </a:themeElements>
+286      <a:objectDefaults/>
+287      <a:extraClrSchemeLst/>
+288      <a:extLst>
+289          <a:ext uri="{05A4C25C-085E-4340-85A3-A5531E510DB2}">
+290              <thm15:themeFamily xmlns:thm15="http://schemas.microsoft.com/office/thememl/2012/main"
+291                  name="Office Theme"
+292                  id="{62F939B6-93AF-4DB8-9C6B-D6C7DFDC589F}"
+293                  vid="{4A3C46E8-61CC-4603-A589-7422A47A8E4A}"/>
+294          </a:ext>
+295      </a:extLst>
+296  </a:theme>
+
+
+     /home/lutz/ws/perl/projects/DOCX/docProps/core.xml
+ 1   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ 2   <cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties"
+ 3       xmlns:dc="http://purl.org/dc/elements/1.1/"
+ 4       xmlns:dcterms="http://purl.org/dc/terms/"
+ 5       xmlns:dcmitype="http://purl.org/dc/dcmitype/"
+ 6       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 7       <dc:title>
+ 8       </dc:title>
+ 9       <dc:subject>
+10       </dc:subject>
+11       <dc:creator>Lutz Filor</dc:creator>
+12       <cp:keywords>
+13       </cp:keywords>
+14       <dc:description>
+15       </dc:description>
+16       <cp:lastModifiedBy>Lutz Filor</cp:lastModifiedBy>
+17       <cp:revision>2</cp:revision>
+18       <dcterms:created xsi:type="dcterms:W3CDTF">2020-09-23T22:23:00Z</dcterms:created>
+19       <dcterms:modified xsi:type="dcterms:W3CDTF">2020-09-23T22:23:00Z</dcterms:modified>
+20   </cp:coreProperties>
+
+
+     /home/lutz/ws/perl/projects/DOCX/docProps/app.xml
+ 1   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ 2   <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+ 3       <Template>Normal</Template>
+ 4       <TotalTime>0</TotalTime>
+ 5       <Pages>1</Pages>
+ 6       <Words>4</Words>
+ 7       <Characters>29</Characters>
+ 8       <Application>Microsoft Office Word</Application>
+ 9       <DocSecurity>0</DocSecurity>
+10       <Lines>1</Lines>
+11       <Paragraphs>1</Paragraphs>
+12       <ScaleCrop>false</ScaleCrop>
+13       <Company>
+14       </Company>
+15       <LinksUpToDate>false</LinksUpToDate>
+16       <CharactersWithSpaces>32</CharactersWithSpaces>
+17       <SharedDoc>false</SharedDoc>
+18       <HyperlinksChanged>false</HyperlinksChanged>
+19       <AppVersion>16.0000</AppVersion>
+20   </Properties>
+
+
+     /home/lutz/ws/perl/projects/DOCX/_rels/.rels
+1    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+2    <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+3        <Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/>
+4        <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/>
+5        <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+6    </Relationships>
+
+
+     /home/lutz/ws/perl/projects/DOCX/word/document.xml
+ 1   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ 2   <w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas"
+ 3       xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex"
+ 4       xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex"
+ 5       xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex"
+ 6       xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex"
+ 7       xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex"
+ 8       xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex"
+ 9       xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex"
+10       xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex"
+11       xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex"
+12       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+13       xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink"
+14       xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d"
+15       xmlns:o="urn:schemas-microsoft-com:office:office"
+16       xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+17       xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"
+18       xmlns:v="urn:schemas-microsoft-com:vml"
+19       xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing"
+20       xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+21       xmlns:w10="urn:schemas-microsoft-com:office:word"
+22       xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+23       xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+24       xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml"
+25       xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex"
+26       xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid"
+27       xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+28       xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+29       xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup"
+30       xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk"
+31       xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml"
+32       xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape"
+33       mc:Ignorable="w14 w15 w16se w16cid w16 w16cex wp14">
+34       <w:body>
+35           <w:p w14:paraId="4ACBBF29" w14:textId="45F27FC3" w:rsidR="002D2F32" w:rsidRDefault="00F05D69">
+36               <w:r>
+37                   <w:t xml:space="preserve">Mein </w:t>
+38               </w:r>
+39               <w:proofErr w:type="spellStart"/>
+40               <w:r>
+41                   <w:t>erstes</w:t>
+42               </w:r>
+43               <w:proofErr w:type="spellEnd"/>
+44               <w:r>
+45                   <w:t xml:space="preserve"> Document</w:t>
+46               </w:r>
+47               <w:r w:rsidR="00CC6D86">
+48                   <w:t xml:space="preserve"> -derivative</w:t>
+49               </w:r>
+50           </w:p>
+51           <w:sectPr w:rsidR="002D2F32">
+52               <w:pgSz w:w="12240" w:h="15840"/>
+53               <w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="720" w:footer="720" w:gutter="0"/>
+54               <w:cols w:space="720"/>
+55               <w:docGrid w:linePitch="360"/>
+56           </w:sectPr>
+57       </w:body>
+58   </w:document>
+
+
+     /home/lutz/ws/perl/projects/DOCX/word/document.xml
+1    <w:p>
+2        <w:pPr>
+3            <w:pStyle w:val="Heading1"/>
+4        </w:pPr>
+5        <w:r>
+6            <w:t>Introduction to Docx</w:t>
+7        </w:r>
+8    </w:p>
+
+
+     /home/lutz/ws/perl/projects/DOCX/word/document.xml
+ 1   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ 2   <w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas"
+ 3       xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex"
+ 4       xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex"
+ 5       xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex"
+ 6       xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex"
+ 7       xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex"
+ 8       xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex"
+ 9       xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex"
+10       xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex"
+11       xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex"
+12       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+13       xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink"
+14       xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d"
+15       xmlns:o="urn:schemas-microsoft-com:office:office"
+16       xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+17       xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"
+18       xmlns:v="urn:schemas-microsoft-com:vml"
+19       xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing"
+20       xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+21       xmlns:w10="urn:schemas-microsoft-com:office:word"
+22       xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+23       xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+24       xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml"
+25       xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex"
+26       xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid"
+27       xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+28       xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+29       xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup"
+30       xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk"
+31       xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml"
+32       xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape"
+33       mc:Ignorable="w14 w15 w16se w16cid w16 w16cex wp14">
+34       <w:body>
+35           <w:p>
+36               <w:pPr>
+37                   <w:pStyle w:val="Heading1"/>
+38               </w:pPr>
+39               <w:r>
+40                   <w:t>Introduction to Docx</w:t>
+41               </w:r>
+42           </w:p>
+43           <w:p w14:paraId="4ACBBF29" w14:textId="45F27FC3" w:rsidR="002D2F32" w:rsidRDefault="00F05D69">
+44               <w:r>
+45                   <w:t xml:space="preserve">Mein </w:t>
+46               </w:r>
+47               <w:proofErr w:type="spellStart"/>
+48               <w:r>
+49                   <w:t>erstes</w:t>
+50               </w:r>
+51               <w:proofErr w:type="spellEnd"/>
+52               <w:r>
+53                   <w:t xml:space="preserve"> Document</w:t>
+54               </w:r>
+55               <w:r w:rsidR="00CC6D86">
+56                   <w:t xml:space="preserve"> -derivative</w:t>
+57               </w:r>
+58           </w:p>
+59           <w:sectPr w:rsidR="002D2F32">
+60               <w:pgSz w:w="12240" w:h="15840"/>
+61               <w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="720" w:footer="720" w:gutter="0"/>
+62               <w:cols w:space="720"/>
+63               <w:docGrid w:linePitch="360"/>
+64           </w:sectPr>
+65       </w:body>
+66   </w:document>
+
+

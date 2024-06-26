@@ -1,0 +1,380 @@
+ ================================================================================
+ Tracefile : uvm_test_top.top_env_i.ahbfab_env_i.mvc_ahb_mon_6_env_i.logger_handle_ahb
+ Script    : parse_ahb_tracker.pl 1.04.01
+ Date      : 2018-09-22
+ Time      :   17:23:56
+ Cycle     :         40 ns
+ Frequency :      25.00 MHz
+ ================================================================================
+             Transaction   :          1
+             Burst Type    :     SINGLE
+
+             Transaction   :          2
+             Burst Type    :       INCR
+
+             Transaction   :          3
+             Burst Type    :     SINGLE
+
+             Transaction   :          4
+             Burst Type    :       INCR
+
+             Transaction   :          5
+             Burst Type    :     SINGLE
+
+             Transaction   :          6
+             Burst Type    :       INCR
+
+             Transaction   :          7
+             Burst Type    :     SINGLE
+
+             Transaction   :          8
+             Burst Type    :       INCR
+
+             Transaction   :          9
+             Burst Type    :     SINGLE
+
+             Transaction   :         10
+             Burst Type    :       INCR
+
+             Transaction   :         11
+             Burst Type    :     SINGLE
+
+             Transaction   :         12
+             Burst Type    :       INCR
+
+             Transaction   :         13
+             Burst Type    :       INCR
+
+             Transaction   :         14
+             Burst Type    :     SINGLE
+
+             Transaction   :         15
+             Burst Type    :       INCR
+
+             Transaction   :         16
+             Burst Type    :     SINGLE
+
+             Transaction   :         17
+             Burst Type    :       INCR
+
+             Transaction   :         18
+             Burst Type    :     SINGLE
+
+             Transaction   :         19
+             Burst Type    :       INCR
+
+             Transaction   :         20
+             Burst Type    :     SINGLE
+
+             Transaction   :         21
+             Burst Type    :       INCR
+
+             Transaction   :         22
+             Burst Type    :     SINGLE
+
+             Transaction   :         23
+             Burst Type    :       INCR
+
+             Transaction   :         24
+             Burst Type    :     SINGLE
+
+             Transaction   :         25
+             Burst Type    :       INCR
+
+             Transaction   :         26
+             Burst Type    :     SINGLE
+
+             Transaction   :         27
+             Burst Type    :       INCR
+
+             Transaction   :         28
+             Burst Type    :     SINGLE
+
+             Transaction   :         29
+             Burst Type    :       INCR
+
+             Transaction   :         30
+             Burst Type    :     SINGLE
+
+             Transaction   :         31
+             Burst Type    :       INCR
+
+             Transaction   :         32
+             Burst Type    :     SINGLE
+
+             Transaction   :         33
+             Burst Type    :       INCR
+
+             Transaction   :         34
+             Burst Type    :     SINGLE
+
+             Transaction   :         35
+             Burst Type    :       INCR
+
+             Transaction   :         36
+             Burst Type    :     SINGLE
+
+             Transaction   :         37
+             Burst Type    :       INCR
+
+             Transaction   :         38
+             Burst Type    :     SINGLE
+
+             Transaction   :         39
+             Burst Type    :       INCR
+
+             Transaction   :         40
+             Burst Type    :     SINGLE
+
+             Transaction   :         41
+             Burst Type    :       INCR
+
+             Transaction   :         42
+             Burst Type    :     SINGLE
+
+             Transaction   :         43
+             Burst Type    :       INCR
+
+             Transaction   :         44
+             Burst Type    :     SINGLE
+
+             Transaction   :         45
+             Burst Type    :       INCR
+
+             Transaction   :         46
+             Burst Type    :     SINGLE
+
+             Transaction   :         47
+             Burst Type    :       INCR
+
+             Transaction   :         48
+             Burst Type    :     SINGLE
+
+             Transaction   :         49
+             Burst Type    :       INCR
+
+             Transaction   :         50
+             Burst Type    :     SINGLE
+
+             Transaction   :         51
+             Burst Type    :       INCR
+
+             Transaction   :         52
+             Burst Type    :     SINGLE
+
+             Transaction   :         53
+             Burst Type    :       INCR
+
+             Transaction   :         54
+             Burst Type    :     SINGLE
+
+             Transaction   :         55
+             Burst Type    :       INCR
+
+             Transaction   :         56
+             Burst Type    :     SINGLE
+
+             Transaction   :         57
+             Burst Type    :       INCR
+
+             Transaction   :         58
+             Burst Type    :     SINGLE
+
+             Transaction   :         59
+             Burst Type    :       INCR
+
+             Transaction   :         60
+             Burst Type    :     SINGLE
+
+             Transaction   :         61
+             Burst Type    :       INCR
+
+             Transaction   :         62
+             Burst Type    :     SINGLE
+
+             Transaction   :         63
+             Burst Type    :       INCR
+
+             Transaction   :         64
+             Burst Type    :     SINGLE
+
+             Transaction   :         65
+             Burst Type    :       INCR
+
+             Transaction   :         66
+             Burst Type    :     SINGLE
+
+             Transaction   :         67
+             Burst Type    :       INCR
+
+             Transaction   :         68
+             Burst Type    :     SINGLE
+
+             Transaction   :         69
+             Burst Type    :       INCR
+
+             Transaction   :         70
+             Burst Type    :     SINGLE
+
+             Transaction   :         71
+             Burst Type    :       INCR
+
+             Transaction   :         72
+             Burst Type    :     SINGLE
+
+             Transaction   :         73
+             Burst Type    :     SINGLE
+
+             Transaction   :         74
+             Burst Type    :     SINGLE
+
+             Transaction   :         75
+             Burst Type    :     SINGLE
+
+             Transaction   :         76
+             Burst Type    :     SINGLE
+
+             Transaction   :         77
+             Burst Type    :     SINGLE
+
+             Transaction   :         78
+             Burst Type    :     SINGLE
+
+             Transaction   :         79
+             Burst Type    :     SINGLE
+
+             Transaction   :         80
+             Burst Type    :     SINGLE
+
+             Transaction   :         81
+             Burst Type    :     SINGLE
+
+             Transaction   :         82
+             Burst Type    :     SINGLE
+
+             Transaction   :         83
+             Burst Type    :     SINGLE
+
+             Transaction   :         84
+             Burst Type    :     SINGLE
+
+             Transaction   :         85
+             Burst Type    :     SINGLE
+
+             Transaction   :         86
+             Burst Type    :     SINGLE
+
+             Transaction   :         87
+             Burst Type    :     SINGLE
+
+             Transaction   :         88
+             Burst Type    :     SINGLE
+
+             Transaction   :         89
+             Burst Type    :     SINGLE
+
+             Transaction   :         90
+             Burst Type    :     SINGLE
+
+             Transaction   :         91
+             Burst Type    :     SINGLE
+
+             Transaction   :         92
+             Burst Type    :     SINGLE
+
+             Transaction   :         93
+             Burst Type    :     SINGLE
+
+             Transaction   :         94
+             Burst Type    :     SINGLE
+
+             Transaction   :         95
+             Burst Type    :     SINGLE
+
+             Transaction   :         96
+             Burst Type    :     SINGLE
+
+             Transaction   :         97
+             Burst Type    :     SINGLE
+
+             Transaction   :         98
+             Burst Type    :     SINGLE
+
+             Transaction   :         99
+             Burst Type    :     SINGLE
+
+             Transaction   :        100
+             Burst Type    :     SINGLE
+
+             Transaction   :        101
+             Burst Type    :     SINGLE
+
+             Transaction   :        102
+             Burst Type    :     SINGLE
+
+             Transaction   :        103
+             Burst Type    :     SINGLE
+
+             Transaction   :        104
+             Burst Type    :     SINGLE
+
+             Transaction   :        105
+             Burst Type    :     SINGLE
+
+             Transaction   :        106
+             Burst Type    :     SINGLE
+
+             Transaction   :        107
+             Burst Type    :     SINGLE
+
+             Transaction   :        108
+             Burst Type    :     SINGLE
+
+             Transaction   :        109
+             Burst Type    :     SINGLE
+
+             Transaction   :        110
+             Burst Type    :     SINGLE
+
+             Transaction   :        111
+             Burst Type    :     SINGLE
+
+             Transaction   :        112
+             Burst Type    :     SINGLE
+
+             Transaction   :        113
+             Burst Type    :     SINGLE
+
+             Transaction   :        114
+             Burst Type    :     SINGLE
+
+             Transaction   :        115
+             Burst Type    :     SINGLE
+
+             Transaction   :        116
+             Burst Type    :     SINGLE
+
+             Transaction   :        117
+             Burst Type    :     SINGLE
+
+             Transaction   :        118
+             Burst Type    :     SINGLE
+
+             Transaction   :        119
+             Burst Type    :     SINGLE
+
+             Transaction   :        120
+             Burst Type    :     SINGLE
+
+             Transaction   :        121
+             Burst Type    :     SINGLE
+
+             Transaction   :        122
+             Burst Type    :     SINGLE
+
+             Transaction   :        123
+             Burst Type    :     SINGLE
+
+             Transaction   :        124
+             Burst Type    :     SINGLE
+

@@ -1,0 +1,11 @@
+Revision history of the custom Perl namespace ~/ws/perl/lib/Application
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 05-06-2019                Created perl/Application/Application.changes tracking said Namespace
+#               v1.01.01    Add         CLI namespace
+# 05-08-2019    v1.01.02    Add         Performance namespace
+# 05-09-2019    v1.01.03    Create      Application::CLI.pm
+# 05-15-2019    v1.01.04    Create      Application.pm          Program Object
+# 05-21-2019    v1.01.05    
+

@@ -1,0 +1,10 @@
+Revision history for Perl extension DS/String.pm
+
+#   VERSION     DATE            Description
+# ========================================================================================
+#   1.01.01     2020/11/15      Create		DS::String
+#                               Create      Changes this file DS/String_change.log
+#   1.01.02 	2020/11/15      Add         DS::String::capitalize( $string )
+#   1.01.03     2020/11/15      Add         DS::String::lowercase(  $string )
+#   1.01.04     2020/11/15      Add         DS::String::uppercase(  $string )
+

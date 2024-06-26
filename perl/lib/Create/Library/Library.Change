@@ -1,0 +1,10 @@
+Revision history for Perl applicatition namespace Create::Lbrary
+
+# Synopsis      This is a root namespace
+
+# DATE          VERSION     Description
+# =======================================================================================================
+# 04-04-2019    v1.01.01    Created     perl/lib/Create/Library/Library.Changes 
+#                                       Tracking Create/Library Namespace related changes 
+#               v1.01.02    Add         Library.pm  Perl module
+#               v1.01.03    Add         ???          

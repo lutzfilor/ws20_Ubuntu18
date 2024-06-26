@@ -1,0 +1,11 @@
+Revision history for Perl applicatition namespace File::
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 04-02-2019                Created     perl/lib/File/IO/Changes tracking File related features 
+#               v1.01.01    Create      File::IO::UTF8::UTF8.pm
+#                           Layout      <project><_FileName>.xlsx Header worksheets
+#                           Add         File::Header::Add::add_header           ( $options );
+# 04-02-2019    v1.01.02    Create      File::IO::UTF8 namespace for UTF8 file handling
+#                           Refactor    lib/UTF8.pm
+#                           Add         File::IO::UTF8::UTF8.pm

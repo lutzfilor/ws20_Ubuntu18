@@ -1,0 +1,11 @@
+https://www.youtube.com/watch?v=WFLvcMiG38w
+
+//  Introducution to the c compiler
+//  Owner   Lutz Filor
+
+//  Compile command
+    cc -o a.out ex1.c
+
+//  Execution command
+    ./a.out
+

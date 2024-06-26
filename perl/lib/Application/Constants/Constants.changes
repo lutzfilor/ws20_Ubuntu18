@@ -1,0 +1,15 @@
+Revision history of the custom Perl namespace ~/ws/perl/lib/Application
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 05-24-2019                Created     perl/lib/Application/Constants.changes tracking said Namespace
+#               v1.01.01    Add         perl/lib/Application/Constants.pm
+# 05-31-2019    v1.01.02    Bugfix      Module not terminated propperly   
+#                                       ----------------------------------------------------------------------------
+#                                       End of module Application::Constances
+#                                       1;
+# 06-03-2019    v1.01.03    Bugfix      "Global"/shared constances must be declared with our NOT my
+#                                       Readonly my  $FAIL  =>  1;      # Default setting, Success must be determinated
+#                                       Readonly our $FAIL  =>  1;      # Default setting, Success must be determinated
+# 06-10-2020    v1.01.04    Update from use lib qw  ( ~/ws/perl/lib );  # Relative UserModulePath
+#                                  to   use lib	     "$ENV{PERLPATH}";  # Add Include path to @INC

@@ -1,0 +1,8 @@
+Revision history for Perl applicatition namespace TEST::
+
+# Synopsis      This is a root namespace
+
+# DATE          VERSION     Description
+# =======================================================================================================
+# 04-10-2019    v1.01.01    Created     perl/lib/TEST/TEST.Changes tracking Namespace related changes
+#               v1.01.02    Add         Application     namespace

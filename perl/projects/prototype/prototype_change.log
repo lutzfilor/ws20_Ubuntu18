@@ -1,0 +1,13 @@
+Revision history of the custom Perl namespace ~/ws/perl/projects/prototypes 
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 01-01-2020    v1.01.01    Clone       p1.pl  
+# 06-20-2020    v2.01.01    Clone       p2.pl
+#                           from        p1.pl
+# 07-20-2020    v3.01.01    Clone       p3.pl 
+#                           from        p2.pl
+# 07-25-2020    v3.01.03    Add         use p3::API qw  (   get     );      #   Add Command layer API
+#                           Add         use lib "$ENV{PERLPROJ}/PROTOTYPE"; # Add specific library path
+
+#                           p3::API.pm

@@ -1,0 +1,29 @@
+/sswork/gf22/niue1z1/lfilor/wa1/coverage/weekly/cov_report_ww10/pages/z74.json
+instances:[{parent:'0',ln:'TOTAL',covs:[{class:'bgRed', val:'8.36'},{class:'bgRed', val:'32.21'},{class:'bgRed', val:'9.78'},{class:'bgRed', val:'0.54'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'0.15'},{class:'bgRed', val:'15.00'},{class:'bgRed', val:'0.00'}]},
+{parent:'0',ln:'Encrypt_Data_U0',covs:[{class:'bgRed', val:'27.85'},{class:'bgYellow', val:'83.63'},{class:'bgRed', val:'47.69'},{class:'bgRed', val:'6.77'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'1.14'},{class:'even', val:'--'},{class:'even', val:'--'}]},
+{parent:'1',link:'z.htm?f=73&s=513862',ln:'Enable_Sync_U0',covs:[{class:'bgYellow', val:'58.33'},{class:'bgGreen', val:'100.00'},{class:'bgGreen', val:'100.00'},{class:'bgRed', val:'0.00'},{class:'odd', val:'--'},{class:'bgRed', val:'33.33'},{class:'odd', val:'--'},{class:'odd', val:'--'}]},
+{parent:'1',link:'z.htm?f=73&s=513879',ln:'Encrypt_Ctrl_0',covs:[{class:'bgRed', val:'14.08'},{class:'bgYellow', val:'54.54'},{class:'bgRed', val:'22.22'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'1.51'},{class:'bgRed', val:'12.50'},{class:'bgRed', val:'0.00'}]},
+{parent:'1',link:'z.htm?f=73&s=514363',ln:'MC5_Aes_Pipe_0',covs:[{class:'bgRed', val:'8.58'},{class:'bgRed', val:'27.27'},{class:'bgRed', val:'11.73'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'25.00'},{class:'bgRed', val:'0.00'}]},
+{parent:'1',link:'z.htm?f=73&s=536708',ln:'Encrypt_Wr_0',covs:[{class:'bgRed', val:'2.08'},{class:'bgRed', val:'5.27'},{class:'bgRed', val:'0.00'},{class:'even', val:'--'},{class:'even', val:'--'},{class:'bgRed', val:'0.98'},{class:'even', val:'--'},{class:'even', val:'--'}]},
+{parent:'1',link:'z.htm?f=73&s=539264',ln:'read_fifo',covs:[{class:'bgRed', val:'10.32'},{class:'bgRed', val:'38.42'},{class:'bgRed', val:'13.09'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'0.11'},{class:'odd', val:'--'},{class:'odd', val:'--'}]},
+{parent:'1',link:'z.htm?f=74&s=547833',ln:'I_Random_Table_4b',covs:[{class:'bgRed', val:'33.33'},{class:'bgGreen', val:'100.00'},{class:'bgRed', val:'0.00'},{class:'even', val:'--'},{class:'even', val:'--'},{class:'bgRed', val:'0.00'},{class:'even', val:'--'},{class:'even', val:'--'}]},
+{parent:'1',link:'z.htm?f=74&s=549578',ln:'I_Random_Table_3b',covs:[{class:'bgRed', val:'33.33'},{class:'bgGreen', val:'100.00'},{class:'bgRed', val:'0.00'},{class:'odd', val:'--'},{class:'odd', val:'--'},{class:'bgRed', val:'0.00'},{class:'odd', val:'--'},{class:'odd', val:'--'}]},
+{parent:'1',link:'z.htm?f=74&s=550307',ln:'Encrypt_Rd_0',covs:[{class:'bgRed', val:'6.27'},{class:'bgRed', val:'18.83'},{class:'bgRed', val:'0.00'},{class:'even', val:'--'},{class:'even', val:'--'},{class:'bgRed', val:'0.00'},{class:'even', val:'--'},{class:'even', val:'--'}]},
+]
+
+/sswork/gf22/niue1z1/lfilor/wa1/coverage/weekly/cov_report_ww10/pages/z6.json
+instances:[{parent:'0',ln:'TOTAL',covs:[{class:'bgRed', val:'26.28'},{class:'bgYellow', val:'64.07'},{class:'bgYellow', val:'53.06'},{class:'bgRed', val:'25.00'},{class:'bgRed', val:'3.77'},{class:'bgRed', val:'1.79'},{class:'bgRed', val:'20.00'},{class:'bgRed', val:'0.00'}]},
+{parent:'0',ln:'unq_ddr_dfi_phymstr_U0',covs:[{class:'bgRed', val:'26.28'},{class:'bgYellow', val:'64.07'},{class:'bgYellow', val:'53.06'},{class:'bgRed', val:'25.00'},{class:'bgRed', val:'3.77'},{class:'bgRed', val:'1.79'},{class:'bgRed', val:'20.00'},{class:'bgRed', val:'0.00'}]},
+]
+
+/sswork/gf22/niue1z1/lfilor/wa1/coverage/weekly/cov_report_ww10/pages/z6.json
+instances:[{parent:'0',ln:'TOTAL',covs:[{class:'bgRed', val:'17.55'},{class:'bgRed', val:'43.31'},{class:'bgRed', val:'42.47'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'1.99'}]},
+{parent:'0',ln:'apbbiumc_wrap_U0',covs:[{class:'bgRed', val:'16.54'},{class:'bgRed', val:'40.57'},{class:'bgRed', val:'42.13'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'0.00'}]},
+{parent:'1',link:'z.htm?f=6&s=207083',ln:'next_cfg_state',covs:[{class:'bgRed', val:'22.50'},{class:'bgRed', val:'37.50'},{class:'bgRed', val:'30.00'},{class:'odd', val:'--'},{class:'bgRed', val:'0.00'},{class:'odd', val:'--'}]},
+{parent:'1',link:'z.htm?f=6&s=207090',ln:'t2c_done_ff',covs:[{class:'bgYellow', val:'58.33'},{class:'bgGreen', val:'100.00'},{class:'bgGreen', val:'100.00'},{class:'bgRed', val:'0.00'},{class:'even', val:'--'},{class:'bgRed', val:'33.33'}]},
+{parent:'1',link:'z.htm?f=6&s=207104',ln:'t2c_abort_ff',covs:[{class:'bgYellow', val:'58.33'},{class:'bgGreen', val:'100.00'},{class:'bgGreen', val:'100.00'},{class:'bgRed', val:'0.00'},{class:'odd', val:'--'},{class:'bgRed', val:'33.33'}]},
+{parent:'1',link:'z.htm?f=6&s=207118',ln:'unMappedAddr_ff',covs:[{class:'bgYellow', val:'58.33'},{class:'bgGreen', val:'100.00'},{class:'bgGreen', val:'100.00'},{class:'bgRed', val:'0.00'},{class:'even', val:'--'},{class:'bgRed', val:'33.33'}]},
+{parent:'1',link:'z.htm?f=6&s=207132',ln:'c2rRequest_ff',covs:[{class:'bgYellow', val:'58.33'},{class:'bgGreen', val:'100.00'},{class:'bgGreen', val:'100.00'},{class:'bgRed', val:'0.00'},{class:'odd', val:'--'},{class:'bgRed', val:'33.33'}]},
+{parent:'1',link:'z.htm?f=6&s=207146',ln:'time_out_sync',covs:[{class:'bgRed', val:'27.50'},{class:'bgYellow', val:'87.50'},{class:'bgYellow', val:'50.00'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'0.00'},{class:'bgRed', val:'0.00'}]},
+]
+

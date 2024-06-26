@@ -1,0 +1,3 @@
+// Command for compile the source
+
+g++ mainreturn.cpp -o main 

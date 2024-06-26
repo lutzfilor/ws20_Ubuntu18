@@ -1,0 +1,40 @@
+# Revision history for Perl extension DS/Hash.pm
+
+#   VERSION     DATE            Description
+# ========================================================================================
+#   1.01.01     2020/03/22      Create		DS::Hash
+#   			  	            Create		Changes this file
+#   1.01.02 	                Add feature DS::Hash::list_hash     ( {$HshRef}, {$Format} )
+#   1.01.03     2020/06/21      Add feature DS::Hash::determineWidth( {$HshRef} )
+#               2020/06/21      Add feature DS::Hash::determineWidth( {$HshRef}, 'Key'   )     tbd
+#                               Add feature DS::Hash::determineWidth( {$HshRef}, 'Value' )     tbd
+#   1.01.04     2020/06/21      Comment out use Readonly;
+#   1.01.05     2020/06/24      Add feature list_hash( %HASH, {$FormatRef} )
+#                                           foreach my $key ( sort keys %{$hash} ) {                        #   from random order to
+#                                           foreach my $key ( sort { "\L$a" <=> "\L$b"} keys %{$hash} ) {   #   alphabetic order case insensitive            
+#   1.01.06     2020/10/09      Add feature DS::Hash::list_hash()
+#                                           test for defined hash values, and collect the undefined hash entries
+#   1.01.07     2020/10/09      Add feature DS::Hash::prune_hash    ( {$HshRef} )
+#   1.01.08     2020/10/17      Add feature DS::Hash::array2hash    ( [$ArrRef] )   #   return  {$HshRef}
+#   1.01.09     2020/10/27      Refactor    my  $n  =   size_of ( [( keys %{$hash} )] );
+#                               To          my  $no =   size_of ( [( keys %{$hash} )] );
+#   1.01.10     2020/10/27      Add feature DS::Hash::$$format{name}
+#   1.01.11     2020/10/27      Add feature DS::Hash::$$format{before}
+#                                           for my $l   (1..$ll) { printf "%*s\n"  ,$i,$p; }
+#   1.01.12     2020/10/27      Add feature DS::Hash::$$format{after}
+#                                           for my $l   (1..$tl) { printf "%*s\n"  ,$i,$p; }
+#   1.01.13     2020/10/27      Add feature DS::Hash::$$format{size}
+#   1.01.14     2020/10/27      Debug       DS::Hash::list_hash()
+#                                           sorting alphabetical the entries
+#   1.01.15     2020/10/29      Deactivate  #our @EXPORT    = qw    (   );#implicite        #   Deprecated implicite export
+#   1.01.16     2020/10/30      Debug       DS::Hash::list_hash() Size of empty hash is NOT zero
+#                                           my  $no =   size_of ( [( keys %{$hash} )] );    #   Number of entries/subsrictions in {$hash}
+#                               Error ==>   printf "%*sSize of %s is %s\n",$i,$p,$name,$no+1; 
+#                                           printf "%*sSize of %s is %s\n",$i,$p,$name,$no; 
+#   1.01.17     2020/11/01      Add feature DS::Hash::prune_hash    ( {$HshREf}, $dbg );
+#                                           Add an optional parameter, to condition turn on reporting
+#   1.01.18     2020/11/04      Add feature DS::Hash::prune_hash    (
+#                                           my  $n  =   subroutine('name');                 #   subroutine name
+#                                           printf "%*s%s()\n",5,'',$n if( debug($n) || $dbg );
+#   1.01.19     2020/11/04      Import      App::debug()                                    #   return TRUE is name was selected
+#                                           App::subroutine()                               #   return subroutine name

@@ -1,0 +1,18 @@
+/sswork/gf22/niue1z1/lfilor/wa1/coverage/weekly/cov_report_ww10/pages/z74.json
+get_entry()
+headers:['Statement', 'Branch', 'FEC Expression', 'FEC Condition', 'Toggle', 'FSM State', 'FSM Trans'],
+headers:['Coverage Type', 'Bins', 'Hits', 'Misses', 'Weight', '% Hit', 'Coverage'],
+headers:['Coverage Type', 'Bins', 'Hits', 'Misses', 'Weight', '% Hit', 'Coverage'],
+
+/sswork/gf22/niue1z1/lfilor/wa1/coverage/weekly/cov_report_ww10/pages/z6.json
+get_entry()
+headers:['Statement', 'Branch', 'FEC Expression', 'FEC Condition', 'Toggle', 'FSM State', 'FSM Trans'],
+headers:['Coverage Type', 'Bins', 'Hits', 'Misses', 'Weight', '% Hit', 'Coverage'],
+headers:['Coverage Type', 'Bins', 'Hits', 'Misses', 'Weight', '% Hit', 'Coverage'],
+
+/sswork/gf22/niue1z1/lfilor/wa1/coverage/weekly/cov_report_ww10/pages/z6.json
+get_entry()
+headers:['Statement', 'Branch', 'FEC Expression', 'FEC Condition', 'Toggle'],
+headers:['Coverage Type', 'Bins', 'Hits', 'Misses', 'Weight', '% Hit', 'Coverage'],
+headers:['Coverage Type', 'Bins', 'Hits', 'Misses', 'Weight', '% Hit', 'Coverage'],
+

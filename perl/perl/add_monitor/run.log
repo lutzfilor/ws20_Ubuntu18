@@ -1,0 +1,2 @@
+ add_monitor.pl --specification=bg7_mon.xlsx debug=add_new_monitor --generate=axi_monitor_include.svi --debug=implement_specification
+

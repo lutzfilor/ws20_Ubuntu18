@@ -1,0 +1,71 @@
+#   File        ws/perl/lib/Terminal/Terminal_change.log
+#   Synopsis    Formailized Terminal display, formated and colored
+#               Providing   Colored Line Headers for easier scan
+#   Dependency  use Term::ANSIColor qw  ( :constants  ); 
+#   Date        Version     Description                                     
+#================================================================================================
+#   2019-12-26  v.01.01.01  Created     Terminal/                           subdirectory
+#               v.01.01.01  Created     Terminal/Terminal_change.log        Change logfile       
+#   2019-12-17  v.01.01.01  Created     Terminal.pm                         empty executable file
+#   2019-12-18  v.01.01.02  Add         Terminal::t_info                    public method   information
+#   2019-12-18              Add         Terminal::t_warn                    public method   errors
+#   2019-12-19  v.01.01.03  Add         Terminal::t_note                    public method   notes
+#                           Add         Terminal::t_okay                    public method   status
+#                           Add         Terminal::t_exit                    public method   exit
+#                                       panic, fatal, abort ???             method ideas
+#   2019-12-20  v.01.01.04  Add         Format parameter    before lines
+#                                                           after lines
+#   2018-12-23  v.01.01.05  Add         Format parameter    full color
+#                                       Colors              YELLOW, MAGENTA Prelininary Color assignment
+#   2018-12-23  v.01.01.06  DEBUG       BOLD, BLINK, UNDERSCORE, conflict of parameter
+#   2019-12-26  v.01.01.07  Add         Terminal::t_usage                   public method   hint of correction
+#               v.01.01.08  Change      Terminal.pm to executable mode
+#   2019-12-31  v.01.01.09  Remove      File::IO::UTF8 module, no dependency
+#   2020-01-02  v.01.01.10  Add         Terminal::t_blank                   public method   no line header
+#        
+#        
+#               v.01.01.10  Remove      List module, no dependencies        Idea, Standard ListRef
+#               v.01.01.11  Remove      Hash module, no dependencies        Idea, Standard HashRef
+#                           Add         Descriptions in the header
+#                                                                           Idea, trace all terminal strings for
+#   2020-01-04  v.01.01.12  Add         Terminal::t_help                    public method   GREEN, 
+#                                       guiding datastructure compilation   Code development
+#               v.01.01.13  Add feature Terminal::t_custom
+#                                       Providing custom header, custom message
+#   2020-01-22  v.01.01.14  Document    FORMAT choices for terminal display
+#                                       added in Terminal.pm file header
+#               v.01.01.15  Add feature Terminal::t_list                    public method   list collections
+#                                       get colored lists   red
+#                                                           green
+#   2020-01-23  v.01.01.16  Adding      format features to Terminal::t_list
+#   2020-05-06  v.01.01.17  Refactor    parent.pm       no longer available in Dialog network
+#                                       base.pm         temporary fix
+#   2020-05-14  v.01.01.18  DEBUG       t_list  - testing optional parameter if (defined)
+#               v.01.01.19  DEGUG       t_list  - testing if ArrRef is not a scalar by accident
+#   2020-06-01  v.01.01.20  Add         Termminal::t_function_header()                              public method
+#   2020-07-04  v.02.01.01  Exported    Perl application framework
+#   2020-07-05  v.02.01.02  Refactor    List::max_width( [ArrRef], SEED )     for
+#                                       DS::Array::maxwidth( [ArrRef], SEED )
+#   2020-07-08  v.02.01.03  Refactor    use Term::ANSIColor qw  (   :constants  );                  # available
+#                           Replace w/  use Term::ANSIColor qw  (   BLUE RED GREEN YELLOW
+#                                                                   BOLD BLINK RESET    );          # available
+#   2020-10-20  v.02.01.04  DEBUG       $$format{color} doesn't exist, aka undefined
+#                                       $c      //= 'UNDEFINED';    #   default value
+#                           Replace     $$formate{color} with $c
+#   2020-11-13  v.02.01.05  DEBUG       Terminal::t_blank( $info, $format )
+#   2020-11-13  v.02.01.06  Refactor    Termminal::t_function_header()                              public method
+#                           To          Termminal::t_function_header( $name, $param )               public method
+#                                           $parameter  //= ' ';                                    #   optional parameter value
+#                                       my  $m  = sprintf   "%s(%s)",$name, $parameter;             #   create function header
+#   2020-11-14  v.02.02.07  Refactor    Terminal::t_warn()
+#                           Add         return;                                                     #   default return statement
+#   2020-11-14  v.02.02.08  Refactor    Terminal::t_exit()
+#                           Add format  from t_warn()
+#                           Add feature from t_warn()
+#                           Add         return;                                                     #   default return statement
+#   2020-11-14  v.02.02.09  Refactor    Terminal::t_warn()
+#                           Add         return;                                                     #   default return statement
+#   2020-11-14  v.02.02.10  DEBUG       use Term::ANSIColor qw  (   BLUE RED GREEN YELLOW
+#                           Add         use Term::ANSIColor qw  (   BLUE RED GREEN YELLOW MAGENTA
+
+

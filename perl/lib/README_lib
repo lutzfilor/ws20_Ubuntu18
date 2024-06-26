@@ -1,0 +1,43 @@
+#   ./lib       Library
+
+#   Owner       Lutz Filor
+#   Created     09-20-2020      Better late, then never (18 month delay)
+#
+#   Sysnopsis   ./lib is the home for all custom perl modules
+#               
+#               Main purpose of     ./lib is code reuse, 
+#                                   - increased prototyping speed
+#                                   - code robustness
+#                                   - code documentation
+#                                   - clean structure of code base
+#                                   - reduction in code size
+#               Purpose             A module should be limited in Scope, 
+#                                   - general in nature, not application specific
+#                                   - easy to comprehend and human understandable
+
+#   Cleanup     ./lib/Porting.pm    - Porting code from one project to another unfinished
+#               ./lib/KPI.pm        - 
+
+#
+#   Catalog     ./lib/EXP               Experimental code section
+#                                       This code is not ready for code reuse, or production
+
+#               ./lib/KPI               Key Performance Index section
+
+#               ./lib/File              File handling section
+#               ./lib/File/IO           Reading, writing, appending of files
+#               ./lib/File/IO/UTF8.pm   - handling UTF8 files
+#               ./lib/File/IO/CSV.pm    - handling CSV  files, depending on UTF8.pm
+#               ./lib/File/IO/Excel.pm  - reading .xlsx files, depending on UTF8.pm, Spreadsheet::Ex
+
+#               ./lib/App               Application framework section
+
+#               ./lib/Terminal          Terminal , 
+#               ./lib/Terminal.pm       display messages on Terminal, depending on Term::ANSIColor
+
+#               ./lib/DS                Datastructures section
+#               ./lib/DS.pm             - presenting unknown references of Hash, Array and/or Scalars
+#               ./lib/DS/Array.pm       - 1D (lists), 2D (tables) Array of Array
+#               ./lib/DS/Hash.pm        - Hashes
+#
+#               ./lib/Project           Application/Program specific section

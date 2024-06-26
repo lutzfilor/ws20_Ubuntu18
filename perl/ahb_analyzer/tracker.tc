@@ -1,0 +1,121 @@
+# Testcases tc for parse_ahb_tracker.pl
+#
+# Script    :: parse_ahb_tracker.pl
+# Version   :: 1.02.03
+# Purpose   :: Testing command line interface with windowing function --from=<int> --until=<int>
+# Tracefile :: ahb_trace5.log
+# Logfile   :: window.log
+# Date      :: 10/03/2018
+# Engineer  :: Lutz Filor
+#
+# Testcase  :: 28 Testcases, with     DEFAULT setting testing, lower and upper window boundary
+#                            positeve FALSE   out of bount testing
+                             in       range timebase resolution, of full range setting
+                                      with picking only single transaction full range
+#
+# 1 tc :: trace window is first  transaction ONLY
+#
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6069230 -until=6069230 | & tee ./log.out
+
+#
+# 2 tc :: trace window is first  transaction ONLY
+#
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6069230 -until=6079250 | & tee ./log.out
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6069230 -until=6079256 | & tee ./log.out
+
+#
+# 3 tc :: trace window is first  transaction TIL
+#                         second transaction
+#
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6069230 -until=6089256 | & tee ./log.out
+
+#
+# 4 tc :: trace window is first  transaction TIL
+#                         tenth  transaction
+#
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6069230 -until=6249018 | & tee ./log.out
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6069230 -until=6249020 | & tee ./log.out
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6069230 -until=6269069 | & tee ./log.out
+
+#
+# 5 tc :: trace window is first    transaction TIL
+#                         eleventh transaction
+#
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6069230 -until=6269070 | & tee ./log.out
+
+#
+# 6 tc :: trace window is first    transaction TIL
+#                         last     transaction
+#
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6069230 -until=86289272 | & tee ./log.out
+
+#
+# 7 tc :: trace window is out of bounds          Positive FALSE testcase
+#
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6069230 -until=86289273 | & tee ./log.out
+
+#
+# 8 tc :: trace window is tenth    transaction TIL
+#                         last     transaction
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6249018 -until=86289272 | & tee ./log.out
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6249020 -until=86289272 | & tee ./log.out
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6269069 -until=86289272 | & tee ./log.out
+
+#
+# 9 tc :: trace window is eleventh transaction TIL
+#                         last     transaction
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6269070 -until=86289272 | & tee ./log.out
+
+#
+# 10 tc :: trace window is ante penultimate   transaction TIL
+#                               ultimate/last transaction 
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=86249294 -until=86289272 | & tee ./log.out
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=86269369 -until=86289272 | & tee ./log.out
+
+#
+# 11 tc :: trace window is      penultimate   transaction TIL
+#                               ultimate      transaction
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=86269370 -until=86289272 | & tee ./log.out
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=86269379 -until=86289272 | & tee ./log.out
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=86289271 -until=86289272 | & tee ./log.out
+
+#
+# 12 tc :: trace window is      ultimate      transaction ONLY
+#
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=86289272 -until=86289272 | & tee ./log.out
+
+#
+# 13 tc :: trace window is out of bounds       Positive FALSE testcase
+#
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=86289273 -until=86289272 | & tee ./log.out
+
+#
+# 14 tc :: trace window   with lower boundary as DEFAULT
+#                         tenth  transaction
+parse_ahb_tracker.pl --t=ahb_trace5.log --info  -until=6249018 | & tee ./log.out
+parse_ahb_tracker.pl --t=ahb_trace5.log --info  -until=6249020 | & tee ./log.out
+parse_ahb_tracker.pl --t=ahb_trace5.log --info  -until=6269069 | & tee ./log.out
+
+
+#
+# 15 tc :: trace window   with lower boundary as DEFAULT
+#                         eleventh transaction
+parse_ahb_tracker.pl --t=ahb_trace5.log --info  -until=6269070 | & tee ./log.out
+
+#
+# 16 tc :: trace window   from tenth    transaction TIL
+#                         ultimate/last transaction as DEFAULT
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6249018 | & tee ./log.out
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6249020 | & tee ./log.out
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6269069 | & tee ./log.out
+
+#
+# 17 tc :: trace window   from eleventh transaction TIL
+#                         ultimate/last transaction as DEFAULT
+parse_ahb_tracker.pl --t=ahb_trace5.log --info --from=6269070 | & tee ./log.out
+
+#
+# 18 tc :: trace window   from first    transaction DEFAULT
+#                         to   last     transaction DEFAULT
+parse_ahb_tracker.pl --t=ahb_trace5.log --info | & tee ./log.out
+

@@ -1,0 +1,130 @@
+README  For PPCOV - Post Process Coverage Report Generator, Data Aggregation
+#---------------------------------------------------------------------------
+
+# Author        Lutz Filor
+#               408 807 6915
+#               lutz@pacbell.net
+
+ppcov.pl --workbook=NiueZ1_Coverage_Analysis.xlsx --coverage=/sswork/gf22/niue1z1/rnerabet/niue1z1_wa/coverage/cov_report_DUT/legacy.html --debug=get_attributes,get_filepath,get_record,get_zdata | & tee ./logs/log.out
+ppcov.pl --workbook=/sswork/gf22/niue1z1/lfilor/wa1/coverage/weekly/Niue_MC_Coverage_Analysis.xlsx --debug=revise_workbook,write_workbook | & tee ./logs/log.out
+
+
+
+  Program layout    ws/perl/|--ppcov/ppcov.pl
+                            |       |--Changes      documenation revisions
+                            |       |--README       this document file
+                            |       |--input/       input data file & revs
+                            |       |--fruit/       output data files
+                            |       |--logs/        path to log files
+
+                            |--lib  /--XLSX.pm
+                            |       |--XML.pm
+                            |       |--UTF8.pm
+                            |       |--Dbg.pm
+                            |       |--PPCOV/--FileIO.pm
+                            |               |--HTML.pm
+
+
+
+_data       =   []  of _content                     array of hashes
+
+_content    =   {}  _filename   =>  []  of _elements
+
+_element    =   {}  _type       =   { nested, self_terminating, comment ... }
+                    _tag        =   TagName
+
+                    _attributes =   []  of  _attribute
+                    _attribute  =   {}  of  _quote          = {['],["]}         preserve
+                                            _Name           =   AttributeName
+                                            _Value          =   AttributeValue
+
+                    _element    =   string
+
+
+        #printf STDERR "%*s%s()\n", $i,$p,(caller(0))[3];
+        #printf STDERR "%*s%s()\n", $i,$p,subroutine('name');
+        #printf STDERR "%*s%s  \n", $i,$p,subroutine('space');
+
+#---------------------------------------------------------------------------
+use Excel::Writer::XLSX;                                    # Step 0
+
+my $workbook = Excel::Writer::XLSX->new( 'perl.xlsx' );     # Step 1
+$worksheet = $workbook->add_worksheet();                    # Step 2 - At least one worksheet should be added
+$worksheet->write( 'A1', 'Hi Excel!' );                     # Step 3
+
+my $workbook1 = Excel::Writer::XLSX->new( $filename );                
+my $workbook2 = Excel::Writer::XLSX->new( '/tmp/filename.xlsx' );
+my $workbook3 = Excel::Writer::XLSX->new( "c:\\tmp\\filename.xlsx" );
+my $workbook4 = Excel::Writer::XLSX->new( 'c:\tmp\filename.xlsx' );
+
+Cell notation
+                        (0, 0)          # The top left cell in row-column notation.
+                        ('A1')          # The top left cell in A1 notation.
+
+                        (1999, 29)      # Row-column notation.
+                        ('AD2000')      # The same cell in A1 notation.
+$workbook->set_properties(
+                            title    => 'This is an example spreadsheet',
+                            author   => 'John McNamara',
+                            comments => 'Created with Perl and Excel::Writer::XLSX',
+                        );
+            All properties :
+                            title
+                            subject
+                            author
+                            manager
+                            company
+                            category
+                            keywords
+                            comments
+                            status
+
+  
+$worksheet = $workbook->sheets( 0 ) 
+                        write()
+                        write_number()
+                        write_string()
+                        write_rich_string()
+                        keep_leading_zeros()
+                        write_blank()
+                        write_row()
+                        write_col()
+                        write_date_time()
+                        write_url()
+                        write_url_range()
+                        write_formula()
+                        write_comment()
+                        show_comments()
+                        set_comments_author()
+                        add_write_handler()
+                        insert_image()
+                        insert_chart()
+                        insert_shape()
+                        insert_button()
+                        data_validation()
+                        conditional_formatting()
+                        add_sparkline()
+                        add_table()
+                        get_name()
+                        activate()
+                        select()
+                        hide()
+                        set_first_sheet()
+                        protect()
+                        set_selection()
+                        set_row()
+                        set_default_row()
+                        set_column()
+                        outline_settings()
+                        freeze_panes()
+                        split_panes()
+                        merge_range()
+                        merge_range_type()
+                        set_zoom()
+                        right_to_left()
+                        hide_zero()
+                        set_tab_color()
+                        autofilter()
+                        filter_column()
+                        filter_column_list()
+

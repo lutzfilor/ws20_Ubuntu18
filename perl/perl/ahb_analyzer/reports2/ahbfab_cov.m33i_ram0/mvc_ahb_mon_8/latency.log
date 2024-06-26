@@ -1,0 +1,620 @@
+ ================================================================================
+ Tracefile   : uvm_test_top.top_env_i.ahbfab_env_i.mvc_ahb_mon_8_env_i.logger_handle_ahb
+               /mnt/ussjf-asic2/workarea1/lkamired/niue1z1_tmp/lkamired/wa_performance/SIM/top/ahbfab_cov.m33i_ram0/uvm_test_top.top_env_i.ahbfab_env_i.mvc_ahb_mon_8_env_i_ahb_beat.log
+ Synopsis    : Latency Analysis
+ Script      : parse_ahb_tracker.pl 1.03.04
+ Date        : 2018-09-12
+ Time        :   16:15:54
+ Cycle       :         40 ns
+ Frequency   :      25.00 MHz
+ Start       :     608681 ns
+ Stop        :     634751 ns
+ ================================================================================
+
+START pointer HASH(0x49233d8)
+Transaction#  14
+Start time    608681
+
+STOP  pointer HASH(0x3876298)
+Transaction#  72
+Stop time     634751
+
+             Transaction:         14
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:         40 ns
+             FirstData  :        720 ns
+             AdrPhaseCmp:     239700 ns
+             LastDataCmp:     240460 ns
+             DtaPhaseCmp:        720 ns
+
+             Transaction:         15
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:         40 ns
+             FirstData  :        760 ns
+             AdrPhaseCmp:     290860 ns
+             LastDataCmp:     291660 ns
+             DtaPhaseCmp:        760 ns
+
+             Transaction:         16
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:         40 ns
+             FirstData  :        640 ns
+             AdrPhaseCmp:     292100 ns
+             LastDataCmp:     292780 ns
+             DtaPhaseCmp:        640 ns
+
+             Transaction:         17
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:         40 ns
+             FirstData  :        720 ns
+             AdrPhaseCmp:     293380 ns
+             LastDataCmp:     294140 ns
+             DtaPhaseCmp:        720 ns
+
+             Transaction:         18
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:         40 ns
+             FirstData  :        640 ns
+             AdrPhaseCmp:     294580 ns
+             LastDataCmp:     295260 ns
+             DtaPhaseCmp:        640 ns
+
+             Transaction:         19
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:         40 ns
+             FirstData  :        720 ns
+             AdrPhaseCmp:     295860 ns
+             LastDataCmp:     296620 ns
+             DtaPhaseCmp:        720 ns
+
+             Transaction:         20
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:         40 ns
+             FirstData  :        361 ns
+             AdrPhaseCmp:     297060 ns
+             LastDataCmp:     297461 ns
+             DtaPhaseCmp:        361 ns
+
+             Transaction:         21
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        220 ns
+             AdrPhaseCmp:     297916 ns
+             LastDataCmp:     298141 ns
+             DtaPhaseCmp:        220 ns
+
+             Transaction:         22
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        265 ns
+             AdrPhaseCmp:     298191 ns
+             LastDataCmp:     298461 ns
+             DtaPhaseCmp:        265 ns
+
+             Transaction:         23
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        225 ns
+             AdrPhaseCmp:     298511 ns
+             LastDataCmp:     298741 ns
+             DtaPhaseCmp:        225 ns
+
+             Transaction:         24
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        230 ns
+             AdrPhaseCmp:     298796 ns
+             LastDataCmp:     299031 ns
+             DtaPhaseCmp:        230 ns
+
+             Transaction:         25
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        250 ns
+             AdrPhaseCmp:     299086 ns
+             LastDataCmp:     299341 ns
+             DtaPhaseCmp:        250 ns
+
+             Transaction:         26
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        950 ns
+             AdrPhaseCmp:     299396 ns
+             LastDataCmp:     300351 ns
+             DtaPhaseCmp:        950 ns
+
+             Transaction:         27
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        865 ns
+             AdrPhaseCmp:     300401 ns
+             LastDataCmp:     301271 ns
+             DtaPhaseCmp:        865 ns
+
+             Transaction:         28
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        900 ns
+             AdrPhaseCmp:     301326 ns
+             LastDataCmp:     302231 ns
+             DtaPhaseCmp:        900 ns
+
+             Transaction:         29
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        865 ns
+             AdrPhaseCmp:     302681 ns
+             LastDataCmp:     303551 ns
+             DtaPhaseCmp:        865 ns
+
+             Transaction:         30
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        900 ns
+             AdrPhaseCmp:     303606 ns
+             LastDataCmp:     304511 ns
+             DtaPhaseCmp:        900 ns
+
+             Transaction:         31
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        865 ns
+             AdrPhaseCmp:     304761 ns
+             LastDataCmp:     305631 ns
+             DtaPhaseCmp:        865 ns
+
+             Transaction:         32
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        940 ns
+             AdrPhaseCmp:     305686 ns
+             LastDataCmp:     306631 ns
+             DtaPhaseCmp:        940 ns
+
+             Transaction:         33
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        920 ns
+             AdrPhaseCmp:     307186 ns
+             LastDataCmp:     308111 ns
+             DtaPhaseCmp:        920 ns
+
+             Transaction:         34
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        940 ns
+             AdrPhaseCmp:     308166 ns
+             LastDataCmp:     309111 ns
+             DtaPhaseCmp:        940 ns
+
+             Transaction:         35
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        900 ns
+             AdrPhaseCmp:     309166 ns
+             LastDataCmp:     310071 ns
+             DtaPhaseCmp:        900 ns
+
+             Transaction:         36
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        900 ns
+             AdrPhaseCmp:     320126 ns
+             LastDataCmp:     321031 ns
+             DtaPhaseCmp:        900 ns
+
+             Transaction:         37
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        925 ns
+             AdrPhaseCmp:     321581 ns
+             LastDataCmp:     322511 ns
+             DtaPhaseCmp:        925 ns
+
+             Transaction:         38
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        885 ns
+             AdrPhaseCmp:     323061 ns
+             LastDataCmp:     323951 ns
+             DtaPhaseCmp:        885 ns
+
+             Transaction:         39
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        925 ns
+             AdrPhaseCmp:     324501 ns
+             LastDataCmp:     325431 ns
+             DtaPhaseCmp:        925 ns
+
+             Transaction:         40
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        925 ns
+             AdrPhaseCmp:     325981 ns
+             LastDataCmp:     326911 ns
+             DtaPhaseCmp:        925 ns
+
+             Transaction:         41
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        885 ns
+             AdrPhaseCmp:     327461 ns
+             LastDataCmp:     328351 ns
+             DtaPhaseCmp:        885 ns
+
+             Transaction:         42
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        885 ns
+             AdrPhaseCmp:     328901 ns
+             LastDataCmp:     329791 ns
+             DtaPhaseCmp:        885 ns
+
+             Transaction:         43
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        885 ns
+             AdrPhaseCmp:     330341 ns
+             LastDataCmp:     331231 ns
+             DtaPhaseCmp:        885 ns
+
+             Transaction:         44
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        885 ns
+             AdrPhaseCmp:     331781 ns
+             LastDataCmp:     332671 ns
+             DtaPhaseCmp:        885 ns
+
+             Transaction:         45
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        925 ns
+             AdrPhaseCmp:     333221 ns
+             LastDataCmp:     334151 ns
+             DtaPhaseCmp:        925 ns
+
+             Transaction:         46
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        885 ns
+             AdrPhaseCmp:     334701 ns
+             LastDataCmp:     335591 ns
+             DtaPhaseCmp:        885 ns
+
+             Transaction:         47
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        905 ns
+             AdrPhaseCmp:     335641 ns
+             LastDataCmp:     336551 ns
+             DtaPhaseCmp:        905 ns
+
+             Transaction:         48
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        980 ns
+             AdrPhaseCmp:     336606 ns
+             LastDataCmp:     337591 ns
+             DtaPhaseCmp:        980 ns
+
+             Transaction:         49
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        865 ns
+             AdrPhaseCmp:     337641 ns
+             LastDataCmp:     338511 ns
+             DtaPhaseCmp:        865 ns
+
+             Transaction:         50
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        900 ns
+             AdrPhaseCmp:     338566 ns
+             LastDataCmp:     339471 ns
+             DtaPhaseCmp:        900 ns
+
+             Transaction:         51
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        940 ns
+             AdrPhaseCmp:     339726 ns
+             LastDataCmp:     340671 ns
+             DtaPhaseCmp:        940 ns
+
+             Transaction:         52
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        865 ns
+             AdrPhaseCmp:     341121 ns
+             LastDataCmp:     341991 ns
+             DtaPhaseCmp:        865 ns
+
+             Transaction:         53
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        785 ns
+             AdrPhaseCmp:     342046 ns
+             LastDataCmp:     342836 ns
+             DtaPhaseCmp:        785 ns
+
+             Transaction:         54
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        705 ns
+             AdrPhaseCmp:     342886 ns
+             LastDataCmp:     343596 ns
+             DtaPhaseCmp:        705 ns
+
+             Transaction:         55
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        520 ns
+             AdrPhaseCmp:     343651 ns
+             LastDataCmp:     344176 ns
+             DtaPhaseCmp:        520 ns
+
+             Transaction:         56
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        345 ns
+             AdrPhaseCmp:     344226 ns
+             LastDataCmp:     344576 ns
+             DtaPhaseCmp:        345 ns
+
+             Transaction:         57
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        345 ns
+             AdrPhaseCmp:     344626 ns
+             LastDataCmp:     344976 ns
+             DtaPhaseCmp:        345 ns
+
+             Transaction:         58
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        300 ns
+             AdrPhaseCmp:     345031 ns
+             LastDataCmp:     345336 ns
+             DtaPhaseCmp:        300 ns
+
+             Transaction:         59
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        310 ns
+             AdrPhaseCmp:     345391 ns
+             LastDataCmp:     345706 ns
+             DtaPhaseCmp:        310 ns
+
+             Transaction:         60
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        345 ns
+             AdrPhaseCmp:     345786 ns
+             LastDataCmp:     346136 ns
+             DtaPhaseCmp:        345 ns
+
+             Transaction:         61
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        305 ns
+             AdrPhaseCmp:     346186 ns
+             LastDataCmp:     346496 ns
+             DtaPhaseCmp:        305 ns
+
+             Transaction:         62
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        300 ns
+             AdrPhaseCmp:     346551 ns
+             LastDataCmp:     346856 ns
+             DtaPhaseCmp:        300 ns
+
+             Transaction:         63
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        340 ns
+             AdrPhaseCmp:     346911 ns
+             LastDataCmp:     347256 ns
+             DtaPhaseCmp:        340 ns
+
+             Transaction:         64
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        345 ns
+             AdrPhaseCmp:     347306 ns
+             LastDataCmp:     347656 ns
+             DtaPhaseCmp:        345 ns
+
+             Transaction:         65
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        345 ns
+             AdrPhaseCmp:     347706 ns
+             LastDataCmp:     348056 ns
+             DtaPhaseCmp:        345 ns
+
+             Transaction:         66
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        340 ns
+             AdrPhaseCmp:     348111 ns
+             LastDataCmp:     348456 ns
+             DtaPhaseCmp:        340 ns
+
+             Transaction:         67
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        300 ns
+             AdrPhaseCmp:     348511 ns
+             LastDataCmp:     348816 ns
+             DtaPhaseCmp:        300 ns
+
+             Transaction:         68
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        360 ns
+             AdrPhaseCmp:     349011 ns
+             LastDataCmp:     349376 ns
+             DtaPhaseCmp:        360 ns
+
+             Transaction:         69
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        310 ns
+             AdrPhaseCmp:     349431 ns
+             LastDataCmp:     349746 ns
+             DtaPhaseCmp:        310 ns
+
+             Transaction:         70
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        330 ns
+             AdrPhaseCmp:     349801 ns
+             LastDataCmp:     350136 ns
+             DtaPhaseCmp:        330 ns
+
+             Transaction:         71
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        340 ns
+             AdrPhaseCmp:     350191 ns
+             LastDataCmp:     350536 ns
+             DtaPhaseCmp:        340 ns
+
+             Transaction:         72
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             ADDRtransfr:          5 ns
+             FirstData  :        340 ns
+             AdrPhaseCmp:     350591 ns
+             LastDataCmp:     350936 ns
+             DtaPhaseCmp:        340 ns
+
+             ALL   1st Number:         59
+             READ  1st Number:         30
+             WRITE 1st Number:         29
+
+             READ  1st Total :      19306
+             WRITE 1st Total :      18465
+             ALL   Lst Number:         59
+             READ  Lst Number:         30
+             WRITE Lst Number:         29

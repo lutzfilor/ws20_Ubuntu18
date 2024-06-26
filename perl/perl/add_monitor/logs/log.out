@@ -1,0 +1,64 @@
+     IO buffering before = 0
+     IO buffering after  = 1
+
+[5m[1m[34m
+     Specified output = axi_monitor_include.svi !!
+
+[0m
+     deepcopy_workbook()
+     deepcopy_workbook() ... done 
+      Master0 = 38 Ports
+      Master1 = 38 Ports
+      Master2 = 38 Ports
+      Master3 = 38 Ports
+      Master4 = 38 Ports
+      Master5 = 38 Ports
+      Master6 = 38 Ports
+      Master7 = 38 Ports
+      Master8 = 38 Ports
+      Master9 = 38 Ports
+     Master10 = 38 Ports
+     Master11 = 38 Ports
+     Master12 = 38 Ports
+     Master13 = 38 Ports
+     Master14 = 38 Ports
+     Master15 = 38 Ports
+     Master16 = 38 Ports
+     Master17 = 38 Ports
+     Master18 = 38 Ports
+     Master19 = 38 Ports
+     Master20 = 38 Ports
+     Master22 = 38 Ports
+     Master23 = 38 Ports
+     Master24 = 38 Ports
+
+     implement_specification( Number of monitors = 24 )
+     implement_monitor( AXI4, CPXBAR_MC )
+     implement_monitor( AXI4, AXBAR_MC )
+     implement_monitor( AXI4, VXBAR_MC )
+     implement_monitor( AXI4, GXBAR_MC )
+     implement_monitor( AXI4, IXBAR_MC )
+     implement_monitor( AXI4, DHUB64_AXBAR )
+     implement_monitor( AXI4, DHUB128_AXBAR )
+     implement_monitor( AXI3, HDCP_AXBAR )
+     implement_monitor( AXI4, ISP0_IXBAR )
+     implement_monitor( AXI4, ISP1_IXBAR )
+     implement_monitor( AXI4, DHUB0_IXBAR )
+     implement_monitor( AXI4, DHUB1_IXBAR )
+     implement_monitor( AXI3, OVP_VXBAR )
+     implement_monitor( AXI4, V4G_VXBAR )
+     implement_monitor( AXI3, H1_VXBAR )
+     implement_monitor( AXI3, GFX0_GXBAR )
+     implement_monitor( AXI3, GFX1_GXBAR )
+     implement_monitor( AXI3, NPU_GXBAR )
+     implement_monitor( AXI3, GE_PXBAR )
+     implement_monitor( AXI3, EMMC_PXBAR )
+     implement_monitor( AXI3, SDIO_PXBAR )
+     implement_monitor( AXI3, USB3_PXBAR )
+     implement_monitor( AXI3, PCIE_PXBAR )
+     implement_monitor( AXI3, PBRG_PXBAR )
+
+     Logs    are at : /mnt/ussjf-home/lfilor/ws/perl/add_monitor/logs
+
+     Results are at : /mnt/ussjf-home/lfilor/ws/perl/add_monitor/axi_monitor_include.svi
+

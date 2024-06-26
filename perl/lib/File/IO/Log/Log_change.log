@@ -1,0 +1,26 @@
+Revision history for Perl applicatition namespace File::
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 10-07-2020                Created     perl/lib/File/IO/Log/Log_change.log tracking File related features 
+#                                       This documentation starts 2 months after the fact of creating the module
+#               v1.01.01    Create      File::IO::Log
+#               v1.01.02    Import      File::IO::UTF8::read_utf8
+#               v1.01.03    Import      File::IO::UTF8::write_utf8
+#               v1.01.04    Refactor    Logging.pm from a project   not reusable
+# 08-10-2020    v1.01.05    Add         File::IO::Log::activity_message( {$InfoRef} );      --> $StringMsg
+# 08-10-2020    v1.01.06    Add         File::IO::Log::log_activity (  $MsgText, $Logfile );
+# 10-07-2020    v1.01.08    Add Feature File::IO::Log::log_arrayref ( [$ArrRef], $Logfile );
+#               v1.01.09    Add Feature File::IO::Log::log_hashref  ( [$HshRef], $Logfile );
+#               v1.01.10    Debug       File::IO::Log::log_activity()
+#                           Add         return;                                             #   default return statement
+#               v1.01.11    Import      DS::Array::maxwidth( [$ArrRef] )
+# 10-08-2020    v1.01.12    Add Feature File::IO::Log::log2_hashref ( [$HshRef], $Logfile );
+#                                       The Hash value contains the Module name,
+#                                       group by Mudole name and sort by subroutine name
+# 10-08-2020    v1.01.13    Import      DS::Array::unique  ( [$ArrRef] )                    --> [$ArrRef] w/ removed dublicates
+# 10-27-2020    v1.01.14    Add Feature File::IO::Log::log_arrayref ( [$ArrRef], $Logfile );
+#                           Refactor    DS::Array::list_array() 
+# 10-28-2020    v1.01.15    Debug       DS::Array::list_array()
+#                           Add         $align = 'unaligned';                               #   Default align == unalignment
+#                       

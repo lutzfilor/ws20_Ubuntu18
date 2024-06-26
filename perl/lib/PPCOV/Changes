@@ -1,0 +1,18 @@
+Revision history for Perl applicatition namespace PPCOV::
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 02-07-2019                Created perl/lib/PPCOV/Changes tracking PPCOV:: application namespace 
+#               v1.01.02    PPCOV::Control.pm   add to Changes
+#               v1.01.02    PPCOV::Datapath.pm  add to Changes
+#               v1.01.02    PPCOV::FileIO.pm    add to Changes
+#               v1.01.02    PPCOV::HTML.pm      add to Changes
+#               v1.01.01    PPCOV::JSON.pm      add to Changes experimental
+#                           Create lib/PPCOV/archive/2019-02-06_archive.tar
+# 02-22-2019	v1.01.01	PPCOV::DataPreparation::Staging.pm
+# 02-22-2019	v1.01.07	PPCOV::DataAccess::JSON.pm created refactored from Datapath.pm
+#							PPCOV::DataAccess  Changes c:browse confirm wa
+#							reated
+# 03-19-2019    v1.01.08    PPCOV::DataStructure created
+#                           PPCOV::DataStructure::DS.pm refactored
+#                           PPCOV /DataStructure /Changes created

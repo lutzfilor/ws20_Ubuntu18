@@ -1,0 +1,84 @@
+Revision history for Perl extension DS/Array.pm
+
+#   VERSION     DATE            Description
+# ========================================================================================
+#   1.01.01     2020/03/04      Create		DS::Array
+#                               Create      Changes this file
+#   1.01.02 	2020/03/06      Add         DS::Array::size_of  ( [$ArrRef] )
+#                               Refactor    DS::Array::maxwidth ( [$ArrRef] )
+#                               Refactor    module_searchpath   ( );            from
+#                                           installed_modules.pl inspecting @INC
+#   1.01.03                     Refactor    installed_modules   ( "$ENV{PERLPATH}" );
+#                                           This function inspects %INC
+#                                           This function returns a list reference of
+#                                           all "local .pm" files stored @ access_path
+#   1.01.04     2020/03/07      Add         list_modules( $lib );
+#                                           Can we create subsets of installed modules
+#                               Add         
+#   1.01.08     2020/03/08      Add         list_modules( $lib, 'path' )
+#                               Add feature installed_modules   ( "ALL" );              //  ALL used modules, from all search pathes
+#                                           installed_modules   (       );              //  default == ALL
+#                                           installed_modules   ( "$ENV{PERLPATH}" );   //  ONLY subset from specified search path
+#   1.01.09     2020/06/15      Add         DS::Array::list_array   ( [$ArrRef] )
+#   1.01.10                     Refactor    Reformat File header information
+#   1.01.11                     Refactor    DS::Array::list_array   ( [$ArrRef], {HashRef} )
+#   1.01.12     2020/06/21      Add feature align listing column to the left or the right 
+#                                           DS::Array::list_array   FormatReg{align} =: 'left', 'right'
+#   1.01.13     2020/07/05      Add feature DS::Array::maxwidth ( [$ArrRef] ,   $MinimumSeed )
+#                                           allow multiple arrays chained to find the MAXIMUM of all Lists
+#   1.01.14     2020/07/05      Add feature DS::Array::clone_aref( [$ArrRef] )
+#                                           create a physical copy of Array identified by [$ArrRef]
+#                                           referencing operation clone deliverys a reference to an 
+#                                           identical Clone, physical seperate original array
+#   1.01.15     2020/07/05      Remove      use Readonly;
+#                                           Reduce unneccessary dependencies
+#   1.01.16     2020/08/13      Export      DS::list_array() feature and merge w/ original 
+#                               Add         my  $name   =   $$format{name};     #   Providing header aka Name of list/array
+#                               Add         my  $ll     =   $$format{leading}   #   number of leading lines
+#                               Add         my  $n      =   $$format{number}    #   leading number
+#                               Add         my  $align  =   $$format{align}     #   horizontal align within the column
+#                               Add         my  $tl     =   $$format{trailing}  #   Number of trailing new lines
+#                               Add         for my $l   (1..$ll)  { printf "%*s\n",$i,$p; } #   leading  new lines - preamble spacer
+#                               Add         if  ( defined $name ) { ... }                   #   if (header info)
+#                               Add         if  ( defined $$format{number} ) { ... }
+#                               Add         for my $l   (1..$tl)  { printf "%*s\n",$i,$p; } #   trailing new lines - postamble spacer
+#   1.01.17     2020/08/14      Debug       DS::list_array()
+#                               Add         return;     #   Terminate all subroutines with default return statement
+#   1.01.18     2020/09/14      Add         DS::list_table()
+#   1.01.19     2020/09/14      Add         DS::transpose( [$ArrRef] )
+#   1.01.20     2020/09/19      Add Feature DS::Array::list_table() 
+#                                           add dataset number column
+#   1.01.21     2020/10/08      Add Feature DS::Array::unique( [$ArrRef] )
+#                                           remove all doublicate entries from the list
+#   1.01.22     2020/10/09      Add Feature DS::Array::unpack_string( [$ArrRef] )               #   ListOfpackedString
+#   1.01.23     2020/10/12      Add Feature DS::Array::intersect    ( [$ArrRef], [$ArrRef] )    #   Schnittmenge bilden
+#   1.01.24     2020/10/17      Add Feature DS::Array::list_array   
+#                               Add         my  $n      =   $$format{size}      #   print size of list Reference
+#   1.01.25     2020/10/21      Add Feature DS::Array::prepend      ( $prefix, [$ArrRef] )
+#   1.01.26     2020/10/21      Add Feature DS::Array::append       ( [$ArrRef], $affix  )
+#   1.01.27     2020/10/27      Debug       DS::Array::list_array()
+#                               From        if ( defined $size ) { printf "%*sSize[%s] is %s\n"
+#                                                                         ,$i,$p,$name,$#{$a_ref}; }
+#                               To          if ( defined $size ) { printf "%*sSize of %s is %s\n"
+#                                                                         ,$i,$p,$name,$#{$a_ref}+1; }
+#   1.01.28     2020/10/28      Debug       DS::Array::intersect    ( [$ArrRef], [$ArrRef] )    #   Schnittmenge bilden
+#                               Algorithm   Intention to exit inner loop, but exit outer loop after first hit  
+#                                           OUTER:  foreach my $a ( @{$a_ArrRef} )  {           #   dbg     small set
+#                                                       #printf "%*sSearching %s\n",5,'',$a;    #   debug vestigial
+#                                           INNER:      foreach my $b ( @{$b_ArrRef} )  {       #   subs    large set (super set)
+#                                                           if ( $a eq $b ) {                   #   match exactly not in partial pattern
+#                                                               push( @{$tmp}, $b );            #   capture the symbol from symbol table
+#                                                               #last OUTER;                    #   Escape inner loop - wrong escapes the outloop
+#                                                               last INNER;                     #   Escape inner loop, don't waste on search
+#                                                           }# matching
+#                                                       }# iterrate super-set
+#                                                   }# iterate sub-set
+#   1.01.29     2020/10/30      Debug       DS::Array::maxwidth()   
+#                                           Can't use string ("unknown parameter") as an ARRAY ref while "strict refs"
+#                                           if ( ref $ArrRef eq 'ARRAY' ) {                     #   ensure not strings get passed through for ARRAY
+#   1.01.30     2020/10/30      Debug       DS::Array::list_array()
+#                                           Can't use string ("unknown parameter") as an ARRAY ref while "strict refs"
+#                                           unless ( ref $ArrRef eq 'ARRAY' ) {                 #   ensure not strings get passed through for ARRAY
+#                                               WARNING !!
+#                                               return;                                         #   exit funtion w/ Warning
+#                                           }

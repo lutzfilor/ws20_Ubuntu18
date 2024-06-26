@@ -1,0 +1,25 @@
+LINT :  basic_test.seq
+
+   1                          # My Comment
+   2                #   Author  Lutz Filor
+   3                #   Date    12/18/2018
+   4                                      
+   5          #   Synpasis    Testing LINT
+  10            80001004 RESERVED         
+
+  11            80001008 RESERVED         
+
+  12            8000100c RESERVED         
+
+  18        //     PRINT THIS_IS_A_MESSAGE
+  21      NOP                             
+
+  22 //     PRINT WHY_IS_PRINT_Not_WORKING
+  25      NOP                             
+
+  31      NOP                             
+
+ 981            80001f04 RESERVED         
+
+ 982            80001f08 RESERVED         
+

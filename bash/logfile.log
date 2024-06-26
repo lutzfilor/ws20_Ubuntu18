@@ -1,0 +1,9 @@
+YYYY-MM-DD  hh:mm:ss,  (INFO|WARNING|ERROR|FATAL),   text  message. 
+2020-10-10  23:34:25,   INFO,       Start Regression nightly.
+2020-10-10  23:40:44,   WARNING,    No license available
+2020-10-10  23:56:56,   ERROR,      Test#523 failed
+2020-10-10  23:59:01,   WARNING,    No license available
+2020-10-11  00:02:11,   ERROR,      TEST#1156 failed
+2020-10-11  00:02:11,   ERROR,      TEST#1339 failed
+2020-10-11  00:02:11,   ERROR,      TEST#1584 failed
+2020-10-11  00:02:11,   ERROR,      TEST#1776 failed

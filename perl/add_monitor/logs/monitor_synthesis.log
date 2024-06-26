@@ -1,0 +1,34 @@
+read_specification( bg7_mon.xlsx )
+     implement_monitor( AXI4,     CPXBAR_MC )
+     implement_monitor( AXI4,      AXBAR_MC )
+     implement_monitor( AXI4,      VXBAR_MC )
+     implement_monitor( AXI4,      GXBAR_MC )
+     implement_monitor( AXI4,      IXBAR_MC )
+     implement_monitor( AXI4,  DHUB64_AXBAR )
+     implement_monitor( AXI4, DHUB128_AXBAR )
+     implement_monitor( AXI3,    HDCP_AXBAR )
+     implement_monitor( AXI4,    ISP0_IXBAR )
+     implement_monitor( AXI4,    ISP1_IXBAR )
+     implement_monitor( AXI4,   DHUB0_IXBAR )
+     implement_monitor( AXI4,   DHUB1_IXBAR )
+     implement_monitor( AXI3,     OVP_VXBAR )
+     implement_monitor( AXI4,     V4G_VXBAR )
+     implement_monitor( AXI3,      H1_VXBAR )
+     implement_monitor( AXI3,    GFX0_GXBAR )
+     implement_monitor( AXI3,    GFX1_GXBAR )
+     implement_monitor( AXI3,     NPU_GXBAR )
+     implement_monitor( AXI3,      GE_PXBAR )
+     implement_monitor( AXI3,    EMMC_PXBAR )
+     implement_monitor( AXI3,    SDIO_PXBAR )
+     implement_monitor( AXI3,    USB3_PXBAR )
+     implement_monitor( AXI3,    PCIE_PXBAR )
+     implement_monitor( AXI3,    PBRG_PXBAR )
+     implement_monitor( AXI3,  BCMDMA_TXBAR )
+     implement_monitor( AXI3,     TSP_TXBAR )
+               IDwidth = 0 !!
+               Signal  = awid_tsp_m3_s0
+               Signal  = arid_tsp_m3_s0
+               Signal  = wid_tsp_m3_s0
+               Signal  = rid_tsp_m3_s0
+               Signal  = bid_tsp_m3_s0
+     implement_monitor( AXI4,      BC_TXBAR )

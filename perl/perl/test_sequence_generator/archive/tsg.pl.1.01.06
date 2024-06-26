@@ -1,0 +1,859 @@
+#!/tools/sw/perl/bin/perl -w
+#!/usr/bin/perl -w
+#####!/tools/sw/perl/bin/perl -w
+
+# Author    Lutz Filor
+# Phone     408 807 6915
+#
+# Purpose   Creating multiple Register READ, WRITE transaction from pseudo transaction code
+#
+# Revision  VERSION     DATE            Description
+# ================================================================================================
+# History   1.01.01     11/15/2018      Create project TSG - Test Sequence Generator
+#                       11/16/2018      Implement debugging feature on sub level
+#           1.01.02     11/19/2018      Debugging user interface, debug feature
+#           1.01.03     11/20/2018      Debugging REGEX expressions lowercase k vs Uppercase K !!
+#                                       Processing initialization <keyword> <value> <metric>
+#                                       Unit is not process correctly
+#           1.01.04     11/22/2018      Regular expression specification debug
+#                                       Comments, hex values, casting, value error checking
+#           1.01.05     11/27/2018      Validating, aggregation
+#           1.01.06     11/29/2018
+# ================================================================================================
+
+my $VERSION = "1.01.06";
+
+use strict;
+use warnings;
+use Term::ANSIColor;
+#use Log::Log4perl   qw  (:easy);                                                   # Not avaiable
+#no warnings 'experimental::smartmatch';                                            # Turning of smartmatch
+
+use Carp            qw / croak
+                         carp
+                         cluck
+                         confess    /;
+
+use feature 'state';                                                                # Static local variables
+
+use Readonly;
+use Getopt::Long;
+use File::Path      qw /make_path/;                                                 # Create directories
+use File::Basename;                                                                 # Handle absolute file names
+use Cwd             qw /abs_path
+                        getcwd
+                        cwd     /;                                                  # Current working directory
+
+#use Padwalker;                                                                     # Not available/installed
+#use Package::Stash;                                                                # available
+#use Pod::Usage;                                                                    # available
+#use DateTime;                                                                      # Not used
+
+sub report;
+sub parse_header;
+sub calculate_payload;
+sub elaborate_tracefile;
+sub CreateLoggingPath;
+
+Readonly my $TRUE           =>     1;
+Readonly my $FALSE          =>     0;
+
+Readonly my $BOUNDARY_1K    =>  1024;           # 1K byte boundary
+Readonly my $BOUNDARY_4K    =>  4096;           # 4K byte boundary
+Readonly my $KBYTE          =>  1024;           # 1k byte
+Readonly my $MBYTE          =>  1024 * $KBYTE;  # 1M byte
+Readonly my $GBYTE          =>  1024 * $MBYTE;  # 1G byte
+Readonly my $LARBOUNDARY    =>     0 * $GBYTE;  #    0x0000_0000
+Readonly my $UARBOUNDARY    =>     4 * $GBYTE;  # 4G byte physical address boundary
+Readonly my $WORDSIZE       =>     4;           #  4 byte   or 32 bit
+Readonly my $CACHELINE      =>    64;           # 64 byte cacheline size
+
+Readonly my $SIGN           =>      qr { [+-] }xms;
+Readonly my $DIGITS         =>      qr { \d+ (?: [.] \d*)? | [.] \d+ }xms;
+Readonly my $EXPO           =>      qr { [eE] $SIGN? \d+ }xms;
+
+Readonly my $KEYWORD        =>      qr { \b\w+\b }xms;
+Readonly my $PREAMBLE       =>      qr {  0?x?   }xi;                                  # Hexpreamble
+Readonly my $NIBBLE         =>      qr { [0-9A-F_] }xmsi;
+
+Readonly my $SYSTEM         =>      qr { SI|JEDEC|ICE }xms;
+Readonly my $BINARY         =>      qr { Ki|Mi|Gi|Ti|Pi|Ei|Zi|Yi }xms;              # Binary prefix
+Readonly my $UNITS          =>      qr { bit|byte|s|Hz|m|g }xms;                    # SI base units
+Readonly my $PREFIX         =>      qr { Y|Z|E|P|T|G|M|k|K|m|u|n|p|f|a|y|z }xms;    # SI prefix 10^18 to 10^-18 range NOTE :: micro is substitute w/ [u] for muy
+#Readonly my $PREFIX        =>      qr { [YZEPTGMkKmunpfayz] }xms;                  # SI prefix 10^18 to 10^-18 range NOTE :: micro is substitute w/ [u] for muy
+Readonly my $FLOAT          =>      qr { ($SIGN?) ($DIGITS) ($EXPO?) }xms;                                                                                    # Because I looked a day for an error of k vs K, uppercase K is included for robustness
+Readonly my $DATAWORD       =>      qr { $PREAMBLE?$NIBBLE+ }xms;                   # Hexdata & Numbers
+Readonly my $MEASURE        =>      qr { $PREFIX?$UNITS }xms;
+
+my %defines;                                                                        # Command line defines
+my %opts    =   (   default_base        =>  'binary',                               # decimal 1000 vs binary 1024
+                    progress_log        =>  'progress.log',                         # log     progress phases of program                    !! Can't be turned off, aka run.log
+                    default_compile_log =>  'tsg.log',                              # Compile logfile
+                    owner               =>  'Lutz Filor',                           # Maintainer
+                    call                =>  join (' ', @ARGV),                      # Capture command line
+                    program             =>  $0,                                     # Script    Name
+                    version             =>  $VERSION,                               # Script    Version
+                    log_path_default    =>  'logs',                                 # Default logging path appendix for each trace
+                    subs                =>  [   qw  (   debug
+                                                        DebugControl
+                                                        check_command_line
+                                                        flush_test_sequence
+                                                        parse_init
+                                                        valid_init
+                                                        store_init
+                                                        compile_sequence
+                                                        scan_sequence
+                                                        writing_sequence
+                                                        comment_line
+                                                    )                               # List of Subroutines
+                                            ],
+                    keywords            =>  [   qw  (   address
+                                                        addressspace
+                                                        addresssize
+                                                        baseaddress
+                                                        block_range
+                                                        databussize
+                                                        wordaligned
+                                                        blk_boundry
+                                                        offest
+                                                        reserved
+                                                        mask
+                                                    )
+                                            ],                                      # List of implemented keywords
+                    default_decimal     =>  [   qw  (   databussize
+                                                        addresssize
+                                                        block_range
+                                                        blk_boundary
+                                                    )
+                                            ],                                      # default decimal values
+                    default_hexadecimal =>  [   qw  (   address
+                                                        baseaddress
+                                                        offset
+                                                        reserved
+                                                        address
+                                                        mask
+                                                    )
+                                            ],                                      # default hexadecimal values
+                    default_binary      =>  [],
+                    indent              =>  5,                                      # Default indentation
+                    preamble            =>  ' ... ',                                # Default preamble
+                    indent_pattern      =>  '',                                     # Default indent pattern Whitespace
+                );
+
+my @keyword = qw(   addresssize baseaddress block_range databussize
+                );                                                                  # Recognized keywords
+my %testsequence;
+                                                                                    # access AHB command transfers via time stamp
+
+my $error_log       = 'error.log';                                                  # log    trace file reporting errors
+#################################################################################################################################
+#
+# main entry
+#
+#=================================================================================================================================
+my   ($s,$m,$h,$cday,$mon,$year,$wday,$yday,$isdst) = localtime;
+open (my $proh, ">$opts{progress_log}"  )   ||  die " Cannot create log $opts{progress_log}";   # Open Progress log file
+
+GetOptions  (   'input|in=s'            =>  \$opts{pseudo_seq},                     # Source    w/ read,write transaction definition
+                'debug|dbg=s@'          =>  \$opts{dbg},                            # Debug     Turning on debug feature on sub by sub
+                'dbg0'                  =>  \$opts{dbg0},                           #           Observe prior to debug feature
+                'dbg1'                  =>  \$opts{dbg1},                           #           Reveal unpacking and assignment, ll
+
+                'list|l=s@'             =>  \$opts{lst},                            # List      Subroutines
+                'flush'                 =>  \$opts{flush},                          # Flush     Test Sequence
+                'scan'                  =>  \$opts{scan},                           #           Scan sweep full address range
+                'diag'                  =>  \$opts{diag},                           #           Diagnostic selected address in range
+                'init'                  =>  \$opts{init},                           #           Initialization of IP block
+                'random|rand|r=s@'      =>  \$opts{rand},                           #           Random value sweep full address range
+                'fullrand'              =>  \$opts{fullrand},                       #           Random data random order
+
+                'specification|spec=s'  =>  \$opts{spec},                           # Input     test specification
+                'sequence|seq=s'        =>  \$opts{seq},                            # Output    test sequence
+
+                'defines=s'             =>  \%defines,
+                'output|o=s'            =>  \$opts{log},                            # Logfile   rename compile logfile
+                'help|h|?:s'            =>  \$opts{help},                           # Usage     Information
+                'man|m'                 =>  \&help2,                                # Manual    Information
+            );                                                                      # Command Line Processor
+
+
+printf "\n";                                                                        # Spacer
+DebugFeatures       (   \%opts      );
+DebugControl        (   \%opts      );                                              # Tuning debuggi
+debug               (   '','debug'  ) if debug('debug');                            # debug(subr=name,phase=set/debug/probe
+check_command_line  (   \%opts      ) if debug('check_command_line');               # Break the chicken and egg problem
+#${$opts_ref}{log}           //= ${$opts_ref}{default_compile_log};
+#${$opts_ref}{specification} //= 'testsequence.ini';
+#${$opts_ref}{test_sequence} //= 'basic_sequence.seq';
+$opts{log}           //= $opts{default_compile_log};
+$opts{specification} //= 'testsequence.ini';
+$opts{test_sequence} //= 'basic_sequence.seq';
+
+open (my $cmph, ">", $opts{log} )   ||  die " Cannot create log $opts{log}";        # Open Compile  log file
+$opts{compile_fh}   =   $cmph;
+
+if  (   defined $opts{flush}    ) {                                                 # coverage is a seperate analysis
+    flush_test_sequence (   \%opts
+                        ,   \%defines
+                        ,   \%testsequence  );
+    exit 0; # Main Exit
+} elsif (   defined $opts{help}     )  {                                            # Online    help
+    help    (   \%opts  );
+} else {
+    printf "\n";
+    printf " ... USAGE    :: %s %s\n",$opts{program}
+                                     ,$opts{version};
+    printf "     Type     :: %s --help for more information\n",$opts{program};
+    printf "\n";
+    exit 0;
+}
+
+#=================================================================================================================================
+# End of main()
+#
+# Subroutine implementation
+#
+#=================================================================================================================================
+
+
+sub   flush_test_sequence   {
+      my    (   $opts_ref                                                                                   # Input     Reference to %opts w/ commandline input
+            ,   $defs_ref
+            ,   $tseq_ref   )   = @_;
+
+      my $i = ${$opts_ref}{indent};
+      my $p = ${$opts_ref}{indent_pattern};                                                                 # ${$opts_ref}{padding_pattern}
+      my $n = subroutine('name');
+      my $file_name = ${$opts_ref}{specification};
+      my %spec;
+      my $lnr;
+
+      printf "%*s%s()++\n",$i,$p,$n if( debug($n));
+      if ( defined ${$opts_ref}{specification}  ){
+          if (-e $file_name) {
+            open ( my $spec,"<",$file_name) || die "Can't open $file_name : $!";
+            my @lines = <$spec>;
+            foreach my $line (@lines){
+                chomp $line; $lnr++;
+                #printf "%s\n", $line;
+                next if comment_line  ( $opts_ref, $line, $lnr );                                           # Handel comment lines and white space
+                parse_init ( $opts_ref, $line      , $lnr );
+                valid_init ( $opts_ref, $tseq_ref  , $lnr );                                           #
+                store_init ( $opts_ref, $tseq_ref  );
+            }#all lines
+            close( $spec );
+            compile_sequence( $opts_ref, $defs_ref, $tseq_ref );
+            writing_sequence( $opts_ref, $defs_ref );
+          } else {
+             warn "     Can't find Specification input file $file_name\n";
+          }#
+      }#if specification
+}#sub flush_test_sequence
+
+
+
+sub   comment_line {
+      my    (   $opts_ref
+            ,   $line
+            ,   $lnr        )   = @_;
+      my $i = ${$opts_ref}{indent};
+      my $p = ${$opts_ref}{indent_pattern};                                                                 # ${$opts_ref}{padding_pattern}
+      my $n = subroutine('name');
+      my $c = 0;
+      #if (  $line =~ m{^\s*[#]*}x
+      #   || $line =~ m{^$}x         ) {
+      $c += 1 if ( $line =~ m{^$}x );
+      $c += 1 if ( $line =~ m{^[#]}x );
+      if ($c >= 1) {
+         printf "%*s%s( line# %3s)\n",$i,$p,$n, $lnr if( debug($n));
+         printf "%4s %s\n",$lnr,$line  if( debug($n));
+         return 1;
+      } else {
+         return 0;
+      }# is comment line
+}#sub comment_line
+
+
+sub   compile_error {
+      my    ( $msg
+            , $opts_ref     )   = @_;
+      $opts_ref   //=   \%opts;
+      my $lfh       =   ${$opts_ref}{compile_fh};                       # compile log file handle
+      printf $lfh "",
+}#sub  compile_error
+
+
+sub   illegal_metric {
+      my    ( $msg
+            , $opts_ref     )   = @_;
+      $msg      //= 'illegal metric';
+      $opts_ref //= \%opts;
+
+      my $i       = ${$opts_ref}{indent};
+      my $i1      = 17;
+      my $p       = ${$opts_ref}{indent_pattern};  
+      my $lfh     =   ${$opts_ref}{compile_fh};                       # compile log file handle
+      printf $lfh "%*s %-*s %s %s\n",$i,$p
+                                    ,$i1,${$opts_ref}{keyword}
+                                        ,${$opts_ref}{metric}
+                                        ,$msg;
+      ${$opts_ref}{warnings}++;
+}#sub illegal_metric
+
+
+sub   parse_init {
+      my    (   $opts_ref                                               # command line reference
+            ,   $line                                                   # line
+            ,   $lnr        )   = @_;                                   # line-number
+      my $i = ${$opts_ref}{indent};
+      my $p = ${$opts_ref}{indent_pattern};                                                                 # ${$opts_ref}{padding_pattern}
+      my $n = subroutine('name');
+      ${$opts_ref}{warnings} = 0;
+      printf "%*s%s()\n",$i,$p,$n   if( debug($n));
+      printf "%4s %s\n",$lnr,$line  if( debug($n));
+      if ( $line =~  m{^  (\b\w+\b)                                     # <== Keyword
+                      \s+ ($DATAWORD)                                   # <== DATA and or ADDR
+                      \s? ($MEASURE)?                                   # increase readability w/ x-modifier
+                      }x                      )                         # regex
+      {
+          ${$opts_ref}{keyword}   =   $1;
+          ${$opts_ref}{keyword}   =~  s/[ ]//;                          # remove leading and trailing white space
+          ${$opts_ref}{dataword}  =   $2;
+          ${$opts_ref}{metric}    =   $3;
+
+          my $hexa  =   (   ${$opts_ref}{keyword}
+                        ~~  ${$opts_ref}{default_hexadecimal}   )
+                        ?   $TRUE   : $FALSE;
+
+          # ${$opts_ref}{default_base} depending on keyword ???
+
+          if ( defined ${$opts_ref}{dataword}  ) {
+                printf "%*s%s"  , $i,$p
+                                , ${$opts_ref}{dataword};
+                if (${$opts_ref}{dataword}  =~ m{   ($PREAMBLE)?        # optional  preamble <0x>
+                                                    ($NIBBLE+)          # mandatory unit
+                                                }x )
+                {
+                    ${$opts_ref}{value}     =   $2;
+                    ${$opts_ref}{value}     =~  s/_//;                  # Remove group separator
+                    ${$opts_ref}{value}     =   ($hexa)                 # MAX Vale === 0xFFFF_FFFF
+                                            ?   hex ${$opts_ref}{value} # Value is hexadec by default
+                                            :       ${$opts_ref}{value};# Value is decimal by default
+                    printf " = %s Success\n"  ,${$opts_ref}{value} if( debug($n));
+                }#extract value form string
+                else {
+                }# Fail extraction
+          } else {
+                # WARNING
+          }
+
+          # base is 1000 for common prefix and 1024 for binary prefix
+          #
+          if ( defined ${$opts_ref}{metric} ) {
+              ${$opts_ref}{metric}            =~  s/K/k/;               # allow user error for robustness
+              printf "%*s%s"  ,$i,$p
+                              ,${$opts_ref}{metric}   if( debug($n) );
+              if (${$opts_ref}{metric} =~ m{  ($PREFIX)?                # optional  prefix
+                                              ($UNITS)                  # mandatory unit
+                                            }x )
+              {
+                  ${$opts_ref}{unit}            =   $2;                 # it beats me that this is $3 vs $2
+                  ${$opts_ref}{prefix}          =   $1;
+                  ${$opts_ref}{magnitude}       =   (! defined ${$opts_ref}{prefix} ) ?  0
+                                                :   (${$opts_ref}{prefix} =~ m/Y/   ) ?  8  # Yotta is the largest supported prefix    1000^8
+                                                :   (${$opts_ref}{prefix} =~ m/Z/   ) ?  7  # Zetta is supported prefix                1000^7
+                                                :   (${$opts_ref}{prefix} =~ m/E/   ) ?  6  # Eta   is supported prefix                1000^6
+                                                :   (${$opts_ref}{prefix} =~ m/P/   ) ?  5  # Peta                                     1000^5
+                                                :   (${$opts_ref}{prefix} =~ m/T/   ) ?  4  # Tera                                     1000^4
+                                                :   (${$opts_ref}{prefix} =~ m/G/   ) ?  3  # Giga                                     1000^3
+                                                :   (${$opts_ref}{prefix} =~ m/M/   ) ?  2  # Mega                                     1000^2
+                                                :   (${$opts_ref}{prefix} =~ m/k/   ) ?  1  # kilo                                     1000^1
+                                                :   (${$opts_ref}{prefix} =~ m/m/   ) ? -1  # milli
+                                                :   (${$opts_ref}{prefix} =~ m/u/   ) ? -2  # micro
+                                                :   (${$opts_ref}{prefix} =~ m/n/   ) ? -3  # nano
+                                                :   (${$opts_ref}{prefix} =~ m/p/   ) ? -4  # pico
+                                                :   (${$opts_ref}{prefix} =~ m/f/   ) ? -5  # femto
+                                                :   (${$opts_ref}{prefix} =~ m/a/   ) ? -6  # atto  is supported prefix
+                                                :   (${$opts_ref}{prefix} =~ m/z/   ) ? -7  # zetto is supported prefix
+                                                :                                       -8; # yotto is the smalles supported prefix
+                  ${$opts_ref}{prefix}        //=   '';
+                  printf      " : %s %s =  %s\n"  ,${$opts_ref}{prefix}
+                                                  ,${$opts_ref}{unit}
+                                                  ,${$opts_ref}{magnitude}    if( debug($n));
+              } else {
+                   #WARNING SI unit not recognized
+              }
+          } else {
+             ${$opts_ref}{metric}            //=   '';
+             ${$opts_ref}{prefix}            //=   '';
+             ${$opts_ref}{unit}              //=   '';
+             ${$opts_ref}{magnitude}         //=   '';
+          }
+          printf "%*s%s %s %s+++++++\n" ,$i,$p
+                                        ,${$opts_ref}{keyword}
+                                        ,${$opts_ref}{dataword}
+                                        ,${$opts_ref}{metric}       if( debug($n));
+      }#value assignment
+      else {
+          printf "--\n" if( debug($n));
+          ${$opts_ref}{keyword}     =   $1;
+          ${$opts_ref}{value}       =   $2;
+          ${$opts_ref}{metric}      =   $3;
+          if ( $line =~  m{   ^(\w+)          # <== Keyword
+                          \s+ ($DATAWORD)     # <== ADDR or DATA
+                          \s+ ($MEASURE)?     # increase readability w/ x-modifier
+                          }x ) {
+                ${$opts_ref}{keyword}   =   $1;
+                ${$opts_ref}{value}     =   $3;
+                ${$opts_ref}{metric}    =   $4;
+          }#parse a second time
+      }# parse again
+}#sub parse_init
+
+
+sub   valid_init {
+      my    (   $opts_ref
+            ,   $tseq_ref
+            ,   $lnr        )   = @_;
+      my $i = ${$opts_ref}{indent};
+      my $p = ${$opts_ref}{indent_pattern};                                                                 # ${$opts_ref}{padding_pattern}
+      my $n = subroutine('name');
+      printf "%*s%s()\n",$i,$p,$n   if( debug($n));
+      my $warn = 0;
+      my %entry;
+      my $base;
+      #printf "%*s%-*s%*s %*s :: %s = %s\n", 5,''
+      #printf "%*s<%s>%*s %*s\n", 4,''
+      printf "%*s<%-*s>%*s %*s\n", 5,''
+                            ,12,${$opts_ref}{keyword}
+                            #,   ${$opts_ref}{keyword}
+                            ,14,${$opts_ref}{dataword}
+                            , 5,${$opts_ref}{metric};
+                           # ,   ${$opts_ref}{prefix}
+                           # ,   ${$opts_ref}{magnitude};
+      if ( ${$opts_ref}{keyword} ~~ @{${$opts_ref}{keywords}} ) {
+          if        (${$opts_ref}{keyword} =~ m/addresssize/ ){
+                if  (${$opts_ref}{metric}  ~~ [ qw (bit byte) ]) {
+                } else {
+                    illegal_metric();
+                    printf "%*s%-*s illegal metric\n", 5,'',17,${$opts_ref}{metric};
+                }# right metric
+          } elsif   (${$opts_ref}{keyword} =~ m/addressspace/ ){
+                if  (${$opts_ref}{unit}  ~~ [ qw (bit byte) ]) {
+                    if  (${$opts_ref}{prefix} ~~ [qw ( E P T G M k ) ] ) {
+                        printf  "%*s%*s prefix\n",5,'',17,${$opts_ref}{prefix};
+                    } else {
+                        printf  "%*s%*s illegal prefix\n",5,'',17,${$opts_ref}{prefix};
+                    }
+                    # prefered byte
+                    ${$opts_ref}{value}  >>=  3 if  (${$opts_ref}{metric} =~ m/bit/);
+
+                    if ( ${$opts_ref}{value} == 0) {
+                    } else {
+                    }#
+                } else {
+                    printf "%*s%-*s illegal metric <%s><%s>\n", 5,'',17 ,${$opts_ref}{metric}
+                                                                    ,${$opts_ref}{unit}
+                                                                    ,${$opts_ref}{prefix};
+                }# right metric
+          } elsif   (${$opts_ref}{keyword} =~ m/baseaddress/ ){
+                if  (${$opts_ref}{metric}  !~ m// ) {               # Addresses have no metric
+                    if  (${$opts_ref}{prefix} !~ m// ) {
+                        if (    ${$opts_ref}{value} >= $LARBOUNDARY
+                           &&   ${$opts_ref}{value} <= $UARBOUNDARY ) {
+                            printf "%*s%*s :: %s =" , $i,$p
+                                                    , -13, ${$opts_ref}{keyword}
+                                                    , ${$opts_ref}{dataword};
+                            printf " %s\n",           ${$opts_ref}{value};
+                        } else {
+                            $warn +=1;
+                            printf "%*s%*s %s\n",$i,$p,${$opts_ref}{keyword},'out of range';
+                        }
+                        if (    ${$opts_ref}{value}  % $WORDSIZE )   {
+                            printf "%*s%*s %s :: %s\n", $i,$p,
+                                                , -13, ${$opts_ref}{keyword}
+                                                , 'not WORD aligned'
+                                                , ${$opts_ref}{value} % $WORDSIZE;
+                            $warn +=1;
+                        }
+                        if (    ${$opts_ref}{value}  % $BOUNDARY_1K )   {
+                            printf "%*s%*s %s :: %s\n", $i,$p,
+                                                , -13, ${$opts_ref}{keyword}
+                                                , 'not 1K boundary aligned'
+                                                , ${$opts_ref}{value} % $BOUNDARY_1K;
+                            $warn +=1;
+                        }
+                        if (    ${$opts_ref}{value}  % $BOUNDARY_4K )   {
+                            printf "%*s%*s %s :: %s\n", $i,$p,
+                                                , -13, ${$opts_ref}{keyword}
+                                                , 'not 4K boundary aligned'
+                                                , ${$opts_ref}{value} % $BOUNDARY_4K;
+                            $warn +=1;
+                        }
+                    } else {
+                        printf  "%*s<%*s> illegal prefix\n",5,'',17,${$opts_ref}{prefix};
+                        $warn +=1;
+                    }
+                } else {
+                    printf "%*s<%-*s> illegal metric\n", 5,'',17,${$opts_ref}{metric};
+                    $warn +=1;
+                }# right metric, prefered byt
+                ${$opts_ref}{basevalue} =  ${$opts_ref}{value};
+                ${$opts_ref}{baseunit}  =  'byte';                              # Addresses are byte addresses
+          } elsif   (${$opts_ref}{keyword} =~ m/block_range/ ){
+                if  (${$opts_ref}{unit}  ~~ [ qw (bit byte) ]) {
+                    if  (${$opts_ref}{prefix} ~~ [qw ( E P T G M k ) ] ) {
+                        $base = (${$opts_ref}{default_base} =~ m/binary/)?1024:1000;
+                        my $scale = $base**${$opts_ref}{magnitude};
+                        printf "%*s%*s %s\n",$i,$p,-17,'base'       ,$base;
+                        printf "%*s%*s %s\n",$i,$p,-17,'prefix'     ,${$opts_ref}{prefix};
+                        printf "%*s%*s %s\n",$i,$p,-17,'magnitude'  ,${$opts_ref}{magnitude};
+                        printf "%*s%*s %s\n",$i,$p,-17,'scale2base' ,$scale;
+                        ${$opts_ref}{basevalue} = ${$opts_ref}{value} * $scale;
+                        ${$opts_ref}{baseunit}  = 'byte';
+                    } else {
+                        printf "%*s%*s illegal prefix\n",5,'',17,${$opts_ref}{prefix};
+                        $warn += 1;
+                    }# pref
+                    my $unitscale = (${$opts_ref}{metric} =~ m/byte/) ? 1 : 8;  # Prefered unit
+                    ${$opts_ref}{basevalue}    /= $unitscale;
+                    ${$opts_ref}{metric}    = 'byte' if( ${$opts_ref}{metric} =~ m/bit/ );
+                } else {
+                    printf "%*s%-*s illegal metric\n", 5,'',17,${$opts_ref}{metric};
+                    $warn += 1;
+                }# right metric
+          } elsif   (${$opts_ref}{keyword} =~ m/databussize/ ){
+                if  (${$opts_ref}{metric}  ~~ [ qw (bit byte) ]) {
+                    if  (   ${$opts_ref}{prefix} ~~ [qw ( E P T G M k ) ]
+                        ||  ${$opts_ref}{prefix} !~ m// ) {
+                        $base = (${$opts_ref}{default_base} =~ m/binary/)?1024:1000;
+                        my $scale = $base**${$opts_ref}{magnitude};
+                        printf "%*s%*s %s\n",$i,$p,-17,'base'       ,$base;
+                        printf "%*s%*s %s\n",$i,$p,-17,'prefix'     ,${$opts_ref}{prefix};
+                        printf "%*s%*s %s\n",$i,$p,-17,'magnitude'  ,${$opts_ref}{magnitude};
+                        printf "%*s%*s %s\n",$i,$p,-17,'scale2base' ,$scale;
+                        ${$opts_ref}{basevalue} = ${$opts_ref}{value} * $scale;
+                        ${$opts_ref}{baseunit}  = 'byte';
+                    } else {
+                        printf "%*s%*s illegal prefix\n",5,'',17,${$opts_ref}{prefix};
+                        $warn += 1;
+                    }# pref
+                    my $unitscale = (${$opts_ref}{metric} =~ m/byte/) ? 1 : 8;  # Prefered unit
+                    ${$opts_ref}{basevalue}    /= $unitscale;
+                    ${$opts_ref}{metric}    = 'byte' if( ${$opts_ref}{metric} =~ m/bit/ );
+                } else {
+                    printf "%*s%-*s illegal metric\n", 5,'',17,${$opts_ref}{metric};
+                }# right metric
+          } elsif   (${$opts_ref}{keyword} =~ m/wordaligned/ ){
+                if  (${$opts_ref}{metric}  ~~ [ qw (bit byte) ]) {
+                    # preferable byte
+                } else {
+                    printf "%*s%-*s illegal metric\n", 5,'',17,${$opts_ref}{metric};
+                }# right metric
+          } elsif   (${$opts_ref}{keyword} =~ m/blk_boundry/ ){
+                if  (${$opts_ref}{metric}  ~~ [ qw (bit byte) ]) {
+                    #preferable byte
+                } else {
+                    printf "%*s%-*s illegal metric\n", 5,'',17,${$opts_ref}{metric};
+                }# right metric
+          } elsif   (${$opts_ref}{keyword} =~ m/reserved/ ){
+                if  (${$opts_ref}{metric}  !~ m// ) {               # Addresses have no metric
+                } else {
+                    printf "%*s<%-*s> illegal metric\n", 5,'',17,${$opts_ref}{metric};
+                    $warn +=1;
+                }
+                #if () {
+                #} else {
+                #}
+                #wordaligned byte aligned 2,4 bytes
+          } elsif   (${$opts_ref}{keyword} =~ m/mask/ ){
+          }# check keyword
+      } else {
+          printf "%*s%-*s unknown keyword\n", 5,'',17,${$opts_ref}{keyword};
+          $warn += 1;
+      }# unknown keyword
+      ${$opts_ref}{valid}     = ($warn > 0) ? 'invalid' : 'valid';
+}#sub valid_init
+
+
+sub   store_init {
+      my    (   $opts_ref
+            ,   $tseq_ref   ) = @_;
+      my $i = ${$opts_ref}{indent};
+      my $p = ${$opts_ref}{indent_pattern};                                                                 # ${$opts_ref}{padding_pattern}
+      my $n = subroutine('name');
+      printf "%*s%s()\n",$i,$p,$n   if( debug($n));
+      my %entry;
+      my $keyword           =   ${$opts_ref}{keyword};                                                      # reference of object aka base_address
+      $entry{valid}         =   ${$opts_ref}{valid};                                                        # valid vs invalid
+      $entry{keyword}       =   ${$opts_ref}{keyword};                                                      # object to be initialized
+      $entry{basevalue}     =   ${$opts_ref}{basevalue};                                                    # value w/out prefix and preferred unit
+      $entry{baseunit}      =   ${$opts_ref}{baseunit};                                                     # preferred unit
+
+      $entry{value}         =   ${$opts_ref}{value};
+      $entry{dataword}      =   ${$opts_ref}{dataword};                                                     # raw data (formated human readable)
+      $entry{metric}        =   ${$opts_ref}{metric};                                                       # raw composed prefix & unit
+      $entry{unit}          =   ${$opts_ref}{unit};
+      $entry{comment}       =   ${$opts_ref}{comment};
+      my $s = keys %entry;
+      my $t = 'Size of Entry';
+      printf "%*s%s = %s entries\n",$i,$p,$t,$s if( debug($n));
+      # overwriting only if valid
+      ${$tseq_ref}{$keyword}  = \%entry if ($entry{valid} !~ m/invalid/ );
+}#sub store_init
+
+
+sub   compile_sequence{
+      my    (   $opts_ref
+            ,   $defs_ref
+            ,   $tseq_ref       )   = @_;
+      my $i = ${$opts_ref}{indent};
+      my $p = ${$opts_ref}{indent_pattern};                                                                 # ${$opts_ref}{padding_pattern}
+      my $n = subroutine('name');
+      printf "%*s%s()\n",$i,$p,$n if( debug($n));
+      my $s = keys %{$tseq_ref};
+      my $t = 'Size of Initialization';
+      printf "%*s%s = %s entries\n",$i,$p,$t,$s if( debug($n));
+      if  (   defined $opts{scan}    ) {                                                                    # coverage is a seperate analysis
+          scan_sequence (   $opts_ref, $tseq_ref    );
+      }
+}#sub compile_sequence
+
+
+sub   scan_sequence{
+      my    (   $opts_ref
+            ,   $tseq_ref       )   = @_;
+      my $i = ${$opts_ref}{indent};
+      my $p = ${$opts_ref}{indent_pattern};                                                                 # ${$opts_ref}{padding_pattern}
+      my $n = subroutine('name');
+      my $c = 0;
+      my $A = [ qw (baseaddress block_range databussize ) ];
+      my $B = [ keys %{$tseq_ref} ];
+
+      printf "%*s%s()\n",$i,$p,$n       if( debug($n) );
+      #foreach my $item ( keys %{$tseq_ref} ) {
+      foreach my $item ( @{$B} ) {
+          $c++;
+          printf "%*s%3s %*s :: %*s\n"  ,$i,$p,$c
+                                        ,13,$item
+                                        ,12,${$tseq_ref}{$item}{basevalue}
+                                        if( debug($n) );
+      }#for
+      $c =  0;  # Reset counter
+      if ( is_subset( $A, $B) ){                                                                            # A is subset of B
+          printf "%*s%s\n"  ,$i,$p,'All conditions meet for scan_sequence()';
+          my $base   = ${$tseq_ref}{baseaddress}{basevalue};          # [byte]
+          my $step   = ${$tseq_ref}{databussize}{basevalue};          # [byte]
+          my $range  = ${$tseq_ref}{block_range}{basevalue};          # [byte]
+          my $cmd    = qw ( WRITE );
+          my $boundry= $base + $range;
+          my $data   = impulse  ( $step );
+          for ( my $addr = $base; $addr < $boundry; $addr += $step) {
+              my $line = sprintf "%*s %08x %08x", 10,$cmd, $addr, $data;
+              $c++;
+              #printf "%4s"  ,   $c  if ( debug($n) );
+              #printf "%s\n" ,$line  if ( debug($n) );
+              printf $proh "%4s%s\n", $c,$line;
+              push @{${$opts_ref}{sequence}}, $line;
+              ${$tseq_ref}{sequence}{$addr}{addr}   = $addr;
+              ${$tseq_ref}{sequence}{$addr}{data}   = $data;
+          }#
+      }# if all informatio complete
+}#sub
+
+
+sub   is_subset {                                                                                           # Set A is subset of Set B
+      my    ( $A                                                                                            # Set A is a reference
+            , $B    ) = @_;                                                                                 # Set B is a reference
+      my $not_part = 0;
+      my $found_it = 0;
+      foreach my $elementA ( @{$A} ) {
+          $found_it = 0;
+          foreach my $elementB ( @{$B} ) {
+              $found_it += ($elementA =~ m/$elementB/) ? $TRUE : $FALSE;
+          }# test if element a is part of Set B
+          $not_part += ($found_it) ? $FALSE : $TRUE;
+      }# test if ALL elements of Set A are part of Set B
+      return ($not_part)? $FALSE : $TRUE;
+}#sub is_subset
+
+
+sub   impulse {                                                                                             # generating vectors
+      my (  $size
+         ,  $unit   )   = @_;   # supports bit and byte
+      $unit //= 'byte';         # default and prefered value
+      my $response  = 0;
+      my $range     = ($unit =~ m/bit/) ? $size : $size<<3;
+      for ( my $i = 0; $i < $range; $i++) {
+          $response <<= 1;
+          $response  += 1;
+      }
+      return $response;
+}#sub impulse
+
+
+sub   writing_sequence{
+      my    (   $opts_ref
+            ,   $defs_ref       )   = @_;
+      my $i = ${$opts_ref}{indent};
+      my $p = ${$opts_ref}{indent_pattern};                                                                 # ${$opts_ref}{padding_pattern}
+      my $n = subroutine('name');
+      printf "%*s%s()\n",$i,$p,$n if( debug($n));
+      ${$opts_ref}{seq} //= 'basic_test.seq';
+      printf "%*s%s : %s\n", $i,$p, 'TestSequenceName', ${$opts_ref}{seq};
+      open(my $seqh,'>:encoding(UTF-8)',${$opts_ref}{seq});
+      foreach my $line ( @{${$opts_ref}{sequence}} ) {
+         printf $seqh "%s\n",$line;
+      }#
+      close(  $seqh );
+}#sub writing_sequence
+
+sub   check_command_line{
+      my    (   $opts_ref                                                                                   # Input     Reference to %opts w/ commandline input
+            ,   $defs_ref       )   = @_;
+
+      my $i = ${$opts_ref}{indent};
+      my $p = ${$opts_ref}{indent_pattern};                                                                 # ${$opts_ref}{padding_pattern}
+
+      printf "%*s%s()\n",$i,$p,subroutine('name') if( defined ${$opts_ref}{dbg} );
+
+      if ( defined ${$opts_ref}{subs}    ) {
+          printf "%*s%s :: %s\n",$i,$p,'Subroutines','list';
+          foreach my $entry (@{${$opts_ref}{subs}}   ){
+              printf "%*s%s\n",$i+4,$p,$entry;
+          }#foreach
+      }#if
+
+      if ( defined ${$opts_ref}{keywords}    ) {
+          printf "%*s%s :: %s\n",$i,$p,'Keywords','list';
+          foreach my $entry (@{${$opts_ref}{keywords}}   ){
+              printf "%*s%s\n",$i+4,$p,$entry;
+          }#foreach
+      }#if
+}#sub check_command_line
+
+
+sub   help{
+      my    (   $opts_ref       )   = @_;                                                                   # Input     Reference to %opts
+
+      printf "\n";
+      printf "     SYNOPSYS :: Test Sequence Generator %s\n",${$opts_ref}{program};
+      printf "\n";
+      printf " ... USAGE    :: %s %s\n",${$opts_ref}{program}
+                                       ,${$opts_ref}{version};
+      printf "\n";
+      printf "     %*s     --input=<FILE>.ini\n",12,${$opts_ref}{program};
+      printf "     %*s     --input=<FILE>.ini --output=<FILE>.seq\n",12,'';
+      printf "\n";
+      printf "\n";
+      printf "     Debugging ::\n";
+      printf "\n";
+      printf "     <%s>     --input=<FILE> --output=<FILE> | & tee ./log.out\n",${$opts_ref}{program};
+      printf "                  --help=debug\n";
+      printf "                  --debug=<SUB>   make any subroutine observable\n";
+      printf "\n";
+      printf "                    Debugging debugging features :: \n";
+      printf "                  --dbg0          make debug features observable high level\n";
+      printf "                  --dbg1          make debug features observable low  level\n";
+      printf "\n";
+      printf "\n";
+      printf "     Author    %s\n",${$opts_ref}{owner};
+      printf "     Synpatics Confidential Tool                   Copyright, San Jose 2018\n";
+      printf "\n";
+      exit(0);
+}#sub help
+
+
+sub   subroutine {
+      my ($r)    = ( @_, 'name');                                                   # full, namespace, name
+      my ($space,$name) = split(/::/, (caller(1))[3]);
+      return    ( $r =~ m/full/ ) ?  (caller(1))[3]                                 #           return package::subname
+              : ( $r =~ m/space/) ?  $space                                         #           return subroutin name
+              : ( $r =~ m/name/ ) ?  $name                                          #           return namespace/package
+              : $name;                                                              # default   return subroutin name
+}#sub subroutine
+
+sub   DebugFeatures{
+      my    (   $opts_ref   )   = @_;
+      my $msg = 'Debug feature dgb0 ';
+      printf "%*s%s%s%s\n",5,'',$msg,(defined $opts{dbg0})?' ':'un','defined';      # Showing that the DebugControl is now observable
+}#sub DebugFeatures
+
+sub   DebugControl {
+      my    (   $opts_ref   )   =   @_;                                             # Input     Command Line Options
+                                                                                    # Output    Logging Control of all log files
+      my $i = ${$opts_ref}{indent};
+      my $p = '';                                                                   # ${$opts_ref}{padding_pattern}
+      my @ulist;                                                                    # unpacked list
+
+      printf "%*s%s()\n",$i,$p,subroutine('name')   if( defined ${$opts_ref}{dbg0} );
+
+      if ( defined ${$opts_ref}{dbg}    ) {
+          printf "%*s%s :: %s\n",$i,$p
+                                ,'DebugOptions'
+                                ,'unpacking'        if( defined ${$opts_ref}{dbg0} );
+          foreach my $entry (@{${$opts_ref}{dbg}}   ){
+              printf "%*s%s\n",$i+4,$p,$entry       if( defined ${$opts_ref}{dbg1} );
+              my @unpacked = split /,/ ,$entry;
+              foreach my $e (@unpacked) {
+                  printf "%*s%s +\n",$i+4,$p,$e     if( defined ${$opts_ref}{dbg1} );
+                  push (@ulist, $e);
+              }#unpack
+          }#each entry
+          ${$opts_ref}{dbg} = \@ulist;
+          printf "%*s%s :: %s :: %s\n"  ,$i,$p
+                                        ,'DebugOptions'
+                                        ,'self check'
+                                        , $#ulist+1 if( defined ${$opts_ref}{dbg1} );
+          foreach my $entry ( @ulist ){
+              #printf "%*s%s\n",$i+4,$p,$entry;
+              if ($entry =~ m/all/ ) {
+                foreach my $e ( @{${$opts_ref}{subs}} ){
+                    printf "%*s%s::%s\n",5,''
+                                        ,'set',$e   if( defined ${$opts_ref}{dbg1} );;
+                    debug($e,'set',${$opts_ref}{dbg1});
+                }#foreach
+              }#
+              if ( $entry ~~ @{${$opts_ref}{subs}} ) {
+                    printf "%*s%s::%s\n",5,''
+                                        ,'set'
+                                        ,$entry     if( defined ${$opts_ref}{dbg1} );
+                    debug($entry,'set',${$opts_ref}{dbg1});
+              }
+          }#foreach
+      }#if
+}#sub DebugControl
+
+
+sub   debug {
+      my    (   $name
+            ,   $phase
+            ,   $dbg    )   =   @_;
+
+      $phase    //= 'probe';            # default setting !defined
+      $dbg      //= 0;
+      state %holding;                   # holding all debug setting
+      my $size = keys %holding;
+
+      printf "     debug(phase=%s, name=%s)\n",$phase, $name if $dbg;              # Need to think how to debug subroutine debug
+      if      ( $phase =~ m/set/    ) { # setup debugging feature
+         #printf "%*sholding hash has %s entries\n",5,'',$size;
+         #printf "%*s%s setting\n",5+4,'',$name;
+         $holding{$name} = 1; $size = keys %holding;
+         #printf "%*sHolding hash is %s\n",5,'', $size;
+      } elsif ( $phase =~ m/probe/  ) { # probe debugging feature
+         if ( defined $holding{$name} ) {
+             #printf "%*s%s::%s\n",5+4,'',$name,$holding{$name};
+             return $holding{$name};
+         } else {
+             return 0;
+         }
+      } elsif ( $phase =~ m/debug/  ) {
+         printf "%*s%s :: debugging\n",5,'',subroutine('name');
+         foreach my $e ( keys %holding) {
+             printf "%*s%s::%s\n",5+4,'', $holding{$e}, $e;
+         }#foreach
+      } else  {
+      }#default
+
+}#sub debug#

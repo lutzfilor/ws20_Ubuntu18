@@ -1,0 +1,3536 @@
+ ================================================================================
+ Tracefile   : uvm_test_top.top_env_i.ahbfab_env_i.mvc_ahb_mon_8_env_i.logger_handle_ahb
+               /mnt/ussjf-asic2/workarea1/lkamired/niue1z1_tmp/lkamired/wa_performance/SIM/top/ahbfab_cov.m33i_ram0/uvm_test_top.top_env_i.ahbfab_env_i.mvc_ahb_mon_8_env_i_ahb_beat.log
+ Synopsis    : Transfer Analysis, spanning single transfers
+ Logfile     : reports/ahbfab_cov.m33i_ram0/mvc_ahb_mon_8/transfer.log
+ Script      : parse_ahb_tracker.pl 1.04.01
+ Date        : 2018-09-22
+ Time        :   17:23:56
+ Cycle       :         40 ns
+ Frequency   :      25.00 MHz
+ ================================================================================
+         Transaction:          1
+         IdleTransfer          0 ns Back2Back
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                800 ns
+                                                   complete 214780 ns
+                                                   assert   213980 ns
+         BusyTransfer          0 ns
+
+         Transaction:          2
+         IdleTransfer        440 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                640 ns
+                                                   complete 215900 ns
+                                                   assert   215260 ns
+         BusyTransfer          0 ns
+
+         Transaction:          3
+         IdleTransfer        800 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                760 ns
+                                                   complete 217500 ns
+                                                   assert   216740 ns
+         BusyTransfer          0 ns
+
+         Transaction:          4
+         IdleTransfer        440 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                640 ns
+                                                   complete 218620 ns
+                                                   assert   217980 ns
+         BusyTransfer          0 ns
+
+         Transaction:          5
+         IdleTransfer        600 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                640 ns
+                                                   complete 219900 ns
+                                                   assert   219260 ns
+         BusyTransfer          0 ns
+
+         Transaction:          6
+         IdleTransfer        440 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                640 ns
+                                                   complete 221020 ns
+                                                   assert   220380 ns
+         BusyTransfer          0 ns
+
+         Transaction:          7
+         IdleTransfer        400 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                760 ns
+                                                   complete 222220 ns
+                                                   assert   221460 ns
+         BusyTransfer          0 ns
+
+         Transaction:          8
+         IdleTransfer        440 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                720 ns
+                                                   complete 223420 ns
+                                                   assert   222700 ns
+         BusyTransfer          0 ns
+
+         Transaction:          9
+         IdleTransfer        400 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                760 ns
+                                                   complete 224620 ns
+                                                   assert   223860 ns
+         BusyTransfer          0 ns
+
+         Transaction:         10
+         IdleTransfer        440 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                640 ns
+                                                   complete 225740 ns
+                                                   assert   225100 ns
+         BusyTransfer          0 ns
+
+         Transaction:         11
+         IdleTransfer        400 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                760 ns
+                                                   complete 226940 ns
+                                                   assert   226180 ns
+         BusyTransfer          0 ns
+
+         Transaction:         12
+         IdleTransfer        440 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                640 ns
+                                                   complete 228060 ns
+                                                   assert   227420 ns
+         BusyTransfer          0 ns
+
+         Transaction:         13
+         IdleTransfer      10400 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                760 ns
+                                                   complete 239260 ns
+                                                   assert   238500 ns
+         BusyTransfer          0 ns
+
+         Transaction:         14
+         IdleTransfer        440 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                720 ns
+                                                   complete 240460 ns
+                                                   assert   239740 ns
+         BusyTransfer          0 ns
+
+         Transaction:         15
+         IdleTransfer      50400 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                760 ns
+                                                   complete 291660 ns
+                                                   assert   290900 ns
+         BusyTransfer          0 ns
+
+         Transaction:         16
+         IdleTransfer        440 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                640 ns
+                                                   complete 292780 ns
+                                                   assert   292140 ns
+         BusyTransfer          0 ns
+
+         Transaction:         17
+         IdleTransfer        600 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                720 ns
+                                                   complete 294140 ns
+                                                   assert   293420 ns
+         BusyTransfer          0 ns
+
+         Transaction:         18
+         IdleTransfer        440 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                640 ns
+                                                   complete 295260 ns
+                                                   assert   294620 ns
+         BusyTransfer          0 ns
+
+         Transaction:         19
+         IdleTransfer        600 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                720 ns
+                                                   complete 296620 ns
+                                                   assert   295900 ns
+         BusyTransfer          0 ns
+
+         Transaction:         20
+         IdleTransfer        440 ns IDLE
+         AddrTransfer         40 ns Transfer visible
+                             beat     1 ::  1/ 1                361 ns
+                                                   complete 297461 ns
+                                                   assert   297100 ns
+         BusyTransfer          0 ns
+
+         Transaction:         21
+         IdleTransfer        455 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 298141 ns
+                                                   assert   297921 ns
+         BusyTransfer          0 ns
+
+         Transaction:         22
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 298461 ns
+                                                   assert   298196 ns
+         BusyTransfer          0 ns
+
+         Transaction:         23
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 298741 ns
+                                                   assert   298516 ns
+         BusyTransfer          0 ns
+
+         Transaction:         24
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 299031 ns
+                                                   assert   298801 ns
+         BusyTransfer          0 ns
+
+         Transaction:         25
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 299341 ns
+                                                   assert   299091 ns
+         BusyTransfer          0 ns
+
+         Transaction:         26
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                950 ns
+                                                   complete 300351 ns
+                                                   assert   299401 ns
+         BusyTransfer          0 ns
+
+         Transaction:         27
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                865 ns
+                                                   complete 301271 ns
+                                                   assert   300406 ns
+         BusyTransfer          0 ns
+
+         Transaction:         28
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                900 ns
+                                                   complete 302231 ns
+                                                   assert   301331 ns
+         BusyTransfer          0 ns
+
+         Transaction:         29
+         IdleTransfer        450 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                865 ns
+                                                   complete 303551 ns
+                                                   assert   302686 ns
+         BusyTransfer          0 ns
+
+         Transaction:         30
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                900 ns
+                                                   complete 304511 ns
+                                                   assert   303611 ns
+         BusyTransfer          0 ns
+
+         Transaction:         31
+         IdleTransfer        250 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                865 ns
+                                                   complete 305631 ns
+                                                   assert   304766 ns
+         BusyTransfer          0 ns
+
+         Transaction:         32
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                940 ns
+                                                   complete 306631 ns
+                                                   assert   305691 ns
+         BusyTransfer          0 ns
+
+         Transaction:         33
+         IdleTransfer        555 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                920 ns
+                                                   complete 308111 ns
+                                                   assert   307191 ns
+         BusyTransfer          0 ns
+
+         Transaction:         34
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                940 ns
+                                                   complete 309111 ns
+                                                   assert   308171 ns
+         BusyTransfer          0 ns
+
+         Transaction:         35
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                900 ns
+                                                   complete 310071 ns
+                                                   assert   309171 ns
+         BusyTransfer          0 ns
+
+         Transaction:         36
+         IdleTransfer      10055 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                900 ns
+                                                   complete 321031 ns
+                                                   assert   320131 ns
+         BusyTransfer          0 ns
+
+         Transaction:         37
+         IdleTransfer        550 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                925 ns
+                                                   complete 322511 ns
+                                                   assert   321586 ns
+         BusyTransfer          0 ns
+
+         Transaction:         38
+         IdleTransfer        550 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                885 ns
+                                                   complete 323951 ns
+                                                   assert   323066 ns
+         BusyTransfer          0 ns
+
+         Transaction:         39
+         IdleTransfer        550 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                925 ns
+                                                   complete 325431 ns
+                                                   assert   324506 ns
+         BusyTransfer          0 ns
+
+         Transaction:         40
+         IdleTransfer        550 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                925 ns
+                                                   complete 326911 ns
+                                                   assert   325986 ns
+         BusyTransfer          0 ns
+
+         Transaction:         41
+         IdleTransfer        550 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                885 ns
+                                                   complete 328351 ns
+                                                   assert   327466 ns
+         BusyTransfer          0 ns
+
+         Transaction:         42
+         IdleTransfer        550 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                885 ns
+                                                   complete 329791 ns
+                                                   assert   328906 ns
+         BusyTransfer          0 ns
+
+         Transaction:         43
+         IdleTransfer        550 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                885 ns
+                                                   complete 331231 ns
+                                                   assert   330346 ns
+         BusyTransfer          0 ns
+
+         Transaction:         44
+         IdleTransfer        550 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                885 ns
+                                                   complete 332671 ns
+                                                   assert   331786 ns
+         BusyTransfer          0 ns
+
+         Transaction:         45
+         IdleTransfer        550 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                925 ns
+                                                   complete 334151 ns
+                                                   assert   333226 ns
+         BusyTransfer          0 ns
+
+         Transaction:         46
+         IdleTransfer        550 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                885 ns
+                                                   complete 335591 ns
+                                                   assert   334706 ns
+         BusyTransfer          0 ns
+
+         Transaction:         47
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                905 ns
+                                                   complete 336551 ns
+                                                   assert   335646 ns
+         BusyTransfer          0 ns
+
+         Transaction:         48
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                980 ns
+                                                   complete 337591 ns
+                                                   assert   336611 ns
+         BusyTransfer          0 ns
+
+         Transaction:         49
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                865 ns
+                                                   complete 338511 ns
+                                                   assert   337646 ns
+         BusyTransfer          0 ns
+
+         Transaction:         50
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                900 ns
+                                                   complete 339471 ns
+                                                   assert   338571 ns
+         BusyTransfer          0 ns
+
+         Transaction:         51
+         IdleTransfer        255 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                940 ns
+                                                   complete 340671 ns
+                                                   assert   339731 ns
+         BusyTransfer          0 ns
+
+         Transaction:         52
+         IdleTransfer        450 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                865 ns
+                                                   complete 341991 ns
+                                                   assert   341126 ns
+         BusyTransfer          0 ns
+
+         Transaction:         53
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                785 ns
+                                                   complete 342836 ns
+                                                   assert   342051 ns
+         BusyTransfer          0 ns
+
+         Transaction:         54
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                705 ns
+                                                   complete 343596 ns
+                                                   assert   342891 ns
+         BusyTransfer          0 ns
+
+         Transaction:         55
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                520 ns
+                                                   complete 344176 ns
+                                                   assert   343656 ns
+         BusyTransfer          0 ns
+
+         Transaction:         56
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                345 ns
+                                                   complete 344576 ns
+                                                   assert   344231 ns
+         BusyTransfer          0 ns
+
+         Transaction:         57
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                345 ns
+                                                   complete 344976 ns
+                                                   assert   344631 ns
+         BusyTransfer          0 ns
+
+         Transaction:         58
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 345336 ns
+                                                   assert   345036 ns
+         BusyTransfer          0 ns
+
+         Transaction:         59
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                310 ns
+                                                   complete 345706 ns
+                                                   assert   345396 ns
+         BusyTransfer          0 ns
+
+         Transaction:         60
+         IdleTransfer         80 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                345 ns
+                                                   complete 346136 ns
+                                                   assert   345791 ns
+         BusyTransfer          0 ns
+
+         Transaction:         61
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 346496 ns
+                                                   assert   346191 ns
+         BusyTransfer          0 ns
+
+         Transaction:         62
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 346856 ns
+                                                   assert   346556 ns
+         BusyTransfer          0 ns
+
+         Transaction:         63
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                340 ns
+                                                   complete 347256 ns
+                                                   assert   346916 ns
+         BusyTransfer          0 ns
+
+         Transaction:         64
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                345 ns
+                                                   complete 347656 ns
+                                                   assert   347311 ns
+         BusyTransfer          0 ns
+
+         Transaction:         65
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                345 ns
+                                                   complete 348056 ns
+                                                   assert   347711 ns
+         BusyTransfer          0 ns
+
+         Transaction:         66
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                340 ns
+                                                   complete 348456 ns
+                                                   assert   348116 ns
+         BusyTransfer          0 ns
+
+         Transaction:         67
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 348816 ns
+                                                   assert   348516 ns
+         BusyTransfer          0 ns
+
+         Transaction:         68
+         IdleTransfer        195 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                360 ns
+                                                   complete 349376 ns
+                                                   assert   349016 ns
+         BusyTransfer          0 ns
+
+         Transaction:         69
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                310 ns
+                                                   complete 349746 ns
+                                                   assert   349436 ns
+         BusyTransfer          0 ns
+
+         Transaction:         70
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                330 ns
+                                                   complete 350136 ns
+                                                   assert   349806 ns
+         BusyTransfer          0 ns
+
+         Transaction:         71
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                340 ns
+                                                   complete 350536 ns
+                                                   assert   350196 ns
+         BusyTransfer          0 ns
+
+         Transaction:         72
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                340 ns
+                                                   complete 350936 ns
+                                                   assert   350596 ns
+         BusyTransfer          0 ns
+
+         Transaction:         73
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 351296 ns
+                                                   assert   350996 ns
+         BusyTransfer          0 ns
+
+         Transaction:         74
+         IdleTransfer       9695 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 361296 ns
+                                                   assert   360996 ns
+         BusyTransfer          0 ns
+
+         Transaction:         75
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                310 ns
+                                                   complete 361666 ns
+                                                   assert   361356 ns
+         BusyTransfer          0 ns
+
+         Transaction:         76
+         IdleTransfer        180 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                325 ns
+                                                   complete 362176 ns
+                                                   assert   361851 ns
+         BusyTransfer          0 ns
+
+         Transaction:         77
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                345 ns
+                                                   complete 362576 ns
+                                                   assert   362231 ns
+         BusyTransfer          0 ns
+
+         Transaction:         78
+         IdleTransfer        150 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                325 ns
+                                                   complete 363056 ns
+                                                   assert   362731 ns
+         BusyTransfer          0 ns
+
+         Transaction:         79
+         IdleTransfer         70 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                335 ns
+                                                   complete 363466 ns
+                                                   assert   363131 ns
+         BusyTransfer          0 ns
+
+         Transaction:         80
+         IdleTransfer        140 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                335 ns
+                                                   complete 363946 ns
+                                                   assert   363611 ns
+         BusyTransfer          0 ns
+
+         Transaction:         81
+         IdleTransfer         70 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                325 ns
+                                                   complete 364346 ns
+                                                   assert   364021 ns
+         BusyTransfer          0 ns
+
+         Transaction:         82
+         IdleTransfer        150 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                355 ns
+                                                   complete 364856 ns
+                                                   assert   364501 ns
+         BusyTransfer          0 ns
+
+         Transaction:         83
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 365216 ns
+                                                   assert   364911 ns
+         BusyTransfer          0 ns
+
+         Transaction:         84
+         IdleTransfer        190 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                365 ns
+                                                   complete 365776 ns
+                                                   assert   365411 ns
+         BusyTransfer          0 ns
+
+         Transaction:         85
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                315 ns
+                                                   complete 366146 ns
+                                                   assert   365831 ns
+         BusyTransfer          0 ns
+
+         Transaction:         86
+         IdleTransfer        180 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                335 ns
+                                                   complete 366666 ns
+                                                   assert   366331 ns
+         BusyTransfer          0 ns
+
+         Transaction:         87
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 367016 ns
+                                                   assert   366721 ns
+         BusyTransfer          0 ns
+
+         Transaction:         88
+         IdleTransfer        200 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                315 ns
+                                                   complete 367536 ns
+                                                   assert   367221 ns
+         BusyTransfer          0 ns
+
+         Transaction:         89
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 367896 ns
+                                                   assert   367591 ns
+         BusyTransfer          0 ns
+
+         Transaction:         90
+         IdleTransfer        190 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                325 ns
+                                                   complete 368416 ns
+                                                   assert   368091 ns
+         BusyTransfer          0 ns
+
+         Transaction:         91
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 368776 ns
+                                                   assert   368471 ns
+         BusyTransfer          0 ns
+
+         Transaction:         92
+         IdleTransfer        190 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                325 ns
+                                                   complete 369296 ns
+                                                   assert   368971 ns
+         BusyTransfer          0 ns
+
+         Transaction:         93
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                315 ns
+                                                   complete 369666 ns
+                                                   assert   369351 ns
+         BusyTransfer          0 ns
+
+         Transaction:         94
+         IdleTransfer        180 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                335 ns
+                                                   complete 370186 ns
+                                                   assert   369851 ns
+         BusyTransfer          0 ns
+
+         Transaction:         95
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 370546 ns
+                                                   assert   370241 ns
+         BusyTransfer          0 ns
+
+         Transaction:         96
+         IdleTransfer        190 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                315 ns
+                                                   complete 371056 ns
+                                                   assert   370741 ns
+         BusyTransfer          0 ns
+
+         Transaction:         97
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                315 ns
+                                                   complete 371426 ns
+                                                   assert   371111 ns
+         BusyTransfer          0 ns
+
+         Transaction:         98
+         IdleTransfer        180 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                325 ns
+                                                   complete 371936 ns
+                                                   assert   371611 ns
+         BusyTransfer          0 ns
+
+         Transaction:         99
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 372296 ns
+                                                   assert   371991 ns
+         BusyTransfer          0 ns
+
+         Transaction:        100
+         IdleTransfer        190 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                325 ns
+                                                   complete 372816 ns
+                                                   assert   372491 ns
+         BusyTransfer          0 ns
+
+         Transaction:        101
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                315 ns
+                                                   complete 373186 ns
+                                                   assert   372871 ns
+         BusyTransfer          0 ns
+
+         Transaction:        102
+         IdleTransfer        180 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                325 ns
+                                                   complete 373696 ns
+                                                   assert   373371 ns
+         BusyTransfer          0 ns
+
+         Transaction:        103
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 374056 ns
+                                                   assert   373751 ns
+         BusyTransfer          0 ns
+
+         Transaction:        104
+         IdleTransfer        190 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                325 ns
+                                                   complete 374576 ns
+                                                   assert   374251 ns
+         BusyTransfer          0 ns
+
+         Transaction:        105
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 374936 ns
+                                                   assert   374631 ns
+         BusyTransfer          0 ns
+
+         Transaction:        106
+         IdleTransfer        190 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                325 ns
+                                                   complete 375456 ns
+                                                   assert   375131 ns
+         BusyTransfer          0 ns
+
+         Transaction:        107
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 375816 ns
+                                                   assert   375511 ns
+         BusyTransfer          0 ns
+
+         Transaction:        108
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 376176 ns
+                                                   assert   375871 ns
+         BusyTransfer          0 ns
+
+         Transaction:        109
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 376536 ns
+                                                   assert   376231 ns
+         BusyTransfer          0 ns
+
+         Transaction:        110
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 376896 ns
+                                                   assert   376596 ns
+         BusyTransfer          0 ns
+
+         Transaction:        111
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 377256 ns
+                                                   assert   376956 ns
+         BusyTransfer          0 ns
+
+         Transaction:        112
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 377616 ns
+                                                   assert   377311 ns
+         BusyTransfer          0 ns
+
+         Transaction:        113
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                315 ns
+                                                   complete 377986 ns
+                                                   assert   377671 ns
+         BusyTransfer          0 ns
+
+         Transaction:        114
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                340 ns
+                                                   complete 378386 ns
+                                                   assert   378046 ns
+         BusyTransfer          0 ns
+
+         Transaction:        115
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                330 ns
+                                                   complete 378776 ns
+                                                   assert   378446 ns
+         BusyTransfer          0 ns
+
+         Transaction:        116
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                340 ns
+                                                   complete 379176 ns
+                                                   assert   378836 ns
+         BusyTransfer          0 ns
+
+         Transaction:        117
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 379536 ns
+                                                   assert   379236 ns
+         BusyTransfer          0 ns
+
+         Transaction:        118
+         IdleTransfer        450 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                355 ns
+                                                   complete 380346 ns
+                                                   assert   379991 ns
+         BusyTransfer          0 ns
+
+         Transaction:        119
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                340 ns
+                                                   complete 380746 ns
+                                                   assert   380406 ns
+         BusyTransfer          0 ns
+
+         Transaction:        120
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                330 ns
+                                                   complete 381136 ns
+                                                   assert   380806 ns
+         BusyTransfer          0 ns
+
+         Transaction:        121
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 381496 ns
+                                                   assert   381196 ns
+         BusyTransfer          0 ns
+
+         Transaction:        122
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                315 ns
+                                                   complete 381866 ns
+                                                   assert   381551 ns
+         BusyTransfer          0 ns
+
+         Transaction:        123
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                330 ns
+                                                   complete 382256 ns
+                                                   assert   381926 ns
+         BusyTransfer          0 ns
+
+         Transaction:        124
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 382616 ns
+                                                   assert   382316 ns
+         BusyTransfer          0 ns
+
+         Transaction:        125
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                345 ns
+                                                   complete 383016 ns
+                                                   assert   382671 ns
+         BusyTransfer          0 ns
+
+         Transaction:        126
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                335 ns
+                                                   complete 383456 ns
+                                                   assert   383121 ns
+         BusyTransfer          0 ns
+
+         Transaction:        127
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 383816 ns
+                                                   assert   383516 ns
+         BusyTransfer          0 ns
+
+         Transaction:        128
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                310 ns
+                                                   complete 384186 ns
+                                                   assert   383876 ns
+         BusyTransfer          0 ns
+
+         Transaction:        129
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 384536 ns
+                                                   assert   384241 ns
+         BusyTransfer          0 ns
+
+         Transaction:        130
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 384936 ns
+                                                   assert   384641 ns
+         BusyTransfer          0 ns
+
+         Transaction:        131
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                310 ns
+                                                   complete 385306 ns
+                                                   assert   384996 ns
+         BusyTransfer          0 ns
+
+         Transaction:        132
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                340 ns
+                                                   complete 385706 ns
+                                                   assert   385366 ns
+         BusyTransfer          0 ns
+
+         Transaction:        133
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 386056 ns
+                                                   assert   385761 ns
+         BusyTransfer          0 ns
+
+         Transaction:        134
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 386456 ns
+                                                   assert   386161 ns
+         BusyTransfer          0 ns
+
+         Transaction:        135
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 386816 ns
+                                                   assert   386516 ns
+         BusyTransfer          0 ns
+
+         Transaction:        136
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                310 ns
+                                                   complete 387186 ns
+                                                   assert   386876 ns
+         BusyTransfer          0 ns
+
+         Transaction:        137
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 387536 ns
+                                                   assert   387241 ns
+         BusyTransfer          0 ns
+
+         Transaction:        138
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 387871 ns
+                                                   assert   387641 ns
+         BusyTransfer          0 ns
+
+         Transaction:        139
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 388181 ns
+                                                   assert   387931 ns
+         BusyTransfer          0 ns
+
+         Transaction:        140
+         IdleTransfer        450 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                275 ns
+                                                   complete 388911 ns
+                                                   assert   388636 ns
+         BusyTransfer          0 ns
+
+         Transaction:        141
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 389231 ns
+                                                   assert   388971 ns
+         BusyTransfer          0 ns
+
+         Transaction:        142
+         IdleTransfer        250 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 389741 ns
+                                                   assert   389486 ns
+         BusyTransfer          0 ns
+
+         Transaction:        143
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 390031 ns
+                                                   assert   389801 ns
+         BusyTransfer          0 ns
+
+         Transaction:        144
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 390341 ns
+                                                   assert   390086 ns
+         BusyTransfer          0 ns
+
+         Transaction:        145
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                270 ns
+                                                   complete 390671 ns
+                                                   assert   390401 ns
+         BusyTransfer          0 ns
+
+         Transaction:        146
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 390981 ns
+                                                   assert   390726 ns
+         BusyTransfer          0 ns
+
+         Transaction:        147
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 391301 ns
+                                                   assert   391041 ns
+         BusyTransfer          0 ns
+
+         Transaction:        148
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 391581 ns
+                                                   assert   391356 ns
+         BusyTransfer          0 ns
+
+         Transaction:        149
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 391861 ns
+                                                   assert   391641 ns
+         BusyTransfer          0 ns
+
+         Transaction:        150
+         IdleTransfer      10050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 402151 ns
+                                                   assert   401916 ns
+         BusyTransfer          0 ns
+
+         Transaction:        151
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                290 ns
+                                                   complete 402501 ns
+                                                   assert   402211 ns
+         BusyTransfer          0 ns
+
+         Transaction:        152
+         IdleTransfer      50050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 452821 ns
+                                                   assert   452556 ns
+         BusyTransfer          0 ns
+
+         Transaction:        153
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 453141 ns
+                                                   assert   452881 ns
+         BusyTransfer          0 ns
+
+         Transaction:        154
+         IdleTransfer        250 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 453661 ns
+                                                   assert   453396 ns
+         BusyTransfer          0 ns
+
+         Transaction:        155
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 453941 ns
+                                                   assert   453721 ns
+         BusyTransfer          0 ns
+
+         Transaction:        156
+         IdleTransfer        250 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 454431 ns
+                                                   assert   454196 ns
+         BusyTransfer          0 ns
+
+         Transaction:        157
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 454741 ns
+                                                   assert   454491 ns
+         BusyTransfer          0 ns
+
+         Transaction:        158
+         IdleTransfer        455 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                335 ns
+                                                   complete 455536 ns
+                                                   assert   455201 ns
+         BusyTransfer          0 ns
+
+         Transaction:        159
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                310 ns
+                                                   complete 455906 ns
+                                                   assert   455596 ns
+         BusyTransfer          0 ns
+
+         Transaction:        160
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 456221 ns
+                                                   assert   455966 ns
+         BusyTransfer          0 ns
+
+         Transaction:        161
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 456511 ns
+                                                   assert   456276 ns
+         BusyTransfer          0 ns
+
+         Transaction:        162
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 456821 ns
+                                                   assert   456571 ns
+         BusyTransfer          0 ns
+
+         Transaction:        163
+         IdleTransfer       1050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 458101 ns
+                                                   assert   457876 ns
+         BusyTransfer          0 ns
+
+         Transaction:        164
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 458471 ns
+                                                   assert   458206 ns
+         BusyTransfer          0 ns
+
+         Transaction:        165
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 458781 ns
+                                                   assert   458531 ns
+         BusyTransfer          0 ns
+
+         Transaction:        166
+         IdleTransfer       1050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 460061 ns
+                                                   assert   459836 ns
+         BusyTransfer          0 ns
+
+         Transaction:        167
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 460421 ns
+                                                   assert   460166 ns
+         BusyTransfer          0 ns
+
+         Transaction:        168
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 460711 ns
+                                                   assert   460481 ns
+         BusyTransfer          0 ns
+
+         Transaction:        169
+         IdleTransfer       1050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 462031 ns
+                                                   assert   461766 ns
+         BusyTransfer          0 ns
+
+         Transaction:        170
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 462431 ns
+                                                   assert   462136 ns
+         BusyTransfer          0 ns
+
+         Transaction:        171
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 462741 ns
+                                                   assert   462491 ns
+         BusyTransfer          0 ns
+
+         Transaction:        172
+         IdleTransfer       1050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 464031 ns
+                                                   assert   463796 ns
+         BusyTransfer          0 ns
+
+         Transaction:        173
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 464391 ns
+                                                   assert   464136 ns
+         BusyTransfer          0 ns
+
+         Transaction:        174
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                290 ns
+                                                   complete 464741 ns
+                                                   assert   464451 ns
+         BusyTransfer          0 ns
+
+         Transaction:        175
+         IdleTransfer       1050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 466021 ns
+                                                   assert   465796 ns
+         BusyTransfer          0 ns
+
+         Transaction:        176
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 466421 ns
+                                                   assert   466126 ns
+         BusyTransfer          0 ns
+
+         Transaction:        177
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                270 ns
+                                                   complete 466751 ns
+                                                   assert   466481 ns
+         BusyTransfer          0 ns
+
+         Transaction:        178
+         IdleTransfer       1050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 468111 ns
+                                                   assert   467806 ns
+         BusyTransfer          0 ns
+
+         Transaction:        179
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                245 ns
+                                                   complete 468461 ns
+                                                   assert   468216 ns
+         BusyTransfer          0 ns
+
+         Transaction:        180
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 468781 ns
+                                                   assert   468521 ns
+         BusyTransfer          0 ns
+
+         Transaction:        181
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                275 ns
+                                                   complete 469111 ns
+                                                   assert   468836 ns
+         BusyTransfer          0 ns
+
+         Transaction:        182
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                245 ns
+                                                   complete 469461 ns
+                                                   assert   469216 ns
+         BusyTransfer          0 ns
+
+         Transaction:        183
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 469741 ns
+                                                   assert   469521 ns
+         BusyTransfer          0 ns
+
+         Transaction:        184
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 470021 ns
+                                                   assert   469796 ns
+         BusyTransfer          0 ns
+
+         Transaction:        185
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 470381 ns
+                                                   assert   470126 ns
+         BusyTransfer          0 ns
+
+         Transaction:        186
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 470661 ns
+                                                   assert   470441 ns
+         BusyTransfer          0 ns
+
+         Transaction:        187
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 470981 ns
+                                                   assert   470716 ns
+         BusyTransfer          0 ns
+
+         Transaction:        188
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 471391 ns
+                                                   assert   471086 ns
+         BusyTransfer          0 ns
+
+         Transaction:        189
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                290 ns
+                                                   complete 471741 ns
+                                                   assert   471451 ns
+         BusyTransfer          0 ns
+
+         Transaction:        190
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 472021 ns
+                                                   assert   471796 ns
+         BusyTransfer          0 ns
+
+         Transaction:        191
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 472381 ns
+                                                   assert   472126 ns
+         BusyTransfer          0 ns
+
+         Transaction:        192
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 472661 ns
+                                                   assert   472441 ns
+         BusyTransfer          0 ns
+
+         Transaction:        193
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 472941 ns
+                                                   assert   472716 ns
+         BusyTransfer          0 ns
+
+         Transaction:        194
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 473301 ns
+                                                   assert   473046 ns
+         BusyTransfer          0 ns
+
+         Transaction:        195
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 473591 ns
+                                                   assert   473361 ns
+         BusyTransfer          0 ns
+
+         Transaction:        196
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 473901 ns
+                                                   assert   473646 ns
+         BusyTransfer          0 ns
+
+         Transaction:        197
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 474301 ns
+                                                   assert   474006 ns
+         BusyTransfer          0 ns
+
+         Transaction:        198
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                270 ns
+                                                   complete 474631 ns
+                                                   assert   474361 ns
+         BusyTransfer          0 ns
+
+         Transaction:        199
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 474981 ns
+                                                   assert   474686 ns
+         BusyTransfer          0 ns
+
+         Transaction:        200
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                370 ns
+                                                   complete 475456 ns
+                                                   assert   475086 ns
+         BusyTransfer          0 ns
+
+         Transaction:        201
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                310 ns
+                                                   complete 475826 ns
+                                                   assert   475516 ns
+         BusyTransfer          0 ns
+
+         Transaction:        202
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                330 ns
+                                                   complete 476216 ns
+                                                   assert   475886 ns
+         BusyTransfer          0 ns
+
+         Transaction:        203
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                355 ns
+                                                   complete 476626 ns
+                                                   assert   476271 ns
+         BusyTransfer          0 ns
+
+         Transaction:        204
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 476981 ns
+                                                   assert   476731 ns
+         BusyTransfer          0 ns
+
+         Transaction:        205
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 477261 ns
+                                                   assert   477041 ns
+         BusyTransfer          0 ns
+
+         Transaction:        206
+         IdleTransfer      10055 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 487541 ns
+                                                   assert   487321 ns
+         BusyTransfer          0 ns
+
+         Transaction:        207
+         IdleTransfer      10055 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 497821 ns
+                                                   assert   497601 ns
+         BusyTransfer          0 ns
+
+         Transaction:        208
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 498111 ns
+                                                   assert   497876 ns
+         BusyTransfer          0 ns
+
+         Transaction:        209
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 498431 ns
+                                                   assert   498171 ns
+         BusyTransfer          0 ns
+
+         Transaction:        210
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 498741 ns
+                                                   assert   498491 ns
+         BusyTransfer          0 ns
+
+         Transaction:        211
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 499096 ns
+                                                   assert   498796 ns
+         BusyTransfer          0 ns
+
+         Transaction:        212
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 499456 ns
+                                                   assert   499156 ns
+         BusyTransfer          0 ns
+
+         Transaction:        213
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                350 ns
+                                                   complete 499866 ns
+                                                   assert   499516 ns
+         BusyTransfer          0 ns
+
+         Transaction:        214
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 500216 ns
+                                                   assert   499921 ns
+         BusyTransfer          0 ns
+
+         Transaction:        215
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 500616 ns
+                                                   assert   500321 ns
+         BusyTransfer          0 ns
+
+         Transaction:        216
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 500976 ns
+                                                   assert   500676 ns
+         BusyTransfer          0 ns
+
+         Transaction:        217
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 501336 ns
+                                                   assert   501036 ns
+         BusyTransfer          0 ns
+
+         Transaction:        218
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 501696 ns
+                                                   assert   501391 ns
+         BusyTransfer          0 ns
+
+         Transaction:        219
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 502096 ns
+                                                   assert   501801 ns
+         BusyTransfer          0 ns
+
+         Transaction:        220
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 502456 ns
+                                                   assert   502156 ns
+         BusyTransfer          0 ns
+
+         Transaction:        221
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 502816 ns
+                                                   assert   502516 ns
+         BusyTransfer          0 ns
+
+         Transaction:        222
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 503176 ns
+                                                   assert   502871 ns
+         BusyTransfer          0 ns
+
+         Transaction:        223
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 503541 ns
+                                                   assert   503281 ns
+         BusyTransfer          0 ns
+
+         Transaction:        224
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 503861 ns
+                                                   assert   503601 ns
+         BusyTransfer          0 ns
+
+         Transaction:        225
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 504141 ns
+                                                   assert   503916 ns
+         BusyTransfer          0 ns
+
+         Transaction:        226
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 504501 ns
+                                                   assert   504246 ns
+         BusyTransfer          0 ns
+
+         Transaction:        227
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 504781 ns
+                                                   assert   504561 ns
+         BusyTransfer          0 ns
+
+         Transaction:        228
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                275 ns
+                                                   complete 505111 ns
+                                                   assert   504836 ns
+         BusyTransfer          0 ns
+
+         Transaction:        229
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                245 ns
+                                                   complete 505461 ns
+                                                   assert   505216 ns
+         BusyTransfer          0 ns
+
+         Transaction:        230
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 505741 ns
+                                                   assert   505521 ns
+         BusyTransfer          0 ns
+
+         Transaction:        231
+         IdleTransfer        550 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 506551 ns
+                                                   assert   506296 ns
+         BusyTransfer          0 ns
+
+         Transaction:        232
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 506861 ns
+                                                   assert   506611 ns
+         BusyTransfer          0 ns
+
+         Transaction:        233
+         IdleTransfer      10050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 517181 ns
+                                                   assert   516916 ns
+         BusyTransfer          0 ns
+
+         Transaction:        234
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 517501 ns
+                                                   assert   517241 ns
+         BusyTransfer          0 ns
+
+         Transaction:        235
+         IdleTransfer        550 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                245 ns
+                                                   complete 518301 ns
+                                                   assert   518056 ns
+         BusyTransfer          0 ns
+
+         Transaction:        236
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 518581 ns
+                                                   assert   518361 ns
+         BusyTransfer          0 ns
+
+         Transaction:        237
+         IdleTransfer      10050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 528861 ns
+                                                   assert   528636 ns
+         BusyTransfer          0 ns
+
+         Transaction:        238
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 529181 ns
+                                                   assert   528921 ns
+         BusyTransfer          0 ns
+
+         Transaction:        239
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 529461 ns
+                                                   assert   529236 ns
+         BusyTransfer          0 ns
+
+         Transaction:        240
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 529861 ns
+                                                   assert   529566 ns
+         BusyTransfer          0 ns
+
+         Transaction:        241
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                270 ns
+                                                   complete 530191 ns
+                                                   assert   529921 ns
+         BusyTransfer          0 ns
+
+         Transaction:        242
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 530551 ns
+                                                   assert   530246 ns
+         BusyTransfer          0 ns
+
+         Transaction:        243
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 530911 ns
+                                                   assert   530656 ns
+         BusyTransfer          0 ns
+
+         Transaction:        244
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 531221 ns
+                                                   assert   530971 ns
+         BusyTransfer          0 ns
+
+         Transaction:        245
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 531541 ns
+                                                   assert   531276 ns
+         BusyTransfer          0 ns
+
+         Transaction:        246
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 531901 ns
+                                                   assert   531646 ns
+         BusyTransfer          0 ns
+
+         Transaction:        247
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 532221 ns
+                                                   assert   531961 ns
+         BusyTransfer          0 ns
+
+         Transaction:        248
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 532501 ns
+                                                   assert   532281 ns
+         BusyTransfer          0 ns
+
+         Transaction:        249
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 532781 ns
+                                                   assert   532556 ns
+         BusyTransfer          0 ns
+
+         Transaction:        250
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 533141 ns
+                                                   assert   532886 ns
+         BusyTransfer          0 ns
+
+         Transaction:        251
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 533421 ns
+                                                   assert   533201 ns
+         BusyTransfer          0 ns
+
+         Transaction:        252
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                270 ns
+                                                   complete 533751 ns
+                                                   assert   533481 ns
+         BusyTransfer          0 ns
+
+         Transaction:        253
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 534061 ns
+                                                   assert   533806 ns
+         BusyTransfer          0 ns
+
+         Transaction:        254
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 534471 ns
+                                                   assert   534166 ns
+         BusyTransfer          0 ns
+
+         Transaction:        255
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 534781 ns
+                                                   assert   534531 ns
+         BusyTransfer          0 ns
+
+         Transaction:        256
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 535101 ns
+                                                   assert   534841 ns
+         BusyTransfer          0 ns
+
+         Transaction:        257
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 535421 ns
+                                                   assert   535156 ns
+         BusyTransfer          0 ns
+
+         Transaction:        258
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 535791 ns
+                                                   assert   535526 ns
+         BusyTransfer          0 ns
+
+         Transaction:        259
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 536101 ns
+                                                   assert   535851 ns
+         BusyTransfer          0 ns
+
+         Transaction:        260
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 536381 ns
+                                                   assert   536161 ns
+         BusyTransfer          0 ns
+
+         Transaction:        261
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 536671 ns
+                                                   assert   536436 ns
+         BusyTransfer          0 ns
+
+         Transaction:        262
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 536981 ns
+                                                   assert   536731 ns
+         BusyTransfer          0 ns
+
+         Transaction:        263
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 537261 ns
+                                                   assert   537041 ns
+         BusyTransfer          0 ns
+
+         Transaction:        264
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 537541 ns
+                                                   assert   537316 ns
+         BusyTransfer          0 ns
+
+         Transaction:        265
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 537821 ns
+                                                   assert   537601 ns
+         BusyTransfer          0 ns
+
+         Transaction:        266
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 538101 ns
+                                                   assert   537881 ns
+         BusyTransfer          0 ns
+
+         Transaction:        267
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 538381 ns
+                                                   assert   538156 ns
+         BusyTransfer          0 ns
+
+         Transaction:        268
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 538671 ns
+                                                   assert   538441 ns
+         BusyTransfer          0 ns
+
+         Transaction:        269
+         IdleTransfer       1055 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 539981 ns
+                                                   assert   539731 ns
+         BusyTransfer          0 ns
+
+         Transaction:        270
+         IdleTransfer       1050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 541261 ns
+                                                   assert   541036 ns
+         BusyTransfer          0 ns
+
+         Transaction:        271
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 541631 ns
+                                                   assert   541366 ns
+         BusyTransfer          0 ns
+
+         Transaction:        272
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 541941 ns
+                                                   assert   541691 ns
+         BusyTransfer          0 ns
+
+         Transaction:        273
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 542221 ns
+                                                   assert   542001 ns
+         BusyTransfer          0 ns
+
+         Transaction:        274
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 542501 ns
+                                                   assert   542276 ns
+         BusyTransfer          0 ns
+
+         Transaction:        275
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 542781 ns
+                                                   assert   542561 ns
+         BusyTransfer          0 ns
+
+         Transaction:        276
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 543061 ns
+                                                   assert   542841 ns
+         BusyTransfer          0 ns
+
+         Transaction:        277
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 543341 ns
+                                                   assert   543116 ns
+         BusyTransfer          0 ns
+
+         Transaction:        278
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 543621 ns
+                                                   assert   543401 ns
+         BusyTransfer          0 ns
+
+         Transaction:        279
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 543901 ns
+                                                   assert   543681 ns
+         BusyTransfer          0 ns
+
+         Transaction:        280
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 544181 ns
+                                                   assert   543956 ns
+         BusyTransfer          0 ns
+
+         Transaction:        281
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 544461 ns
+                                                   assert   544241 ns
+         BusyTransfer          0 ns
+
+         Transaction:        282
+         IdleTransfer       1055 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 545751 ns
+                                                   assert   545521 ns
+         BusyTransfer          0 ns
+
+         Transaction:        283
+         IdleTransfer       1050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 547071 ns
+                                                   assert   546806 ns
+         BusyTransfer          0 ns
+
+         Transaction:        284
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 547431 ns
+                                                   assert   547176 ns
+         BusyTransfer          0 ns
+
+         Transaction:        285
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 547751 ns
+                                                   assert   547491 ns
+         BusyTransfer          0 ns
+
+         Transaction:        286
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                290 ns
+                                                   complete 548101 ns
+                                                   assert   547811 ns
+         BusyTransfer          0 ns
+
+         Transaction:        287
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 548381 ns
+                                                   assert   548156 ns
+         BusyTransfer          0 ns
+
+         Transaction:        288
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 548671 ns
+                                                   assert   548441 ns
+         BusyTransfer          0 ns
+
+         Transaction:        289
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 548981 ns
+                                                   assert   548731 ns
+         BusyTransfer          0 ns
+
+         Transaction:        290
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 549271 ns
+                                                   assert   549036 ns
+         BusyTransfer          0 ns
+
+         Transaction:        291
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 549581 ns
+                                                   assert   549331 ns
+         BusyTransfer          0 ns
+
+         Transaction:        292
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 549861 ns
+                                                   assert   549641 ns
+         BusyTransfer          0 ns
+
+         Transaction:        293
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 550181 ns
+                                                   assert   549916 ns
+         BusyTransfer          0 ns
+
+         Transaction:        294
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 550461 ns
+                                                   assert   550241 ns
+         BusyTransfer          0 ns
+
+         Transaction:        295
+         IdleTransfer       1055 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                270 ns
+                                                   complete 551791 ns
+                                                   assert   551521 ns
+         BusyTransfer          0 ns
+
+         Transaction:        296
+         IdleTransfer       1050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 553101 ns
+                                                   assert   552846 ns
+         BusyTransfer          0 ns
+
+         Transaction:        297
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 553511 ns
+                                                   assert   553206 ns
+         BusyTransfer          0 ns
+
+         Transaction:        298
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 553821 ns
+                                                   assert   553571 ns
+         BusyTransfer          0 ns
+
+         Transaction:        299
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 554101 ns
+                                                   assert   553881 ns
+         BusyTransfer          0 ns
+
+         Transaction:        300
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 554421 ns
+                                                   assert   554156 ns
+         BusyTransfer          0 ns
+
+         Transaction:        301
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 554701 ns
+                                                   assert   554481 ns
+         BusyTransfer          0 ns
+
+         Transaction:        302
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 554981 ns
+                                                   assert   554761 ns
+         BusyTransfer          0 ns
+
+         Transaction:        303
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 555261 ns
+                                                   assert   555036 ns
+         BusyTransfer          0 ns
+
+         Transaction:        304
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 555551 ns
+                                                   assert   555321 ns
+         BusyTransfer          0 ns
+
+         Transaction:        305
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 555861 ns
+                                                   assert   555611 ns
+         BusyTransfer          0 ns
+
+         Transaction:        306
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 556151 ns
+                                                   assert   555916 ns
+         BusyTransfer          0 ns
+
+         Transaction:        307
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 556471 ns
+                                                   assert   556211 ns
+         BusyTransfer          0 ns
+
+         Transaction:        308
+         IdleTransfer       1055 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 557791 ns
+                                                   assert   557531 ns
+         BusyTransfer          0 ns
+
+         Transaction:        309
+         IdleTransfer       1050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 559141 ns
+                                                   assert   558846 ns
+         BusyTransfer          0 ns
+
+         Transaction:        310
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 559501 ns
+                                                   assert   559246 ns
+         BusyTransfer          0 ns
+
+         Transaction:        311
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 559781 ns
+                                                   assert   559561 ns
+         BusyTransfer          0 ns
+
+         Transaction:        312
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 560061 ns
+                                                   assert   559841 ns
+         BusyTransfer          0 ns
+
+         Transaction:        313
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 560351 ns
+                                                   assert   560116 ns
+         BusyTransfer          0 ns
+
+         Transaction:        314
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 560671 ns
+                                                   assert   560411 ns
+         BusyTransfer          0 ns
+
+         Transaction:        315
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 560981 ns
+                                                   assert   560731 ns
+         BusyTransfer          0 ns
+
+         Transaction:        316
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 561261 ns
+                                                   assert   561036 ns
+         BusyTransfer          0 ns
+
+         Transaction:        317
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 561541 ns
+                                                   assert   561321 ns
+         BusyTransfer          0 ns
+
+         Transaction:        318
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 561831 ns
+                                                   assert   561601 ns
+         BusyTransfer          0 ns
+
+         Transaction:        319
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 562191 ns
+                                                   assert   561886 ns
+         BusyTransfer          0 ns
+
+         Transaction:        320
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 562501 ns
+                                                   assert   562251 ns
+         BusyTransfer          0 ns
+
+         Transaction:        321
+         IdleTransfer       1055 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 563781 ns
+                                                   assert   563561 ns
+         BusyTransfer          0 ns
+
+         Transaction:        322
+         IdleTransfer       1050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 565101 ns
+                                                   assert   564836 ns
+         BusyTransfer          0 ns
+
+         Transaction:        323
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 565501 ns
+                                                   assert   565206 ns
+         BusyTransfer          0 ns
+
+         Transaction:        324
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                270 ns
+                                                   complete 565831 ns
+                                                   assert   565561 ns
+         BusyTransfer          0 ns
+
+         Transaction:        325
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 566151 ns
+                                                   assert   565891 ns
+         BusyTransfer          0 ns
+
+         Transaction:        326
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 566501 ns
+                                                   assert   566206 ns
+         BusyTransfer          0 ns
+
+         Transaction:        327
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 566781 ns
+                                                   assert   566561 ns
+         BusyTransfer          0 ns
+
+         Transaction:        328
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 567061 ns
+                                                   assert   566841 ns
+         BusyTransfer          0 ns
+
+         Transaction:        329
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 567381 ns
+                                                   assert   567116 ns
+         BusyTransfer          0 ns
+
+         Transaction:        330
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 567701 ns
+                                                   assert   567441 ns
+         BusyTransfer          0 ns
+
+         Transaction:        331
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 567981 ns
+                                                   assert   567761 ns
+         BusyTransfer          0 ns
+
+         Transaction:        332
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 568301 ns
+                                                   assert   568036 ns
+         BusyTransfer          0 ns
+
+         Transaction:        333
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 568591 ns
+                                                   assert   568361 ns
+         BusyTransfer          0 ns
+
+         Transaction:        334
+         IdleTransfer       1055 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                290 ns
+                                                   complete 569941 ns
+                                                   assert   569651 ns
+         BusyTransfer          0 ns
+
+         Transaction:        335
+         IdleTransfer       1050 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 571221 ns
+                                                   assert   570996 ns
+         BusyTransfer          0 ns
+
+         Transaction:        336
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 571621 ns
+                                                   assert   571326 ns
+         BusyTransfer          0 ns
+
+         Transaction:        337
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 571911 ns
+                                                   assert   571681 ns
+         BusyTransfer          0 ns
+
+         Transaction:        338
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 572221 ns
+                                                   assert   571966 ns
+         BusyTransfer          0 ns
+
+         Transaction:        339
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 572581 ns
+                                                   assert   572326 ns
+         BusyTransfer          0 ns
+
+         Transaction:        340
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 572861 ns
+                                                   assert   572641 ns
+         BusyTransfer          0 ns
+
+         Transaction:        341
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 573141 ns
+                                                   assert   572921 ns
+         BusyTransfer          0 ns
+
+         Transaction:        342
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 573431 ns
+                                                   assert   573196 ns
+         BusyTransfer          0 ns
+
+         Transaction:        343
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                285 ns
+                                                   complete 573821 ns
+                                                   assert   573536 ns
+         BusyTransfer          0 ns
+
+         Transaction:        344
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 574101 ns
+                                                   assert   573881 ns
+         BusyTransfer          0 ns
+
+         Transaction:        345
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 574421 ns
+                                                   assert   574156 ns
+         BusyTransfer          0 ns
+
+         Transaction:        346
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 574781 ns
+                                                   assert   574526 ns
+         BusyTransfer          0 ns
+
+         Transaction:        347
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 575061 ns
+                                                   assert   574841 ns
+         BusyTransfer          0 ns
+
+         Transaction:        348
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 575341 ns
+                                                   assert   575121 ns
+         BusyTransfer          0 ns
+
+         Transaction:        349
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 575621 ns
+                                                   assert   575396 ns
+         BusyTransfer          0 ns
+
+         Transaction:        350
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 576021 ns
+                                                   assert   575726 ns
+         BusyTransfer          0 ns
+
+         Transaction:        351
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 576311 ns
+                                                   assert   576081 ns
+         BusyTransfer          0 ns
+
+         Transaction:        352
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 576631 ns
+                                                   assert   576366 ns
+         BusyTransfer          0 ns
+
+         Transaction:        353
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 577031 ns
+                                                   assert   576736 ns
+         BusyTransfer          0 ns
+
+         Transaction:        354
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 577341 ns
+                                                   assert   577091 ns
+         BusyTransfer          0 ns
+
+         Transaction:        355
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 577631 ns
+                                                   assert   577401 ns
+         BusyTransfer          0 ns
+
+         Transaction:        356
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 577941 ns
+                                                   assert   577686 ns
+         BusyTransfer          0 ns
+
+         Transaction:        357
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 578301 ns
+                                                   assert   578046 ns
+         BusyTransfer          0 ns
+
+         Transaction:        358
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 578621 ns
+                                                   assert   578361 ns
+         BusyTransfer          0 ns
+
+         Transaction:        359
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 578901 ns
+                                                   assert   578681 ns
+         BusyTransfer          0 ns
+
+         Transaction:        360
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 579181 ns
+                                                   assert   578956 ns
+         BusyTransfer          0 ns
+
+         Transaction:        361
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 579541 ns
+                                                   assert   579286 ns
+         BusyTransfer          0 ns
+
+         Transaction:        362
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 579821 ns
+                                                   assert   579601 ns
+         BusyTransfer          0 ns
+
+         Transaction:        363
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 580111 ns
+                                                   assert   579881 ns
+         BusyTransfer          0 ns
+
+         Transaction:        364
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 580471 ns
+                                                   assert   580166 ns
+         BusyTransfer          0 ns
+
+         Transaction:        365
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 580831 ns
+                                                   assert   580576 ns
+         BusyTransfer          0 ns
+
+         Transaction:        366
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 581151 ns
+                                                   assert   580891 ns
+         BusyTransfer          0 ns
+
+         Transaction:        367
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 581461 ns
+                                                   assert   581211 ns
+         BusyTransfer          0 ns
+
+         Transaction:        368
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 581781 ns
+                                                   assert   581516 ns
+         BusyTransfer          0 ns
+
+         Transaction:        369
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 582181 ns
+                                                   assert   581886 ns
+         BusyTransfer          0 ns
+
+         Transaction:        370
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 582461 ns
+                                                   assert   582241 ns
+         BusyTransfer          0 ns
+
+         Transaction:        371
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 582741 ns
+                                                   assert   582516 ns
+         BusyTransfer          0 ns
+
+         Transaction:        372
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 583151 ns
+                                                   assert   582846 ns
+         BusyTransfer          0 ns
+
+         Transaction:        373
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 583461 ns
+                                                   assert   583211 ns
+         BusyTransfer          0 ns
+
+         Transaction:        374
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                270 ns
+                                                   complete 583791 ns
+                                                   assert   583521 ns
+         BusyTransfer          0 ns
+
+         Transaction:        375
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                305 ns
+                                                   complete 584151 ns
+                                                   assert   583846 ns
+         BusyTransfer          0 ns
+
+         Transaction:        376
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                245 ns
+                                                   complete 584501 ns
+                                                   assert   584256 ns
+         BusyTransfer          0 ns
+
+         Transaction:        377
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 584781 ns
+                                                   assert   584561 ns
+         BusyTransfer          0 ns
+
+         Transaction:        378
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 585061 ns
+                                                   assert   584836 ns
+         BusyTransfer          0 ns
+
+         Transaction:        379
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 585421 ns
+                                                   assert   585166 ns
+         BusyTransfer          0 ns
+
+         Transaction:        380
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 585701 ns
+                                                   assert   585481 ns
+         BusyTransfer          0 ns
+
+         Transaction:        381
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 586021 ns
+                                                   assert   585761 ns
+         BusyTransfer          0 ns
+
+         Transaction:        382
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 586341 ns
+                                                   assert   586076 ns
+         BusyTransfer          0 ns
+
+         Transaction:        383
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 586741 ns
+                                                   assert   586446 ns
+         BusyTransfer          0 ns
+
+         Transaction:        384
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 587021 ns
+                                                   assert   586801 ns
+         BusyTransfer          0 ns
+
+         Transaction:        385
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 587341 ns
+                                                   assert   587081 ns
+         BusyTransfer          0 ns
+
+         Transaction:        386
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 587621 ns
+                                                   assert   587396 ns
+         BusyTransfer          0 ns
+
+         Transaction:        387
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 587981 ns
+                                                   assert   587726 ns
+         BusyTransfer          0 ns
+
+         Transaction:        388
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 588301 ns
+                                                   assert   588041 ns
+         BusyTransfer          0 ns
+
+         Transaction:        389
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 588621 ns
+                                                   assert   588361 ns
+         BusyTransfer          0 ns
+
+         Transaction:        390
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 588901 ns
+                                                   assert   588676 ns
+         BusyTransfer          0 ns
+
+         Transaction:        391
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 589271 ns
+                                                   assert   589006 ns
+         BusyTransfer          0 ns
+
+         Transaction:        392
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                290 ns
+                                                   complete 589621 ns
+                                                   assert   589331 ns
+         BusyTransfer          0 ns
+
+         Transaction:        393
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 589901 ns
+                                                   assert   589681 ns
+         BusyTransfer          0 ns
+
+         Transaction:        394
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 590191 ns
+                                                   assert   589956 ns
+         BusyTransfer          0 ns
+
+         Transaction:        395
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                285 ns
+                                                   complete 590581 ns
+                                                   assert   590296 ns
+         BusyTransfer          0 ns
+
+         Transaction:        396
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 590871 ns
+                                                   assert   590641 ns
+         BusyTransfer          0 ns
+
+         Transaction:        397
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                300 ns
+                                                   complete 591231 ns
+                                                   assert   590931 ns
+         BusyTransfer          0 ns
+
+         Transaction:        398
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 591541 ns
+                                                   assert   591286 ns
+         BusyTransfer          0 ns
+
+         Transaction:        399
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 591901 ns
+                                                   assert   591646 ns
+         BusyTransfer          0 ns
+
+         Transaction:        400
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 592181 ns
+                                                   assert   591961 ns
+         BusyTransfer          0 ns
+
+         Transaction:        401
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 592471 ns
+                                                   assert   592241 ns
+         BusyTransfer          0 ns
+
+         Transaction:        402
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 592791 ns
+                                                   assert   592526 ns
+         BusyTransfer          0 ns
+
+         Transaction:        403
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 593151 ns
+                                                   assert   592896 ns
+         BusyTransfer          0 ns
+
+         Transaction:        404
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 593461 ns
+                                                   assert   593211 ns
+         BusyTransfer          0 ns
+
+         Transaction:        405
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 593781 ns
+                                                   assert   593521 ns
+         BusyTransfer          0 ns
+
+         Transaction:        406
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 594071 ns
+                                                   assert   593836 ns
+         BusyTransfer          0 ns
+
+         Transaction:        407
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                245 ns
+                                                   complete 594421 ns
+                                                   assert   594176 ns
+         BusyTransfer          0 ns
+
+         Transaction:        408
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 594711 ns
+                                                   assert   594481 ns
+         BusyTransfer          0 ns
+
+         Transaction:        409
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 595031 ns
+                                                   assert   594771 ns
+         BusyTransfer          0 ns
+
+         Transaction:        410
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 595341 ns
+                                                   assert   595086 ns
+         BusyTransfer          0 ns
+
+         Transaction:        411
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 595701 ns
+                                                   assert   595446 ns
+         BusyTransfer          0 ns
+
+         Transaction:        412
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                230 ns
+                                                   complete 595991 ns
+                                                   assert   595761 ns
+         BusyTransfer          0 ns
+
+         Transaction:        413
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 596311 ns
+                                                   assert   596051 ns
+         BusyTransfer          0 ns
+
+         Transaction:        414
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 596621 ns
+                                                   assert   596366 ns
+         BusyTransfer          0 ns
+
+         Transaction:        415
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 597021 ns
+                                                   assert   596726 ns
+         BusyTransfer          0 ns
+
+         Transaction:        416
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 597301 ns
+                                                   assert   597081 ns
+         BusyTransfer          0 ns
+
+         Transaction:        417
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 597581 ns
+                                                   assert   597361 ns
+         BusyTransfer          0 ns
+
+         Transaction:        418
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                235 ns
+                                                   complete 597871 ns
+                                                   assert   597636 ns
+         BusyTransfer          0 ns
+
+         Transaction:        419
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                245 ns
+                                                   complete 598221 ns
+                                                   assert   597976 ns
+         BusyTransfer          0 ns
+
+         Transaction:        420
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 598501 ns
+                                                   assert   598281 ns
+         BusyTransfer          0 ns
+
+         Transaction:        421
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                260 ns
+                                                   complete 598821 ns
+                                                   assert   598561 ns
+         BusyTransfer          0 ns
+
+         Transaction:        422
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 599141 ns
+                                                   assert   598876 ns
+         BusyTransfer          0 ns
+
+         Transaction:        423
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 599511 ns
+                                                   assert   599246 ns
+         BusyTransfer          0 ns
+
+         Transaction:        424
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                250 ns
+                                                   complete 599821 ns
+                                                   assert   599571 ns
+         BusyTransfer          0 ns
+
+         Transaction:        425
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 600101 ns
+                                                   assert   599881 ns
+         BusyTransfer          0 ns
+
+         Transaction:        426
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 600381 ns
+                                                   assert   600156 ns
+         BusyTransfer          0 ns
+
+         Transaction:        427
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                255 ns
+                                                   complete 600741 ns
+                                                   assert   600486 ns
+         BusyTransfer          0 ns
+
+         Transaction:        428
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 601021 ns
+                                                   assert   600801 ns
+         BusyTransfer          0 ns
+
+         Transaction:        429
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 601301 ns
+                                                   assert   601081 ns
+         BusyTransfer          0 ns
+
+         Transaction:        430
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                225 ns
+                                                   complete 601581 ns
+                                                   assert   601356 ns
+         BusyTransfer          0 ns
+
+         Transaction:        431
+         IdleTransfer        100 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                295 ns
+                                                   complete 601981 ns
+                                                   assert   601686 ns
+         BusyTransfer          0 ns
+
+         Transaction:        432
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 602261 ns
+                                                   assert   602041 ns
+         BusyTransfer          0 ns
+
+         Transaction:        433
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                270 ns
+                                                   complete 602591 ns
+                                                   assert   602321 ns
+         BusyTransfer          0 ns
+
+         Transaction:        434
+         IdleTransfer         50 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 602911 ns
+                                                   assert   602646 ns
+         BusyTransfer          0 ns
+
+         Transaction:        435
+         IdleTransfer        450 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                330 ns
+                                                   complete 603696 ns
+                                                   assert   603366 ns
+         BusyTransfer          0 ns
+
+         Transaction:        436
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                265 ns
+                                                   complete 604021 ns
+                                                   assert   603756 ns
+         BusyTransfer          0 ns
+
+         Transaction:        437
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                220 ns
+                                                   complete 604301 ns
+                                                   assert   604081 ns
+         BusyTransfer          0 ns
+
+         Transaction:        438
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                345 ns
+                                                   complete 604706 ns
+                                                   assert   604361 ns
+         BusyTransfer          0 ns
+
+         Transaction:        439
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                115 ns
+                                                   complete 604881 ns
+                                                   assert   604766 ns
+         BusyTransfer          0 ns
+
+         Transaction:        440
+         IdleTransfer         55 ns IDLE
+         AddrTransfer          5 ns Transfer visible
+                             beat     1 ::  1/ 1                280 ns
+                                                   complete 605221 ns
+                                                   assert   604941 ns
+         BusyTransfer          0 ns
+
+
+         Total   IDLE :     244225
+         Visibal ADDR :       2900
+         Visibal DATA :     144156
+         Trace Window :     391281

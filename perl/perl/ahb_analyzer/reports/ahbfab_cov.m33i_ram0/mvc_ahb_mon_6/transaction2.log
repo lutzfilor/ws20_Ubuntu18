@@ -1,0 +1,191 @@
+ ================================================================================
+ Tracefile   : uvm_test_top.top_env_i.ahbfab_env_i.mvc_ahb_mon_6_env_i.logger_handle_ahb
+               /mnt/ussjf-asic2/workarea1/lkamired/niue1z1_tmp/lkamired/wa_performance/SIM/top/ahbfab_cov.m33i_ram0/uvm_test_top.top_env_i.ahbfab_env_i.mvc_ahb_mon_6_env_i_ahb_beat.log
+ Synopsis    : TransactionAnalysis windowed
+ Script      : parse_ahb_tracker.pl 1.04.01
+ Date        : 2018-09-22
+ Time        :   17:23:56
+ Cycle       :         40 ns
+ Frequency   :      25.00 MHz
+ Start       :     608681 ns
+ Stop        :     634751 ns
+ ================================================================================
+
+START pointer HASH(0x32a7c00)
+Transaction#  14
+Start time    608681
+
+STOP  pointer HASH(0x435f140)
+Transaction#  72
+Stop time     634751
+
+    14 #       608681  ns 1
+    15 #       609071  ns 2
+    16 #       609491  ns 3
+    17 #       609926  ns 4
+    18 #       610301  ns 5
+    19 #       610761  ns 6
+    20 #       611231  ns 7
+    21 #       611651  ns 8
+    22 #       612101  ns 9
+    23 #       612556  ns 10
+    24 #       613031  ns 11
+    25 #       613421  ns 12
+    26 #       613841  ns 13
+    27 #       614231  ns 14
+    28 #       614681  ns 15
+    29 #       615111  ns 16
+    30 #       615521  ns 17
+    31 #       615921  ns 18
+    32 #       616361  ns 19
+    33 #       619246  ns 20
+    34 #       619521  ns 21
+    35 #       619761  ns 22
+    36 #       620046  ns 23
+    37 #       620331  ns 24
+    38 #       620606  ns 25
+    39 #       620851  ns 26
+    40 #       621121  ns 27
+    41 #       621366  ns 28
+    42 #       621601  ns 29
+    43 #       621861  ns 30
+    44 #       622126  ns 31
+    45 #       622401  ns 32
+    46 #       622641  ns 33
+    47 #       622921  ns 34
+    48 #       623161  ns 35
+    49 #       623441  ns 36
+    50 #       623681  ns 37
+    51 #       623936  ns 38
+    52 #       624201  ns 39
+    53 #       626741  ns 40
+    54 #       627101  ns 41
+    55 #       627536  ns 42
+    56 #       627971  ns 43
+    57 #       628401  ns 44
+    58 #       628841  ns 45
+    59 #       629266  ns 46
+    60 #       629681  ns 47
+    61 #       630081  ns 48
+    62 #       630461  ns 49
+    63 #       630886  ns 50
+    64 #       631301  ns 51
+    65 #       631761  ns 52
+    66 #       632141  ns 53
+    67 #       632606  ns 54
+    68 #       632981  ns 55
+    69 #       633436  ns 56
+    70 #       633851  ns 57
+    71 #       634311  ns 58
+    72 #       634751  ns 59
+===========================================================================================
+ Transaction Overview
+===========================================================================================
+
+   TOTAL transactions :: (by type)
+     SINGLE :   30 transactions
+       INCR :   29 transactions
+      INCR4 :    0 transactions
+      INCR8 :    0 transactions
+     INCR16 :    0 transactions
+      WRAP4 :    0 transactions
+      WRAP8 :    0 transactions
+     WRAP16 :    0 transactions
+      total :   59 transactions
+-------------------------------------------------------------------------------------------
+   WRITE transactions :: (by type)
+     SINGLE :    0 transactions
+       INCR :   29 transactions
+      INCR4 :    0 transactions
+      INCR8 :    0 transactions
+     INCR16 :    0 transactions
+      WRAP4 :    0 transactions
+      WRAP8 :    0 transactions
+     WRAP16 :    0 transactions
+      total :   29 transactions
+-------------------------------------------------------------------------------------------
+   READ  transactions :: (by type)
+     SINGLE :   30 transactions
+       INCR :    0 transactions
+      INCR4 :    0 transactions
+      INCR8 :    0 transactions
+     INCR16 :    0 transactions
+      WRAP4 :    0 transactions
+      WRAP8 :    0 transactions
+     WRAP16 :    0 transactions
+      total :   30 transactions
+
+===========================================================================================
+   WRITE transactions :: (by size, type)
+   1 byte wide burst
+     SINGLE :    0 transactions
+       INCR :    0 transactions
+      INCR4 :    0 transactions
+      INCR8 :    0 transactions
+     INCR16 :    0 transactions
+      WRAP4 :    0 transactions
+      WRAP8 :    0 transactions
+     WRAP16 :    0 transactions
+      total :    0 transactions
+-------------------------------------------------------------------------------------------
+   2 byte wide burst
+     SINGLE :    0 transactions
+       INCR :    0 transactions
+      INCR4 :    0 transactions
+      INCR8 :    0 transactions
+     INCR16 :    0 transactions
+      WRAP4 :    0 transactions
+      WRAP8 :    0 transactions
+     WRAP16 :    0 transactions
+      total :    0 transactions
+-------------------------------------------------------------------------------------------
+   4 byte wide burst
+     SINGLE :    0 transactions
+       INCR :   29 transactions
+      INCR4 :    0 transactions
+      INCR8 :    0 transactions
+     INCR16 :    0 transactions
+      WRAP4 :    0 transactions
+      WRAP8 :    0 transactions
+     WRAP16 :    0 transactions
+      total :   29 transactions
+-------------------------------------------------------------------------------------------
+Total WRITE :   29 transactions
+
+===========================================================================================
+   READ  transactions :: (by size, type)
+   1 byte wide burst
+     SINGLE :    0 transactions
+       INCR :    0 transactions
+      INCR4 :    0 transactions
+      INCR8 :    0 transactions
+     INCR16 :    0 transactions
+      WRAP4 :    0 transactions
+      WRAP8 :    0 transactions
+     WRAP16 :    0 transactions
+      total :    0 transactions
+-------------------------------------------------------------------------------------------
+   2 byte wide burst
+     SINGLE :    0 transactions
+       INCR :    0 transactions
+      INCR4 :    0 transactions
+      INCR8 :    0 transactions
+     INCR16 :    0 transactions
+      WRAP4 :    0 transactions
+      WRAP8 :    0 transactions
+     WRAP16 :    0 transactions
+      total :    0 transactions
+-------------------------------------------------------------------------------------------
+   4 byte wide burst
+     SINGLE :   30 transactions
+       INCR :    0 transactions
+      INCR4 :    0 transactions
+      INCR8 :    0 transactions
+     INCR16 :    0 transactions
+      WRAP4 :    0 transactions
+      WRAP8 :    0 transactions
+     WRAP16 :    0 transactions
+      total :   30 transactions
+-------------------------------------------------------------------------------------------
+Total READ  :   30 transactions
+===========================================================================================

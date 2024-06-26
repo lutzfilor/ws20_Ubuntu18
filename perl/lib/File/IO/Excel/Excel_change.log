@@ -1,0 +1,19 @@
+# Revision history for Perl applicatition namespace File::IO::Excel
+
+# Synopsis      Excel::has fundamentally changed and this change of encoding files in UTF8 should
+#               mark the end of supporting LATIN1(extended ASCII) or ASCII encoded file formats
+#               sadly for backward compatibility ASCII and LATIN will be supported for ever, but
+#               to end the discussion, this library should end this debate
+#
+#               .xlsx   --> [ArrRef]    2D table, fully occupied 
+#
+# DATE          VERSION     Description
+# ================================================================================================
+# 09-15-2020                Created     perl/lib/Excel/Excel_change.log tracking File related features 
+#               v1.01.01    Create      File::IO::Excel::open_workbook  ( Name.xlsx )   => \$workbook
+#               v1.01.02    Create      File::IO::Excel::list_worksheets( workbook  )
+#               v1.01.03    Create      File::IO::Excel::read_worksheet ( workbook, worksheet_name )
+# 09-16-2020    v1.01.04    Add feature File::IO::Excel::file_exists    ( Name.xlsx )   private method
+# 09-17-2020    v1.01.05    Debug       File::IO::Excel::read_worksheet ( workbook, worksheet_name )
+#                                       Insert empty cells for not occupied cells, creating fully 
+#                                       occupied tables, to avoid exception handling    =>  NEED TO BE REVISIT !!

@@ -1,0 +1,88 @@
+/home/lfilor/ws/
+                |--python/
+                |           |--postprocess.py
+                |           |--archive/
+                |--perl/    
+                |           |--parse_ahb_tracker.pl
+                            |--archive/
+
+<process>/<project>/<user>/<workarea>
+  ...gf22/niue1z1  /lfilor/wa1/
+
+
+  wa1/                                              $SOS_CLIENT
+     |--analog/
+     |--analog-ip/
+     |--physical/
+     |--run/    ( 13 subdirsSystems )
+     |      |--STA/ (static timing analysis)
+     |      |--SYN/ (synthesis, netlist)
+     |      |--SIM/ (simulation)
+     |
+     |--setup/
+     |--.SOS/
+     |--tapeout/
+*    |--vsys/
+            |--bin/ (perl,make scripts)
+            |--proj/
+            |       |--<project_name>
+            |       |--niue1z1/
+            |
+           *|--comm/
+                    |--cmodel/ 
+                    |--fw/ (Driver/,DUT/,Host/)
+                    |--inc/(.h,src/)
+                   *|--asic/
+                            |--cdc/
+                            |--dft/
+                            |--doc/
+                           *|--flow/
+                            |--fpga/
+                            |--include/
+                            |--lib/
+                            |--release/
+                            |--rtl/ ( design files)
+                            |--scripts/
+                            |           |--xflow        (perl script)
+                            |           |--prepare/
+                            |          *|--perl_modules/
+                            |                           |--Class/
+                            |                           |--COT/
+                            |                           |--File/
+                            |                           |--HTML/
+                            |                           |--IO/
+                            |                           |--perl5/
+                            |                           |--Yaml/
+                            |                          *|--Galois/
+                           *|--dv/
+                                |--doc/     (VerifArch.doc, .sxw, .odt)
+                                |--<module_name>/   (cpu,dma,eth,cdpcie,sata,sdio..
+                                |                   (*shared ??*)
+                                |
+                               *|--scripts/
+                                            |--gen_scope_tb.pl
+                                            |
+                                            |--atrenta/
+                                            |--boot/
+                                            |--doxygen/
+                                            |--include/
+                                            |--mg_scripts/
+                                            |--oldscripts/
+                                            |--Parallel/
+                                            |--perllibs/
+                                            |--pinmux/
+                                            |--pylibs/
+                                            |--security/
+                                            |--statsScripts/
+                                            |--xlsx-evaluator/
+                                           *|--perf/
+                                           *|       |--parse_ahb_tracker.pl
+                                            |
+                                           *|--post_process (physon script) 
+                                           *|--post_processing/
+                                                            |--ahb_log.py
+                                                            |--axi_log.py
+                                                           *|--base.py          (BasePostProcessor)
+                                                           *|--error_defs.py
+                                                           *|--sim.py
+

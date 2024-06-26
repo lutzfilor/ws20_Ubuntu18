@@ -1,0 +1,39 @@
+#   Workspace   SystemC
+#   Created     2020-06-09
+#   
+#   Install     
+#   step-1      sudo apt-get install build-essential
+#   step-2      download systemc-2.3.1a.tar.gz
+#   step-3      cp ~/Downloads/system-2.3.1a.tar.gz ~/ws/sc/systemc-2.3.1a.tar.gz
+#   step-4      tar -xvf systemc-2.3.1a.tar.gz
+#   step-5      cd systemc-2.3.1a/
+#   step-6      mkdir objdir
+#   step-7      sudo mkdir /usr/local/
+#   step-8      cd ~/ws/sc/objdir
+#   step-9      sudo ../configure --prefix=/usr/local/systemc-2.3.1/
+#   step-10     Build settings:
+#
+#   step-11     sudo make
+#   step-12     sudo make install
+#   step-13     export SYSTEMC_HOME=/usr/local/systemc-2.3.1
+#   step-14     cd ../..
+#   step-15     gvim --servername GVIM1 --remate-tab hello.cpp
+#   step-16     g++ -I. -I$SYSTEMC_HOME/include -L. -L$SYSTEMC_HOME/lib-linux64 -Wl,-rpath=$SYSTEMC_HOME/lib-linux64 -o hello hello.cpp -lsystemc -lm
+                g++ -I. -I$SYSTEMC_HOME/include -L. -L$SYSTEMC_HOME/lib-linux64 -Wl,-rpath=$SYSTEMC_HOME/lib-linux64 -o hello hello.cpp -lsystemc -lm -std=c++98
+#   step-17     ./hello
+
+
+
+===============================================================================================================
+std::gets has been removed in C++11 (See What is gets() equivalent in C11?)
+
+If you're building using C++11 flag (maybe with a g++ alias), you have to disable this line in systemc.h.
+
+Replace
+
+using std::gets;
+with
+
+#if defined(__cplusplus) && (__cplusplus < 201103L)
+using std::gets;
+#endif

@@ -1,0 +1,26 @@
+# Revision history for Perl applicatition namespace File::IO::UTF8
+
+# Synopsis      Documents are complex Ojects built from a variety of differenct file types
+#               Photos, Images, Music, formatted Text (marked up text) files
+#               For ease of handling, these files are bundled, packed and compressed, to be opened
+#               by application specific programs
+#
+#               Documents   are zipped  subdirectories,(bunch of files bundled into one FileObject)
+#               
+#               UTF8        text    format  variable length, built the base for this files
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 09-20-2020                Created     perl/lib/EXP/DOCX/Docx_change.log for tracking Module related features 
+#               v1.01.01    Refactored  File::IO::UTF8::XLSX.pm
+#                           To          EXP::Docx.pm
+#               v1.01.03    Add         POD feature for perldoc <ModulePath>
+# 09-28-2020    v1.01.04    Add Feature EXP::Docx::write_docx( path, docx_file )
+#               v1.01.05    Refactor    module library linking   
+#                           From        use lib  qw ( ~/ws/perl/lib );          #   Relative path to User Modules
+#                           To          use lib "$ENV{PERLPATH}";               #   Add Include path to @INC, Environment
+#               v1.01.06    Import      EXP::XML::dir_exists    ( $path )   
+#               v1.01.07    Import      EXP::XML::file_exists   ( $path )
+# 09-30-2020    v1.01.08    Add Feature EXP::Docx::insert_heading   ( {$what} );#   Create XMLE for a heading
+#               v1.01.09    Add Feature EXP::Docx::insert_paragraph ( {$what} );#   Create XMLE for a paragraph
+#               v1.01.10    Import      EXP::XML::disjoin_xml   ( $path )

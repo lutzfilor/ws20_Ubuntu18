@@ -1,0 +1,45 @@
+/sswork/gf22/niue1z1/lfilor/wa1/coverage/weekly/cov_report_ww10/pages/z74.json
+,rectable:{
+headers:['Coverage Type', 'Bins', 'Hits', 'Misses', 'Weight', '% Hit', 'Coverage'],
+totalhits:{class:'odd_r', val:'3.59%'},avgw:{class:'bgRed', val:'8.36%'},
+data:[
+{link:{class:'odd',val:'Statements'},tb:{class:'odd_r', val:'7459'},cb:{class:'odd_r', val:'2403'},ms:{class:'odd_r', val:'5056'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'32.21%'},cp:{class:'bgRed', val:'32.21%'}}
+,{link:{class:'even',val:'Branches'},tb:{class:'even_r', val:'4852'},cb:{class:'even_r', val:'475'},ms:{class:'even_r', val:'4377'},wt:{class:'even_r', val:'1'},hp:{class:'even_r', val:'9.78%'},cp:{class:'bgRed', val:'9.78%'}}
+,{link:{class:'odd',val:'FEC Expressions'},tb:{class:'odd_r', val:'736'},cb:{class:'odd_r', val:'4'},ms:{class:'odd_r', val:'732'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'0.54%'},cp:{class:'bgRed', val:'0.54%'}}
+,{link:{class:'even',val:'FEC Conditions'},tb:{class:'even_r', val:'46'},cb:{class:'even_r', val:'0'},ms:{class:'even_r', val:'46'},wt:{class:'even_r', val:'1'},hp:{class:'even_r', val:'0.00%'},cp:{class:'bgRed', val:'0.00%'}}
+,{link:{class:'odd',val:'Toggles'},tb:{class:'odd_r', val:'70270'},cb:{class:'odd_r', val:'112'},ms:{class:'odd_r', val:'70158'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'0.15%'},cp:{class:'bgRed', val:'0.15%'}}
+,{link:{class:'even',val:'FSMs'},tb:{class:'even_r', val:'54'},cb:{class:'even_r', val:'3'},ms:{class:'even_r', val:'51'},wt:{class:'even_r', val:'1'},hp:{class:'even_r', val:'5.55%'},cp:{class:'bgRed', val:'7.50%'}}
+,{link:{class:'odd',val:'States', indent:'1'},tb:{class:'odd_r', val:'20'},cb:{class:'odd_r', val:'3'},ms:{class:'odd_r', val:'17'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'15.00%'},cp:{class:'bgRed', val:'15.00%'}}
+,{link:{class:'even',val:'Transitions', indent:'1'},tb:{class:'even_r', val:'34'},cb:{class:'even_r', val:'0'},ms:{class:'even_r', val:'34'},wt:{class:'even_r', val:'1'},hp:{class:'even_r', val:'0.00%'},cp:{class:'bgRed', val:'0.00%'}}
+]
+}
+
+/sswork/gf22/niue1z1/lfilor/wa1/coverage/weekly/cov_report_ww10/pages/z6.json
+,rectable:{
+headers:['Coverage Type', 'Bins', 'Hits', 'Misses', 'Weight', '% Hit', 'Coverage'],
+totalhits:{class:'odd_r', val:'12.02%'},avgw:{class:'bgRed', val:'26.28%'},
+data:[
+{link:{class:'odd',val:'Statements'},tb:{class:'odd_r', val:'103'},cb:{class:'odd_r', val:'66'},ms:{class:'odd_r', val:'37'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'64.07%'},cp:{class:'bgYellow', val:'64.07%'}}
+,{link:{class:'even',val:'Branches'},tb:{class:'even_r', val:'98'},cb:{class:'even_r', val:'52'},ms:{class:'even_r', val:'46'},wt:{class:'even_r', val:'1'},hp:{class:'even_r', val:'53.06%'},cp:{class:'bgYellow', val:'53.06%'}}
+,{link:{class:'odd',val:'FEC Expressions'},tb:{class:'odd_r', val:'16'},cb:{class:'odd_r', val:'4'},ms:{class:'odd_r', val:'12'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'25.00%'},cp:{class:'bgRed', val:'25.00%'}}
+,{link:{class:'even',val:'FEC Conditions'},tb:{class:'even_r', val:'53'},cb:{class:'even_r', val:'2'},ms:{class:'even_r', val:'51'},wt:{class:'even_r', val:'1'},hp:{class:'even_r', val:'3.77%'},cp:{class:'bgRed', val:'3.77%'}}
+,{link:{class:'odd',val:'Toggles'},tb:{class:'odd_r', val:'890'},cb:{class:'odd_r', val:'16'},ms:{class:'odd_r', val:'874'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'1.79%'},cp:{class:'bgRed', val:'1.79%'}}
+,{link:{class:'even',val:'FSMs'},tb:{class:'even_r', val:'13'},cb:{class:'even_r', val:'1'},ms:{class:'even_r', val:'12'},wt:{class:'even_r', val:'1'},hp:{class:'even_r', val:'7.69%'},cp:{class:'bgRed', val:'10.00%'}}
+,{link:{class:'odd',val:'States', indent:'1'},tb:{class:'odd_r', val:'5'},cb:{class:'odd_r', val:'1'},ms:{class:'odd_r', val:'4'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'20.00%'},cp:{class:'bgRed', val:'20.00%'}}
+,{link:{class:'even',val:'Transitions', indent:'1'},tb:{class:'even_r', val:'8'},cb:{class:'even_r', val:'0'},ms:{class:'even_r', val:'8'},wt:{class:'even_r', val:'1'},hp:{class:'even_r', val:'0.00%'},cp:{class:'bgRed', val:'0.00%'}}
+]
+}
+
+/sswork/gf22/niue1z1/lfilor/wa1/coverage/weekly/cov_report_ww10/pages/z6.json
+,rectable:{
+headers:['Coverage Type', 'Bins', 'Hits', 'Misses', 'Weight', '% Hit', 'Coverage'],
+totalhits:{class:'odd_r', val:'30.98%'},avgw:{class:'bgRed', val:'17.55%'},
+data:[
+{link:{class:'odd',val:'Statements'},tb:{class:'odd_r', val:'1055'},cb:{class:'odd_r', val:'457'},ms:{class:'odd_r', val:'598'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'43.31%'},cp:{class:'bgRed', val:'43.31%'}}
+,{link:{class:'even',val:'Branches'},tb:{class:'even_r', val:'1542'},cb:{class:'even_r', val:'655'},ms:{class:'even_r', val:'887'},wt:{class:'even_r', val:'1'},hp:{class:'even_r', val:'42.47%'},cp:{class:'bgRed', val:'42.47%'}}
+,{link:{class:'odd',val:'FEC Expressions'},tb:{class:'odd_r', val:'68'},cb:{class:'odd_r', val:'0'},ms:{class:'odd_r', val:'68'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'0.00%'},cp:{class:'bgRed', val:'0.00%'}}
+,{link:{class:'even',val:'FEC Conditions'},tb:{class:'even_r', val:'174'},cb:{class:'even_r', val:'0'},ms:{class:'even_r', val:'174'},wt:{class:'even_r', val:'1'},hp:{class:'even_r', val:'0.00%'},cp:{class:'bgRed', val:'0.00%'}}
+,{link:{class:'odd',val:'Toggles'},tb:{class:'odd_r', val:'802'},cb:{class:'odd_r', val:'16'},ms:{class:'odd_r', val:'786'},wt:{class:'odd_r', val:'1'},hp:{class:'odd_r', val:'1.99%'},cp:{class:'bgRed', val:'1.99%'}}
+]
+}
+

@@ -1,0 +1,882 @@
+ ... HEADER decoding
+     line ::     0 :: Instance: uvm_test_top.top_env_i.ahbfab_env_i.mvc_ahb_mon_6_env_i.logger_handle_ahb
+     line ::     1 :: AHB Clk Cycle = 40 ns; AHB Clk Frequency = 25.00 MHz; Data bus width = 32 bits
+     line ::     2 :: ------------------------------------------------------------------------------------------------------------------------------------------
+     line ::     3 :: |NONSEQ/SEQ Assert Time |  HREADY Assert Time   |  DIR     |   ADDR   | BEAT  |  L |   DATA   |  RESP  | BURST| BURST   | H |    HSEL    |
+     line ::     4 :: |                       |                       |   -      |          |  NUM  |  E |          |        | Type | Size    | P |   (SLAVE   |
+     line ::     5 :: |                       |                       | PHASE    |          |       |  N |          |        |      |= 2^HSIZE| R |    INDEX)  |
+     line ::     6 :: |                       |                       |          |          |       |    |          |        |      | bytes   | O |            |
+     line ::     7 :: |                       |                       |          |          |       |    |          |        |      |         | T |            |
+     line ::     8 :: |                       |                       |          |          |       |    |          |        |      |         |   |            |
+     line ::     9 :: ------------------------------------------------------------------------------------------------------------------------------------------
+ ... HEADER decoding done
+ ... TABLE  decoding ... 
+     line ::    10 :: |              606580 ns|              606585 ns|RD-NONSEQ | F8315248 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    11 :: |              606585 ns|              606720 ns|RD-DATA   | F8315248 |  1/ 1 | -- | 0000000A |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   606585 ns
+                         ADDR transfer assertion time :   606580 ns
+     line ::    12 :: |              606765 ns|              606770 ns|WR-NONSEQ | F8315248 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    13 :: |              606770 ns|              606885 ns|WR-DATA   | F8315248 |  1/ ? | -- | 00000005 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   606770 ns
+                         ADDR transfer assertion time :   606765 ns
+     line ::    14 :: |              606920 ns|              606925 ns|RD-NONSEQ | F831524C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    15 :: |              606925 ns|              607040 ns|RD-DATA   | F831524C |  1/ 1 | -- | 0000000F |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   606925 ns
+                         ADDR transfer assertion time :   606920 ns
+     line ::    16 :: |              607090 ns|              607095 ns|WR-NONSEQ | F831524C | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    17 :: |              607095 ns|              607215 ns|WR-DATA   | F831524C |  1/ ? | -- | 00000005 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   607095 ns
+                         ADDR transfer assertion time :   607090 ns
+     line ::    18 :: |              607250 ns|              607255 ns|RD-NONSEQ | F8315250 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    19 :: |              607255 ns|              607370 ns|RD-DATA   | F8315250 |  1/ 1 | -- | 0000000F |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   607255 ns
+                         ADDR transfer assertion time :   607250 ns
+     line ::    20 :: |              607415 ns|              607420 ns|WR-NONSEQ | F8315250 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    21 :: |              607420 ns|              607535 ns|WR-DATA   | F8315250 |  1/ ? | -- | 00000005 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   607420 ns
+                         ADDR transfer assertion time :   607415 ns
+     line ::    22 :: |              607570 ns|              607575 ns|RD-NONSEQ | F8315254 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    23 :: |              607575 ns|              607700 ns|RD-DATA   | F8315254 |  1/ 1 | -- | 0000000A |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   607575 ns
+                         ADDR transfer assertion time :   607570 ns
+     line ::    24 :: |              607745 ns|              607750 ns|WR-NONSEQ | F8315254 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    25 :: |              607750 ns|              607885 ns|WR-DATA   | F8315254 |  1/ ? | -- | 00000005 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   607750 ns
+                         ADDR transfer assertion time :   607745 ns
+     line ::    26 :: |              607920 ns|              607925 ns|RD-NONSEQ | F8315258 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    27 :: |              607925 ns|              608050 ns|RD-DATA   | F8315258 |  1/ 1 | -- | 0000000A |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   607925 ns
+                         ADDR transfer assertion time :   607920 ns
+     line ::    28 :: |              608095 ns|              608100 ns|WR-NONSEQ | F8315258 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    29 :: |              608100 ns|              608225 ns|WR-DATA   | F8315258 |  1/ ? | -- | 00000005 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   608100 ns
+                         ADDR transfer assertion time :   608095 ns
+     line ::    30 :: |              608260 ns|              608265 ns|RD-NONSEQ | F831525C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    31 :: |              608265 ns|              608380 ns|RD-DATA   | F831525C |  1/ 1 | -- | 0000000F |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   608265 ns
+                         ADDR transfer assertion time :   608260 ns
+     line ::    32 :: |              608430 ns|              608435 ns|WR-NONSEQ | F831525C | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    33 :: |              608435 ns|              608555 ns|WR-DATA   | F831525C |  1/ ? | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   608435 ns
+                         ADDR transfer assertion time :   608430 ns
+     line ::    34 :: |              608600 ns|              608605 ns|WR-NONSEQ | F8321190 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    35 :: |              608605 ns|              608945 ns|WR-DATA   | F8321190 |  1/ ? | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   608605 ns
+                         ADDR transfer assertion time :   608600 ns
+     line ::    36 :: |              608980 ns|              608985 ns|RD-NONSEQ | F8321190 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    37 :: |              608985 ns|              609390 ns|RD-DATA   | F8321190 |  1/ 1 | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   608985 ns
+                         ADDR transfer assertion time :   608980 ns
+     line ::    38 :: |              609430 ns|              609435 ns|WR-NONSEQ | F8321194 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    39 :: |              609435 ns|              609845 ns|WR-DATA   | F8321194 |  1/ ? | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   609435 ns
+                         ADDR transfer assertion time :   609430 ns
+     line ::    40 :: |              609880 ns|              609885 ns|RD-NONSEQ | F8321194 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    41 :: |              609885 ns|              610260 ns|RD-DATA   | F8321194 |  1/ 1 | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   609885 ns
+                         ADDR transfer assertion time :   609880 ns
+     line ::    42 :: |              610315 ns|              610320 ns|WR-NONSEQ | F8321198 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    43 :: |              610320 ns|              610715 ns|WR-DATA   | F8321198 |  1/ ? | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   610320 ns
+                         ADDR transfer assertion time :   610315 ns
+     line ::    44 :: |              610750 ns|              610755 ns|RD-NONSEQ | F8321198 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    45 :: |              610755 ns|              611100 ns|RD-DATA   | F8321198 |  1/ 1 | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   610755 ns
+                         ADDR transfer assertion time :   610750 ns
+     line ::    46 :: |              611150 ns|              611155 ns|WR-NONSEQ | F832119C | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    47 :: |              611155 ns|              611525 ns|WR-DATA   | F832119C |  1/ ? | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   611155 ns
+                         ADDR transfer assertion time :   611150 ns
+     line ::    48 :: |              611560 ns|              611565 ns|RD-NONSEQ | F832119C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    49 :: |              611565 ns|              611910 ns|RD-DATA   | F832119C |  1/ 1 | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   611565 ns
+                         ADDR transfer assertion time :   611560 ns
+     line ::    50 :: |              611950 ns|              611955 ns|WR-NONSEQ | F83211A0 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    51 :: |              611955 ns|              612365 ns|WR-DATA   | F83211A0 |  1/ ? | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   611955 ns
+                         ADDR transfer assertion time :   611950 ns
+     line ::    52 :: |              612400 ns|              612405 ns|RD-NONSEQ | F83211A0 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    53 :: |              612405 ns|              612780 ns|RD-DATA   | F83211A0 |  1/ 1 | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   612405 ns
+                         ADDR transfer assertion time :   612400 ns
+     line ::    54 :: |              612825 ns|              612830 ns|WR-NONSEQ | F83211A4 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    55 :: |              612830 ns|              613265 ns|WR-DATA   | F83211A4 |  1/ ? | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   612830 ns
+                         ADDR transfer assertion time :   612825 ns
+     line ::    56 :: |              613300 ns|              613305 ns|RD-NONSEQ | F83211A4 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    57 :: |              613305 ns|              613680 ns|RD-DATA   | F83211A4 |  1/ 1 | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   613305 ns
+                         ADDR transfer assertion time :   613300 ns
+     line ::    58 :: |              613720 ns|              613725 ns|WR-NONSEQ | F83211A8 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    59 :: |              613725 ns|              614075 ns|WR-DATA   | F83211A8 |  1/ ? | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   613725 ns
+                         ADDR transfer assertion time :   613720 ns
+     line ::    60 :: |              614110 ns|              614115 ns|RD-NONSEQ | F83211A8 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    61 :: |              614115 ns|              614460 ns|RD-DATA   | F83211A8 |  1/ 1 | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   614115 ns
+                         ADDR transfer assertion time :   614110 ns
+     line ::    62 :: |              614500 ns|              614505 ns|WR-NONSEQ | F83211AC | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    63 :: |              614505 ns|              614885 ns|WR-DATA   | F83211AC |  1/ ? | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   614505 ns
+                         ADDR transfer assertion time :   614500 ns
+     line ::    64 :: |              614920 ns|              614925 ns|RD-NONSEQ | F83211AC | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    65 :: |              614925 ns|              615330 ns|RD-DATA   | F83211AC |  1/ 1 | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   614925 ns
+                         ADDR transfer assertion time :   614920 ns
+     line ::    66 :: |              615380 ns|              615385 ns|WR-NONSEQ | F83211B0 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    67 :: |              615385 ns|              615755 ns|WR-DATA   | F83211B0 |  1/ ? | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   615385 ns
+                         ADDR transfer assertion time :   615380 ns
+     line ::    68 :: |              615790 ns|              615795 ns|RD-NONSEQ | F83211B0 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    69 :: |              615795 ns|              616140 ns|RD-DATA   | F83211B0 |  1/ 1 | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   615795 ns
+                         ADDR transfer assertion time :   615790 ns
+     line ::    70 :: |              616190 ns|              616195 ns|WR-NONSEQ | F83211B8 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    71 :: |              616195 ns|              616595 ns|WR-DATA   | F83211B8 |  1/ ? | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   616195 ns
+                         ADDR transfer assertion time :   616190 ns
+     line ::    72 :: |              616630 ns|              616635 ns|RD-NONSEQ | F83211B8 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    73 :: |              616635 ns|              616980 ns|RD-DATA   | F83211B8 |  1/ 1 | -- | 00000007 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   616635 ns
+                         ADDR transfer assertion time :   616630 ns
+     line ::    74 :: |              620355 ns|              620360 ns|WR-NONSEQ | F8321190 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    75 :: |              620360 ns|              620665 ns|WR-DATA   | F8321190 |  1/ ? | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   620360 ns
+                         ADDR transfer assertion time :   620355 ns
+     line ::    76 :: |              620700 ns|              620705 ns|RD-NONSEQ | F8321190 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    77 :: |              620705 ns|              620940 ns|RD-DATA   | F8321190 |  1/ 1 | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   620705 ns
+                         ADDR transfer assertion time :   620700 ns
+     line ::    78 :: |              620980 ns|              620985 ns|WR-NONSEQ | F8321194 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    79 :: |              620985 ns|              621275 ns|WR-DATA   | F8321194 |  1/ ? | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   620985 ns
+                         ADDR transfer assertion time :   620980 ns
+     line ::    80 :: |              621310 ns|              621315 ns|RD-NONSEQ | F8321194 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    81 :: |              621315 ns|              621580 ns|RD-DATA   | F8321194 |  1/ 1 | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   621315 ns
+                         ADDR transfer assertion time :   621310 ns
+     line ::    82 :: |              621630 ns|              621635 ns|WR-NONSEQ | F8321198 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    83 :: |              621635 ns|              621875 ns|WR-DATA   | F8321198 |  1/ ? | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   621635 ns
+                         ADDR transfer assertion time :   621630 ns
+     line ::    84 :: |              621910 ns|              621915 ns|RD-NONSEQ | F8321198 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    85 :: |              621915 ns|              622150 ns|RD-DATA   | F8321198 |  1/ 1 | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   621915 ns
+                         ADDR transfer assertion time :   621910 ns
+     line ::    86 :: |              622200 ns|              622205 ns|WR-NONSEQ | F832119C | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    87 :: |              622205 ns|              622505 ns|WR-DATA   | F832119C |  1/ ? | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   622205 ns
+                         ADDR transfer assertion time :   622200 ns
+     line ::    88 :: |              622540 ns|              622545 ns|RD-NONSEQ | F832119C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    89 :: |              622545 ns|              622820 ns|RD-DATA   | F832119C |  1/ 1 | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   622545 ns
+                         ADDR transfer assertion time :   622540 ns
+     line ::    90 :: |              622865 ns|              622870 ns|WR-NONSEQ | F83211A0 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    91 :: |              622870 ns|              623115 ns|WR-DATA   | F83211A0 |  1/ ? | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   622870 ns
+                         ADDR transfer assertion time :   622865 ns
+     line ::    92 :: |              623150 ns|              623155 ns|RD-NONSEQ | F83211A0 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    93 :: |              623155 ns|              623380 ns|RD-DATA   | F83211A0 |  1/ 1 | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   623155 ns
+                         ADDR transfer assertion time :   623150 ns
+     line ::    94 :: |              623435 ns|              623440 ns|WR-NONSEQ | F83211A4 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    95 :: |              623440 ns|              623665 ns|WR-DATA   | F83211A4 |  1/ ? | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   623440 ns
+                         ADDR transfer assertion time :   623435 ns
+     line ::    96 :: |              623700 ns|              623705 ns|RD-NONSEQ | F83211A4 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::    97 :: |              623705 ns|              623940 ns|RD-DATA   | F83211A4 |  1/ 1 | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   623705 ns
+                         ADDR transfer assertion time :   623700 ns
+     line ::    98 :: |              623980 ns|              623985 ns|WR-NONSEQ | F83211A8 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::    99 :: |              623985 ns|              624235 ns|WR-DATA   | F83211A8 |  1/ ? | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   623985 ns
+                         ADDR transfer assertion time :   623980 ns
+     line ::   100 :: |              624270 ns|              624275 ns|RD-NONSEQ | F83211A8 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   101 :: |              624275 ns|              624500 ns|RD-DATA   | F83211A8 |  1/ 1 | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   624275 ns
+                         ADDR transfer assertion time :   624270 ns
+     line ::   102 :: |              624540 ns|              624545 ns|WR-NONSEQ | F83211AC | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   103 :: |              624545 ns|              624835 ns|WR-DATA   | F83211AC |  1/ ? | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   624545 ns
+                         ADDR transfer assertion time :   624540 ns
+     line ::   104 :: |              624870 ns|              624875 ns|RD-NONSEQ | F83211AC | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   105 :: |              624875 ns|              625140 ns|RD-DATA   | F83211AC |  1/ 1 | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   624875 ns
+                         ADDR transfer assertion time :   624870 ns
+     line ::   106 :: |              625180 ns|              625185 ns|WR-NONSEQ | F83211B0 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   107 :: |              625185 ns|              625475 ns|WR-DATA   | F83211B0 |  1/ ? | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   625185 ns
+                         ADDR transfer assertion time :   625180 ns
+     line ::   108 :: |              625510 ns|              625515 ns|RD-NONSEQ | F83211B0 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   109 :: |              625515 ns|              625740 ns|RD-DATA   | F83211B0 |  1/ 1 | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   625515 ns
+                         ADDR transfer assertion time :   625510 ns
+     line ::   110 :: |              625790 ns|              625795 ns|WR-NONSEQ | F83211B8 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   111 :: |              625795 ns|              626025 ns|WR-DATA   | F83211B8 |  1/ ? | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   625795 ns
+                         ADDR transfer assertion time :   625790 ns
+     line ::   112 :: |              626060 ns|              626065 ns|RD-NONSEQ | F83211B8 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   113 :: |              626065 ns|              626310 ns|RD-DATA   | F83211B8 |  1/ 1 | -- | 00000003 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   626065 ns
+                         ADDR transfer assertion time :   626060 ns
+     line ::   114 :: |              629115 ns|              629120 ns|WR-NONSEQ | F8321190 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   115 :: |              629120 ns|              629505 ns|WR-DATA   | F8321190 |  1/ ? | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   629120 ns
+                         ADDR transfer assertion time :   629115 ns
+     line ::   116 :: |              629540 ns|              629545 ns|RD-NONSEQ | F8321190 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   117 :: |              629545 ns|              630000 ns|RD-DATA   | F8321190 |  1/ 1 | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   629545 ns
+                         ADDR transfer assertion time :   629540 ns
+     line ::   118 :: |              630055 ns|              630060 ns|WR-NONSEQ | F8321194 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   119 :: |              630060 ns|              630605 ns|WR-DATA   | F8321194 |  1/ ? | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   630060 ns
+                         ADDR transfer assertion time :   630055 ns
+     line ::   120 :: |              630640 ns|              630645 ns|RD-NONSEQ | F8321194 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   121 :: |              630645 ns|              631100 ns|RD-DATA   | F8321194 |  1/ 1 | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   630645 ns
+                         ADDR transfer assertion time :   630640 ns
+     line ::   122 :: |              631145 ns|              631150 ns|WR-NONSEQ | F8321198 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   123 :: |              631150 ns|              631655 ns|WR-DATA   | F8321198 |  1/ ? | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   631150 ns
+                         ADDR transfer assertion time :   631145 ns
+     line ::   124 :: |              631690 ns|              631695 ns|RD-NONSEQ | F8321198 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   125 :: |              631695 ns|              632150 ns|RD-DATA   | F8321198 |  1/ 1 | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   631695 ns
+                         ADDR transfer assertion time :   631690 ns
+     line ::   126 :: |              632195 ns|              632200 ns|WR-NONSEQ | F832119C | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   127 :: |              632200 ns|              632705 ns|WR-DATA   | F832119C |  1/ ? | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   632200 ns
+                         ADDR transfer assertion time :   632195 ns
+     line ::   128 :: |              632740 ns|              632745 ns|RD-NONSEQ | F832119C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   129 :: |              632745 ns|              633200 ns|RD-DATA   | F832119C |  1/ 1 | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   632745 ns
+                         ADDR transfer assertion time :   632740 ns
+     line ::   130 :: |              633245 ns|              633250 ns|WR-NONSEQ | F83211A0 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   131 :: |              633250 ns|              633705 ns|WR-DATA   | F83211A0 |  1/ ? | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   633250 ns
+                         ADDR transfer assertion time :   633245 ns
+     line ::   132 :: |              633740 ns|              633745 ns|RD-NONSEQ | F83211A0 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   133 :: |              633745 ns|              634200 ns|RD-DATA   | F83211A0 |  1/ 1 | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   633745 ns
+                         ADDR transfer assertion time :   633740 ns
+     line ::   134 :: |              634245 ns|              634250 ns|WR-NONSEQ | F83211A4 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   135 :: |              634250 ns|              634755 ns|WR-DATA   | F83211A4 |  1/ ? | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   634250 ns
+                         ADDR transfer assertion time :   634245 ns
+     line ::   136 :: |              634790 ns|              634795 ns|RD-NONSEQ | F83211A4 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   137 :: |              634795 ns|              635250 ns|RD-DATA   | F83211A4 |  1/ 1 | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   634795 ns
+                         ADDR transfer assertion time :   634790 ns
+     line ::   138 :: |              635300 ns|              635305 ns|WR-NONSEQ | F83211A8 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   139 :: |              635305 ns|              635805 ns|WR-DATA   | F83211A8 |  1/ ? | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   635305 ns
+                         ADDR transfer assertion time :   635300 ns
+     line ::   140 :: |              635840 ns|              635845 ns|RD-NONSEQ | F83211A8 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   141 :: |              635845 ns|              636350 ns|RD-DATA   | F83211A8 |  1/ 1 | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   635845 ns
+                         ADDR transfer assertion time :   635840 ns
+     line ::   142 :: |              636405 ns|              636410 ns|WR-NONSEQ | F83211AC | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   143 :: |              636410 ns|              636905 ns|WR-DATA   | F83211AC |  1/ ? | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   636410 ns
+                         ADDR transfer assertion time :   636405 ns
+     line ::   144 :: |              636940 ns|              636945 ns|RD-NONSEQ | F83211AC | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   145 :: |              636945 ns|              637400 ns|RD-DATA   | F83211AC |  1/ 1 | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   636945 ns
+                         ADDR transfer assertion time :   636940 ns
+     line ::   146 :: |              637445 ns|              637450 ns|WR-NONSEQ | F83211B0 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   147 :: |              637450 ns|              637955 ns|WR-DATA   | F83211B0 |  1/ ? | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   637450 ns
+                         ADDR transfer assertion time :   637445 ns
+     line ::   148 :: |              637990 ns|              637995 ns|RD-NONSEQ | F83211B0 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   149 :: |              637995 ns|              638450 ns|RD-DATA   | F83211B0 |  1/ 1 | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   637995 ns
+                         ADDR transfer assertion time :   637990 ns
+     line ::   150 :: |              638500 ns|              638505 ns|WR-NONSEQ | F83211B8 | ----- |  ? | -------- |  ----  |INCR  |    4    | 1 |           0|
+                      0 :: first command
+     line ::   151 :: |              638505 ns|              639055 ns|WR-DATA   | F83211B8 |  1/ ? | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   638505 ns
+                         ADDR transfer assertion time :   638500 ns
+     line ::   152 :: |              639090 ns|              639095 ns|RD-NONSEQ | F83211B8 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   153 :: |              639095 ns|              639600 ns|RD-DATA   | F83211B8 |  1/ 1 | -- | 0000000B |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :   639095 ns
+                         ADDR transfer assertion time :   639090 ns
+     line ::   154 :: |             2228970 ns|             2228975 ns|RD-NONSEQ | F8316CB8 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   155 :: |             2228975 ns|             2229300 ns|RD-DATA   | F8316CB8 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2228975 ns
+                         ADDR transfer assertion time :  2228970 ns
+     line ::   156 :: |             2229335 ns|             2229340 ns|RD-NONSEQ | F8316CBC | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   157 :: |             2229340 ns|             2229650 ns|RD-DATA   | F8316CBC |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2229340 ns
+                         ADDR transfer assertion time :  2229335 ns
+     line ::   158 :: |             2229685 ns|             2229690 ns|RD-NONSEQ | F8316CCC | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   159 :: |             2229690 ns|             2230000 ns|RD-DATA   | F8316CCC |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2229690 ns
+                         ADDR transfer assertion time :  2229685 ns
+     line ::   160 :: |             2230035 ns|             2230040 ns|RD-NONSEQ | F8316CD0 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   161 :: |             2230040 ns|             2230400 ns|RD-DATA   | F8316CD0 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2230040 ns
+                         ADDR transfer assertion time :  2230035 ns
+     line ::   162 :: |             2230435 ns|             2230440 ns|RD-NONSEQ | F8316CE0 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   163 :: |             2230440 ns|             2230800 ns|RD-DATA   | F8316CE0 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2230440 ns
+                         ADDR transfer assertion time :  2230435 ns
+     line ::   164 :: |             2230835 ns|             2230840 ns|RD-NONSEQ | F8316CE4 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   165 :: |             2230840 ns|             2231150 ns|RD-DATA   | F8316CE4 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2230840 ns
+                         ADDR transfer assertion time :  2230835 ns
+     line ::   166 :: |             2231185 ns|             2231190 ns|RD-NONSEQ | F8316CF4 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   167 :: |             2231190 ns|             2231500 ns|RD-DATA   | F8316CF4 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2231190 ns
+                         ADDR transfer assertion time :  2231185 ns
+     line ::   168 :: |             2231535 ns|             2231540 ns|RD-NONSEQ | F8316CF8 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   169 :: |             2231540 ns|             2231900 ns|RD-DATA   | F8316CF8 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2231540 ns
+                         ADDR transfer assertion time :  2231535 ns
+     line ::   170 :: |             2231935 ns|             2231940 ns|RD-NONSEQ | F8316D08 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   171 :: |             2231940 ns|             2232250 ns|RD-DATA   | F8316D08 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2231940 ns
+                         ADDR transfer assertion time :  2231935 ns
+     line ::   172 :: |             2232285 ns|             2232290 ns|RD-NONSEQ | F8316D0C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   173 :: |             2232290 ns|             2232600 ns|RD-DATA   | F8316D0C |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2232290 ns
+                         ADDR transfer assertion time :  2232285 ns
+     line ::   174 :: |             2232635 ns|             2232640 ns|RD-NONSEQ | F8316D1C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   175 :: |             2232640 ns|             2233000 ns|RD-DATA   | F8316D1C |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2232640 ns
+                         ADDR transfer assertion time :  2232635 ns
+     line ::   176 :: |             2233035 ns|             2233040 ns|RD-NONSEQ | F8316D20 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   177 :: |             2233040 ns|             2233350 ns|RD-DATA   | F8316D20 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2233040 ns
+                         ADDR transfer assertion time :  2233035 ns
+     line ::   178 :: |             2233385 ns|             2233390 ns|RD-NONSEQ | F8316D30 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   179 :: |             2233390 ns|             2233700 ns|RD-DATA   | F8316D30 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2233390 ns
+                         ADDR transfer assertion time :  2233385 ns
+     line ::   180 :: |             2233735 ns|             2233740 ns|RD-NONSEQ | F8316D34 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   181 :: |             2233740 ns|             2234100 ns|RD-DATA   | F8316D34 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2233740 ns
+                         ADDR transfer assertion time :  2233735 ns
+     line ::   182 :: |             2234135 ns|             2234140 ns|RD-NONSEQ | F8316D44 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   183 :: |             2234140 ns|             2234500 ns|RD-DATA   | F8316D44 |  1/ 1 | -- | 48250018 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2234140 ns
+                         ADDR transfer assertion time :  2234135 ns
+     line ::   184 :: |             2234535 ns|             2234540 ns|RD-NONSEQ | F8316D48 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   185 :: |             2234540 ns|             2234850 ns|RD-DATA   | F8316D48 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2234540 ns
+                         ADDR transfer assertion time :  2234535 ns
+     line ::   186 :: |             2234885 ns|             2234890 ns|RD-NONSEQ | F8316D58 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   187 :: |             2234890 ns|             2235200 ns|RD-DATA   | F8316D58 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2234890 ns
+                         ADDR transfer assertion time :  2234885 ns
+     line ::   188 :: |             2235235 ns|             2235240 ns|RD-NONSEQ | F8316D5C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   189 :: |             2235240 ns|             2235600 ns|RD-DATA   | F8316D5C |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2235240 ns
+                         ADDR transfer assertion time :  2235235 ns
+     line ::   190 :: |             2235635 ns|             2235640 ns|RD-NONSEQ | F8316D6C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   191 :: |             2235640 ns|             2235950 ns|RD-DATA   | F8316D6C |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2235640 ns
+                         ADDR transfer assertion time :  2235635 ns
+     line ::   192 :: |             2235985 ns|             2235990 ns|RD-NONSEQ | F8316D70 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   193 :: |             2235990 ns|             2236300 ns|RD-DATA   | F8316D70 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2235990 ns
+                         ADDR transfer assertion time :  2235985 ns
+     line ::   194 :: |             2236335 ns|             2236340 ns|RD-NONSEQ | F8316D80 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   195 :: |             2236340 ns|             2236650 ns|RD-DATA   | F8316D80 |  1/ 1 | -- | F8316D80 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2236340 ns
+                         ADDR transfer assertion time :  2236335 ns
+     line ::   196 :: |             2236685 ns|             2236690 ns|RD-NONSEQ | F8316D84 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   197 :: |             2236690 ns|             2237000 ns|RD-DATA   | F8316D84 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2236690 ns
+                         ADDR transfer assertion time :  2236685 ns
+     line ::   198 :: |             2237035 ns|             2237040 ns|RD-NONSEQ | F8316D94 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   199 :: |             2237040 ns|             2237400 ns|RD-DATA   | F8316D94 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2237040 ns
+                         ADDR transfer assertion time :  2237035 ns
+     line ::   200 :: |             2237435 ns|             2237440 ns|RD-NONSEQ | F8316D98 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   201 :: |             2237440 ns|             2237750 ns|RD-DATA   | F8316D98 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2237440 ns
+                         ADDR transfer assertion time :  2237435 ns
+     line ::   202 :: |             2237785 ns|             2237790 ns|RD-NONSEQ | F8316DA8 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   203 :: |             2237790 ns|             2238100 ns|RD-DATA   | F8316DA8 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2237790 ns
+                         ADDR transfer assertion time :  2237785 ns
+     line ::   204 :: |             2238135 ns|             2238140 ns|RD-NONSEQ | F8316DAC | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   205 :: |             2238140 ns|             2238450 ns|RD-DATA   | F8316DAC |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2238140 ns
+                         ADDR transfer assertion time :  2238135 ns
+     line ::   206 :: |             2238485 ns|             2238490 ns|RD-NONSEQ | F8316DBC | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   207 :: |             2238490 ns|             2238800 ns|RD-DATA   | F8316DBC |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2238490 ns
+                         ADDR transfer assertion time :  2238485 ns
+     line ::   208 :: |             2238835 ns|             2238840 ns|RD-NONSEQ | F8316DC0 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   209 :: |             2238840 ns|             2239200 ns|RD-DATA   | F8316DC0 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2238840 ns
+                         ADDR transfer assertion time :  2238835 ns
+     line ::   210 :: |             2239235 ns|             2239240 ns|RD-NONSEQ | F8316DD0 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   211 :: |             2239240 ns|             2239550 ns|RD-DATA   | F8316DD0 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2239240 ns
+                         ADDR transfer assertion time :  2239235 ns
+     line ::   212 :: |             2239585 ns|             2239590 ns|RD-NONSEQ | F8316DD4 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   213 :: |             2239590 ns|             2239900 ns|RD-DATA   | F8316DD4 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2239590 ns
+                         ADDR transfer assertion time :  2239585 ns
+     line ::   214 :: |             2239935 ns|             2239940 ns|RD-NONSEQ | F8316DE4 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   215 :: |             2239940 ns|             2240250 ns|RD-DATA   | F8316DE4 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2239940 ns
+                         ADDR transfer assertion time :  2239935 ns
+     line ::   216 :: |             2240285 ns|             2240290 ns|RD-NONSEQ | F8316DE8 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   217 :: |             2240290 ns|             2240600 ns|RD-DATA   | F8316DE8 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2240290 ns
+                         ADDR transfer assertion time :  2240285 ns
+     line ::   218 :: |             2240635 ns|             2240640 ns|RD-NONSEQ | F8316DF8 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   219 :: |             2240640 ns|             2240950 ns|RD-DATA   | F8316DF8 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2240640 ns
+                         ADDR transfer assertion time :  2240635 ns
+     line ::   220 :: |             2240985 ns|             2240990 ns|RD-NONSEQ | F8316DFC | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   221 :: |             2240990 ns|             2241300 ns|RD-DATA   | F8316DFC |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2240990 ns
+                         ADDR transfer assertion time :  2240985 ns
+     line ::   222 :: |             2241335 ns|             2241340 ns|RD-NONSEQ | F8316E0C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   223 :: |             2241340 ns|             2241650 ns|RD-DATA   | F8316E0C |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2241340 ns
+                         ADDR transfer assertion time :  2241335 ns
+     line ::   224 :: |             2241685 ns|             2241690 ns|RD-NONSEQ | F8316E10 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   225 :: |             2241690 ns|             2242050 ns|RD-DATA   | F8316E10 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2241690 ns
+                         ADDR transfer assertion time :  2241685 ns
+     line ::   226 :: |             2242085 ns|             2242090 ns|RD-NONSEQ | F8316E20 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   227 :: |             2242090 ns|             2242400 ns|RD-DATA   | F8316E20 |  1/ 1 | -- | 3FF0BDB2 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2242090 ns
+                         ADDR transfer assertion time :  2242085 ns
+     line ::   228 :: |             2242435 ns|             2242440 ns|RD-NONSEQ | F8316E24 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   229 :: |             2242440 ns|             2242750 ns|RD-DATA   | F8316E24 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2242440 ns
+                         ADDR transfer assertion time :  2242435 ns
+     line ::   230 :: |             2242785 ns|             2242790 ns|RD-NONSEQ | F8316E34 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   231 :: |             2242790 ns|             2243100 ns|RD-DATA   | F8316E34 |  1/ 1 | -- | 3FF3529C |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2242790 ns
+                         ADDR transfer assertion time :  2242785 ns
+     line ::   232 :: |             2243135 ns|             2243140 ns|RD-NONSEQ | F8316E38 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   233 :: |             2243140 ns|             2243450 ns|RD-DATA   | F8316E38 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2243140 ns
+                         ADDR transfer assertion time :  2243135 ns
+     line ::   234 :: |             2243485 ns|             2243490 ns|RD-NONSEQ | F8316E48 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   235 :: |             2243490 ns|             2243800 ns|RD-DATA   | F8316E48 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2243490 ns
+                         ADDR transfer assertion time :  2243485 ns
+     line ::   236 :: |             2243835 ns|             2243840 ns|RD-NONSEQ | F8316E4C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   237 :: |             2243840 ns|             2244150 ns|RD-DATA   | F8316E4C |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2243840 ns
+                         ADDR transfer assertion time :  2243835 ns
+     line ::   238 :: |             2244185 ns|             2244190 ns|RD-NONSEQ | F8316E5C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   239 :: |             2244190 ns|             2244500 ns|RD-DATA   | F8316E5C |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2244190 ns
+                         ADDR transfer assertion time :  2244185 ns
+     line ::   240 :: |             2244535 ns|             2244540 ns|RD-NONSEQ | F8316E60 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   241 :: |             2244540 ns|             2244850 ns|RD-DATA   | F8316E60 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2244540 ns
+                         ADDR transfer assertion time :  2244535 ns
+     line ::   242 :: |             2244885 ns|             2244890 ns|RD-NONSEQ | F8316E70 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   243 :: |             2244890 ns|             2245200 ns|RD-DATA   | F8316E70 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2244890 ns
+                         ADDR transfer assertion time :  2244885 ns
+     line ::   244 :: |             2245235 ns|             2245240 ns|RD-NONSEQ | F8316E74 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   245 :: |             2245240 ns|             2245550 ns|RD-DATA   | F8316E74 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2245240 ns
+                         ADDR transfer assertion time :  2245235 ns
+     line ::   246 :: |             2245585 ns|             2245590 ns|RD-NONSEQ | F8316E84 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   247 :: |             2245590 ns|             2245900 ns|RD-DATA   | F8316E84 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2245590 ns
+                         ADDR transfer assertion time :  2245585 ns
+     line ::   248 :: |             2245935 ns|             2245940 ns|RD-NONSEQ | F8316E88 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   249 :: |             2245940 ns|             2246250 ns|RD-DATA   | F8316E88 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2245940 ns
+                         ADDR transfer assertion time :  2245935 ns
+     line ::   250 :: |             2246285 ns|             2246290 ns|RD-NONSEQ | F8316E98 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   251 :: |             2246290 ns|             2246650 ns|RD-DATA   | F8316E98 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2246290 ns
+                         ADDR transfer assertion time :  2246285 ns
+     line ::   252 :: |             2246685 ns|             2246690 ns|RD-NONSEQ | F8316E9C | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   253 :: |             2246690 ns|             2247050 ns|RD-DATA   | F8316E9C |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2246690 ns
+                         ADDR transfer assertion time :  2246685 ns
+     line ::   254 :: |             2247085 ns|             2247090 ns|RD-NONSEQ | F8316EAC | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   255 :: |             2247090 ns|             2247450 ns|RD-DATA   | F8316EAC |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2247090 ns
+                         ADDR transfer assertion time :  2247085 ns
+     line ::   256 :: |             2247485 ns|             2247490 ns|RD-NONSEQ | F8316EB0 | ----- |  1 | -------- |  ----  |SINGLE|    4    | 1 |           0|
+                      0 :: first command
+     line ::   257 :: |             2247490 ns|             2247800 ns|RD-DATA   | F8316EB0 |  1/ 1 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+                      ::             AHB address transfer phase detected
+                      :: sequential  AHB data    transfer phase detected FIRST
+                         DATA transfer assertion time :  2247490 ns
+                         ADDR transfer assertion time :  2247485 ns
+ ... TABLE  decoding done

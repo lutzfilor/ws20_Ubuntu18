@@ -1,0 +1,2 @@
+ test.pl --create=file:file1,file2,file3,dir1/file1 --debug=DebugControl,testing,_create,makepaths
+

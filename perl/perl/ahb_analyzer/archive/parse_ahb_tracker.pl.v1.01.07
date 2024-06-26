@@ -1,0 +1,1749 @@
+#!/tools/sw/perl/bin/perl -w
+
+# Author    Lutz Filor
+# Phone     408 807 6915
+#
+# Purpose   Analysis AHB-tracker tracefile
+#
+#           VERSION     DATE            Description
+# History   1.01.01     09/10/2018      Parsing trace files
+#           1.01.02     09/14/2018      First   report file, build data structure first check in
+#                                       Min, Max, Average
+#           1.01.03 -   09/21/2018      Refactor parsing, analysis, reporting second check in
+#                                       split -> REGEX, Header parsing, Parsing.log
+#           1.01.04 -   09/24/2018      Add and fix payload analysis, timebase, beat unaligned
+#                                       Next ADDR transfer report before concurrent DATA transfer
+#           1.01.05 -   09/25/2018      Add transfer analysis, transfer, beat, WAIT states, IDLE
+#                                       , concealed ADDR transfers
+#           1.01.06     09/26/2018      Refactor latency analysis
+#                                       Refactoring latency analysis
+#                                       Accounting  1st DATA, Last Data latency
+#           1.01.07     09/27/2018      Update analysis report
+#                                       Debugging   latency analysis
+#                                       Refactoring bandwidth analysis
+
+my $VERSION = "1.01.07";
+
+use strict;
+use warnings;
+
+use feature 'state';                    # Static local variables
+use Readonly;
+use DateTime;
+
+sub usage;
+sub report;
+sub parse_header;
+sub calculate_payload;
+
+Readonly my $DIGITS => qr { \d+ (?: [.] \d*)? | [.] \d+ }xms;
+Readonly my $SIGN   => qr { [+-] }xms;
+Readonly my $EXPO   => qr { [eE] $SIGN? \d+ }xms;
+Readonly my $FLOAT  => qr { ($SIGN?) ($DIGITS) ($EXPO?) }xms;
+
+# main entry
+#
+#if ($#ARGV != 2) {
+if ($#ARGV == 1) {
+    usage();
+}
+
+my $filename      = $ARGV[0];
+my $key_value     = $ARGV[1];
+my $access_data   = $ARGV[2];
+my $parser_log    = 'parser.log';                           # log    parsing input file parsing
+my $build_log     = 'build.log';                            # log    building of transaction tree, hash
+my $progress_log  = 'progress.log';                         # log    progress phases of program
+my $payload_log   = 'payload.log';                          # log    payload calculation as beat are error prone
+my $transfer_log  = 'transfer.log';                         # log    transfers, type and duration
+my $latency_log   = 'latency.log';                          # log    analysing transaction latency
+my $bandwidth_log = 'bandwidth.log';                        # log    analysing transaction bandwidth
+my $pointer_log   = 'pointer.log';                          # test   logfile for point structure 
+my $ahb_testlog   = 'ahb_test.log';                         # access data via ahb_hash{keys}
+my $analysis      = 'analysis.rpt';                         # access data via pointer; report file
+
+#################################################################################################################################
+my $error_log     = 'error.log';                            # log    trace file reporting errors
+
+#|             6127040 ps|             6132066 ps|RD-DATA   | 84D5214C |  3/ 4 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+#|             6132066 ps|             6137066 ps|WR-NONSEQ | 84D52332 | ----- | 16 | -------- |  ----  |INCR16|    1    | 8 |           0|
+#|             6132066 ps|             6137066 ps|RD-DATA   | 84D52150 |  1/ 4 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+#|             6137066 ps|             6142066 ps|WR-DATA   | 84D52332 |  2/16 | -- | ..A3.... |  OKAY  | ---- | ------- | - | ---------- |
+#                                                                         ....
+#|             6206870 ps|             6211870 ps|WR-DATA   | 84D52340 | 16/16 | -- | ......EE |  OKAY  | ---- | ------- | - | ---------- |
+#|             6211870 ps|             6216946 ps|WR-DATA   | 84D52341 | 17/16 | -- | ....48.. |  OKAY  | ---- | ------- | - | ---------- |
+#|             6216946 ps|             6221846 ps|RD-NONSEQ | 84D52248 | ----- | 16 | -------- |  ----  |INCR16|    4    | 4 |           0|
+#|             6221846 ps|             6226746 ps|RD-DATA   | 84D52248 |  1/16 | -- | 00000000 |  OKAY  | ---- | ------- | - | ---------- |
+
+#################################################################################################################################
+#                   'transfer.log                           # tbd    handle for cvs file handle     transfer log
+my $trans_log     = 'transaction.log';                      # tbd    handle not used                transaction log/command log    
+my $data_tracer   = 'ahb_data.log';                         # tbd    handle for csv file handle     transfer log
+my $track_log     = 'ahb_parse.log';                        # to be deprecated - first universal analysis, progress tracking log    
+
+my $tracefile;
+my $owner         = 'Lutz Filor';
+
+my ($s,$m,$h,$cday,$mon,$year,$wday,$yday,$isdst) = localtime;
+
+open (FILE    , "<$filename")       || die " Can not open input $filename";
+open (my $parh, ">$parser_log")     || die " Can not create log $parser_log";
+open (my $buih, ">$build_log")      || die " Can not create log $build_log";
+open (my $proh, ">$progress_log")   || die " Can not create log $progress_log";
+open (my $payh, ">$payload_log")    || die " Can not create log $payload_log";
+open (my $trah, ">$transfer_log")   || die " Can not create log $transfer_log";         # Are the bus transfers accounted for ? Mendatory
+open (my $lath, ">$latency_log")    || die " Can not create log $latency_log";
+open (my $banh, ">$bandwidth_log")  || die " Can not create log $bandwidth_log";
+open (my $ptrh, ">$pointer_log")    || die " Can not create log $pointer_log";
+open (my $anah, ">$analysis")       || die " Can not create log $analysis";
+open (my $errh, ">$error_log")      || die " Can not create log $error_log";
+#################################################################################################################################
+open (my $dath, ">$data_tracer")    || die " Can not create log $data_tracer";          # If transported data becomes relevant,
+open (my $tsth, ">$ahb_testlog")    || die " Can not create log $ahb_testlog";          # Testing AHB command hash data structure
+open (my $logh, ">$track_log")      || die " Can not create log $track_log";            # To be deprecated
+
+printf {$logh} " Author : %s\n", $owner;
+printf {$proh} " Author : %s\n", $owner;
+printf {$proh} "\n";
+printf {$proh} " ... opening  %s\n", $filename;
+printf {$proh} "     creating ParserLogFile  %s\n", $parser_log;
+printf {$proh} "     creating BuildLogFile   %s\n", $build_log;
+printf {$proh} "     creating ProgressFile   %s\n", $progress_log;
+printf {$proh} "     creating AnalysisReport %s\n", $analysis;
+#close $logh;
+
+#printf $logh, " date   : %s\n", 
+#printf {$logh}, " date   : %s\n", 
+my @LINES = <FILE>;
+
+my %Trace;                              # Trace file header information
+my %AHB_hash;                           # Trace file transfer information access AHB command transfers via time stamp
+
+my %ahb_transfer;                       #        AHB transfer    analysis new
+my %ahb_latency_new;                    #        AHB latency     analysis new/refactored
+my %ahb_bandwidth_new;                  #        AHB bandwidth   analysis new/refactored
+my %ahb_transaction_new;                #        AHB transaction analysis new/refactored
+
+my %ahb_anal;                           #        AHB transaction analysis
+my %ahb_band;                           #        AHB bandwidth   analysis
+my %ahb_latency;                        #        AHB latency     analysis
+
+#  Convert global variable to local state variable
+
+my $ptr_fst_cmd = undef;                # pointer to first       command object/transaction
+my $ptr_pen_cmd = undef;                # pointer to penultimate command object/transaction <= SINGLE Transfer 
+my $ptr_prv_cmd = undef;                # pointer to previous    commamd object/transaction 
+my $ptr_cur_cmd = undef;                # pointer to current     commamd object/transaction 
+my $ptr_nxt_cmd = undef;                # pointer to next        commamd object/transaction 
+my $ptr_lst_cmd = undef;                # pointer to last        commamd object/transaction 
+
+my $ptr_fst_dta = undef;                # pointer to first    data obj
+my $ptr_prv_dta = undef;
+my $ptr_cur_dta = undef;                # pointer to current  data obj/transaction
+my $ptr_nxt_dta = undef;
+my $ptr_lst_dta = undef;                # pointer to last     data obj
+
+printf "\n";
+#printf $proh," ... reading tracefile\n";
+printf $proh " ... reading tracefile\n";
+printf $logh " Author : %s\n", $owner;
+
+for (my $i = 0; $i < $.; $i++)
+{
+    printf $logh "   %s", $LINES[$i];
+
+    my @COL;
+    my $row      = $LINES[$i];
+    chomp $row;
+
+    $LINES[$i] =~ s/\|            //;                       # deprecated, maintained for backward verification
+    $LINES[$i] =~ s/ ns//;                                  # deprecated, maintained for backward verification
+    $LINES[$i] =~ s/ ns//;                                  # deprecated, maintained for backward verification
+    
+    my @line = split (/\|/, $LINES[$i]);                    # deprecated, maintained for backward verification
+
+    if ( $i <=  9) {
+        #printf " ... HEADER decoding\n"             if ($i == 0);
+        printf $buih  " ... HEADER decoding\n"      if ($i == 0);
+        printf $proh  " ... HEADER decoding\n"      if ($i == 0);
+        parse_header( \%Trace, $i, $row );                  # decode header of trace file
+        #printf "HEADER decoding done\n"             if ($i ==  9);
+        printf $buih  "     line :: %5s :: %s\n", $i, $row;
+        printf $buih  " ... HEADER decoding done\n" if ($i ==  9);
+        printf $proh  " ... HEADER decoding done\n" if ($i ==  9);
+    }
+    if ( $i >= 10) {
+        #printf " ... TABLE  decoding ... \n"        if ($i == 10);
+        printf $proh  " ... TABLE  decoding ... \n" if ($i == 10);
+        printf $buih  " ... TABLE  decoding ... \n" if ($i == 10);
+        printf $buih  "     line :: %5s :: %s\n", $i, $row;
+
+        parse_body  ( \@COL, $row );                        # decode column data of transfer table rows
+
+        #printf " %6s Column value :: %s :: <%s>\n"
+        #              , $COL[0], $line[2], $COL[4];        # deprecated, catch parsing control error
+
+        if ( $COL[4] =~ /NONSEQ/ ) {                        # PHASE Address
+
+            $AHB_hash{$COL[0]}                              # hash of AHB command, with command ASSERT time as keys
+            = build_command_obj( \@COL, \@line );           # values are the AHB command objects, in double ptr list
+
+        }# NONSEQ aka address phase or command
+
+        if ( $COL[4] =~ /DATA|BUSY/ ) {                     # PHASE Data
+           
+            #printf STDERR " \$COL[4] matches\n" if ( $COL[4] =~ /DATA|BUSY/ );
+            build_data_obj ( \@COL, \@line );               # data transfers are accessed via AHB address/cmd transfers
+            
+        }# Data phase or Data
+    }# process trace table $i >= 10
+}# for AHB trace tracker
+
+close( FILE );
+printf "\n";
+#printf        " ... done reading AHB trace tracker\n";
+printf "\n";
+printf $buih  " ... TABLE  decoding done\n";
+printf $proh  " ... TABLE  decoding done\n";
+
+#
+#parse_tracefile ( );
+#elaborate_tracefile;                                       # Build 2D directed graph of transactions
+#
+initialize_transaction_analysis ( \%ahb_anal            );  # Initialize reporting structure
+initialize_transaction_analysis ( \%ahb_transaction_new );
+
+initialize_payload_analysis     ( $ptr_fst_cmd          );  # Calculating payload, burst length
+initialize_transfer_analysis    ( $ptr_fst_cmd
+                                , $ptr_lst_cmd
+                                , \%Trace
+                                , \%ahb_transfer        );
+
+initialize_latency_analysis     ( \%ahb_latency         );  # To be deprecated
+initialize_latency_analysis     ( \%ahb_latency_new     );
+
+           latency_analysis     ( $ptr_fst_cmd
+           
+                                , \%Trace
+                                , \%ahb_transfer
+                                , \%ahb_latency_new     );
+
+           bandwidth_analysis   ( $ptr_fst_cmd              # Needs payload
+                                # $stop_ptr                 # ??? future
+                                , \%Trace
+                                , \%ahb_transfer
+                                # \%payload                 # ??? future
+                                , \%ahb_bandwidth_new
+                                , \%ahb_transaction_new );
+
+protocol_trace_analysis         ( $ptr_fst_cmd
+                                , \%ahb_band
+                                , \%ahb_latency         );  # To be deprecated
+
+analysis_report                 ( \%Trace
+                                , \%ahb_band
+                                , \%ahb_latency
+                                , \%ahb_latency_new
+                                , \%ahb_transfer      
+                                , \%ahb_bandwidth_new   );
+
+# Testing specified data structures
+
+#test_AHB_hash();                               # Testing data structure
+#report();                                      # This report is for debugging purposes
+
+close  $logh;
+#######################################################################################################
+
+sub usage{
+    printf "\n";
+   #printf " Usage : <command>             <tracker_trace.file>  <start_time> <trace>\n";
+   #printf "          parse_ahb_tracker.pl  log_file_name         key_value    access_data [0..12] range\n";
+    printf " Usage : <command>             <tracker_trace.file> \n";
+    printf "          parse_ahb_tracker.pl  log_file_name       \n";
+    printf "\n";
+    printf " Trace : Tracker-field selected by          column# or Name <string>   \n";
+    printf " ------------------------------------------------------------------------\n";
+    printf "         Nonseq/Seq assert Time          :        0 || nonseq_assert_time\n";
+    printf "         HREADY     assert Time          :        1 || hready_assert_time\n";
+    printf "         DIR PHASE                       :        2 || dir_phase\n";
+    printf "         ADDRESS                         :        3 || address\n";
+    printf "         BEAT NUM                        :        4 || beat_num\n";
+    printf "         LEN                             :        5 || burst_len\n";
+    printf "         DATA                            :        6 || data\n";
+    printf "         RESPONSE                        :        7 || response\n";
+    printf "         BURST Type                      :        8 || burst_type\n";
+    printf "         BURST Size                      :        9 || burst_size\n";
+    printf "         HPORT                           :       10 || hport\n";
+    printf "         Next     command                :       11 || next_command\n";
+    printf "         Previous command                :       12 || prev_command\n";
+    printf "\n";
+    exit 0;
+}#sub usage
+
+
+sub parse_header{
+    my ($trace_ref, $lc, $row) = @_;
+
+    # Instance: uvm_test_top.top_env_i.ahbfab_env_i.mvc_ahb_mst_5_env_i.logger_handle_ahb
+    if ($lc == 0) {
+        if ( $row =~ /^Instance:\s+([a-z0-9_.]+)/x ) {
+            printf  $parh "   Picked  : %s :: Header\n", $row;
+            printf  $parh "             Instance: %s\n", $1;
+            ${$trace_ref}{tracefile}    =  $1; # trace filename
+        } else {
+            printf $parh "   Skipped : %s\n", $row;
+        }
+    }# parse first line
+
+    # AHB Clk Cycle = 5 ns; AHB Clk Frequency = 200.00 MHz; Data bus width = 32 bits
+    elsif ($lc == 1) {
+        if ( $row =~ m{  ^(\w+)[ ]Clk[ ]Cycle    [ ]=[ ]($FLOAT)[ ] (ns|ps)    # <== Add Time base
+                      ;[ ](\w+)[ ]Clk[ ]Frequency[ ]=[ ]($FLOAT)[ ](MHz|GHz)   # <== Add Frequency base
+                      ;[ ] Data[ ]bus[ ]width    [ ]=[ ]  (\d+) [ ]   bits     # increase readability w/ x-modifier
+                      }x ) 
+        {
+            printf $parh "   Picked  : %s\n", $row;
+            printf $parh "%*s%s Clk Cycle = %s %s; %s Clk Frequency = %3.2f %s; Data bus width = %s bits\n"
+                         ,13,'',$1, $2, $6, $7, $8, $12, $13;
+            ${$trace_ref}{protocol}     =  $1; # (AHB)
+            ${$trace_ref}{period}       =  $2; # (float)
+            ${$trace_ref}{timebase}     =  $6; # (ns|ps)
+            ${$trace_ref}{redundant}    =  $7; # (AHB)
+            ${$trace_ref}{frequency}    =  $8; # (float)
+            ${$trace_ref}{freqbase}     = $12; # (MHz|GHz)
+            ${$trace_ref}{databus}      = $13; # bit width
+        }# regex
+        else {
+            printf $parh "   Skipped : %s\n", $row;
+            $row =~ m{  ^(\w+)[ ]Clk[ ]Cycle    [ ]=[ ]($FLOAT)[ ] (ns|ps)
+                     ;[ ](\w+)[ ]Clk[ ]Frequency[ ]=[ ]($FLOAT)[ ](MHz|GHz)
+                     ;[ ] Data[ ]bus[ ]width    [ ]=[ ]  (\d+) [ ]   bits
+                     }x ;
+            printf  $parh "%*s%s Clk Cycle = %s %s; %s Clk Frequency = %3.2f %s; Data bus width = %s bits\n"
+                          ,13,'',$1, $2, $6, $7, $8, $12, $13;
+            printf  $parh "       \$1 : %s\n", $1; # Protocol Period    (AHB)
+            printf  $parh "       \$2 : %s\n", $2; #          FLOAT
+            printf  $parh "       \$3 : %s\n", $3; #          Sign
+            printf  $parh "       \$4 : %s\n", $4; #          Digits
+            printf  $parh "       \$5 : %s\n", $5; #          Exponent
+            printf  $parh "       \$6 : %s\n", $6; #          Timebase
+            printf  $parh "       \$7 : %s\n", $7; # Protocol Frequency (AHB)
+            printf  $parh "       \$8 : %s\n", $8; #          FLOAT
+            printf  $parh "       \$9 : %s\n", $9; #          SIGN
+            printf  $parh "       \$10: %s\n", $10;#          DIGITS
+            printf  $parh "       \$11: %s\n", $11;#          Exponent
+            printf  $parh "       \$12: %s\n", $12;#          Exponent
+            printf  $parh "       \$13: %s\n", $13;# Databus  Width     (bit)         
+        }
+    }# parse second line
+    else {
+        printf $parh "   Skipped : %s\n", $row;
+    }
+}#sub parse_header
+
+sub parse_body{
+    my ( $a_ref, $row ) = @_;
+    #if ( $LINES[$i] =~ m{\A                    # From  start of line beginning with <|>
+    #if ( $row =~ m{#\A                         # From  start of line beginning with <|>
+    #
+    #              |\s+(\d+) ns                 # Column  2: Sample time HREADY Assert Time 
+    #              |(\w+)\s+                    # Column  3: PHASE
+    #              |\s([A-F0-9]{8})\s+          # Column  4: Address 32bit exact 8 Hex
+    #              |\s([0-9\/\- ]+)             # Column  5: Beat number, extract string w/ subset char
+    #              |\s([0-9-]+)                 # Column  6: LEN/Length, extract string w/ char subset
+    #              |\s([A-F0-9\-\.])            # Column  7: DATA, text string       !! Not data
+    #              |\s([A-F0-9\-)\s+            # Column  8: RESP/Response
+    #              |(\w+)                       # Column  9: Burst Type SINGLE, WRAP4, INCR8 .. WRAP16
+    #              |\s([0-9\-])\s               # Column 10: Burst Size, text string !! Not data
+    #              |\s([A-F0-9]{1})             # Column 11: HPROT, Hex number
+    #              |\s+([0-9\-]+)\s*|           # Column 12: HSEL, Slave index text string !! Not data
+    #              \z                           # Until   end of line ending EOS                                      Shall match \A usage
+    #COL                     1                       2          3          4       5    6          7        8      9        10  11           12
+    #|              620521 ns|              620531 ns|WR-NONSEQ | 3FF115E7 | ----- |  8 | -------- |  ----  |WRAP8 |    1    | 3 |           0|
+    #|              625571 ns|              625581 ns|WR-NONSEQ | 3FF114F0 | ----- |  ? | -------- |  ----  |INCR  |    2    | 8 |           0|
+    #|             6026708 ps|             6031684 ps|WR-NONSEQ | 84D522B8 | ----- | 16 | -------- |  ----  |INCR16|    4    | B |           0|
+    if ( $row =~ m{^[|]\s+  (\d+)            [ ]  (ns|ps)   # Column  1: Assert time SEQ Assert Time                         <== Parsing Extention timebase
+                    [|]\s+  (\d+)            [ ]  (ns|ps)   # Column  2: Sample time HREADY Assert Time                      <== Parsing Extention timebase
+                    [|]     ([A-Z-]+)        [ ]+           # Column  3: PHASE
+                    [|]\s   ([A-F0-9]{8})    [ ]+           # Column  4: Address 32bit exact 8 Hex literals
+                    [|]\s   ([0-9/ ?-]{5})   [ ]            # Column  5: Beat number, extract string w/ char subset          <== Parsing Error [0-9\/\- ] class subset 
+                    [|]\s+  ([0-9-?]+)       [ ]            # Column  6: LEN/Length , extract string w/ char subset          <== Parsing Error, \s+, missing ?
+                    [|]\s   ([A-F0-9\-\.]{8})[ ]            # Column  7: DATA, text string       !! Not data
+                    [|]\s+  ([\-A-Z]+)       [ ]+           # Column  8: RESP/Response
+                    [|]\s*  ([-A-Z0-9]+)     [ ]*           # Column  9: Burst Type SINGLE, WRAP4, INCR8 .. WRAP16, ' ---- '
+                    [|]\s+  ([0-9\-]+)       [ ]+           # Column 10: Burst Size, text string !! Not data
+                    [|]\s   ([-A-F0-9]{1})   [ ]            # Column 11: HPROT, Hex number
+                    [|]\s+  ([0-9\-]+)\s*    [|]            # Column 12: HSEL, Slave index text string !! Not data
+                  }xmsi                                     #        Allow comment, multi line (^,$), New line (.), case insensitive
+       ) {                                                  # Parenterize correctly the matching condition
+           printf $parh "   Picked  : %s\n", $row;
+           push   $a_ref, ( $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14 );       # Index no longer match the columns
+           printf $parh "%*s"          , 13, '';                                    #                  Pre timebase tracking
+           printf $parh "|%20s %s"     , $a_ref->[ 0],$a_ref->[ 1];                 #$1 Assert time;            $a_ref->[ 0]
+           printf $parh "|%20s %s"     , $a_ref->[ 2],$a_ref->[ 3];                 #   Complettime             $a_ref->[ 1]
+           printf $parh "|%-10s"       , $a_ref->[ 4];                              #Transfer                   $a_ref->[ 2]
+           printf $parh "| %-8s "      , $a_ref->[ 5];                              #ADDR                       $a_ref->[ 3]
+           printf $parh "| %5s "       , $a_ref->[ 6];                              #BEAT                       $a_ref->[ 4]
+           printf $parh "| %2s "       , $a_ref->[ 7];                              #LEN                        $a_ref->[ 5]
+           printf $parh "| %8s "       , $a_ref->[ 8];                              #DATA                       $a_ref->[ 6]  
+           printf $parh "|%6s  "       , $a_ref->[ 9];                              #RESP                       $a_ref->[ 7]
+           if ( $a_ref->[10] =~ m/[-]/){ printf $parh "| %s "    , $a_ref->[10];    #BURST TYPE                 $a_ref->[ 8]
+           } else {                      printf $parh "|%-6s"    , $a_ref->[10]; }  #BURST TYPE                 $a_ref->[ 8]
+           if ( $a_ref->[11] =~ m/[-]/){ printf $parh "| %7s "   , $a_ref->[11];    #BURST SIZE                 $a_ref->[ 9]
+           } else {                      printf $parh "| %4s    ", $a_ref->[11]; }  #BURST SIZE                 $a_ref->[ 9]
+           printf $parh "|%2s "        , $a_ref->[12];                              #HPROT                      $a_ref->[10]
+           if ( $a_ref->[13] =~ m/[-]/){ printf $parh "| %s |\n" , $a_ref->[13];    #HSEL                       $a_ref->[11]
+           } else {                      printf $parh "|%12s|\n" , $a_ref->[13]; }  #HSEL                       $a_ref->[11]
+    } else {
+           #
+           # Debug code, catch the failure and parse again
+           #
+           printf $parh "   Skipped : %s\n", $row;
+           $row =~ m{^[|]\s+(\d+)[ ](ns|ps)
+                      [|]\s+(\d+)[ ](ns|ps)
+                      [|]([A-Z-]+)          [ ]+
+                      [|]\s([A-F0-9]{8})    [ ]+
+                      [|]\s([0-9/ ?-]{5})   [ ]   # Column  5: Beat# 5 characters [? /0-9]
+                      [|]\s+([0-9-?]+)      [ ]
+                      [|]\s([A-F0-9\-\.]{8})[ ]
+                      [|]\s+([\-A-Z]+)      [ ]+
+                      [|]\s*([-A-Z0-9]+)    [ ]*  # Column  9: Burst Type SINGLE, WRAP4, INCR8 .. WRAP16, ' ---- '
+                      [|]\s+([0-9\-]+)      [ ]+  # Column 10: Burst Size, text string !! Not data
+                      [|]\s([-A-F0-9]{1})   [ ]   # Column 11: HPROT, Hex number
+                      [|]\s+([0-9\-]+)\s*   [|] 
+
+                    }ixms;
+           printf $parh "       \$1 : %s\n", $1;
+           printf $parh "       \$2 : %s\n", $2;
+           printf $parh "       \$3 : %s\n", $3;
+           printf $parh "       \$4 : %s\n", $4;
+           printf $parh "       \$5 : %s\n", $5;
+           printf $parh "       \$6 : %s\n", $6;
+           printf $parh "       \$7 : %s\n", $7;
+           printf $parh "       \$8 : %s\n", $8;
+           printf $parh "       \$9 : %s\n", $9;
+           printf $parh "       \$10: %s\n", $10;
+           printf $parh "       \$11: %s\n", $11;             
+           printf $parh "       \$12: %s\n", $12;             
+           printf $parh "       \$13: %s\n", $13;             
+           printf $parh "       \$14: %s\n", $14;             
+    }# tracefile parser
+}#sub parse_body
+
+
+sub build_command_obj {
+    my ($COL, $line) = @_;
+
+    state $first_cmd   = 1;             # Exception handling for first command transaction
+
+    my %command;                        # Create new cmd transfer obj:186
+    my $ptr_cur_cmd = \%command;        # Pointer to command object/transaction
+
+
+    # 
+    # for backward verification of correct data extraction
+    #
+    $line->[ 0] =~ m{ (\d+) }x;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 0],$COL->[ 0]; # Assert time
+    $line->[ 1] =~ m{ (\d+) }x;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 1],$COL->[ 2]; # Completion time Skip timebase COL-1
+    $line->[ 2] =~ m{ ([A-Z-]+) }x;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 2],$COL->[ 4]; # Direction       Skip timebase COL-2
+    $line->[ 3] =~ m{ ([A-F0-9]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 3],$COL->[ 5]; #Addr
+    #$line[4] =~ m{ ([ ?-0-9\/]+) }xi;         # { ?, ,-,/ }
+    $line->[ 4] =~ m{\s(.....)\s}xi;              # 5 literals
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 4],$COL->[ 6]; #Beat
+    $line->[ 5] =~ m{ ([0-9-?]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 5],$COL->[ 7]; #LEN
+    $line->[ 6] =~ m{ ([0-9\-]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 6],$COL->[ 8]; #DATA
+    $line->[ 7] =~ m{ ([0-9\-]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 7],$COL->[ 9]; #HRESP
+    $line->[ 8] =~ m{ ([A-Z0-9-]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 8],$COL->[10]; #HTYPE
+    $line->[ 9] =~ m{ ([0-9\-]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 9],$COL->[11]; #HSIZE
+    $line->[10] =~ m{ ([A-F0-9\-]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[10],$COL->[12]; #HPROT
+    $line->[11] =~ m{ ([A-F0-9]{1}) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[11],$COL->[13]; #HSET
+
+    #==========================================================================================
+    $ptr_lst_cmd              = $ptr_cur_cmd;               # No look ahead, current ptr is last ptr
+
+    $command{assert}          = $COL->[ 0]; #$line[ 0];     # assertion  time / addr_assertion
+    $command{complete}        = $COL->[ 2]; #$line[ 1];     # completion time / addr_sampling 
+    $command{direction}       = $COL->[ 4]; #$line[ 2];     # direction  READ/WRITE  BUSY/DATA
+    $command{addr}            = $COL->[ 5]; #$line[ 3];     # ADDRESS    aligned, unaligned
+   #$command{beat_num}        NA        6                   # BEAT
+    $command{burst_len}       = $COL->[ 7]; #$line[ 5];     # 1, 4, 8, 16, any >1
+   #$command{data}            NA        8                   # DATA  strobed
+   #$command{response}        NA        9                   # Slave response
+    $command{burst_type}      = $COL->[10]; #$line[ 8];     # SINGLE,INCR,INCR4,WRAP4,INCR8,WRAP8,INCR16,WRAP16
+    $command{burst_size}      = $COL->[11]; #$line[ 9];     # 1, 2 or 4 Byte
+    $command{hport}           = $COL->[12]; #$line[10];     # HPROT protection   CACHE,BUFFER,PRIVILEGE,OPCODE/DATA
+   #$command{slave}           = $COL->[13]; #$line[11];     # Slave index
+   #
+   #$command{data}            = undef;                      # A AHB command has no DATA transfers associated yet !!
+
+    printf $buih  "%*s%s :: first command\n", 22, '', $first_cmd;
+
+    if ( $first_cmd ) {
+        $ptr_fst_cmd          = $ptr_cur_cmd;               # Set entry point first       Command
+        $ptr_pen_cmd          = $ptr_cur_cmd;               # Set       point penultimate Command
+        $ptr_prv_cmd          = $ptr_cur_cmd;               # Set       point previous    Command
+        $command{prev}        = $ptr_fst_cmd;               # points to itself prev == curr
+        $command{next}        = $ptr_fst_cmd;               # 
+        $first_cmd            = 0;                          # Update SM parse AHB tracker
+    } else {                                                # first command
+        ${$ptr_prv_cmd}{next} = $ptr_lst_cmd;               # Update previous cmd obj next reference
+        #$command{next}       = $ptr_lst_cmd;               # Referencing self
+        $command{next}        = $ptr_fst_cmd;               # Referencing circular to first pointer
+        $command{prev}        = $ptr_prv_cmd;               # Pointing back
+        $ptr_pen_cmd          = $ptr_prv_cmd;               # Update    point penultimate Command
+        $ptr_prv_cmd          = $ptr_cur_cmd;               # Update    point previous    Command
+    }
+
+    return $ptr_cur_cmd;                                    # Return pointer to current object
+}#sub build_command_obj
+
+sub build_data_obj{
+    my ($COL, $line) = @_;                                  # Pointer to arrays w/ parsed trace data
+
+    state $last_data = 0;                                   # After a last data, Need to create first data !!
+
+    my %data_obj;                                           # Create new data transfer obj
+    my $ptr_cur_dta = \%data_obj;                           # Pointer to data transfer obj
+
+    #
+    # $ptr_prv_cmd points to the LAST command, as it is the previous command & current command
+    #
+
+    #
+    # for backward verification of data extraction
+    #
+
+    $line->[0] =~ m{ (\d+) }x;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 0],$COL->[ 0];
+    $line->[1] =~ m{ (\d+) }x;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 1],$COL->[ 1];
+    $line->[2] =~ m{ ([A-Z-]+) }x;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 2],$COL->[ 2];
+    $line->[3] =~ m{ ([A-F0-9]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 3],$COL->[ 3]; #Addr
+    #$line->[4] =~ m{ ([0-9\/-?]+) }xi;
+    $line->[4] =~ m{\s(.....)\s}xi;                            # 5 literals
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 4],$COL->[ 4]; #Beat
+    $line->[5] =~ m{ ([0-9-?]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 5],$COL->[ 5]; #LEN
+    $line->[6] =~ m{ ([A-F0-9\-]{8}) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 6],$COL->[ 6]; #DATA
+    $line->[7] =~ m{ ([A-Z0-9\-]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 7],$COL->[ 7]; #HRESP
+    $line->[8] =~ m{ ([A-Z0-9-]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 8],$COL->[ 8]; #HTYPE
+    $line->[9] =~ m{ ([0-9\-]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[ 9],$COL->[ 9]; #HSIZE
+    $line->[10] =~ m{ ([A-F0-9\-]+) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[10],$COL->[10]; #HPROT
+    $line->[11] =~ m{ ([A-F0-9]{1}) }xi;
+    printf $logh "   <%s><%s>::<%s>\n", $1,$line->[11],$COL->[11]; #HSEL
+
+    #=======================================================================
+    
+    $data_obj{assert}               = $COL->[ 0]; #$line[0];    # assertion  time / data transfer assertion
+    $data_obj{complete}             = $COL->[ 2]; #$line[1];    # completion time / data transfer completion
+    $data_obj{phase}                = $COL->[ 4]; #$line[2];    # direction  READ/WRITE  phase   DATA/BUSY
+    $data_obj{address}              = $COL->[ 5]; #$line[3];    # ADDRESS updated, select SLAVE, data strobe, warp
+    $data_obj{beat_num}             = $COL->[ 6]; #$line[4];    # BEAT
+   #$data_obj{burst_len}            NA        7                 # 1, 4, 8, 16, any >1
+    $data_obj{data}                 = $COL->[ 8]; #$line[6];    # DATA ( 1, 2, 4) Byte strobed via address
+    $data_obj{response}             = $COL->[ 9]; #$line[7];    # Slave response OKAY/ERROR
+   #$data_obj{burst_type}           NA       10                 # SINGLE,INCR,INCR4,WRAP4,INCR8,WRAP8,INCR16,WRAP16
+   #$data_obj{burst_size}           NA       11                 # 1, 2 or 4 Byte
+   #$data_obj{protection}           NA       12                 # HPROT protection   CACHE,BUFFER,PRIVILEGE,OPCODE/DATA
+   #$data_obj{slave_index}          NA       13                 # Slave index
+
+
+    #
+    # The problem of concurrent DATA PHASE w/ ADDR PHASE of next command, creates two instead of ONE OT transactions
+    # this leads to an incomplete occupied state machine, to identify the data phase as either LAST or FIRST transfer
+    #
+    
+    #if ( ${$ptr_prv_cmd}{data} eq undef ) {
+    if ( !defined ${$ptr_prv_cmd}{data} ) {
+         printf $buih  "%*s::             AHB address transfer phase detected\n", 22, '';
+         if ( $data_obj{assert} == ${$ptr_prv_cmd}{assert} ) {
+              #if ( !defined ${${$ptr_prv_cmd}{prev}}{data}  ) {
+              if ( !defined ${$ptr_pen_cmd}{data} ) {    
+                   printf $buih  "%*s:: penultimate AHB address transfer has no FIRST data phase detected\n", 22, '';
+
+                   printf $buih  "%*s:: sequential  AHB data    transfer phase detected FIRST\n", 22, '';
+                   printf $buih " %*sDATA transfer assertion time : %8s ns\n", 24, '',$data_obj{assert};
+                   printf $buih " %*sADDR transfer assertion time : %8s ns\n", 24, '',${$ptr_pen_cmd}{assert};
+                   ${$ptr_pen_cmd}{data}                 # update penultimate & previous last command pointer to
+                   = $ptr_cur_dta;                       # first/current data transaction
+           
+                   $ptr_fst_dta                          # Store  first data pointer to
+                   = $ptr_cur_dta;                       # current/first data transaction
+           
+                   $data_obj{prev}                       # update previous data object pointer 
+                   = $ptr_fst_dta;                       # points to itself, first data object/transaction
+           #       = undef;                                       # undefined NO previous data obj
+           #       = $ptr_lst_cmd;                                # points to the previous command
+           
+                   $data_obj{next}                       # Initial pointer to next     data object
+                   = $ptr_fst_dta;                       # points circular to first    data object
+                                                         # to be  updated  w/ next     data object
+           
+                   $data_obj{last}                       # Initial pointer to last     data object/transfer
+                   = $ptr_cur_dta;                       # with               current  data object
+                     
+                   $ptr_prv_dta                          # Store  pointer  to previous data object 
+                   = $ptr_fst_dta;                       # points          to current  data object
+
+              } else {
+                   printf $buih  "%*s:: penultimate AHB address transfer had    FIRST data phase detected\n", 22, '';
+                   
+                   #
+                   # $ptr_prv_dta, $ptr_lst_dta, $ptr_fst_dta are not updated - thus behave correctly sequential
+                   # still pointing to the sequential DATA transfers of the second last AHB CMD
+                   #
+
+                   ${$ptr_prv_dta}{next}                 # Update/overwrite previous   data object next_pointer
+                   = $ptr_cur_dta;                       # with   pointer to current   data object/transaction
+
+                   $data_obj{next}                       # Initial pointer to next     data object next_pointer
+                   = $ptr_fst_dta;                       # points circular to first    data object/transaction
+
+                   $data_obj{prev}                       # Store   pointer to previous data object/transaction
+                   = $ptr_prv_dta;                       # points          to previous data object/transaction
+
+                   $ptr_prv_dta                          # Update  pointer to previous data object/transaction
+                   = $ptr_cur_dta;                       # with               current  data object/transaction
+                   
+                   $ptr_lst_dta                          # Update  pointer to last     data object/transaction
+                   = $ptr_cur_dta;                       # with               current  data object/transaction
+
+                   ${$ptr_fst_dta}{last}                 # Update  first data object   last_(transaction)_pointer
+                   = $ptr_lst_dta;                       # with    pointer to last     data object/transaction
+
+              }
+                 ###  printf $buih  "%*s:: sequential  AHB data    transfer phase detected LAST\n", 22, '';
+                 ###  printf $buih " %*sDATA transfer assertion time : %8s ns\n", 24, '',$data_obj{assert};
+                 ###  printf $buih " %*sADDR transfer assertion time : %8s ns\n", 24, '',${$ptr_prv_cmd}{assert};
+
+                 ###  #
+                 ###  # $ptr_prv_dta, $ptr_lst_dta, $ptr_fst_dta are not updated - thus behave correctly sequential
+                 ###  # still pointing to the sequential DATA transfers of the second last AHB CMD
+                 ###  #
+
+                 ###  ${$ptr_prv_dta}{next}                 # Update/overwrite previous   data object next_pointer
+                 ###  = $ptr_cur_dta;                       # with   pointer to current   data object/transaction
+
+                 ###  $data_obj{next}                       # Initial pointer to next     data object next_pointer
+                 ###  = $ptr_fst_dta;                       # points circular to first    data object/transaction
+
+                 ###  $data_obj{prev}                       # Store   pointer to previous data object/transaction
+                 ###  = $ptr_prv_dta;                       # points          to previous data object/transaction
+
+                 ###  $ptr_prv_dta                          # Update  pointer to previous data object/transaction
+                 ###  = $ptr_cur_dta;                       # with               current  data object/transaction
+                 ###  
+                 ###  $ptr_lst_dta                          # Update  pointer to last     data object/transaction
+                 ###  = $ptr_cur_dta;                       # with               current  data object/transaction
+
+                 ###  ${$ptr_fst_dta}{last}                 # Update  first data object   last_(transaction)_pointer
+                 ###  = $ptr_lst_dta;                       # with    pointer to last     data object/transaction
+         } else {
+              printf $buih  "%*s:: sequential  AHB data    transfer phase detected FIRST\n", 22, '';
+              printf $buih " %*sDATA transfer assertion time : %8s ns\n", 24, '',$data_obj{assert};
+              printf $buih " %*sADDR transfer assertion time : %8s ns\n", 24, '',${$ptr_prv_cmd}{assert};
+              ${$ptr_prv_cmd}{data}                 # update previous&last command pointer to
+              = $ptr_cur_dta;                       # first/current data transaction
+      
+              $ptr_fst_dta                          # Store  first data pointer to
+              = $ptr_cur_dta;                       # current/first data transaction
+      
+              $data_obj{prev}                       # update previous data object pointer 
+              = $ptr_fst_dta;                       # points to itself, first data object/transaction
+      #       = undef;                                       # undefined NO previous data obj
+      #       = $ptr_lst_cmd;                                # points to the previous command
+      
+              $data_obj{next}                       # Initial pointer to next     data object
+              = $ptr_fst_dta;                       # points circular to first    data object
+                                                    # to be  updated  w/ next     data object
+      
+              $data_obj{last}                       # Initial pointer to last     data object/transfer
+              = $ptr_cur_dta;                       # with               current  data object
+                
+              $ptr_prv_dta                          # Store  pointer  to previous data object 
+              = $ptr_fst_dta;                       # points          to current  data object
+         }# Insert FIRST
+    } else {
+         printf $buih  "%*s:: sequential AHB data    transfer phase detected\n", 22, '';
+         ${$ptr_prv_dta}{next}                      # Update/overwrite previous   data object next_pointer
+         = $ptr_cur_dta;                            # with   pointer to current   data object/transaction
+
+         $data_obj{next}                            # Initial pointer to next     data object next_pointer
+         = $ptr_fst_dta;                            # points circular to first    data object/transaction
+
+         $data_obj{prev}                            # Store   pointer to previous data object/transaction
+         = $ptr_prv_dta;                            # points          to previous data object/transaction
+
+         $ptr_prv_dta                               # Update  pointer to previous data object/transaction
+         = $ptr_cur_dta;                            # with               current  data object/transaction
+         
+         $ptr_lst_dta                               # Update  pointer to last     data object/transaction
+         = $ptr_cur_dta;                            # with               current  data object/transaction
+
+         ${$ptr_fst_dta}{last}                      # Update  first data object   last_(transaction)_pointer
+         = $ptr_lst_dta;                            # with    pointer to last     data object/transaction
+    }
+    
+    #printf       " DATA transfer assertion time : %8s ns\n", $data_obj{assert};
+    printf $logh " DATA transfer assertion time : %8s ns\n", $data_obj{assert};
+}#sub build_data_obj
+
+
+sub initialize_latency_analysis {
+    my ($a_ref) = @_;                                                 # Reference to hash
+    
+   #printf        " ... initialzing latency analysis\n";
+    printf $proh  " ... initialzing latency analysis\n";
+
+    my $ridiculous = 1000000;
+
+    ${$a_ref}{ALL}{minimum}    = $ridiculous;
+    ${$a_ref}{ALL}{average}    = 0;
+    ${$a_ref}{ALL}{maximum}    = 0;
+    ${$a_ref}{ALL}{number}     = 0;
+
+    ${$a_ref}{READ}{minimum}   = $ridiculous;
+    ${$a_ref}{READ}{average}   = 0;
+    ${$a_ref}{READ}{maximum}   = 0;
+    ${$a_ref}{READ}{number}    = 0;
+
+    ${$a_ref}{WRITE}{minimum}  = $ridiculous;
+    ${$a_ref}{WRITE}{average}  = 0;
+    ${$a_ref}{WRITE}{maximum}  = 0;
+    ${$a_ref}{WRITE}{number}   = 0;
+
+    #
+    # First data transfer 
+    #
+
+    ${$a_ref}{1}{ALL}{minimum}    = $ridiculous;
+    ${$a_ref}{1}{ALL}{average}    = 0;
+    ${$a_ref}{1}{ALL}{maximum}    = 0;
+    ${$a_ref}{1}{ALL}{number}     = 0;
+    ${$a_ref}{1}{ALL}{total}      = 0;
+
+    ${$a_ref}{1}{READ}{minimum}   = $ridiculous;
+    ${$a_ref}{1}{READ}{average}   = 0;
+    ${$a_ref}{1}{READ}{maximum}   = 0;
+    ${$a_ref}{1}{READ}{number}    = 0;
+    ${$a_ref}{1}{READ}{total}     = 0;
+
+    ${$a_ref}{1}{WRITE}{minimum}  = $ridiculous;
+    ${$a_ref}{1}{WRITE}{average}  = 0;
+    ${$a_ref}{1}{WRITE}{maximum}  = 0;
+    ${$a_ref}{1}{WRITE}{number}   = 0;
+    ${$a_ref}{1}{WRITE}{total}    = 0;
+
+    # Last data transfer, complete burst
+
+    ${$a_ref}{L}{ALL}{minimum}    = $ridiculous;
+    ${$a_ref}{L}{ALL}{average}    = 0;
+    ${$a_ref}{L}{ALL}{maximum}    = 0;
+    ${$a_ref}{L}{ALL}{number}     = 0;
+    ${$a_ref}{L}{ALL}{total}      = 0;
+
+    ${$a_ref}{L}{READ}{minimum}   = $ridiculous;
+    ${$a_ref}{L}{READ}{average}   = 0;
+    ${$a_ref}{L}{READ}{maximum}   = 0;
+    ${$a_ref}{L}{READ}{number}    = 0;
+    ${$a_ref}{L}{READ}{total}     = 0;
+
+    ${$a_ref}{L}{WRITE}{minimum}  = $ridiculous;
+    ${$a_ref}{L}{WRITE}{average}  = 0;
+    ${$a_ref}{L}{WRITE}{maximum}  = 0;
+    ${$a_ref}{L}{WRITE}{number}   = 0;
+    ${$a_ref}{L}{WRITE}{total}    = 0;
+
+
+   #printf       " ... initialzing latency analysis done !!\n";      # Silent progress report
+   #printf       " ... initialzing transaction analysis\n";
+    printf "\n";
+    printf $proh " ... initialzing latency analysis done !!\n";
+    printf $proh " ... initialzing transaction analysis\n";
+}#sub initialize_latency_analysis
+
+
+sub   initialize_transaction_analysis {
+      my ($a_ref) = @_;                                              # Reference to hash -->  $ahb_anal ysis
+
+      my @_list = ( "SINGLE", "INCR", "INCR4", "INCR8", "INCR16", "WRAP4", "WRAP8", "WRAP16", "total" );
+      my @_dirs = ( "READ", "WRITE" );
+      my @_size = ( 1, 2, 4 );            # byte
+    
+      foreach my $size (@_size) {
+          foreach my $dir (@_dirs) {
+              foreach my $trans (@_list) {
+                  ${$a_ref}{transaction}{$trans}              = 0;
+                  ${$a_ref}{transaction}{$dir}{$trans}        = 0;
+                  ${$a_ref}{transaction}{$size}{$dir}{$trans} = 0;
+              }# trans
+          }# dirs
+      }# size
+      
+     #printf       " ... initialzing transaction analysis done !!\n";
+      printf $proh " ... initialzing transaction analysis done !!\n";
+
+}#sub initialize_transaction_analysis
+
+
+sub   initialize_payload_analysis {
+    my ($ptr_fst_cmd) = @_;                                                 # Starting pointer
+    my $transaction = 0;
+    my $data_beat   = 0;
+    my $busy_beat   = 0;
+    my $totalbeat   = 0;
+    my $ptr_cur_cmd = $ptr_fst_cmd;
+    my $total_payload = 0;
+    my $write_payload = 0;
+    my $read_payload  = 0;
+
+    printf $proh  " ... initialize payload analysis\n";
+    printf $errh  " %s\n", '='x80;
+    printf $errh  " Tracefile : %s\n", $Trace{tracefile};
+    printf $errh  " Script    : %s %s\n", $0, $VERSION;                   #  0  1, 2,    3,   4,    5,    6,    7,     8
+    printf $errh  " Date      : %4s-%02s-%02s\n", 1900+$year,$mon,$cday;  # $s,$m,$h,$cday,$mon,$year,$wday,$yday,$isdst
+    printf $errh  " Time      : %4s:%02s:%02s\n", $h, $m,$s;              # $s,$m,$h,$cday,$mon,$year,$wday,$yday,$isdst
+    printf $errh  " %s\n", '='x80;
+
+    do {
+        $transaction++;
+        $ptr_cur_dta = ${$ptr_cur_cmd}{data};
+        $ptr_fst_dta = ${$ptr_cur_dta}{prev};
+        $ptr_lst_dta = ${$ptr_cur_dta}{last};
+        $data_beat = 0;
+        $busy_beat = 0;
+        $totalbeat = 0;
+
+        printf $payh "%*s %s %6s\n"     , 8, '', 'Transaction :', $transaction;
+        printf $payh "%*s %s %6s\n"     , 8, '', 'Direction   :', ${$ptr_cur_cmd}{direction};
+        printf $payh "%*s %s %6s\n"     , 8, '', 'Burst Type  :', ${$ptr_cur_cmd}{burst_type};
+
+        printf $errh "%*s %s %6s\n"     , 8, '', 'Transaction :', $transaction;
+        printf $errh "%*s %s %6s\n"     , 8, '', 'Burst Type  :', ${$ptr_cur_cmd}{burst_type};
+
+        do {
+            #my ($dir, $dtype) = split /-/ , ${$ptr_cur_dta}{phase};                               # DATA, BUSY phase
+            if ( ${$ptr_cur_dta}{phase} =~ m/DATA/ ) {
+                $totalbeat++;                                                                      # ONLY data transfer count                      
+                $data_beat++;
+                printf $payh "%*s %s %2s of %2s :: %s"   , 29, '', 'transfer  '   
+                             ,$data_beat,$totalbeat,${$ptr_cur_dta}{phase};
+            }
+            if ( ${$ptr_cur_dta}{phase} =~ m/BUSY/ ) {
+                 $busy_beat++;                                                                      # A wait state is no BEAT, it is an extention
+                 printf $payh "%*s %s %2s of %2s :: %s"   , 29, '', 'wait state'   
+                              ,$busy_beat,$totalbeat,${$ptr_cur_dta}{phase};
+            }
+            printf $payh " :: %s %s\n"   ,'beat    ',${$ptr_cur_dta}{beat_num};
+            my ($beat,$length) = split /\//, ${$ptr_cur_dta}{beat_num};
+            if ( $beat != $data_beat ) {
+                 printf $errh "%*s %s %2s vs %2s :: %s\n"   , 29, '', 'Error Beat'
+                              ,$data_beat,${$ptr_cur_dta}{beat_num}, 'reported';
+            }
+
+            # printf $payh "%*s %s %s\n"   , 29, '', 'assert  '   , ${$ptr_cur_dta}{assert};        # Timestemp for back annotation into trace file
+            # printf $payh "%*s %s %s\n"   , 29, '', 'complete'   , ${$ptr_cur_dta}{complete};
+            
+            $ptr_cur_dta = ${$ptr_cur_dta}{next};       # circular list points to the beginning
+        }until ($ptr_cur_dta == $ptr_fst_dta);          # If first is the last&only pointer, then the next is the first as well
+  
+        ${$ptr_cur_cmd}{burstlength} = $totalbeat;                                                  # Last beat/data transfer/burst length 
+        ${$ptr_cur_cmd}{payload}     = $totalbeat * ${$ptr_cur_cmd}{burst_size};                    # data transfered in burst
+        $total_payload              += $totalbeat * ${$ptr_cur_cmd}{burst_size};
+        $write_payload              += $totalbeat * ${$ptr_cur_cmd}{burst_size} if ( ${$ptr_cur_cmd}{direction} =~ m/WR/ );
+        $read_payload               += $totalbeat * ${$ptr_cur_cmd}{burst_size} if ( ${$ptr_cur_cmd}{direction} =~ m/RD/ );
+        
+        printf $payh "%*s %s %6s byte/beat\n", 8, '', 'Burst Size   :', ${$ptr_cur_cmd}{burst_size};
+        printf $payh "%*s %s %6s beat\n"     , 8, '', 'Burst Length :', ${$ptr_cur_cmd}{burstlength};
+        printf $payh "%*s %s %6s byte\n"     , 8, '', 'Burst Payload:', ${$ptr_cur_cmd}{payload    };
+        printf $payh "\n";
+        printf $errh "\n";
+        
+        $ptr_cur_cmd = ${$ptr_cur_cmd}{next};      # Iterate to the next transaction/transfer AHB command
+    } until ($ptr_cur_cmd == $ptr_fst_cmd );       #
+
+    printf $payh  "\n";
+    printf $payh  "%*s %s %6s byte\n" , 8, '', 'Payload Total:', $total_payload;
+    printf $payh  "%*s %s %6s byte\n" , 8, '', 'Payload Write:', $write_payload;
+    printf $payh  "%*s %s %6s byte\n" , 8, '', 'Payload Read :', $read_payload;
+
+    printf $proh  " ... initialize payload done\n";
+}#sub initialize_payload_analysis
+
+
+sub   initialize_transfer_analysis {
+      my ( $fst_ptr                                 # Start pointer
+         , $lst_ptr                                 # End pointer
+         , $trace_ref                               # Trace file information
+         , $transfer_ref) = @_;                     # Transfer analysis
+
+      my $ptr_cur_cmd = $fst_ptr;
+      my $cycle       = ${$trace_ref}{period};      # (float)
+      my $tb          = ${$trace_ref}{timebase};    # =  $6; # (ns|ps)
+      my $frequency   = ${$trace_ref}{frequency};   # (float)
+      my $fb          = ${$trace_ref}{freqbase};    # (MHz|GHz)
+      my $transaction = 0;
+      my $beat        = 0;
+
+      my $previous_transfer_stop;
+
+      printf $proh  " ... initialize transfer analysis\n";
+      printf $trah  " %s\n", '='x80;
+      printf $trah  " Tracefile : %s\n"           , $Trace{tracefile};
+      printf $trah  " Script    : %s %s\n"        , $0, $VERSION;           #  0  1, 2,    3,   4,    5,    6,    7,     8
+      printf $trah  " Date      : %4s-%02s-%02s\n", 1900+$year,$mon,$cday;  # $s,$m,$h,$cday,$mon,$year,$wday,$yday,$isdst
+      printf $trah  " Time      : %4s:%02s:%02s\n", $h, $m,$s;              # $s,$m,$h,$cday,$mon,$year,$wday,$yday,$isdst
+      printf $trah  " Cycle     : %10s %s\n"      , $cycle, $tb;
+      printf $trah  " Frequency : %10s %s\n",     , $frequency, $fb;
+      printf $trah  " %s\n", '='x80;
+
+      $previous_transfer_stop = ${$ptr_cur_cmd}{assert};
+
+      do {
+          $transaction++;
+          $beat = 0;
+          # 
+          # IDLE transfer is implicite in trace file and zero in back to back transactions
+          #
+          #
+
+          #
+          # previous_transfer_stop   <  ${$ptr_cur_cmd}{assert} ==> IDLE not ZERO
+          #                                                         ADDR not ZERO, Not consealed
+          #
+          # previous_transfer_stop  ==  ${$ptr_cur_cmd}{assert} ==> IDLE  == ZER0
+          #                                                         ADDR not ZERO, Not consealed
+          # previous_transfer_stop  ==  ${$ptr_cur_cmd}{complete} 
+          # previous_transfer_stop   >  ${$ptr_cur_cmd}{assert} ==> IDLE  == ZERO
+          #                                                         ADDR  == ZERO,     consealed behind DATA
+          #                                                         ADDR  is consealed/hidden behind previous DATA
+          #
+          
+          if    ( ${$ptr_cur_cmd}{assert}  > $previous_transfer_stop ) {
+                  ${$transfer_ref}{$transaction}{ADDR}{concealed}       = 'NOT';
+                  ${$transfer_ref}{$transaction}{IDLE}{transferstart}   = $previous_transfer_stop;
+                  ${$transfer_ref}{$transaction}{IDLE}{transferstop}    = ${$ptr_cur_cmd}{assert};
+          }elsif( ${$ptr_cur_cmd}{assert} == $previous_transfer_stop ) {
+                  ${$transfer_ref}{$transaction}{ADDR}{concealed}       = 'NOT';
+                  ${$transfer_ref}{$transaction}{IDLE}{transferstart}   = $previous_transfer_stop;
+                  ${$transfer_ref}{$transaction}{IDLE}{transferstop}    = $previous_transfer_stop;
+          }elsif( ${$ptr_cur_cmd}{assert}  < $previous_transfer_stop ) {
+                  ${$transfer_ref}{$transaction}{ADDR}{concealed}       = 'YES';
+                  ${$transfer_ref}{$transaction}{IDLE}{transferstart}   = ${$ptr_cur_cmd}{assert};
+                  ${$transfer_ref}{$transaction}{IDLE}{transferstop}    = ${$ptr_cur_cmd}{assert};
+          }
+          ${$transfer_ref}{$transaction}{ADDR}{transferstart}   = ${$ptr_cur_cmd}{assert};
+          ${$transfer_ref}{$transaction}{ADDR}{transferstop }   = ${$ptr_cur_cmd}{complete};
+          ${$transfer_ref}{$transaction}{IDLE}{duration}        = ${$transfer_ref}{$transaction}{IDLE}{transferstop}     
+                                                                - ${$transfer_ref}{$transaction}{IDLE}{transferstart};
+          ${$transfer_ref}{$transaction}{ADDR}{duration}        = ${$transfer_ref}{$transaction}{ADDR}{transferstop} 
+                                                                - ${$transfer_ref}{$transaction}{ADDR}{transferstart};
+
+          $previous_transfer_stop   = ${$ptr_cur_cmd}{complete};
+          $ptr_cur_dta              = ${$ptr_cur_cmd}{data};                                     # Set pointer to              data transfer also the first
+          $ptr_fst_dta              = ${$ptr_cur_dta}{prev};                                     # Initialize pointer to first data transfer
+          $ptr_lst_dta              = ${$ptr_cur_dta}{last};                                     # Initialize pointer to last  data transfer
+
+          ${$ptr_cur_cmd}{AddrComp} = ${$ptr_cur_cmd}{complete} - ${$ptr_cur_cmd}{assert};
+
+          #
+          # Transfer analysis   - Each AHB transaction can has WAIT states, aka BUSY transfers
+          #
+          
+          printf $trah "%*s %s %10s\n"      , 8, '', 'Transaction:', $transaction;                                       
+          printf $trah "%*s %s %10s %s %s\n", 8, '', 'IdleTransfer', ${$transfer_ref}{$transaction}{IDLE}{duration}, $tb
+                                                                   ,(${$transfer_ref}{$transaction}{IDLE}{duration} == 0)
+                                                                   ? 'Back2Back'
+                                                                   : 'IDLE';
+          printf $trah "%*s %s %10s %s %s\n", 8, '', 'AddrTransfer', ${$transfer_ref}{$transaction}{ADDR}{duration}, $tb
+                                                                   ,(${$transfer_ref}{$transaction}{ADDR}{concealed} =~ m/NOT/)
+                                                                   ? 'Transfer visible'
+                                                                   : 'Transfer consealed';
+          ${$transfer_ref}{$transaction}{BUSY}{duration}        = 0; # Implicite WAIT states, accounted explicite, initialized to ZERO
+          ${$transfer_ref}{$transaction}{BUSY}{total}{duration} = 0; # Initialize WAIT states as ZERO
+          do {
+              #
+              # The wait state or BUSY transfer comes before the DATA transfer complete
+              #
+              
+              if ( ${$ptr_cur_dta}{phase} =~ m/BUSY/ ) {
+                   my $wait_state = ${$ptr_cur_dta}{complete} - ${$ptr_cur_dta}{assert};                        # The trace protocol allows 1 or more WAIT state
+                                                                                                                # being inserted, trace reports transfers not clock cycle
+                   ${$transfer_ref}{$transaction}{BUSY}{$beat+1}{duration}  = $wait_state;                      # The wait state comes before the DATA transfer,
+                   ${$transfer_ref}{$transaction}{BUSY}{total}{duration}   += $wait_state;                      # thus the wait state is associate w/ next beat
+              }# BUSY beats, accounting for one or more WAIT states
+
+              #
+              # Only DATA transfers are beats, Trace protocol inserts/accounts expletice for WAIT states as BUSY cycles
+              #
+
+              if ( ${$ptr_cur_dta}{phase} =~ m/DATA/ ) {
+                   $beat++;                                                                                     # Update data transfer beat count
+                   #
+                   # The first data transfer starts with the end of the ADDR transfer, 
+                   # the first beat could be a BUSY transfer
+                   #
+                   if ( $previous_transfer_stop < ${$ptr_cur_dta}{assert} ) {                                   # There must have been a WAIT state
+                        ${$transfer_ref}{$transaction}{DATA}{$beat}{transferstart} = $previous_transfer_stop;   # Trace protocol counts BUSY cycle, blurs beat count
+                   } else {
+                        ${$transfer_ref}{$transaction}{DATA}{$beat}{transferstart} = ${$ptr_cur_dta}{assert};   # extract transfer start
+                   }# determin DATA transfer start with WAIT states
+                   ${$transfer_ref}{$transaction}{DATA}{$beat}{transferstop}       = ${$ptr_cur_dta}{complete}; # extract transfer stop
+                   ${$transfer_ref}{$transaction}{DATA}{$beat}{duration} = ${$transfer_ref}{$transaction}{DATA}{$beat}{transferstop }
+                                                                         - ${$transfer_ref}{$transaction}{DATA}{$beat}{transferstart};
+
+                   $previous_transfer_stop  = ${$ptr_cur_dta}{complete};                                        # Remember transaction completion
+              }# DATA beats                                                                                     # Last transfer must be DATA transfer
+
+              printf $trah "%*s %s %s :: %s"     , 28, '', 'beat    '   , $beat, ${$ptr_cur_dta}{beat_num};
+              printf $trah "%19s %s\n"                                  , ${$ptr_cur_dta}{complete} - ${$ptr_cur_dta}{assert}, $tb;
+              printf $trah "%*s %s %s %s\n"      , 50, '', 'complete'   , ${$ptr_cur_dta}{complete}, $tb;
+              printf $trah "%*s %s %s %s\n"      , 50, '', 'assert  '   , ${$ptr_cur_dta}{assert}  , $tb;
+
+              $ptr_cur_dta = ${$ptr_cur_dta}{next};                                                             # circular list points to the beginning
+          }until ($ptr_cur_dta == $ptr_fst_dta);                                                                # If first is the last&only pointer,
+                                                                                                                # then the next is the first as well
+          ${$transfer_ref}{$transaction}{ADDR}{length}          = $beat;                                        # Record the beat count of transaction, burst lenght
+          ${$transfer_ref}{$transaction}{DATA}{total}{duration} = ${$transfer_ref}{$transaction}{DATA}{$beat}{transferstop }
+                                                                - ${$transfer_ref}{$transaction}{ADDR}{transferstop };
+          printf $trah "%*s %s %10s %s\n", 8, '', 'BusyTransfer', ${$transfer_ref}{$transaction}{BUSY}{duration}, $tb;
+          printf $trah "\n";
+          
+          $ptr_cur_cmd = ${$ptr_cur_cmd}{next};                         # Iterate to the next transaction/transfer AHB command
+      } until ($ptr_cur_cmd == $ptr_fst_cmd );#
+
+      printf $trah "\n";
+      #printf $trah "%*s %s %10s\n"                 , 8, '', 'Total IDLE :', ${$b_ref}{IDLE}{total}; 
+      printf $proh  " ... initialize transfer analysis done\n";
+}#sub initialize_transfer_analysis
+
+
+sub   latency_analysis{
+      my ( $start_ptr                   #        interval start analysis
+         #,$stop_ptr                    # future interval stop  analysis
+         , $trace_ref                   # Trace file information
+         , $transfer_ref                # %ahb_transfer   analysis
+         , $latency_ref) = @_;          # %ahb_latency_new
+
+      my $cycle       = ${$trace_ref}{period};      # (float)
+      my $tb          = ${$trace_ref}{timebase};    # =  $6; # (ns|ps)
+      my $frequency   = ${$trace_ref}{frequency};   # (float)
+      my $fb          = ${$trace_ref}{freqbase};    # (MHz|GHz)
+      my $ptr_cur_cmd = $start_ptr;
+      my $transaction = 0;
+      my $duration;                                 # duration of each DATA transfer
+      my $l_duration;                               # duration of all  DATA transfers combined/total burst
+      my $execution_p = 0;
+
+      printf $proh " ... latency   analysis new\n";
+
+      printf $lath  " %s\n", '='x80;
+      printf $lath  " Tracefile : %s\n"           , $Trace{tracefile};
+      printf $lath  " Script    : %s %s\n"        , $0, $VERSION;           #  0  1, 2,    3,   4,    5,    6,    7,     8
+      printf $lath  " Date      : %4s-%02s-%02s\n", 1900+$year,$mon,$cday;  # $s,$m,$h,$cday,$mon,$year,$wday,$yday,$isdst
+      printf $lath  " Time      : %4s:%02s:%02s\n", $h, $m,$s;              # $s,$m,$h,$cday,$mon,$year,$wday,$yday,$isdst
+      printf $lath  " Cycle     : %10s %s\n"      , $cycle, $tb;
+      printf $lath  " Frequency : %10s %s\n",     , $frequency, $fb;
+      printf $lath  " %s\n", '='x80;
+
+      do {
+          $transaction++;
+          #
+          # ${$transfer_ref}{$transaction}{IDLE}
+          # ${$transfer_ref}{$transaction}{IDLE}{duration}
+          # ${$transfer_ref}{$transaction}{ADDR}{concealed} YES/NOT
+          # ${$transfer_ref}{$transaction}{ADDR}{duration}
+          # ${$transfer_ref}{$transaction}{ADDR}{length}
+          # ${$transfer_ref}{$transaction}{ADDR}{lenght} = $beat;                                 # Record the beat count of transaction, burst lenght
+          # ${$transfer_ref}{$transaction}{DATA}{1}{duration}
+          #
+
+          my ($direction, $ctype) = split /-/ , ${$ptr_cur_cmd}{direction};
+          my $phase               = ($ctype eq 'NONSEQ') ? 'ADDR' : 'IDLE';                       # NONSEQ, IDLE, SEQ/DATA, BUSY        Recoding  ADDR
+          my $cmd                 = ($direction eq 'RD') ? 'READ' : 'WRITE';                      # Encode    READ vs RD; WRITE vs WR   Recoding  READ / WRITE
+
+          my $L                   = ${$transfer_ref}{$transaction}{ADDR}{length};                 # LAST beat
+          my $concealed           = ${$transfer_ref}{$transaction}{ADDR}{concealed};
+          printf $lath "%*s %s %10s\n"      , 8, '', 'Transaction:', $transaction;
+          printf $lath "%*s %s %10s\n"      , 8, '', 'Direction  :', $cmd;
+          printf $lath "%*s %s %10s beat\n" , 8, '', 'BurstLength:', $L;
+          printf $lath "%*s %s %10s\n"      , 8, '', 'Addr Phase :', ($concealed =~ m/NOT/ )
+                                                                   ? 'visible'
+                                                                   : 'concealed';
+          #
+          # Warning the latency considers only DATA transfers including WAIT states or BUSY cycles
+          # No ADDR phase is considered in this analysis
+          #
+
+          $duration                        = ${$transfer_ref}{$transaction}{IDLE}{duration};
+          ${$latency_ref}{IDLE}{total}    += $duration;
+          ${$latency_ref}{IDLE}{number}   += 1            if ($duration > 0);
+          printf $lath "%*s %s %10s %s\n"   , 8, '', 'ADDRtransfr:',${$transfer_ref}{$transaction}{ADDR}{duration}        , $tb;
+          # First DATA transfer latency
+          $duration                        = ${$transfer_ref}{$transaction}{DATA}{1}{duration};
+          printf $lath "%*s %s %10s %s\n"   , 8, '', 'FirstData  :', $duration, $tb;
+          # Last  DATA transfer latency
+          my $l_duration                   = ${$transfer_ref}{$transaction}{DATA}{$L}{transferstop}
+                                           - ${$transfer_ref}{$transaction}{ADDR}{transferstop};
+          printf $lath "%*s %s %10s %s\n"   , 8, '', 'AdrPhaseCmp:', ${$transfer_ref}{$transaction}{ADDR}{transferstart}   , $tb;
+          printf $lath "%*s %s %10s %s\n"   , 8, '', 'LastDataCmp:', ${$transfer_ref}{$transaction}{DATA}{$L}{transferstop}, $tb;
+          printf $lath "%*s %s %10s %s\n"   , 8, '', 'DtaPhaseCmp:', $l_duration, $tb;
+       
+          # This is deprecated code
+
+                 ${$latency_ref}{ALL}{total}     += $execution_p;   # execution time
+                 ${$latency_ref}{ALL}{number}    += 1;              # transaction
+                 ${$latency_ref}{ALL}{minimum}    = $execution_p if (${$latency_ref}{ALL}{minimum} >= $execution_p);
+                 ${$latency_ref}{ALL}{maximum}    = $execution_p if (${$latency_ref}{ALL}{maximum} <= $execution_p);
+                #${$latency_ref}{ALL}{payload}   += ${$ptr_cur_cmd}{burst_size} * $burstlength;
+                #${$latency_ref}{ALL}{payload}   += $payload;
+      
+                 ${$latency_ref}{$cmd}{total}    += $execution_p;   # execution time
+                 ${$latency_ref}{$cmd}{number}   += 1;              # transaction
+                 ${$latency_ref}{$cmd}{minimum}   = $execution_p if (${$latency_ref}{$cmd}{minimum} >= $execution_p);
+                 ${$latency_ref}{$cmd}{maximum}   = $execution_p if (${$latency_ref}{$cmd}{maximum} <= $execution_p);
+                #${$latency_ref}{$cmd}{payload}  += ${$ptr_cur_cmd}{burst_size} * $burstlength;
+                #${$latency_ref}{$cmd}{payload}  += $payload;
+
+          #
+          # First data transfer 
+          #
+          ${$latency_ref}{1}{ALL}{total}     += $duration;                                                      # ALL READ & WRITE
+          ${$latency_ref}{1}{ALL}{number}    += 1;                                                              # ALL transaction
+          ${$latency_ref}{1}{ALL}{minimum}    = $duration if (${$latency_ref}{1}{ALL}{minimum} >= $duration); 
+          ${$latency_ref}{1}{ALL}{maximum}    = $duration if (${$latency_ref}{1}{ALL}{maximum} <= $duration);
+
+          ${$latency_ref}{1}{$cmd}{total}    += $duration;
+          ${$latency_ref}{1}{$cmd}{number}   += 1;                                                              # ALL READ, ALL WRITE
+          ${$latency_ref}{1}{$cmd}{minimum}   = $duration if (${$latency_ref}{1}{$cmd}{minimum} >= $duration); 
+          ${$latency_ref}{1}{$cmd}{maximum}   = $duration if (${$latency_ref}{1}{$cmd}{maximum} <= $duration); 
+
+          #
+          # Last  data transfer 
+          #
+ 
+          ${$latency_ref}{L}{ALL}{total}    += $l_duration;
+          ${$latency_ref}{L}{ALL}{number}   += 1;
+          ${$latency_ref}{L}{ALL}{minimum}   = $l_duration if (${$latency_ref}{L}{ALL}{minimum} >= $l_duration); 
+          ${$latency_ref}{L}{ALL}{maximum}   = $l_duration if (${$latency_ref}{L}{ALL}{maximum} <= $l_duration);
+
+
+          ${$latency_ref}{L}{$cmd}{total}   += $l_duration;
+          ${$latency_ref}{L}{$cmd}{number}  += 1;
+          ${$latency_ref}{L}{$cmd}{minimum}  = $l_duration if (${$latency_ref}{L}{$cmd}{minimum} >= $l_duration);
+          ${$latency_ref}{L}{$cmd}{maximum}  = $l_duration if (${$latency_ref}{L}{$cmd}{maximum} <= $l_duration);
+
+          printf $lath "\n";                    # Spacer
+          $ptr_cur_cmd = ${$ptr_cur_cmd}{next};
+      } until ($ptr_cur_cmd == $ptr_fst_cmd );
+
+      printf $lath "%*s %s %10s\n"   , 8, '', 'ALL   1st Number:', ${$latency_ref}{1}{ALL  }{number};  
+      printf $lath "%*s %s %10s\n"   , 8, '', 'READ  1st Number:', ${$latency_ref}{1}{READ }{number};  
+      printf $lath "%*s %s %10s\n"   , 8, '', 'WRITE 1st Number:', ${$latency_ref}{1}{WRITE}{number}; 
+
+      printf $lath "%*s %s %10s\n"   , 8, '', 'READ  1st Total :', ${$latency_ref}{1}{READ }{total };  
+      printf $lath "%*s %s %10s\n"   , 8, '', 'WRITE 1st Total :', ${$latency_ref}{1}{WRITE}{total }; 
+      
+      printf $lath "%*s %s %10s\n"   , 8, '', 'ALL   Lst Number:', ${$latency_ref}{L}{ALL  }{number};  
+      printf $lath "%*s %s %10s\n"   , 8, '', 'READ  Lst Number:', ${$latency_ref}{L}{READ }{number};  
+      printf $lath "%*s %s %10s\n"   , 8, '', 'WRITE Lst Number:', ${$latency_ref}{L}{WRITE}{number};
+      
+      ${$latency_ref}{1}{ALL  }{average} = ${$latency_ref}{1}{ALL  }{total} / ${$latency_ref}{1}{ALL  }{number};
+      ${$latency_ref}{1}{READ }{average} = ${$latency_ref}{1}{READ }{total} / ${$latency_ref}{1}{READ }{number};
+      ${$latency_ref}{1}{WRITE}{average} = ${$latency_ref}{1}{WRITE}{total} / ${$latency_ref}{1}{WRITE}{number};
+          
+      ${$latency_ref}{L}{ALL  }{average} = ${$latency_ref}{L}{ALL  }{total} / ${$latency_ref}{L}{ALL  }{number};
+      ${$latency_ref}{L}{READ }{average} = ${$latency_ref}{L}{READ }{total} / ${$latency_ref}{L}{READ }{number};
+      ${$latency_ref}{L}{WRITE}{average} = ${$latency_ref}{L}{WRITE}{total} / ${$latency_ref}{L}{WRITE}{number};
+      #printf $lath "%*s %s %10s %s\n"   , 8, '', 'AdrPhaseCmp:', $tb;
+      printf $proh " ... latency   analysis new done\n";
+}#sub latency_analysis
+
+
+sub   bandwidth_analysis {
+      my ( $start_ptr                               #        interval start analysis
+         #,$stop_ptr                                #        ???                            future interval stop  analysis
+         , $trace_ref                               # Trace  file information
+         , $transfer_ref                            # input  %ahb_transfer   analysis
+         # $payload_ref                             #        ???
+         , $bandwidth_ref                           # output %ahb_bandwidth_new
+         , $transaction_ref) = @_;                  #        %ahb_transaction_new
+
+      my $ptr_cur_cmd = $start_ptr;                 # Initialize starting point in transaction list
+      
+      my $cycle       = ${$trace_ref}{period};      # (float)
+      my $tb          = ${$trace_ref}{timebase};    # =  $6; # (ns|ps)
+      my $frequency   = ${$trace_ref}{frequency};   # (float)
+      my $fb          = ${$trace_ref}{freqbase};    # (MHz|GHz)
+      my $transaction = 0;
+      my $beat        = 0;    
+      printf $proh " ... bandwidth analysis new\n";
+
+      printf $banh  " %s\n", '='x80;
+      printf $banh  " Tracefile : %s\n"           , $Trace{tracefile};
+      printf $banh  " Script    : %s %s\n"        , $0, $VERSION;           #  0  1, 2,    3,   4,    5,    6,    7,     8
+      printf $banh  " Date      : %4s-%02s-%02s\n", 1900+$year,$mon,$cday;  # $s,$m,$h,$cday,$mon,$year,$wday,$yday,$isdst
+      printf $banh  " Time      : %4s:%02s:%02s\n", $h, $m,$s;              # $s,$m,$h,$cday,$mon,$year,$wday,$yday,$isdst
+      printf $banh  " Cycle     : %10s %s\n"      , $cycle, $tb;
+      printf $banh  " Frequency : %10s %s\n",     , $frequency, $fb;
+      printf $banh  " %s\n", '='x80;
+
+      my $bytes_transfered = 0;
+      my $bytes_read       = 0;
+      my $bytes_write      = 0;
+
+      my $total_time       = 0;
+      my $total_idle       = 0;
+      my $total_addr       = 0;
+      my $total_data       = 0;
+      my $total_busy       = 0;
+                               
+      #  $write_payload              += $totalbeat * ${$ptr_cur_cmd}{burst_size} if ( ${$ptr_cur_cmd}{direction} =~ m/WR/ );
+      #  $read_payload               += $totalbeat * ${$ptr_cur_cmd}{burst_size} if ( ${$ptr_cur_cmd}{direction} =~ m/RD/ );
+
+      do {
+          $transaction++;
+          #
+          # ${$transfer_ref}{$transaction}{IDLE}
+          # ${$transfer_ref}{$transaction}{IDLE}{duration}
+          # ${$transfer_ref}{$transaction}{ADDR}{concealed} YES/NOT
+          # ${$transfer_ref}{$transaction}{ADDR}{duration}
+          # ${$transfer_ref}{$transaction}{ADDR}{length}
+          # ${$transfer_ref}{$transaction}{ADDR}{lenght} = $beat;                                 # Record the beat count of transaction, burst lenght
+          # ${$transfer_ref}{$transaction}{DATA}{1}{duration}
+          #
+
+          my ($direction, $ctype) = split /-/ , ${$ptr_cur_cmd}{direction};
+          my $payload             = ${$ptr_cur_cmd}{payload};
+          my $phase               = ($ctype eq 'NONSEQ') ? 'ADDR' : 'IDLE';                       # NONSEQ, IDLE, SEQ/DATA, BUSY        Recoding  ADDR
+          my $cmd                 = ($direction eq 'RD') ? 'READ' : 'WRITE';                      # Encode    READ vs RD; WRITE vs WR   Recoding  READ / WRITE
+          my $idle                = ${$transfer_ref}{$transaction}{IDLE}{duration};               # IDLE phase
+          my $addr                = ${$transfer_ref}{$transaction}{ADDR}{duration};               # ADDR phase
+          my $data                = ${$transfer_ref}{$transaction}{DATA}{total}{duration};        # DATA phase
+          my $busy                = ${$transfer_ref}{$transaction}{BUSY}{total}{duration};        #            WAIT states
+          my $L                   = ${$transfer_ref}{$transaction}{ADDR}{length};                 # LAST beat  Burst length
+          my $concealed           = ${$transfer_ref}{$transaction}{ADDR}{concealed};              # Visible/concealed ADDR phase
+          printf $banh "%*s %s %10s\n"      , 8, '', 'Transaction:', $transaction;
+          printf $banh "%*s %s %10s\n"      , 8, '', 'Direction  :', $cmd;
+          printf $banh "%*s %s %10s beat\n" , 8, '', 'BurstLength:', $L;
+          printf $banh "%*s %s %10s\n"      , 8, '', 'Addr Phase :', ($concealed =~ m/NOT/ )
+                                                                   ? 'visible'
+                                                                   : 'concealed';
+          printf $banh "%*s %s %10s\n"      , 8, '', 'IDLE Phase :', $idle  if (     $idle  > 0      );  # NOT Back2Back    commands
+          printf $banh "%*s %s %10s\n"      , 8, '', 'ADDR Phase :', $addr  if ($concealed =~ m/NOT/ );  # No  interleaving commands
+          printf $banh "%*s %s %10s\n"      , 8, '', 'DATA Phase :', $data  if (     $data  > 0      );  # Should be always true
+          printf $banh "%*s %s %10s\n"      , 8, '', 'BUSY Phase :', $busy  if (     $busy  > 0      );  # In case of WAIT states
+          $ptr_cur_cmd = ${$ptr_cur_cmd}{next};
+          $total_time   += $idle + $data;
+          $total_time   += $addr  if ($concealed =~ m/NOT/ );
+          $total_idle   += $idle;
+          $total_addr   += $addr  if ($concealed =~ m/NOT/ );
+          $total_data   += $data;
+          $total_busy   += $busy;
+
+          ${$bandwidth_ref}{$cmd}{addr} += $addr if ($concealed =~ m/NOT/ );
+          ${$bandwidth_ref}{$cmd}{data} += $data;
+          ${$bandwidth_ref}{$cmd}{busy} += $busy;
+          ${$bandwidth_ref}{$cmd}{time} += $addr if ($concealed =~ m/NOT/ );
+          ${$bandwidth_ref}{$cmd}{time} += $data;
+      } until ($ptr_cur_cmd == $ptr_fst_cmd );
+
+      ${$bandwidth_ref}{ALL}{totaltime} = $total_time;
+      ${$bandwidth_ref}{ALL}{totalidle} = $total_idle;
+      ${$bandwidth_ref}{ALL}{totaladdr} = $total_addr;
+      ${$bandwidth_ref}{ALL}{totaldata} = $total_data;
+      ${$bandwidth_ref}{ALL}{totalbusy} = $total_busy;
+      
+      printf $banh "\n\n";
+      printf $banh "%*s %s %10s\n"      , 8, '', 'Total Time :',$total_time; 
+      printf $banh "\n";
+      printf $banh "%*s %s %10s\n"      , 8, '', 'Total Idle :',$total_idle; 
+      printf $banh "%*s %s %10s\n"      , 8, '', 'Total Addr :',$total_addr; 
+      printf $banh "%*s %s %10s\n"      , 8, '', 'Total Data :',$total_data; 
+      printf $banh "%*s %s %10s\n"      , 8, '', 'Total Busy :',$total_busy; 
+      printf $banh "\n";
+      printf $banh "%*s %s %10s\n"      , 8, '', 'Total Idle :',${$bandwidth_ref}{ALL}{totalidle}; 
+      printf $banh "%*s %s %10s\n"      , 8, '', 'READ  Time :',${$bandwidth_ref}{READ}{time};
+      printf $banh "%*s %s %10s\n"      , 8, '', 'READ  Busy :',${$bandwidth_ref}{READ}{busy};
+      printf $banh "%*s %s %10s\n"      , 8, '', 'WRITE Time :',${$bandwidth_ref}{WRITE}{time};
+      printf $banh "%*s %s %10s\n"      , 8, '', 'WRITE Busy :',${$bandwidth_ref}{WRITE}{busy};
+
+      printf $proh " ... bandwidth analysis new done\n";
+
+}#sub bandwidth_analysis
+
+
+sub   protocol_trace_analysis {
+      my ( $start_ptr                   
+         , $b_ref                       # $b_ref --> %ahb_band
+         , $l_ref  ) = @_;              # $l_ref --> %ahb_latency
+
+      my $completion;      # Sample time of transaction completion
+      my $transaction = 0; # Ordinal Number of transaction
+      my $cmd;             # READ or WRITE command
+      my $type;            # Transfertype                  NONSEQ
+      my $phase;
+      my $transfer;        # Transfertype IDLE, BUSY, ADDR=NONSEQ, DATA=SEQ
+      my $beat;            # Cordial number of data transfer 1, 2, 3 ...
+      my $beats;           # Total number of data transfers  4, 8 or else
+      my $payload;         # transported byte
+      my $execution_p;     # Command completion time
+      
+     #printf       " ... initialize bandwidth analysis\n";
+      printf $proh " ... bandwidth analysis\n";
+      printf $proh " ... latency   analysis\n";
+      
+     #$ptr_cur_cmd = $ptr_fst_cmd;
+      $ptr_cur_cmd = $start_ptr;
+      
+      printf $ptrh  " %s -----> %s\n\n", 'ptr_fst_cmd', $ptr_fst_cmd;
+      printf $ptrh  " %s -----> %s\n\n", 'ptr_fst_cmd', $start_ptr;
+      
+      $completion  = ${$ptr_cur_cmd}{assert};  # Start with non IDLE transfer
+      
+      #while ( $ptr_cur_cmd != $ptr_lst_cmd ) {
+      #}# iterate over all commands 
+      
+      do {
+          
+          if ( ${$ptr_cur_cmd}{assert} > $completion) {
+      
+              ${$b_ref}{$transaction}{IDLE}{transferstart} = $completion;
+              ${$b_ref}{$transaction}{IDLE}{transferstop}  = ${$ptr_cur_cmd}{assert};
+              ${$b_ref}{$transaction}{IDLE}{duration}      = ${$ptr_cur_cmd}{assert} - $completion;
+              ${$l_ref}{IDLE}{total}                      += ${$b_ref}{$transaction}{IDLE}{duration};
+      
+          }# Account IDLE transfers, not explicite in AHB trace file
+      
+          $transaction++;
+      
+          printf $ptrh "%*s %s  %s\n"       , 8, '', 'previous   ', ${$ptr_cur_cmd}{prev};
+          printf $ptrh "%*s %s  %s\n"       , 8, '', 'current    ',   $ptr_cur_cmd;
+          printf $ptrh "%*s %s  %s\n"       , 8, '', 'Transaction',   $transaction;
+          printf $ptrh "%*s %s  %s\n"       , 8, '', 'transfer   ', ${$ptr_cur_cmd}{direction};
+          my ($direction, $ctype) = split /-/ , ${$ptr_cur_cmd}{direction};
+          printf $ptrh "%*s %s  %s\n"       , 8, '', 'bursttype  ', ${$ptr_cur_cmd}{burst_type};
+          printf $ptrh "%*s %s  %s byte\n"  , 8, '', 'burstsize  ', ${$ptr_cur_cmd}{burst_size}; 
+          printf $ptrh "%*s %s  ---------------> %s\n",  8, '', 'data       ', ${$ptr_cur_cmd}{data};
+          $ptr_cur_dta = ${$ptr_cur_cmd}{data};
+          $ptr_fst_dta = ${$ptr_cur_dta}{prev};
+          $ptr_lst_dta = ${$ptr_cur_dta}{last};
+          printf $ptrh "%*s %s %s\n\n"                , 29, '', 'last    ', ${$ptr_cur_dta}{last};
+          $beat = 1;
+          do {
+                # Scope of $type, inside/outside the loop
+                my ($dir, $dtype) = split /-/ , ${$ptr_cur_dta}{phase};                               # DATA, BUSY
+                printf $ptrh "%*s %s %s\n"      , 29, '', 'previous'   , ${$ptr_cur_dta}{prev};
+                printf $ptrh "%*s %s %s\n"      , 29, '', 'current '   ,   $ptr_cur_dta;
+                printf $ptrh "%*s %s %s\n"      , 29, '', 'assert  '   , ${$ptr_cur_dta}{assert};
+                printf $ptrh "%*s %s %s\n"      , 29, '', 'complete'   , ${$ptr_cur_dta}{complete};
+      
+                printf $ptrh "%*s %s %s\n"      , 29, '', 'beat    '   , ${$ptr_cur_dta}{beat_num};
+                printf $ptrh "%*s %s %3s ns\n"  , 29, '', 'timing  '   , ${$ptr_cur_dta}{complete} - ${$ptr_cur_dta}{assert};
+                printf $ptrh "%*s %s %s %s\n"   , 29, '', 'valid   '   , ${$ptr_cur_dta}{phase}, $dtype; # Transfer pending
+                printf $ptrh "%*s %s %s\n"      , 29, '', 'next    '   , ${$ptr_cur_dta}{next};
+                printf $ptrh "\n";
+               
+                ${$b_ref}{$transaction}{$dtype}{$beat}{description}   = ${$ptr_cur_dta}{beat_num};
+                ${$b_ref}{$transaction}{$dtype}{$beat}{duration}      = ${$ptr_cur_dta}{complete} - ${$ptr_cur_dta}{assert};
+                ${$b_ref}{$transaction}{$dtype}{$beat}{transferstart} = ${$ptr_cur_dta}{assert};
+                ${$b_ref}{$transaction}{$dtype}{$beat}{transferstop}  = ${$ptr_cur_dta}{complete};
+      
+                $transfer    = ($dtype eq 'DATA') ? 'DATA'
+                             : ($dtype eq 'BUSY') ? 'BUSY' : 'ERRR';
+                $completion  = ${$ptr_cur_dta}{complete};
+                $beats       = ${$ptr_cur_dta}{beat_num};
+      
+                $ptr_cur_dta = ${$ptr_cur_dta}{next};   # circular list points to the beginning
+                $beat++;
+                #$ptr_cur_dta = ${$ptr_cur_cmd}{next} if ($ptr_cur_dta == $ptr_lst_dta
+      
+          } until ($ptr_cur_dta == $ptr_fst_dta);             # If the first is the last&only pointer, then the next is the first as well
+          #} until ($ptr_cur_dta == $ptr_lst_dta);            # Coming out one transaction short
+          #} until ($ptr_cur_dta == ${$ptr_cur_dta}{next});
+          #
+      
+          $phase       = ($ctype eq 'NONSEQ') ? 'ADDR' : 'IDLE';                         # NONSEQ, IDLE, SEQ/DATA, BUSY 
+          $cmd         = ($direction eq 'RD') ? 'READ' : 'WRITE';                        # Encode    READ vs RD; WRITE vs WR 
+         #$execution_p = $completion - ${$ptr_cur_cmd}{assert};                          # period / elapse time of command/transaction
+          $execution_p = $completion - ${$ptr_cur_cmd}{assert};                          # period / elapse time of command/transaction
+          my ($burstlength,$length) = split /\//, $beats ;                               #
+          #printf       " Transaction :: %6s\n", $transaction; 
+          #printf $proh " Transaction :: %6s\n", $transaction; 
+         #$payload     = ${$ptr_cur_cmd}{burst_size} * $burstlength;                     # payload [byte] 
+          $payload     = ${$ptr_cur_cmd}{payload};                                       # payload [byte] 
+
+          printf $ptrh "%*s %s  %*s ns\n"  , 8, '', 'Addr Phase ', 8, ${$ptr_cur_cmd}{complete} - ${$ptr_cur_cmd}{assert};
+          printf $ptrh "%*s %s  %*s ns\n"  , 8, '', 'CmdFinish  ', 8, $completion;
+          printf $ptrh "%*s %s  %*s ns\n"  , 8, '', 'CmdStart   ', 8, ${$ptr_cur_cmd}{assert};
+          printf $ptrh "%*s %s  %*s ns\n"  , 8, '', 'Completion ', 8, $completion - ${$ptr_cur_cmd}{assert};
+          printf $ptrh "%*s %s  %*s beat\n", 8, '', 'Transfers  ', 8, $beats;
+          printf $ptrh "%*s %s  %*s byte\n", 8, '', 'Burstsize  ', 8, ${$ptr_cur_cmd}{burst_size}; 
+          printf $ptrh "%*s %s  %*s beat\n", 8, '', 'Burstlength', 8, $burstlength;
+          printf $ptrh "%*s %s  %*s \n"    , 8, '', 'Direction  ', 8, $direction;
+          printf $ptrh "%*s %s  %*s \n"    , 8, '', 'Transftype ', 8, $ctype;
+          printf $ptrh "%*s %s  %*s \n"    , 8, '', 'Command    ', 8, $cmd;
+      
+          printf $ptrh "%*s %s  %*s \n"    , 8, '', 'Average    ', 8, ${$l_ref}{ALL}{average};
+          printf $ptrh "%*s %s  %*s \n"    , 8, '', 'Minimum    ', 8, ${$l_ref}{ALL}{minimum};
+          printf $ptrh "%*s %s  %*s \n"    , 8, '', 'Maximum    ', 8, ${$l_ref}{ALL}{maximum};
+      
+          printf $ptrh "%*s %s  %s\n\n"    , 8, '', 'next       '   , ${$ptr_cur_cmd}{next};
+          
+          ${$b_ref}{$transaction}{number}                 = $transaction;                         # key == value, ordinal number of transaction
+          ${$b_ref}{$transaction}{payload}                = $payload;                             # in units of [byte] transfered READ or WRITE
+          ${$b_ref}{$transaction}{$phase}{direction}      = $cmd;                                 # direction refers to           READ or WRITE
+          ${$b_ref}{$transaction}{$phase}{bursttype}      = ${$ptr_cur_cmd}{burst_type};          # SINGLE, INCR4, WRAP4, ... INCR 
+          ${$b_ref}{$transaction}{$phase}{burstsize}      = ${$ptr_cur_cmd}{burst_size};          # 1, 2 or 4 byte width/size                     [byte/beat]
+          ${$b_ref}{$transaction}{$phase}{burstlength}    = ${$ptr_cur_cmd}{beats};               # burst length 1, 4, 8, 16, 2, 3, 4, .. 1024 [beat] or transfers
+      
+          ${$b_ref}{$transaction}{$phase}{transferstart}  = ${$ptr_cur_cmd}{assert};              # point in time begin/assertion of new command           [ns]
+          ${$b_ref}{$transaction}{$phase}{transferstop}   = ${$ptr_cur_cmd}{complete};            # point in time finish/completion of address phase       [ns]
+          ${$b_ref}{$transaction}{$phase}{transactionstop}= $completion;                          # point in time finish/completion of transaction/command [ns]
+          ${$b_ref}{$transaction}{$phase}{duration}       = $execution_p;                         # period     to finish/completion of transaction/command [ns]
+      
+          ${$l_ref}{ALL}{total}     += $execution_p;   # execution time
+          ${$l_ref}{ALL}{number}    += 1;              # transaction
+          ${$l_ref}{ALL}{minimum}    = $execution_p if (${$l_ref}{ALL}{minimum} >= $execution_p);
+          ${$l_ref}{ALL}{maximum}    = $execution_p if (${$l_ref}{ALL}{maximum} <= $execution_p);
+         #${$l_ref}{ALL}{payload}   += ${$ptr_cur_cmd}{burst_size} * $burstlength;
+          ${$l_ref}{ALL}{payload}   += $payload;
+      
+          ${$l_ref}{$cmd}{total}    += $execution_p;   # execution time
+          ${$l_ref}{$cmd}{number}   += 1;              # transaction
+          ${$l_ref}{$cmd}{minimum}   = $execution_p if (${$l_ref}{$cmd}{minimum} >= $execution_p);
+          ${$l_ref}{$cmd}{maximum}   = $execution_p if (${$l_ref}{$cmd}{maximum} <= $execution_p);
+         #${$l_ref}{$cmd}{payload}  += ${$ptr_cur_cmd}{burst_size} * $burstlength;
+          ${$l_ref}{$cmd}{payload}  += $payload;
+      
+          $ptr_cur_cmd = ${$ptr_cur_cmd}{next};
+          
+      } until ($ptr_cur_cmd == $ptr_fst_cmd );
+      
+      
+      printf $ptrh  " %s -----> %s\n", 'ptr_lst_cmd', $ptr_lst_cmd;
+      close  $ptrh;
+      
+     #printf       " ... bandwidth analysis done\n";
+      printf $proh " ... bandwidth analysis done\n";
+      printf $proh " ... latency   analysis done\n";
+}#sub protocol_trace_analysis
+
+
+#my @list = qw ( SINGLE INCR INCR4 INCR8 INCR16 WRAP4 WRAP8 WRAP16 total );
+#my @_list = ( 'SINGLE', 'INCR', 'INCR4', 'INCR8', 'INCR16', 'WRAP4', 'WRAP8', 'WRAP16', 'total', );
+#my @_list = ( "SINGLE", "INCR", "INCR4", "INCR8", "INCR16", "WRAP4", "WRAP8", "WRAP16", "total" );
+
+sub report{
+    my @_list = ( "SINGLE", "INCR", "INCR4", "INCR8", "INCR16", "WRAP4", "WRAP8", "WRAP16", "total" );
+    printf "%s\n", '='x80;
+    #printf " List has %s elements\n", scalar(@_list);
+    printf "   TRANSACTIONS by TYPE ::\n";
+    foreach my $type ( @_list ){
+        printf "   %8s : %4s transactions\n", $type, $ahb_anal{transaction}{$type};
+    }
+    printf "%s\n", '='x80;
+    printf "   WRITE transactions :: (by type)\n";
+    foreach my $type ( @_list ){
+        printf "   %8s : %4s transactions\n", $type, $ahb_anal{transaction}{WRITE}{$type};
+    }
+    printf "%s\n", '='x80;
+    printf "   READ  transactions :: (by type)\n";
+    foreach my $type ( @_list ){
+        printf "   %8s : %4s transactions\n", $type, $ahb_anal{transaction}{READ}{$type};
+    }
+    printf "%s\n", '='x80;
+    printf "   WRITE transactions :: (by size, type)\n";
+    foreach my $size ( ( 1, 2, 4 ) ) {
+        printf "   %s byte wide burst\n", $size;
+        foreach my $type ( @_list ) {
+            printf "   %8s : %4s transactions\n", $type, $ahb_anal{transaction}{$size}{WRITE}{$type};
+        }# by type
+        printf "%s\n", '-'x80;
+    }#by size
+    printf "%8s : %4s transactions\n", "Total WRITE", $ahb_anal{transaction}{WRITE}{total};
+
+    printf "%s\n", '='x80;
+    printf "   READ  transactions :: (by size, type)\n";
+    foreach my $size ( ( 1, 2, 4 ) ){
+        printf "   %s byte wide burst\n", $size;
+        foreach my $type ( @_list ) {
+            printf "   %8s : %4s transactions\n", $type, $ahb_anal{transaction}{$size}{READ}{$type};
+        }# by type
+        printf "%s\n", '-'x80;
+    }# by size
+    printf "%8s : %4s transactions\n", "Total READ", $ahb_anal{transaction}{READ}{total};
+    printf "%s\n", '='x80;
+}#sub report
+
+sub analysis_report{
+    my ( $trace_ref                             # Trace information
+       , $ref                                   # %ahb_bandwidth 
+       , $latr                                  # %ahb_latency      
+       , $latency_ref                           # %ahb_latency_new
+       , $transfer_ref                          # %ahb_transfer
+       , $bandwidth_ref ) = @_;
+       
+    #foreach my $k ( keys %{$latr} ) {
+    #    printf $anah " <%s>\n"    ,   $k;
+    #    foreach my $k1 ( keys %{${$latr}{$k}} ) {
+    #         printf $anah " <%10s> : %s\n"    ,   $k1, ${${$latr}{$k}}{$k1};
+    #    }
+    #}
+    #my $tr   = ${$trace_ref}{tracefile}    =  $1; # trace filename
+    #my $prot = ${$trace_ref}{protocol}     =  $1; # (AHB)
+    #my ${$trace_ref}{period}               =  $2; # (float)
+    my $tb   = ${$trace_ref}{timebase};   # =  $6; # (ns|ps)
+    #my ${$trace_ref}{redundant}            =  $7; # (AHB)
+    #my ${$trace_ref}{frequency}            =  $8; # (float)
+    #my ${$trace_ref}{freqbase}             = $12; # (MHz|GHz)
+    #my ${$trace_ref}{databus}              = $13; # bit width
+    my $scale = ($tb eq 'ms')?                      1000  # ms
+              : ($tb eq 'us')?               1000 * 1000  # us
+              : ($tb eq 'ns')?        1000 * 1000 * 1000  # ns
+              : ($tb eq 'ps')? 1000 * 1000 * 1000 * 1000  # ps
+              :         1000 * 1000 * 1000 * 1000 * 1000; # fs
+    my $giga  =  1000 * 1000 * 1000;
+
+    #printf       " ... printing analysis report \n";
+    printf $proh " ... printing analysis report \n";
+    printf $anah "Trace file     : %s\n",     ${$trace_ref}{tracefile} ;
+    printf $anah "Protocol       : %s\n",     ${$trace_ref}{protocol};
+    printf $anah "Data bus width : %s bit\n", ${$trace_ref}{databus};
+    printf $anah "Convention     : SI : giga = 1 000 000 000 = 10^9\n"; # IEC 2^10 gibibit JEDEC 
+    printf $anah "                      mega =     1 000 000 = 10^6\n";
+    printf $anah "                      kilo =         1 000 = 10^3\n";
+
+    printf $anah "\n"; 
+   #printf $anah "Transaction\t\tTransaction\t\tSample time\t\tSample time\t\t    Latency\t\tTransaction\n";
+   #printf $anah "\t number\t\t  assertion\t\t first_data\t\t  last_data\t\t first_data\t\t completion\n";         # Version 1.01.04 header
+    printf $anah "Transaction\t\tTransaction\t\tSample time\t\tSample time\t\t    Latency\t\t    Latency\n";
+    printf $anah "\t number\t\t  assertion\t\t first_data\t\t  last_data\t\t first_data\t\t  last_data\n";         # Version 1.01.05 header
+    printf $anah "%s\n", '='x91;
+    #
+    # Deprecarted Data structure and report
+
+    ### foreach my $trans ( sort { $a <=> $b } keys %{$ref} ) { 
+    ###     printf $anah "#%10s"    ,   $trans;
+    ###    #printf $anah "\t%12s %s",   ${$ref}{$trans}{ADDR}{transferstart}                                         , $tb ; # Version 1.01.04 
+    ###     printf $anah "\t%12s %s",   ${$ref}{$trans}{ADDR}{transferstop }                                         , $tb ; 
+    ###     printf $anah "\t%12s %s",   ${$ref}{$trans}{DATA}{1}{transferstop}                                       , $tb ; 
+    ###     printf $anah "\t%12s %s",   ${$ref}{$trans}{ADDR}{transactionstop}                                       , $tb ;
+
+    ###    #printf $anah "\t%12s %s",   ${$ref}{$trans}{DATA}{1}{transferstop} - ${$ref}{$trans}{ADDR}{transferstart}, $tb ; # First data transfer Version 1.01.04
+    ###    #printf $anah "\t%12s %s\n", ${$ref}{$trans}{ADDR}{duration}                                              , $tb ; # Last  data transfer Version 1.01.04
+    ###     printf $anah "\t%12s %s",   ${$ref}{$trans}{DATA}{1}{transferstop} - ${$ref}{$trans}{ADDR}{transferstop }, $tb ; # First data transfer
+    ###     printf $anah "\t%12s %s\n", ${$ref}{$trans}{ADDR}{transactionstop} - ${$ref}{$trans}{ADDR}{transferstop }, $tb ; # Last  data transfer
+    ###    #printf $anah "\t%12s %s", ${$ref}{$trans}{ADDR}{duration}                                                , $tb ; # To change algorithm
+    ###    #printf $anah "\t%2s\n"  , ${$ref}{$trans}{ADDR}{burstlength};
+    ### }#foreach
+
+
+    # Version 1.01.06
+    foreach my $transaction ( sort { $a <=> $b } keys %{$transfer_ref } ) {
+          my $L = ${$transfer_ref}{$transaction}{ADDR}{length};                  # Last DATA beat
+          printf $anah "#%10s"    , $transaction;                                                   # First  column Transaction Number
+          printf $anah "\t%12s %s", ${$transfer_ref}{$transaction}{ADDR}{transferstop }   , $tb ;   # Second column       ADDR transfer done 
+          printf $anah "\t%12s %s", ${$transfer_ref}{$transaction}{DATA}{ 1}{transferstop}, $tb ;   # Third  column 1st   DATA transfer done 
+          printf $anah "\t%12s %s", ${$transfer_ref}{$transaction}{DATA}{$L}{transferstop}, $tb ;   # Fourth column Last  DATA transfer done 
+          printf $anah "\t%12s %s", ${$transfer_ref}{$transaction}{DATA}{ 1}{duration    }, $tb ;   # Fifth  column 1st   DATA transfer period 
+          printf $anah "\t%12s %s", ${$transfer_ref}{$transaction}{DATA}{total}{duration }, $tb ;   # Sixth  column total DATA transfer period 
+          printf $anah "\n";    
+    }#foreach transaction/cmd NOT transfer
+
+
+
+    printf $anah "\n\n";
+    printf $anah " First Data Latency\n\n";
+    printf $anah " %s : %9s\n"      , '        total       transaction number', ${$latency_ref}{1}{ALL  }{number};
+    printf $anah " %s : %13.3f %s\n", 'minimum transaction completion latency', ${$latency_ref}{1}{ALL  }{minimum}, $tb;
+    printf $anah " %s : %13.3f %s\n", 'average transaction completion latency', ${$latency_ref}{1}{ALL  }{average}, $tb;
+    printf $anah " %s : %13.3f %s\n", 'maximum transaction completion latency', ${$latency_ref}{1}{ALL  }{maximum}, $tb;
+    printf $anah "\n";
+    printf $anah " %s : %9s\n"      , '        READ        transaction number', ${$latency_ref}{1}{READ }{number};
+    printf $anah " %s : %13.3f %s\n", 'minimum READ        completion latency', ${$latency_ref}{1}{READ }{minimum}, $tb;
+    printf $anah " %s : %13.3f %s\n", 'average READ        completion latency', ${$latency_ref}{1}{READ }{average}, $tb;
+    printf $anah " %s : %13.3f %s\n", 'maximum READ        completion latency', ${$latency_ref}{1}{READ }{maximum}, $tb;
+    printf $anah "\n";
+    printf $anah " %s : %9s\n"      , '        WRITE       transaction number', ${$latency_ref}{1}{WRITE}{number};
+    printf $anah " %s : %13.3f %s\n", 'minimum WRITE       completion latency', ${$latency_ref}{1}{WRITE}{minimum}, $tb;
+    printf $anah " %s : %13.3f %s\n", 'average WRITE       completion latency', ${$latency_ref}{1}{WRITE}{average}, $tb;
+    printf $anah " %s : %13.3f %s\n", 'maximum WRITE       completion latency', ${$latency_ref}{1}{WRITE}{maximum}, $tb;
+    printf $anah "\n";
+
+    printf $anah "\n\n";
+    printf $anah " Last  Data Latency\n\n";
+    printf $anah " %s : %9s\n"      , '        total       transaction number', ${$latency_ref}{L}{ALL  }{number};
+    printf $anah " %s : %13.3f %s\n", 'minimum transaction completion latency', ${$latency_ref}{L}{ALL  }{minimum}, $tb;
+    printf $anah " %s : %13.3f %s\n", 'average transaction completion latency', ${$latency_ref}{L}{ALL  }{average}, $tb;
+    printf $anah " %s : %13.3f %s\n", 'maximum transaction completion latency', ${$latency_ref}{L}{ALL  }{maximum}, $tb;
+    printf $anah "\n";
+    printf $anah " %s : %9s\n"      , '        READ        transaction number', ${$latency_ref}{L}{READ }{number};
+    printf $anah " %s : %13.3f %s\n", 'minimum READ        completion latency', ${$latency_ref}{L}{READ }{minimum}, $tb;
+    printf $anah " %s : %13.3f %s\n", 'average READ        completion latency', ${$latency_ref}{L}{READ }{average}, $tb;
+    printf $anah " %s : %13.3f %s\n", 'maximum READ        completion latency', ${$latency_ref}{L}{READ }{maximum}, $tb;
+    printf $anah "\n";
+    printf $anah " %s : %9s\n"      , '        WRITE       transaction number', ${$latency_ref}{L}{WRITE}{number};
+    printf $anah " %s : %13.3f %s\n", 'minimum WRITE       completion latency', ${$latency_ref}{L}{WRITE}{minimum}, $tb;
+    printf $anah " %s : %13.3f %s\n", 'average WRITE       completion latency', ${$latency_ref}{L}{WRITE}{average}, $tb;
+    printf $anah " %s : %13.3f %s\n", 'maximum WRITE       completion latency', ${$latency_ref}{L}{WRITE}{maximum}, $tb;
+    printf $anah "\n";
+
+    ### printf $anah "\n\n\n";
+    ### printf $anah " %s : %9s\n"      , '        total       transaction number', ${${$latr}{ALL}}{number};
+    ### printf $anah " %s : %13.3f %s\n", 'average transaction completion latency', ${${$latr}{ALL}}{total} / ${${$latr}{ALL}}{number}, $tb;
+    ### printf $anah " %s : %13.3f %s\n", 'minimum transaction completion latency', ${${$latr}{ALL}}{minimum}                         , $tb;
+    ### printf $anah " %s : %13.3f %s\n", 'maximum transaction completion latency', ${${$latr}{ALL}}{maximum}                         , $tb;
+    ### printf $anah "\n";
+    ### printf $anah " %s : %9s\n"      , '        READ        transaction number', ${$latr}{READ}{number};
+    ### printf $anah " %s : %13.3f %s\n", 'average READ        completion latency', ${$latr}{READ}{total} / ${$latr}{READ}{number}    , $tb;
+    ### printf $anah " %s : %13.3f %s\n", 'minimum READ        completion latency', ${$latr}{READ}{minimum}                           , $tb;
+    ### printf $anah " %s : %13.3f %s\n", 'maximum READ        completion latency', ${$latr}{READ}{maximum}                           , $tb;
+    ### printf $anah "\n";
+    ### printf $anah " %s : %9s\n"      , '        WRITE       transaction number', ${$latr}{WRITE}{number};
+    ### printf $anah " %s : %13.3f %s\n", 'average WRITE       completion latency', ${$latr}{WRITE}{total}/ ${$latr}{WRITE}{number}   , $tb;
+    ### printf $anah " %s : %13.3f %s\n", 'minimum WRITE       completion latency', ${$latr}{WRITE}{minimum}                          , $tb;
+    ### printf $anah " %s : %13.3f %s\n", 'maximum WRITE       completion latency', ${$latr}{WRITE}{maximum}                          , $tb;
+    ### printf $anah "\n\n";
+    
+    printf $anah "\n\n";
+    printf $anah " %s : %9s %*s\n" , 'Total  transfered   amount of data    ', ${$latr}{ALL}{payload}   , 8,'byte';
+    printf $anah " %s : %9s %*s\n" , 'Total  READ         amount of data    ', ${$latr}{READ}{payload}  , 8,'byte';
+    printf $anah " %s : %9s %*s\n" , 'Total  WRITE        amount of data    ', ${$latr}{WRITE}{payload} , 8,'byte';
+    printf $anah "\n\n";
+    printf $anah " New band width analysis\n";
+    printf $anah "\n";
+    printf $anah " %s : %13.3f %s\n"                   , 'Total  traced       period            ', ${$bandwidth_ref}{ALL}{totaltime} , $tb;
+    printf $anah " %s : %13.3f %s\n"                   , 'Total  READ         time              ', ${$bandwidth_ref}{READ}{time}     , $tb;
+    printf $anah " %s : %13.3f %s\n"                   , 'Total  WRITE        time              ', ${$bandwidth_ref}{WRITE}{time}    , $tb;
+    printf $anah " %s : %13.3f %s\n"                   , 'Total  IDLE         time              ', ${$bandwidth_ref}{ALL}{totalidle} , $tb;
+    printf $anah "\n\n"; 
+
+    printf $anah " %s : %13.3f byte/s",  'Total  Bandwith     consumed          ' , ${$latr}{ALL}{payload}  / ${$bandwidth_ref}{ALL}{totaltime} * $scale;
+    printf $anah " %10.3f Gbit/s\n"                                               , ${$latr}{ALL}{payload}  / ${$bandwidth_ref}{ALL}{totaltime} * $scale / $giga * 8;
+    printf $anah " %s : %13.3f byte/s",  'READ   Bandwith     consumed          ' , ${$latr}{READ}{payload} / ${$bandwidth_ref}{READ}{time}     * $scale;
+    printf $anah " %10.3f Gbit/s\n"                                               , ${$latr}{READ}{payload} / ${$bandwidth_ref}{READ}{time}     * $scale / $giga * 8;
+    printf $anah " %s : %13.3f byte/s",  'WRITE  Bandwith     consumed          ' , ${$latr}{WRITE}{payload}/ ${$bandwidth_ref}{WRITE}{time}    * $scale;
+    printf $anah " %10.3f Gbit/s\n"                                               , ${$latr}{WRITE}{payload}/ ${$bandwidth_ref}{WRITE}{time}    * $scale / $giga * 8;
+    printf $anah "\n\n"; 
+    printf $anah "%s\n", '='x80;
+
+    my $last = keys %{$ref};        # Number of entries/keys in hash reference
+    my $trace_window = ${$ref}{$last}{ADDR}{transactionstop} - ${$ref}{1}{ADDR}{transferstart};
+    printf $anah " %s : %13.3f %s = %13.3f - %13.3f \n", 'Total  traced       period            '
+                 , $trace_window         , $tb, ${$ref}{$last}{ADDR}{transactionstop},${$ref}{1}{ADDR}{transferstart};
+    printf $anah " %s : %13.3f %s\n"                   , 'Total  READ         time              ', ${$latr}{READ}{total} , $tb;
+    printf $anah " %s : %13.3f %s\n"                   , 'Total  WRITE        time              ', ${$latr}{WRITE}{total}, $tb;
+    printf $anah " %s : %13.3f %s\n"                   , 'Total  IDLE         time              ', ${$latr}{IDLE}{total} , $tb;
+    printf $anah "\n";
+
+
+
+    printf $anah " %s : %13.3f byte/s",  'Total  Bandwith     consumed          ' , ${$latr}{ALL}{payload}  / $trace_window * $scale;
+    printf $anah " %10.3f Gbit/s\n"                                               , ${$latr}{ALL}{payload}  / $trace_window * $scale / $giga * 8;
+    printf $anah " %s : %13.3f byte/s",  'READ   Bandwith     consumed          ' , ${$latr}{READ}{payload} / $trace_window * $scale;
+    printf $anah " %10.3f Gbit/s\n"                                               , ${$latr}{READ}{payload} / $trace_window * $scale / $giga * 8;
+    printf $anah " %s : %13.3f byte/s",  'WRITE  Bandwith     consumed          ' , ${$latr}{WRITE}{payload}/ $trace_window * $scale;
+    printf $anah " %10.3f Gbit/s\n"                                               , ${$latr}{WRITE}{payload}/ $trace_window * $scale / $giga * 8;
+
+    my @_list = ( "SINGLE", "INCR", "INCR4", "INCR8", "INCR16", "WRAP4", "WRAP8", "WRAP16", "total" );
+    printf $anah "%s\n", '='x80;
+    #printf $anah " List has %s elements\n", scalar(@_list);
+    printf $anah "   TRANSACTIONS by TYPE ::\n";
+    foreach my $type ( @_list ){
+        printf $anah "   %8s : %4s transactions\n", $type, $ahb_anal{transaction}{$type};
+    }
+    printf $anah "%s\n", '='x80;
+    printf $anah "   WRITE transactions :: (by type)\n";
+    foreach my $type ( @_list ){
+        printf $anah "   %8s : %4s transactions\n", $type, $ahb_anal{transaction}{WRITE}{$type};
+    }
+    printf $anah "%s\n", '='x80;
+    printf $anah "   READ  transactions :: (by type)\n";
+    foreach my $type ( @_list ){
+        printf $anah "   %8s : %4s transactions\n", $type, $ahb_anal{transaction}{READ}{$type};
+    }
+    printf $anah "%s\n", '='x80;
+    printf $anah "   WRITE transactions :: (by size, type)\n";
+    foreach my $size ( ( 1, 2, 4 ) ) {
+        printf $anah "   %s byte wide burst\n", $size;
+        foreach my $type ( @_list ) {
+            printf $anah "   %8s : %4s transactions\n", $type, $ahb_anal{transaction}{$size}{WRITE}{$type};
+        }# by type
+        printf $anah "%s\n", '-'x80;
+    }#by size
+    printf $anah "%8s : %4s transactions\n", "Total WRITE", $ahb_anal{transaction}{WRITE}{total};
+
+    printf $anah "%s\n", '='x80;
+    printf $anah "   READ  transactions :: (by size, type)\n";
+    foreach my $size ( ( 1, 2, 4 ) ){
+        printf $anah "   %s byte wide burst\n", $size;
+        foreach my $type ( @_list ) {
+            printf $anah "   %8s : %4s transactions\n", $type, $ahb_anal{transaction}{$size}{READ}{$type};
+        }# by type
+        printf $anah "%s\n", '-'x80;
+    }# by size
+    printf $anah "%8s : %4s transactions\n", "Total READ", $ahb_anal{transaction}{READ}{total};
+    printf $anah "%s\n", '='x80;
+
+    printf " ... %s trace analysis done\n",$Trace{protocol}  ;
+}#sub analysis_report
+
+
+sub test_AHB_hash{
+
+    print {$proh} "\n ... testing \%AHB_hash structure\n";
+    print {$tsth} "    ... testing \%AHB_hash structure\n";
+    
+    my $cnt = 0;
+    foreach my $timestamp (sort keys %AHB_hash) {
+        $cnt++;
+        $ahb_anal{transaction}{total} = $cnt;
+        my $burst_type = ${$AHB_hash{$timestamp}}{burst_type};
+        my $burst_size = ${$AHB_hash{$timestamp}}{burst_size};
+        $ahb_anal{transaction}{$burst_type} += 1;
+        my $addr_delay = ${$AHB_hash{$timestamp}}{complete} - ${$AHB_hash{$timestamp}}{assert};
+        my $direction  = ${$AHB_hash{$timestamp}}{direction};
+        if ($direction =~ m{WR-NONSEQ} ){
+            $ahb_anal{transaction}{WRITE}{$burst_type} += 1;
+            $ahb_anal{transaction}{WRITE}{total} += 1;
+            $ahb_anal{transaction}{$burst_size}{WRITE}{$burst_type} += 1;
+            $ahb_anal{transaction}{$burst_size}{WRITE}{total} += 1;
+        }
+        if ($direction =~ m{RD-NONSEQ} ){
+            $ahb_anal{transaction}{READ}{$burst_type} += 1;
+            $ahb_anal{transaction}{READ}{total} += 1;
+            $ahb_anal{transaction}{$burst_size}{READ}{$burst_type} += 1;
+            $ahb_anal{transaction}{$burst_size}{READ}{total} += 1;
+        }
+    
+         printf 
+         $tsth "  %s ns | %s | %4s | %8s | %s byte | %3s ns\n"
+               , $timestamp, ref $AHB_hash{$timestamp}, $cnt, ${$AHB_hash{$timestamp}}{burst_type}, $burst_size, $addr_delay;
+    #    foreach my $id ( sort keys %{$AHB_hash{$timestamp}} ) {
+    #        printf "%*s%*s   | %s\n", 10,'',-16, $id, ${$AHB_hash{$timestamp}}{$id};
+    #    }
+    }# Readout
+}#sub test_AHB_hash()
+
+
+

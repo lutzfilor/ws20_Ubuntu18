@@ -1,0 +1,28 @@
+# Revision history for Perl applicatition namespace File::IO::CSV
+#
+#   Owner       Lutz Filor
+#   contact     (408) 807 6915
+#
+# Synopsis      .csv files belong to the simplestes data file formats, but still need support.
+#               Comma Separated Values (CSV) are an simple, standard output format for spreadsheets
+#               
+#               
+# Dependencies  File::IO::UTF8::read_UTF8   ( $filename );              ==> @Array, @{$ArrRef}
+#               File::IO::UTF8::write_UTF8  ( $filename, [$ArrRef] );
+#               
+#               
+#
+# DATE          VERSION     Description
+# ================================================================================================
+# 09-17-2020                Created     perl/lib/File/IO/CSV/CSV_change.log                             
+#               v1.01.01    Create      File::IO::CSV.pm
+#               v1.01.02    Create      File::IO::CSV::read_csv     ( $filename )               ==> [$ArrRef] 2D, table
+# 09-18-2020    v1.01.03    Create      File::IO::CSV::write_csv    ( $filename, [$ArrRef] );   <== [$ArrRef] 2D, table
+# 09-19-2020    v1.01.04    Debug       File::IO::CSV::read_csv     ( $filename );
+#                           Change      $ArrRef     =  read_utf8    ( $filename );              #   Readin UTF8 encoded file
+#                           To          @{$ArrRef}  =  read_utf8    ( $filename );              #   Readin UTF8 encoded file
+#                                       Document return values better, w/ implementation example 
+#               v1.01.05    Debug       File::IO::CSV::unpack_csv   ( $ArrRef  );               #   private method
+#               v1.01.06    Add Feature File::IO::CSV::max_row      ( $ArrRef  );               #   private method, 2D table, return Integer
+#               v1.01.07    Add Feature File::IO::CSV::max_col      ( SArrRef  );               #   private method, 2D table, return Integer
+#               v1.01.08    Add Feature File::IO::CSV::fully_occupy ($ArrRef 

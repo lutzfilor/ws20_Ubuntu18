@@ -1,0 +1,7 @@
+Revision history of the custom Perl programs ~/ws/perl/project/cg.pl
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 2020-06-20    v1.01.01    created     cg_changes.log
+#               v1.01.02    add         appliction configuration
+# 2020-06-21    v1.01.03    add         new module App::DBG::ST

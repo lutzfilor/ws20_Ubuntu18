@@ -1,0 +1,62 @@
+Revision history for Perl extension Main::ppcov.pl
+
+# Revision  VERSION     DATE            Description
+# ================================================================================================
+# History   1.01.01     11/15/2018      Create project TSG - Test Sequence Generator
+#                       11/16/2018      Implement debugging feature on sub level
+#           1.01.02     11/19/2018      Debugging user interface, debug feature
+#           1.01.03     11/20/2018      Debugging REGEX expressions lowercase k vs Uppercase K !!
+#                                       Processing initialization <keyword> <value> <metric>
+#                                       Unit is not process correctly
+#           1.01.04     11/22/2018      Regular expression specification debug
+#                                       Comments, hex values, casting, value error checking
+#           1.01.05     11/27/2018      Validating, aggregation
+#           1.01.06     11/29/2018      Refactor analysis, and Error reporting
+#           1.01.07     11/30/2018      debugging
+#                       12/03/2018      PERL =~ operator is breaking down on empty STRINGS
+#                                            eq operator is a work around
+#           1.01.08     12/04/2018      Implement a MemoryMap, partial from .ini
+#           1.01.10     12/09/2018      Add LINT feature, integrating into System Verilog Simulation
+#           1.01.11     12/17/2018      Decompose XML, Parsing XML
+#                       12/18/2018      Fix XML-TAG to XML-TAG:TAG
+#           1.01.12     12/19/2018      Add LINT log feature, for filter
+#                                       Add LINT format features, crunch, left-align, right-align
+#           1.01.13     12/20/2018      Document scripts
+#                                       Clean up experimental
+#           1.01.14     01/02/2019      Preserve ^M in XML element, retrieve XML prolog, string
+#           1.01.15     01/04/2019      Parsing XML elements of XML string
+#                                       Detecting, XML element, nested XML element open,
+#                                       nested XML element close, self terminating XML element
+#           1.01.16     01/07/2019      Extracting XML information
+#                                       Virtual XML data structure
+#           1.02.00     01/11/2019      Refactored ppcov.pl from tsg.pl 1.01.16
+#                       01/22/2019      Import		Spreadsheet::ParseXLSX; add post_work_book on terminal
+#                       01/24/2019      Import		Excel::Writer::XLSX;    add deep copy
+#           1.02.01     01/25/2019      Read		.xlsx files
+#                                       Write		.xlsx files
+#           1.02.02     01/26/2019      Create		PPCOV::File add filename generation
+#           1.02.03     01/28/2019      Add Change file to project, extracted from ppcov.pl
+#                                       Create		PPCOV::HTML reading HTML files import HTML::Parser
+#                       01/30/2019      Create		PPCOV::Control  extract column data from .xlsx file
+#           1.02.04     01/31/2019      Create		PPCOV::Datapath link cntrl file to database
+#                       02/01/2019      Add			PPCOV::Datapath::get_attribute()
+#                                       Add			PPCOV::Datapath::get_filename()
+#           1.02.05     02/04/2019      Create		PPCOV::JSON reading JSON files
+#                                       use			JSON,    didn't work    - illformed json string
+#                                       use			JSON::PP                - illformed json string
+#                                       Create		PPCOV::Datapath::get_zrecord()
+#                                       Create		PPCOV::Datapath::get_zdata()
+#           1.02.06		02/22/2019		Refactor	PPCOV::DataAccess::JSON.pm
+#										Create		PPCOV::DataPrep::Staging.pm
+#			1.02.07		02/25/2019		Add			row_definition [ cells ]
+#			1.02.08		03/05/2019		Add			parameter date='YYYY-MM-DD' no enforcement of
+#													input format, impact unknown or out of order
+#													parameter --silent
+#			1.02.09		03/21/2019		Add			PPCOV::DataPrep::Staging::build_cpit_picker()
+#										Add			PPCOV::DataPrep::Staging::build_cpit_header()
+#			1.02.10		03/25/2019
+#			1.03.01     04/05/2019      Add         logs directory
+#			1.03.02     05/03/2019      Clean up
+# ================================================================================================
+
+

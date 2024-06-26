@@ -1,0 +1,18 @@
+https://www.youtube.com/watch?v=WFLvcMiG38w
+
+//  Introducution to the c compiler
+//  Owner   Lutz Filor
+
+//  Compile command
+    cc -o ex2 ex2.c util2.c
+
+//  Execution command
+    ./ex2
+
+//  Simple makefile2
+ex2: ex2.c util2.c
+    cc -o ex2 ex2.c util2.c
+
+//  Call makefile
+make ex2 -f makefile2
+

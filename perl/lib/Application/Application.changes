@@ -1,0 +1,18 @@
+# Revision history of the custom Perl framework ~/ws/perl/lib/App
+# Revision history of the custom Perl namespace ~/ws/perl/lib/Application
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 05-06-2019                Created     perl/Application/Application.changes tracking said Namespace
+#               v1.01.01    Add         CLI namespace
+# 05-08-2019    v1.01.02    Add         Performance namespace
+# 05-24-2019    v1.01.03    Add         Constants namespace
+# 05-30-2019    v1.01.04    Move        perl/lib/Application/Performance/Performance.pm
+#                           to          perl/lib/Application/Performance/pm
+#                           Refactor    use lib qw  (   ~/ws/perl/lib );
+#                                       use lib			"$ENV{PERLPATH}";           # Add Include path to @INC
+# 06-03-2019    v1.01.05    Refactor    perl/Lib/Application/Constants.pm
+#                                       vs redefine "global/shared" constances
+# 01-01-2020    v1.02.00    Refactor    perl/lib/PPCOV/DataStructure/DS.pm          # design out
+#                                       perl/lib/DS.pm
+# 06-10-2020    v1.02.02    Remove      #use Term::ANSIColor qw ( :constants );     # available

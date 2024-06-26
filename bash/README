@@ -1,0 +1,2 @@
+sed -n 10,20p file.txt > newfile.txt
+awk 'NR>=10&&NR<=20' file.txt > newfile.txt

@@ -1,0 +1,13 @@
+Revision history for Perl extension Logging::Record.pm
+
+# Revision  VERSION     DATE            Description
+# ================================================================================================
+# History   1.01.01     02/18/2019      Create  Looging::Record.pm
+#                                       Add     Logging::Record::log_msg()
+#           1.01.02		02/19/2019      Add		Logging::Record::discard_logs()
+#												reset all recording from previous run
+#			1.01.03		02/20/2019		Add		Logging::REcord::log_lmsg
+# ================================================================================================
+
+
+

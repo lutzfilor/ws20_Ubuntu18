@@ -1,0 +1,17 @@
+Revision history for Perl extension     Create/App.pm
+
+#   DATE        VERSION     DESCRIPTION                                                         COMMENT
+# ==================================================================================================================================
+#   2020/10/19  1.01.01     Create		    Create::App                                         #   Filepath project/Create/App.pm
+#                           Clone           module from IP_XACT/App.pm, manual
+#               1.01.02     Import          Create::API::get_config()
+#                           Import          Create::API::get_api()                              #   option description
+#               1.01.03     Add feature     my $up = [ qw( dbg file subs project) ];            #   list of parameter to unpack, application
+#                           Add             project     --> project_up
+#   2020/10/31  1.01.04     Import          Terminal::All
+#   2020/10/31  1.01.05     Debug           Create::App::prepare_coloning
+#                           Add Feature     Create::App::guard()
+#                                           Exit application if --project=pName not provided
+#   2020/11/05  1.01.06     Remove          use Create::App     qw  (   new
+#                                                                       terminate   );
+#                           Debug           Circular import, this methods are exported !!

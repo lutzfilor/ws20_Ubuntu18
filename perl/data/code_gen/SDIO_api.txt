@@ -1,0 +1,5 @@
+tb_api
+hc_version_select,version,version_t,version_c,HC version,"5.0",1,"3.0",1'b0,"4.0",1'b1
+speedmode_select,mode,speedmode_t,speedmode_c,Speed mode,"WARBSPEED",4,"SDR12" ,3'b000,"SDR25" ,3'b001,"SDR50" ,3'b010,"SDR104",3'b011,"DDR50" ,3'b100
+dma_mode_select,dma,dma_mode_t,dma_mode_c,DMA mode,"DMA",3,"SDMA"    ,2'b00,"notused" ,2'b01,"ADMA2"   ,2'b10,"reserved",2'b11
+dma_address_mode_select ,addrm,addr_mode_t,addr_mode_c,DMA address mode,"32",1,"32bit",1'b0,"64bit",1'b1

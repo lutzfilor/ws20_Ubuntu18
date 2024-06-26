@@ -1,0 +1,14 @@
+Revision history for Perl extension Main::add_monitor.pl
+
+# Revision  VERSION     DATE            Description
+# ================================================================================================
+# History   1.03.01     03/26/2019      Refactor    ppcov.pl
+#                                       Reuse       CLP --specification=s   input .xlsx file
+#                                       Add         CLP --generate=s        output .svi filename
+#           1.03.02     04/01/2019      Add         File::Header::Add       .xlsx Header -> FileHeader
+#           1.03.03     05/07/2019      Change      UTF8.pm to File::IO:UTF8::UTF8.pm
+#                                       Rename      Changes to add_monitor.changes
+#			
+# ================================================================================================
+
+

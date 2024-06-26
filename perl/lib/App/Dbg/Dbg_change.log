@@ -1,0 +1,36 @@
+Revision history for Perl extension App/Dbg.pm
+
+# ================================================================================================
+# Revision  VERSION     DATE            Description
+# ================================================================================================
+# History   1.01.01     01/17/2019      Create general purpose debug methods         
+#                                       Extracte from tsg.pl                       
+#           1.01.02     01/30/2019      Bug fix in subroutine() support deeper name spaces
+#           1.01.03     04/23/2019      Bug fix terminate library correctly with magic value 1;
+#                                       Expanded DebubFeatures
+#                                       Exported DebugFeatures
+#                                       Add private method maxwidth()
+#           1.01.04     07/25/2019      Suppress expertimental smartmatch warning
+#                                       use experimental 'smartmatch';
+# ================================================================================================
+#           v2.01.01    03/27/2020      Refactor    Dbg.pm
+#                                                   App::Dbg
+#                                       Debug Module is standard integration into all Applications
+#                                       Create      App/Dbg/Dbg_change.log, this file
+#                                       Refactor    old history out of the Dbg.pm file
+#           v2.01.02    10/08/2020      Remove      App::Dbg::maxwidth()        #   private method
+#                                                   redundant code
+#           v2.01.03    10/18/2020      Remove      implicite export
+#                                                   our @EXPORT    = qw(    subroutine
+#                                                                           debug       );   #dbg functions
+
+#           v2.01.04    10/18/2020      Delete      experimental code   ~~ operator
+#                                                   use experimental 'smartmatch';  # ~~
+#           v2.01.05    10/18/2020      Delete      App::Dbg::DebugFeatures()
+#                                       From        our %EXPORT_TAGS = ( ALL => [ @EXPORT_OK, 'DebugFeatures' ]
+#                                       To          our %EXPORT_TAGS = ( ALL => [ @EXPORT_OK ]
+#           v2.01.06    10/18/2020      Destruct    App::Dbg::subroutine( $select ) name, full, namesspace
+#           v2.01.07    10/18/2020      Refactor    App::Dbg::subroutine( $select ) name, full, namesspace
+#           v2.01.08    10/18/2020      Refactor    App::Dbg::debug( $name, {%debug_list} )
+#           v2.01.09    10/19/2020      Import      Constants,  $FALSE
+#                                                   use App::Const  qw( :ALL );  #   Prove of concept, of external defined Constants

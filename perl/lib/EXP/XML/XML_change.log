@@ -1,0 +1,63 @@
+# Revision history for Perl applicatition namespace EXP::XML
+
+# Synopsis      Documents are complex Ojects built from a variety of differenct file types
+#               Photos, Images, Music, formatted Text (marked up text) files
+#               For ease of handling, these files are bundled, packed and compressed, to be opened
+#               by application specific programs
+#
+#               XML         Extensible Markup Langugage, XML files are text-based database, for information
+#                           exchange
+#
+#               Documents   are zipped  subdirectories,(bunch of files bundled into one FileObject)
+#               
+#               UTF8        text    format  variable length, built the base for this files
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 09-20-2020                Created     perl/lib/EXP/XML/XML_change.log for tracking Module related features 
+#               v1.01.01    Refactored  XML.pm                      package XML;
+#                           To          EXP::XML.pm                 package EXP::XML;
+#               v1.01.02    Refactor    use File::IO::UTF8::UTF8    qw( read_utf8 write_utf8 );
+#                           To          use File::IO::UTF8          qw( read_utf8 write_utf8 );
+#               v1.01.03    Refactor    EXP::XML::read_xml( filename.xml );
+#                                       my $ArrRef  =   [read_xml( filename.xml )];
+# 09-21-2020    v1.01.04    Add Feature XML-String ==> XML-Element
+#                           Add         EXP::XML::disjoin_xml( [$RawXML] )  XML file/string, private method
+# 09-21-2020    v1.01.05    Add Feature Indent nested XML elements
+#                           Add         EXP::XML::nested_starts( $xmle )    XML element, private method
+#                           Add         EXP::XML::nested_ends( $xmle )      XML element, private method
+# 09-21-2020    v1.01.06    Add Feature extract all Parts (files)
+#                                       EXP::XML::get_parts( $file )
+# 09-22-2020    v1.01.07    Debug       EXP::XML::nesting_starts( $xmle )
+#                                       $indent += ( $xmle =~ m/^<\//xms ) ? -4: 0;     #   Left correction, nesting stops
+#               v1.01.08    Debug       EXP::XML::nesting_ends( $xmle )
+#                           From       #my  $indent = ( $xmle =~ m/^<\//xms ) ? -4: 0;  #   Left correction, nesting ends
+#                           To          my  $indent = ( $xmle =~ m/<\//xms ) ? -4: 0;   #   Left correction, nesting ends
+#                                       Closing TAGs can be at the start or end of XML string/element
+#               v1.01.09    Add Feature Test XML file encoding
+#                           Add         EXP::XML::xml_encoding( $XMLcontent );
+#               v1.01.10    Add Feature Extract attributes by name, (NOT all, NOT by position)
+#                           Add         EXP::XML::get_attribute( $xmle, $attribute );
+# 09-23-2020    v1.01.11    Debug       Warning "Wide character print at" requires to open standard IO for UTF8
+#                           Add         use open ":std", ":encoding(UTF-8)";
+#                                       All modules with TERMINAL outputs require to open STDIN, STDOUT for UTF-8
+# 09-28-2020    v1.01.12    Debug       EXP::XML::nesting_ends()
+#                                       XML element w/out Value <TAG XML="Attribute"/>, 
+#                           From        $indent -= 4;
+#                           To          $indent  = 0;       Priority encoding - NO indentation
+#               v1.01.13    Debug       EXP::XML::nesting_ends()    
+#                                       XML element w/out XML value and w/out Attribute value
+#                           From        if  ( $xmle =~ m/"\/>$/xms ) {  #   XML opening TAG left  correction, nesting ends w/out XML value
+#                           To          if  ( $xmle =~ m/ \/> /xms ) {  #   XML opening TAG left  correction, nesting ends w/out XML value
+#               v1.01.14    Debug       EXP::XML::file_exists()
+#                           Add         return;             #   default return statement
+# 09-29-2020    v1.01.15    Debug       EXP::XML::list_parts()
+#                                       my $xmlcontent  =   [read_xml( $xmlfile )];                 <== XML string            <--- XML file
+#                                       my $xmle        =   disjoin_xml ( $xmlcontent );            <== XML element array     <--- XML string
+#                                       #list_xml   (   $xmlcontent, {   name    =>  $xmlfile       <== wrong array reference <--- XML array
+#                                       list_xml    (   $xmle,       {   name    =>  $xmlfile
+# 09-29-2020    v1.01.16    Add feature EXP::XML::path_exists()
+#                                       For writing files, the biggest problem is if the target directory exists
+# 09-30-2020    v1.01.17    Export      EXP::XML::disjoin_xml()                                     <== XML element array     <--- XML string
+#               v1.01.18    Export      EXP::XML::get_parts()                                       <== return list of XML files in docx document
+# 09-30-2020    v1.01.19    Add feature EXP::XML::merge_xml( $xmle2, $xmle1, {$where} );            <== return merge XML element array

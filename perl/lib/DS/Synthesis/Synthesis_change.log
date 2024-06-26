@@ -1,0 +1,23 @@
+Revision history for Perl extension DS/Synthesis.pm
+
+#   VERSION     DATE            Description
+# ========================================================================================
+#   1.01.01     08/14/2020      Create		DS::Synthesis
+#   							Create		Changes this file
+#   1.01.02 	08/14/2020      Add         DS::Synthesis::code_block   ( [$ArrRef] )
+#                               Add         DS::Synthesis::statement    (   )
+#   1.01.03                     Add         DS::Synthesis::empty_line   ( {$InfoRef} )
+#   1.01.04     08/15/2020      Add         DS::Synthesis::generate_api ( [$FileRef], [$SpecRef] );
+#   1.01.05     08/15/2020      Refactore   DS::Synthesis::code_block   ( [$ArrRef] )
+#                                           DS::Synthesis::code_block   ( {$InfoRef} )
+#   1.01.06     08/15/2020      Add         DS::Synthesis::statements   ( {$InfoRef} )
+#   1.01.07     08/16/2020      Add         DS::Synthesis::unpackdata   ( {$InfoRef} }      string => Hash
+#   1.01.08     08/17/2020      Add         Feature replace BF_t and BF_c with variables and literals
+#   1.01.09                     Add Feature DS::Synthesis::unpackdata   (   )           text & binary literals
+#                               Replace     my  $UL      =  6 + 2 * ($data[6]+1);
+#                                           $$info{litrl}=  [@data[7..$UL]];
+#                               with        $$info{litrl}=  [@data[7..$#data]];         # slice to the end of array    
+#   1.01.10                     Add Feature declare CLI text parameter list
+#                                           DS::Synthesis::declare_CLI_text_parameter( {$InfoRef} )
+#   1.01.11     08/17/2020      Add Feature declare CLI code parameter list
+#                                           DS::Synthesis::declare_CLI_code_parameter( {$InfoRef} )

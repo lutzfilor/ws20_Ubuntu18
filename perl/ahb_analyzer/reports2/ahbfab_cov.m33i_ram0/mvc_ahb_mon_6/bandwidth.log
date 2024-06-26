@@ -1,0 +1,511 @@
+ ================================================================================
+ Tracefile   : uvm_test_top.top_env_i.ahbfab_env_i.mvc_ahb_mon_6_env_i.logger_handle_ahb
+               /mnt/ussjf-asic2/workarea1/lkamired/niue1z1_tmp/lkamired/wa_performance/SIM/top/ahbfab_cov.m33i_ram0/uvm_test_top.top_env_i.ahbfab_env_i.mvc_ahb_mon_6_env_i_ahb_beat.log
+ Synopsis    : Bandwidth Analysis
+ Script      : parse_ahb_tracker.pl 1.03.04
+ Date        : 2018-09-12
+ Time        :   16:22:44
+ Cycle       :         40 ns
+ Frequency   :      25.00 MHz
+ Start       :     608681 ns
+ Stop        :     634751 ns
+ ================================================================================
+
+START pointer HASH(0x40ac5f8)
+Transaction#  14
+Start time    608681
+
+STOP  pointer HASH(0x5164448)
+Transaction#  72
+Stop time     634751
+
+             Transaction:         14
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        345
+
+             Transaction:         15
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         40
+             ADDR Phase :          5
+             DATA Phase :        380
+
+             Transaction:         16
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        375
+
+             Transaction:         17
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         55
+             ADDR Phase :          5
+             DATA Phase :        335
+
+             Transaction:         18
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        405
+
+             Transaction:         19
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         50
+             ADDR Phase :          5
+             DATA Phase :        430
+
+             Transaction:         20
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        375
+
+             Transaction:         21
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         40
+             ADDR Phase :          5
+             DATA Phase :        410
+
+             Transaction:         22
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        405
+
+             Transaction:         23
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         45
+             ADDR Phase :          5
+             DATA Phase :        435
+
+             Transaction:         24
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        345
+
+             Transaction:         25
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         40
+             ADDR Phase :          5
+             DATA Phase :        380
+
+             Transaction:         26
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        345
+
+             Transaction:         27
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         40
+             ADDR Phase :          5
+             DATA Phase :        410
+
+             Transaction:         28
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        375
+
+             Transaction:         29
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         50
+             ADDR Phase :          5
+             DATA Phase :        370
+
+             Transaction:         30
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        345
+
+             Transaction:         31
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         50
+             ADDR Phase :          5
+             DATA Phase :        400
+
+             Transaction:         32
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        375
+
+             Transaction:         33
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :       2505
+             ADDR Phase :          5
+             DATA Phase :        235
+
+             Transaction:         34
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        195
+
+             Transaction:         35
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         40
+             ADDR Phase :          5
+             DATA Phase :        245
+
+             Transaction:         36
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        230
+
+             Transaction:         37
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         50
+             ADDR Phase :          5
+             DATA Phase :        235
+
+             Transaction:         38
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        190
+
+             Transaction:         39
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         50
+             ADDR Phase :          5
+             DATA Phase :        230
+
+             Transaction:         40
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        195
+
+             Transaction:         41
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         45
+             ADDR Phase :          5
+             DATA Phase :        195
+
+             Transaction:         42
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        200
+
+             Transaction:         43
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         55
+             ADDR Phase :          5
+             DATA Phase :        225
+
+             Transaction:         44
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        230
+
+             Transaction:         45
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         40
+             ADDR Phase :          5
+             DATA Phase :        200
+
+             Transaction:         46
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        235
+
+             Transaction:         47
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         40
+             ADDR Phase :          5
+             DATA Phase :        200
+
+             Transaction:         48
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        235
+
+             Transaction:         49
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         40
+             ADDR Phase :          5
+             DATA Phase :        200
+
+             Transaction:         50
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        200
+
+             Transaction:         51
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         50
+             ADDR Phase :          5
+             DATA Phase :        225
+
+             Transaction:         52
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        235
+
+             Transaction:         53
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :       2300
+             ADDR Phase :          5
+             DATA Phase :        320
+
+             Transaction:         54
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        375
+
+             Transaction:         55
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         55
+             ADDR Phase :          5
+             DATA Phase :        395
+
+             Transaction:         56
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        375
+
+             Transaction:         57
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         50
+             ADDR Phase :          5
+             DATA Phase :        400
+
+             Transaction:         58
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        375
+
+             Transaction:         59
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         45
+             ADDR Phase :          5
+             DATA Phase :        375
+
+             Transaction:         60
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        345
+
+             Transaction:         61
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         50
+             ADDR Phase :          5
+             DATA Phase :        340
+
+             Transaction:         62
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        375
+
+             Transaction:         63
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         45
+             ADDR Phase :          5
+             DATA Phase :        375
+
+             Transaction:         64
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        405
+
+             Transaction:         65
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         50
+             ADDR Phase :          5
+             DATA Phase :        340
+
+             Transaction:         66
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        405
+
+             Transaction:         67
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         55
+             ADDR Phase :          5
+             DATA Phase :        335
+
+             Transaction:         68
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        405
+
+             Transaction:         69
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         45
+             ADDR Phase :          5
+             DATA Phase :        375
+
+             Transaction:         70
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        405
+
+             Transaction:         71
+             Direction  :      WRITE
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         50
+             ADDR Phase :          5
+             DATA Phase :        400
+
+             Transaction:         72
+             Direction  :       READ
+             BurstLength:          1 beat
+             Addr Phase :    visible
+             IDLE Phase :         35
+             ADDR Phase :          5
+             DATA Phase :        405
+
+
+
+             Total Time :      26515 ns
+
+             Total Idle :       7120 ns
+             Total Addr :        295 ns
+             Total Data :      19100 ns
+             Total Busy :          0 ns
+
+             Total Idle :       7120 ns
+             READ  Time :     345265 ns
+             READ  Busy :      20245 ns
+             WRITE Time :     351375 ns
+             WRITE Busy :      21165 ns
+
+             Payload    :      45214 btye
+                READ    :      22653 btye
+                WRITE   :      22561 btye

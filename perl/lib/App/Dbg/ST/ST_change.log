@@ -1,0 +1,74 @@
+Revision history for Perl extension App/Dbg/ST.pm
+
+#   Author      Lutz Filor
+#   Created     06-21-2020
+#   Synopsis    System Table access
+
+# ================================================================================================
+#   Revision    DATE            Description
+# ================================================================================================
+#   1.01.01     2020-06-21      Create Perl module App::Dbg::ST
+#                               Export      extractHashModules(), from GetFunctionNames.pl
+#                               Refactor    extractHashModules()
+#   1.01.02                                 App::Dbg::ST::getListofUsedModules( $)
+#   1.01.03                     Reuse       DS::Hash::max_key()
+#   1.01.04                     Refactor    determineWidth( {$HashRef} )
+#                                           max_key( {$HashRef} )
+#   1.01.05                     Refacor     my $m   = determineWidth(\%INC);  with
+#                                           my $m   = max_key(\%INC);
+#   1.01.06     2020-06-22      Export      getHierarchicalNamespaceHash(), from GetFunctionNames.pl
+#   1.01.07                     Export      getListofUsedModules(), from GetFunctionNames.pl
+#   1.01.08                     Add feature include programfile into list of modules, by default
+#   1.01.09                     Add feature resolve programfile into main:: namespace in getHierarchicalNamespaceHash()
+#   1.01.10     2020-06-23      Refactor    App::Dbg::ST::getListofUsedModules  ( $ENV{PERLPATH} )  with
+#                                           App::Dbg::ST::get_FullModulePath    ( $ENV{PERLPATH} )          [$lofn], {$hofn}
+#   1.01.11                     Refactor    App::Dbg::ST::getHierarchicalNamespaceHash( [$lofn] )   with
+#                                           App::Dbg::ST::get_Namespace         ( [$lofn] )
+#   1.01.12                     Export      getSymbols(), from GetFunctionNames.pl
+#   1.01.13     2020-06-24      Export      globslot_is_scalar( );  from GetFunctionNames.pl        Prototype functions 
+#                                           globslot_is_array ( ); 
+#                                           globslot_is_hash  ( ); 
+#                                           globslot_is_code  ( ); 
+#                                           globslot_is_glob  ( ); 
+#                                           getSubNames       ( ); 
+#   1.01.14                     Refactor    App::Dbg::ST::getSymbols( $Namespace, 'SymboleType' );  #   CODE, ARRAY, HASH, SCALAR, ...  
+#                                           App::Dbg::ST::get_Symbols( $Namespace, 'SymboleType' );
+#   1.01.15                     Import      DS::Array::maxwidth();
+#                               Remove      App::Dbg::ST::maxwidth();
+#   1.01.16     2020-07-01      Add feature App::Dbg::ST::get_typeglob(Namespace,Symbol,SCALAR)     private method
+#                                           return Vstring/ version number v.01.03.20
+#   1.01.17     2020-07-01      Add feature App::Dbg::ST::get_Version   ( $NsHRef )
+#                                           terminal print table of all | File | Fullname | Namespaces | Version |
+#   1.01.18     2020-07-02      Add feature App::Dbg::ST::get_Version   ( $NsHRef )
+#                                           return  [ArrRef]    w/ list of columns
+#   1.01.19     2020-07-06      Add feature App::Dbg::ST::get_Subroutines(  $NsRef )
+#   1.01.20     2020-07-06      Remove      App::Dbg::ST::subroutine()
+#                               Remove      App::Dbg::ST::debug()
+#                               Remove      App::Dbg::ST::DebugControl()
+#   1.01.21     2020-07-06      Remove      our @EXPORT    =    qw  (   subroutine
+#                                                                       debug
+#                                                                    );  #dbg functions
+#   1.01.22     2020-08-10      Silence     App::Dbg::ST::get_Subroutines(  $NsRef  )
+#                               from        printf  "\n%5s%s()\n",'','get_Subroutines';
+#                               //to          #printf  "\n%5s%s()\n",'','get_Subroutines';
+#                                           App::Dbg::ST::get_Subroutines(  $NsRef  )
+#                               line 139    #printf "%5s%s >>", '', $file;
+#                                           App::Dbg::ST::get_globtypes( )   {
+#                               line 184    #printf  "%s :: %s\n",$count,$type;
+#   1.02.01     2020-10-07      Debug       App::Dbg::ST::get_FullModulePath();
+#                                           App::Dbg::ST::get_Namespace()
+#                                           The main:: namespace is not belonging to a module, 
+#                                           thus the code injecting the default/main namespace belongs into 
+#                               Refactor    App::Dbg::ST::get_Namespace()
+#                               Add         my  $prog = $0;
+#                                               $prog =~ s/\.\///g;                         #   Remove the current directory from program
+#                               replace     ${$namespace}{$0} = "main";                     #   Add the program default namespace
+#                               with        ${$namespace}{$prog} = "main";                  #   Add the program default namespace
+#                               and         App::Dbg::ST::get_FullModulePath()
+#                               remove      all code regarding .pl files and main
+#   1.02.02     2020-10-07      Add Feature App::Dbg::ST::get_Subroutines()
+#                               Change      algorithm
+#   1.02.03     2020-10-08      Remove      debug statements, silencing the algorithm
+#   1.02.04     2020-10-18      Import      App::Dbg::debug()
+
+

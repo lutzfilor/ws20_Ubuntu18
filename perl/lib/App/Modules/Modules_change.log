@@ -1,0 +1,31 @@
+#   Revision history of the custom Perl framework ~/ws/perl/lib/App/Modules.pm
+
+#   Why does it always takes three times as long to estimate any software project?
+#   Just look at the log change history of this namespage specification. Without this log file
+#   no data about the effort and the change history would be gathered. This is the third attempt
+#   to make software development more predictable. Predictablility is built on reuse, and preintegration
+#   and prespecification
+
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 2020-03-21    v1.01.00    Created     perl/App/Modules_change.log tracking said Namespace
+#               v1.01.01    Add         Modules namespace
+# 2020-03-22    v1.01.02    Refactor    get_ModuleSearchpath    return( [ @INC ] )
+#                                       /home/lutz/ws/perl/lib
+#                                       ...
+#                                       /usr/share/perl5
+#                                       /usr/share/perl/5.26
+#               v1.01.03    Add feature get_ModulesInstalled    ( "ALL" )
+#                                       get_ModulesInstalled    ( "$ENV{PERLPATH}"."/DS" )
+#               v1.01.04    Add feature get_ModuleVersions
+#               v1.01.05    Refactor    DS::Array::namespace_of()
+#                                       App::Modules::get_modulename()
+#               v1.01.06    Refactor    App::Modules::get_SymbolTable()
+#                           Refactor    App::Modules::display_Symboles()
+#                           Add         App::Modules::get_packagename()
+#                           Add         App::Modules::get_namespace()
+#                           Add         App::Modules::get_symboltableRef()
+# 2020-03-24    v1.01.07    Add feature get_all( 'CODE', $packages )
+# 2020-03-27    v1.01.08    
+

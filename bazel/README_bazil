@@ -1,0 +1,22 @@
+#   Owner   Lutz Filor
+#   Create  11/17/2020
+#
+#   Project XLS https://github.com/google/xls/blob/main/README.md
+#
+#   Install npm install -g @bazel/bazelisk          # Doesn't work
+#           
+#           sudo apt install npm
+
+#           apt list --upgradable
+#           apt-get list update
+#           sudo apt autoremove
+#   
+#   Install sudo apt install curl gnupg
+#           sudo apt install curl gnupg
+#                gnupg is already the newest version (2.2.19-3ubuntu2).
+#           curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > bazel.gpg
+#           sudo mv bazel.gpg /etc/apt/trusted.gpg.d/
+#           echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+#   
+#   cat /etc/resolv.conf
+#   Problem install curl !!

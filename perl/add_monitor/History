@@ -1,0 +1,98 @@
+#   Add AXI4 Monitor to BG7 testbench
+
+soscmd select -sco && soscmd status
+soscmd discardco -F ./vsys/proj/bg7z1f/asic/dv/top/tb/top_defines.svi
+soscmd update -lmain
+prepASIC all rebuild
+echo $SOS_CLIENT
+
+
+oo ~/ws/perl/add_monitor/bg7_mon.xlsx
+
+//------------------------------------------------------------------------------    // Pick up stall work area wa?
+soscmd select -sco && soscmd status
+sos&                                                                                // gui app for source code revision
+soscmd discard -F <file list space separated>
+soscmd diff filename
+soscmd update -lmain
+prepASIC all rebuild
+//------------------------------------------------------------------------------
+
+simprepare top:cpu_ddr.basic -opt_switch mc_slv_bfm=OFF 
+simrun top:cpu_ddr.basic
+simrun top:cpu_ddr.basic -dump
+//------------------------------------------------------------------------------    // run new tests
+simprepare top:xbar_fabric_burst_var.avioss_dhub64_m0
+simrun     top:xbar_fabric_burst_var.avioss_dhub64_m0 -dump
+
+simprepare top:xbar_fabric_burst_var.avioss_dhub128_m1
+simrun     top:xbar_fabric_burst_var.avioss_dhub128_m1 -dump
+
+simprepare top:xbar_fabric_burst_var.avioss_hdcp_m2
+simrun     top:xbar_fabric_burst_var.avioss_hdcp_m2 -dump
+//------------------------------------------------------------------------------
+// This is a version without rules file
+simprepare top:cpu_ddr -opt_switch mc_slv_bfm=OFF
+simrun     top:cpu_ddr
+
+edit       lfilor/wa1/vsys/comm/asic/dv/scripts/prepare_opt_switch_input.txt
+           |
+           |--  //INTERFACE     TYPE        DEFAULT     DEFINES(comma separated)    MATCH_PATTERN       Description
+           ( 6) axi_mon         Tracker     add         AXI_MONITOR_ON              NA                  MUST set DEFAULT to add
+           (11) axi_mon_MC_if   Tracker     add         CPXBAR_MC_MONITOR_ON        NA                  Test w/ single instance only
+
+            vsys/comm/asic/dv/scripts/include/axi_monitor_include.svi
+            vsys/proj/bg7z1f/asic/dv/top/tb/top_defines.svi
+
+
+eyeballed   lfilor/wa1/vsys/proj/bg7z1f/asic/dv/top/tb/tb_top.sv
+            lfilor/wa1/vsys/proj/bg7z1f/asic/dv/top/tests/cpu_ddr/cpu_ddr.sv
+            lfilor/wa1/vsys/comm/asic/dv/scripts/prepare_opt_switch_input.txt
+            lfilor/wa1/vsys/comm/asic/dv/scripts/axi_parse.pl
+
+searched    grep -Rls nic400_cdxbarmon_wrap_acpu *
+            grep -Rls axi4_mon_wrap comm/asic/dv/*
+
+
+simprepare top:cpu_ddr.basic -opt_switch mc_slv_bfm=OFF ; simrun top:cpu_ddr.basic
+
+REGRESSION
+---------------------------------------------------------------------------------------------------------------------------
+create      lfilor/wa1/vsys/proj/bg7z1f/asic/dv/top/tests/regressions/  axi_monitor_qualifying_regression.list
+            lfilor/wa1/vsys/proj/bg7z1f/asic/flow/SIM/configs/          axi_monitor_qualifying_regression.cgf
+
+regression  alpha_test -config axi_monitor_qualifying_regression
+
+MC_WRAP
+---------------------------------------------------------------------------------------------------------------------------
+Port 0:     simprepare top:cpu_ddr.lpddr4_4266_FB_NINT                          && simrun top:cpu_ddr.lpddr4_4266_FB_NINT -dump
+            simprepare top:multi_master_basic.pxbar                             && simrun top:multi_master_basic.pxbar -dump
+            simprepare top:multi_master_basic.txbar                             && simrun top:multi_master_basic.txbar -dump
+Port 1:     simprepare top:multi_master_basic.axbar -opt_switch mc_slv_bfm=OFF  && simrun top:multi_master_basic.axbar -dump
+Port 2:     simprepare top:multi_master_basic.vxbar -opt_switch mc_slv_bfm=OFF  && simrun top:multi_master_basic.vxbar -dump
+Port 3:     simprepare top:multi_master_basic.gxbar -opt_switch mc_slv_bfm=OFF  && simrun top:multi_master_basic.gxbar -dump
+Port 4:     simprepare top:multi_master_basic.ixbar -opt_switch mc_slv_bfm=OFF  && simrun top:multi_master_basic.ixbar -dump
+
+AXBAR
+----------------------------------------------------------------------------------------------------------------------------
+Port 1:     simprepare top:xbar_fabric_burst_var.avioss_dhub64_m0_logger        && simrun top:xbar_fabric_burst_var.avioss_dhub64_m0_logger -dump 
+Port 2:     simprepare top:xbar_fabric_burst_var.avioss_dhub128_m1_logger       && simrun top:xbar_fabric_burst_var.avioss_dhub128_m1_logger -dump
+Port 3:     simprepare top:xbar_fabric_burst_var.avioss_hdcp_m2_logger          && simrun top:xbar_fabric_burst_var.avioss_hdcp_m2_logger -dump
+IXBAR
+----------------------------------------------------------------------------------------------------------------------------
+Port 1:     simprepare top:xbar_fabric_burst_var.ispss_isp_m0                   && simrun top:xbar_fabric_burst_var.ispss_isp_m0 -dump
+Port 2:     simprepare top:xbar_fabric_burst_var.ispss_isp_m1                   && simrun top:xbar_fabric_burst_var.ispss_isp_m1 -dump
+Port 3:     simprepare top:xbar_fabric_burst_var.ispss_dhub0_m2                 && simrun top:xbar_fabric_burst_var.ispss_dhub0_m2 -dump
+Port 4:     simprepare top:xbar_fabric_burst_var.ispss_dhub0_m3                 && simrun top:xbar_fabric_burst_var.ispss_dhub0_m3 -dump
+VXBAR
+----------------------------------------------------------------------------------------------------------------------------
+Port 1:     simprepare top:xbar_fabric_burst_var.vss_ovp_m0                     && simrun top:xbar_fabric_burst_var.vss_ovp_m0 -dump
+Port 2:     simprepare top:xbar_fabric_burst_var.vss_v4g_m1                     && simrun top:xbar_fabric_burst_var.vss_v4g_m1 -dump
+Port 3:     simprepare top:xbar_fabric_burst_var.vss_h1_m2                      && simrun top:xbar_fabric_burst_var.vss_h1_m2  -dump
+GXBAR
+----------------------------------------------------------------------------------------------------------------------------
+Port 1:     simprepare top:xbar_fabric_burst_var.gfxss_gfx_m0                   && simrun top:xbar_fabric_burst_var.gfxss_gfx_m0 -dump
+Port 2:     simprepare top:xbar_fabric_burst_var.gfxss_gfx_m1                   && simrun top:xbar_fabric_burst_var.gfxss_gfx_m1 -dump             
+Port 3:     simprepare top:xbar_fabric_burst_var.gfxss_npu_m2                   && simrun top:xbar_fabric_burst_var.gfxss_npu_m2 -dump            
+
+simprepare top:multi_master_basic.pxbar -opt_switch mc_slv_bfm=ON ; simrun top:multi_master_basic.pxbar -dump

@@ -1,0 +1,2 @@
+ ppcov.pl --workbook=NiueZ1_Coverage_Analysis.xlsx --coverage=/sswork/gf22/niue1z1/rnerabet/niue1z1_wa/coverage/cov_report_DUT/legacy.html --debug=get_attributes,get_record
+

@@ -1,0 +1,129 @@
+     references::
+     (1) u_dut
+     (2) global_ss_U0
+     (3) siss_wrap_U0
+     (4) cdxbar_wrap_U0
+     (5) AxiErrMon_Wrap_U0
+     (6) pxbar_wrap_U0
+     (7) ahbfabric_wrap_U0
+     (8) sm_ss_U0
+
+   access = ARRAY( 9 ) elements
+1 zrecord = 3077
+    zfile = /sswork/gf22/niue1z1/rnerabet/niue1z1_wa/coverage/cov_report_DUT/pages/z102.json
+ instance = u_dut
+2 zrecord = 17272
+    zfile = /sswork/gf22/niue1z1/rnerabet/niue1z1_wa/coverage/cov_report_DUT/pages/z4.json
+ instance = global_ss_U0
+3 zrecord = 65631
+    zfile = /sswork/gf22/niue1z1/rnerabet/niue1z1_wa/coverage/cov_report_DUT/pages/z6.json
+ instance = siss_wrap_U0
+4  record = 184794
+    zfile = /sswork/gf22/niue1z1/rnerabet/niue1z1_wa/coverage/cov_report_DUT/pages/z6.json
+ instance = sm_ss_U0
+5 zrecord = 515867
+    zfile = /sswork/gf22/niue1z1/rnerabet/niue1z1_wa/coverage/cov_report_DUT/pages/z73.json
+ instance = pxbar_wrap_U0
+6 zrecord = 556000
+    zfile = /sswork/gf22/niue1z1/rnerabet/niue1z1_wa/coverage/cov_report_DUT/pages/z74.json
+ instance = cdxbar_wrap_U0
+7 zrecord = 854519
+    zfile = /sswork/gf22/niue1z1/rnerabet/niue1z1_wa/coverage/cov_report_DUT/pages/z84.json
+ instance = ahbfabric_wrap_U0
+8 zrecord = 855146
+    zfile = /sswork/gf22/niue1z1/rnerabet/niue1z1_wa/coverage/cov_report_DUT/pages/z86.json
+ instance = AxiErrMon_Wrap_U0
+9 zrecord = 1224157
+    zfile = /sswork/gf22/niue1z1/rnerabet/niue1z1_wa/coverage/cov_report_DUT/pages/z92.json
+ instance = posion_gen_wrap_U0
+
+/tb_top/dut/u_dut/core_U0/cpu_ss_pd_U0/cpu_ss_U0/cdxbar_wrap_U0 
+/tb_top/dut/u_dut/core_U0/cpu_ss_pd_U0/cpu_ss_U0/mc_wrap_U0/AxiErrMon_Wrap_U0 
+/tb_top/dut/u_dut/core_U0/cpu_ss_pd_U0/cpu_ss_U0/mc_wrap_U0
+
+wa1<~/ws/perl/ppcov> oo NiueZ1_Coverage_Analysis_2019-02-12.xlsx &                                                                                                                                         [2] 15375
+wa1<~/ws/perl/ppcov> Xlib:  extension "XINERAMA" missing on display "10.20.40.45:15.0".
+I/O error : Permission denied
+I/O error : Permission denied
+[Java framework] Error in function NodeJava::writeSettings (elements.cxx).
+javaldx failed!
+Warning: failed to read path from javaldx
+
+# introductor & limiter are on different lines, return string
+sub     get_section {
+        my  (   $rec_r
+            ,   $scope
+            ,   $filler
+            ,   $delimiter  )   =   @_;
+        my $n =  subroutine('name');                # identify sub by name
+        my $target;
+        if ( debug($n) ) {
+            printf  "\n%5s%s() \n",'',$n;
+            printf  "%9s%s %s\n",''
+                    ,'Size of record',$#{$rec_r};
+            printf  "%9s%s %s\n",''
+                    ,'Segment Scope ',$scope;
+            printf  "%9s%s %s\n",''
+                    ,'Delimiter     ',$delimiter
+        }# debug
+        my $zrecord = join ('',@{$rec_r});          # multiline string
+
+        switch  ($delimiter) {
+            case m/'}]},n]n/    {   _instances_cutter ();   }
+            else                {   _unknown_delimiter($delimiter); }
+            
+        }#switch
+    switch ( $opts{test} ) {
+        case m/\bxmle\b/        {   test_xmle();                        }
+        case m/\bjson\b/        {   test_json( \%opts );                }           # Experimental
+        else                    {   not_supported($opts{test},'test');  }
+    }#switch
+
+        if ( $zrecord =~ m{ ( $scope ) 
+                         }xsm) {
+            printf  "%9s%s\n",'','   Scope   Match !!';
+        } else {
+            printf  "%9s%s\n",'','No Scope   Match';
+        }        
+        if ( $zrecord =~ m{ ( $limiter) 
+                          }xsm) {
+            printf  "%9s%s\n",'','   Limiter Match !!';
+        } else {
+            printf  "%9s%s\n",'','No Limiter Match';
+            printf  "%9s%s\n",'',$limiter;
+        }
+        if ( $zrecord =~ m{ ( \}\]\}, ) 
+                          }xsm) {
+            printf  "%9s%s\n",'','   LimiterMatch !! 2nd';
+        } else {
+            printf  "%9s%s\n",'','No Limiter Match 2nd';
+            printf  "%9s%s\n",'', '}]},';
+        }
+        #if ( $zrecord =~ m{ ( $scope .* $limiter ) 
+        if ( $zrecord =~ m{ ( $scope $filler $limiter ) 
+                         }xsm) {
+            printf  "%9s%s\n",'','   Match in heaven!!';
+            $target = $1;
+            log_msg($target,'logs/log_zsections');
+            log_msg('','logs/log_zsections');
+        } else {
+            my $msg = sprintf "%9s%s(%s) %s\n",'',$n, $scope  
+                    ,'No Match in heaven';
+            log_msg($msg,'logs/log_zsections');
+            printf  "%9s%s(%s) %s\n",'',$n, $scope  
+                    ,'No Match in heaven';
+        }
+        return $target;                             # string/scalar
+}#sub   get_section
+
+#	cpit :: coverage_progress_indicator_table
+my	$cpit_picker =	[	[ qw( name ) ],			
+						[ qw( TOTAL     Scope ) ],
+						[ qw( TOTAL Statement ) ],
+						[ qw( Statements Bins ) ],
+						[ qw( Statements Hits ) ],
+						[ qw( TOTAL    Branch )	],
+						[ qw( Branches   Bins ) ],
+						[ qw( Branches	 Hits ) ],
+					];
+

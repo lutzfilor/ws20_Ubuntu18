@@ -1,0 +1,7 @@
+Revision history of the custom Perl programs ~/ws/perl/GetFunctionNames.pl
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 2020-06-11    v1.01.08    created     GetFunctionNames_changes.log
+#               v1.01.09    Refactor    Application::Constants with
+#                                       App::Const

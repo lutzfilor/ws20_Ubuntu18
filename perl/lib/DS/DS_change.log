@@ -1,0 +1,30 @@
+Revision history for Perl extension DS.pm
+
+# Revision  VERSION     DATE            Description
+# ================================================================================================
+# History   1.01.01     03/19/2019      Create		PPCOV::DataStructure
+#										Create		Changes this file
+#			1.01.05		03/19/2019		Create		PPCOV::DataStructure::DS.pm
+#												    Refactored from	PPCOV::DS.pm 1.01.04 
+#										Bugfix		PPCOV::DataStructure::DS::_printf_scalar()
+#   												print "undef" for undefined scalars/strings
+#			1.01.06     03/20/2019		Add			PPCOV::DataStructure::DS::_peeking_glob()
+#			1.01.07		03/21/2019		Add			feature - multiline string suppress newline
+#													change interface from positional to by name
+#			1.01.08		03/22/2019		Refactor	_iterate_hash_o	( ) deprecated
+#													_iterate_array_o( ) deprecated
+#													_printf_scalar_o( ) deprecated
+#										Add			_iterate_hash	( $pointer, $format )
+#													_iterate_array	( $pointer, $format )
+#													_printf_scalar	( $pointer, $format )
+#			1.01.09     05/07/2019      Moved       UTF8.pm to File::IO::UTF8::UTF8.pm
+# ================================================================================================
+#           v1.02.00    01/01/2020      Refactor    PPCOV::DataStructure::DS.pm
+#                                                   DS.pm
+#           v1.02.01                    Create      DS/                                 subdirectory
+#                                       Clone       DS/DS_change.log
+#           v1.02.02                    Remove      use File::IO::UTF8::UTF8 qw / read_utf8   
+#                                                                                 write_utf8  /;
+#           v1.02.03                    Remove      deprecated Code 360 lines -> 254 line
+#                                       Remove      DS::_iterate_hash_o deprecated      private method
+#           v1.02.04                    Remove      DS::_

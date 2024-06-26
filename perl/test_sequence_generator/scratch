@@ -1,0 +1,34 @@
+
+      my $xmlstr= join '', @xml;                                                    # Experimental code array -> string
+      $lm = sprintf "%*s%s %s\n",$i,$p,'XML string :',$xmlstr;
+      push ( @{${$opts_ref}{tmp3}}, $lm);
+      my $xmlstr_preserve = $xmlstr;
+      #$xmlstr_preserve =~ s/\x0d/&#xD;/g;
+      #$xmlstr_preserve =~ s/\x0a/&#xA;/g;
+      $xmlstr_preserve =~ s/[^>]\x0d\x0a/&#xD;&#xA;/g;
+      $lm = sprintf "%*s%s %s\n",$i,$p,'XML preserv:',$xmlstr_preserve;
+      push ( @{${$opts_ref}{tmp3}}, $lm);
+      print_xml_string($xmlstr_preserve);                                           # Experimental
+
+
+
+      if ( $#xml > 1 )  {
+          my $notification = sprintf "%*s%s : %s %s\n",$i,$p,$f,'has ^M character in the string', $#xml;
+          push ( @{${$opts_ref}{tmp}} , $notification );
+          push ( @{${$opts_ref}{tmp3}}, $notification );
+
+          my $w = length($#xml);                                                    # number of parts string is falling apart
+          my $xml_str_tmp = join '', @xml[1..$#xml];
+          $xml_str_tmp =~ s/\x0d\x0a/&#xD;&#xA;/g;                                  # preserve CR,LF in XML string
+          $lm = sprintf "%*s%s %s\n",$i,$p,'XML preserv:',$xml_str_tmp;
+          push ( @{${$opts_ref}{tmp3}}, $lm);
+
+          for my $l (1 .. $#xml) {
+              my $n = sprintf "%*s%*s : %s",$i,$p,$w,$l,$xml[$l];
+              printf "%s match ^M\n", $n if (  $xml[$l]     =~ m/\x0d$/xms
+                                            && $xml[$l+1]   =~ m/^[^<]/xms  );      # look ahead
+              printf "%s\n", $n if ( $l == $#xml );
+              push ( @{${$opts_ref}{tmp}}, $n);
+          }# check file lines
+      }# check file structure
+

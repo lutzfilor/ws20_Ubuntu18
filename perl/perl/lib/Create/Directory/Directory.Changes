@@ -1,0 +1,12 @@
+Revision history for Perl applicatition namespace Create::
+
+# Synopsis      This is a root namespace
+
+# DATE          VERSION     Description
+# =======================================================================================================
+# 04-04-2019    v1.01.01    Created     perl/lib/Create/Create.Changes tracking Namespace related changes 
+#               v1.01.02    Add         Project     namespace
+#               v1.01.03    Add         Document    namespace
+#               v1.01.04    Add         Namespace   namespace
+#               v1.01.05    Add         Library     namespace
+# 04-10-2019    v1.01.06    Add         Direction   namespace

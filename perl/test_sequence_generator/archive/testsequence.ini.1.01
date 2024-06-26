@@ -1,0 +1,48 @@
+baseaddress     0x8000_00FF
+baseaddress     0x8000_0100
+baseaddress     0x8000_0400
+baseaddress     0x8000_0800
+baseaddress     0x8000_0C00
+baseaddress     0x8000_1003
+block_range            4096  byte
+block_range               4 Kbyte
+block_range               4 mbyte
+block_range            4100  byte
+block_range            4103  byte
+
+databussize              32 bit
+databussize              32 bit
+baseaddress     0x8000_1000
+
+baseaddress2       800A0000
+baseaddress3       F0
+reserved        0x8000_1F00
+block_range               4 Kbyte
+block_range            4096  byte
+
+addresssize              32 bit
+mickeymouse     0x9000_0000
+addresssize              96 m
+addressspace              4 mbyte
+addressspace              4 ubyte
+addressspace              4 nbyte
+addressspace              4 pbyte
+addressspace              4 abyte
+addressspace              4 fbyte
+addressspace              4 Ebyte
+addressspace              4 Pbyte
+addressspace              4 Tbyte
+addressspace              4 Gbyte
+
+reserved        0x8000_1F08
+reserved        0x8000_1F03
+reserved        0x8000_1F04
+reserved        0x8000_1F05
+reserved        0x8000_1F06
+reserve         0x8000_1F06
+reserved        0x8000_1F07
+reserved        0x8000_1F08
+reserved        0x8000_1F09
+reserved        0x8000_1004
+reserved        0x8000_1008
+

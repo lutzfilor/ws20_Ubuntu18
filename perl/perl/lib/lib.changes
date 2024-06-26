@@ -1,0 +1,20 @@
+Revision history of the custom Perl namespace ~/ws/perl/lib 
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 05-06-2019                Created perl/lib/lib.changes tracking Namespace  
+#               v1.01.01    CLI::       Existing namespace 
+#                           Create::    Existing namespace
+#                           File::      Existing namespace
+#                           Logging::   Existing namespace
+#                           PPCOV::     Existing namespace, Application
+#                           Test::      Existing namespace, Experimental
+#                           ARM::       Existing namespace, Technology
+#                           Dbg.pm      Existing module
+#                           Find.pm     Existing module
+#                           UTF8.pm     Existing module,    Moved File::IO::UTF8::
+#                           XLSX.pm     Existing module
+#                           XLM.pm      Existing module
+#               v1.01.02    Removed     UTF8.pm, deprecated
+#                           Add         Application namespace
+#                           

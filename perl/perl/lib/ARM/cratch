@@ -1,0 +1,18 @@
+sub     Questa_directive    {
+        my  (   $monitor  
+            ,   $ix         )   =   @_;
+        my  $n  =  subroutine('name');              # identify the subroutine by name
+        if ( debug($n) ) {
+            printf  "\n%5s%s()\n",'',$n;
+            printf  "%5s%s = %s\n",''
+                    ,'Number of signals'
+                    ,$#{${$monitor}{contacts}};
+        }# if debugging
+        my  $i  =   length 'assign ';               # indent
+        my  $dir= ${${$monitor}{directive}}[$ix];   # directive QUESTA_AXI4_MON
+        printf "%*s%s %s\n"     ,$i,'','`ifdef',$dir;
+        printf "%*s%s // %s\n"  ,$i,'','`endif',$dir;
+}#sub   Questa_directive
+
+
+

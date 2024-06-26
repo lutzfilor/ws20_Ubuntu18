@@ -1,0 +1,29 @@
+Revision history for Perl extension Create/API.pm
+
+#   VERSION     DATE            Description
+#=========================================================================================
+#   1.01.01     2020/10/19      Create		Create::API         project/Create/API.pm
+#                               Clone       module from IP_XACT/API.pm, manual
+#   1.01.02     2020/10/19      Add feature Create::API my %description
+#                                           ,   'project|proj|p=s@' =>  \$options{project}      #   create target project
+#   1.01.03     2020/10/20      Add feature Create::API my $
+#   1.01.04                     Add feature Layout of project subdirectoroies
+#                                           my  $layout = [ qw( /data /logs /App /API ) ];      #   predefined subdirectories
+#   1.01.05                     Add feature List of template files to be cloned into directory
+#   1.01.06     2020/10/20      Add feature --debugging for application framework debugging     #   Add general Command line option
+#   1.01.07     2020/10/27      Add feature App::elaborate()    logging of transformation
+#                                           my  $logpth =   "$ENV{PERLPROJ}"."/create/logs/";   #   create a shortcut of logfile path  
+#   1.01.08     2020/10/27      Add feature three elaboration() logging files                   #   Static ...perl/projects/Create/logs/...
+#                                           %options = (                                        #   permanent options, hard coded
+#                                           raw_dbg_log =>  "$logpth"."raw_dbg.log",            #   Logging Command Line directives
+#                                           raw_sub_log =>  "$logpth"."sub_collection.log",     #   Logging list of subroutines linked/found
+#                                           debug_log   =>  "$logpth"."reporting_subs.log",     #   Logging list of reporting subs   
+#   1.01.09     2020/10/27      Add feature --logging for application framework debugging       #   Add general Command line option
+#   1.01.10     2020/11/05      Debug       Deadlock pre and post commandline evaluation
+#                               Refactor    DS::Hash::prune_hash()
+#                               Clone local Create::API::prune_cline( $hshref, $dbg )           #   Remove undefined API options
+#   1.01.11     2020/11/05      Refactor    App::Dbg::subroutine('name')
+#                                           my  $n  = pop ( split(/::/, (caller(1))[3]) ); 
+#   1.01.12     2020/11/05      Debug       Experimental pop on scalar is now forbidden at      #   Why does pop() thinks split returns scalar ???
+#                               Change to   my  @tmp=   ( split(/::/, (caller(1))[3]) );        #   Name of the function which called subroutine == App::Dbg::subroutine('name')
+#                                           my  $n  =   pop @tmp;                               #   [Fi]    Work around - Experimental pop on scalar is now forbidden at

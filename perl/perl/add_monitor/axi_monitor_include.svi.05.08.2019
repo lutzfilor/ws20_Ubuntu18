@@ -1,0 +1,834 @@
+// AXI4 Monitor Instantiation
+`ifdef CPXBAR_MC_MONITOR_ON
+axi_if mc_mstr0_axiMonIf (`MC_HIER.mstr0_aclk);
+//     mc_mstr0_axiMonIf.aclk    = `MC_HIER.mstr0_aclk;
+assign mc_mstr0_axiMonIf.aresetn = `MC_HIER.mstr0_aresetn;
+assign mc_mstr0_axiMonIf.awvalid = `MC_HIER.mstr0_awvalid;
+assign mc_mstr0_axiMonIf.awaddr  = `MC_HIER.mstr0_awaddr;
+assign mc_mstr0_axiMonIf.awlen   = `MC_HIER.mstr0_awlen;
+assign mc_mstr0_axiMonIf.awsize  = `MC_HIER.mstr0_awsize;
+assign mc_mstr0_axiMonIf.awburst = `MC_HIER.mstr0_awburst;
+assign mc_mstr0_axiMonIf.awlock  = `MC_HIER.mstr0_awlock;
+assign mc_mstr0_axiMonIf.awcache = `MC_HIER.mstr0_awcache;
+assign mc_mstr0_axiMonIf.awprot  = `MC_HIER.mstr0_awprot;
+assign mc_mstr0_axiMonIf.awid    = `MC_HIER.mstr0_awid;
+assign mc_mstr0_axiMonIf.awready = `MC_HIER.mstr0_awready;
+assign mc_mstr0_axiMonIf.arvalid = `MC_HIER.mstr0_arvalid;
+assign mc_mstr0_axiMonIf.araddr  = `MC_HIER.mstr0_araddr;
+assign mc_mstr0_axiMonIf.arlen   = `MC_HIER.mstr0_arlen;
+assign mc_mstr0_axiMonIf.arsize  = `MC_HIER.mstr0_arsize;
+assign mc_mstr0_axiMonIf.arburst = `MC_HIER.mstr0_arburst;
+assign mc_mstr0_axiMonIf.arlock  = `MC_HIER.mstr0_arlock;
+assign mc_mstr0_axiMonIf.arcache = `MC_HIER.mstr0_arcache;
+assign mc_mstr0_axiMonIf.arprot  = `MC_HIER.mstr0_arprot;
+assign mc_mstr0_axiMonIf.arid    = `MC_HIER.mstr0_arid;
+assign mc_mstr0_axiMonIf.arready = `MC_HIER.mstr0_arready;
+assign mc_mstr0_axiMonIf.wvalid  = `MC_HIER.mstr0_wvalid;
+assign mc_mstr0_axiMonIf.wlast   = `MC_HIER.mstr0_wlast;
+assign mc_mstr0_axiMonIf.wdata   = `MC_HIER.mstr0_wdata;
+assign mc_mstr0_axiMonIf.wstrb   = `MC_HIER.mstr0_wstrb;
+//     mc_mstr0_axiMonIf.wid     = `MC_HIER.mstr0_wid;
+assign mc_mstr0_axiMonIf.wready  = `MC_HIER.mstr0_wready;
+assign mc_mstr0_axiMonIf.rvalid  = `MC_HIER.mstr0_rvalid;
+assign mc_mstr0_axiMonIf.rlast   = `MC_HIER.mstr0_rlast;
+assign mc_mstr0_axiMonIf.rdata   = `MC_HIER.mstr0_rdata;
+assign mc_mstr0_axiMonIf.rresp   = `MC_HIER.mstr0_rresp;
+assign mc_mstr0_axiMonIf.rid     = `MC_HIER.mstr0_rid;
+assign mc_mstr0_axiMonIf.rready  = `MC_HIER.mstr0_rready;
+assign mc_mstr0_axiMonIf.bvalid  = `MC_HIER.mstr0_bvalid;
+assign mc_mstr0_axiMonIf.bresp   = `MC_HIER.mstr0_bresp;
+assign mc_mstr0_axiMonIf.bid     = `MC_HIER.mstr0_bid;
+assign mc_mstr0_axiMonIf.bready  = `MC_HIER.mstr0_bready;
+       `ifdef QUESTA_AXI4_MON
+              axi4_mon_wrap        #( .TRANSNAME     (    "logs/CPXBAR_MC_trk_trn.axi4.log" ), 	// Wrapper Instance Type
+                                      .PHASENAME     (        "logs/CPXBAR_MC_trk.axi4.log" ),  
+                                      .CHECKERNAME   (        "logs/CPXBAR_MC_chk.axi4.log" ),  
+                                      .BUS_WIDTH     (                                127+1 ) ) 
+              mc_mstr0_wrapper      ( .monAxi4       (                    mc_mstr0_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                                      .aclk          (                  `MC_HIER.mstr0_aclk ),  
+                                      .aresetn       (               `MC_HIER.mstr0_aresetn ) );
+        initial begin
+                mc_mstr0_wrapper.monitor_on = 1;
+        end
+       `endif // QUESTA_AXI4_MON
+`endif // CPXBAR_MC_MONITOR_ON
+
+
+// AXI4 Monitor Instantiation
+`ifdef AXBAR_MC_MONITOR_ON
+axi_if mc_mstr1_axiMonIf (`MC_HIER.mstr1_aclk);
+//     mc_mstr1_axiMonIf.aclk    = `MC_HIER.mstr1_aclk;
+assign mc_mstr1_axiMonIf.aresetn = `MC_HIER.mstr1_aresetn;
+assign mc_mstr1_axiMonIf.awvalid = `MC_HIER.mstr1_awvalid;
+assign mc_mstr1_axiMonIf.awaddr  = `MC_HIER.mstr1_awaddr;
+assign mc_mstr1_axiMonIf.awlen   = `MC_HIER.mstr1_awlen;
+assign mc_mstr1_axiMonIf.awsize  = `MC_HIER.mstr1_awsize;
+assign mc_mstr1_axiMonIf.awburst = `MC_HIER.mstr1_awburst;
+assign mc_mstr1_axiMonIf.awlock  = `MC_HIER.mstr1_awlock;
+assign mc_mstr1_axiMonIf.awcache = `MC_HIER.mstr1_awcache;
+assign mc_mstr1_axiMonIf.awprot  = `MC_HIER.mstr1_awprot;
+assign mc_mstr1_axiMonIf.awid    = `MC_HIER.mstr1_awid;
+assign mc_mstr1_axiMonIf.awready = `MC_HIER.mstr1_awready;
+assign mc_mstr1_axiMonIf.arvalid = `MC_HIER.mstr1_arvalid;
+assign mc_mstr1_axiMonIf.araddr  = `MC_HIER.mstr1_araddr;
+assign mc_mstr1_axiMonIf.arlen   = `MC_HIER.mstr1_arlen;
+assign mc_mstr1_axiMonIf.arsize  = `MC_HIER.mstr1_arsize;
+assign mc_mstr1_axiMonIf.arburst = `MC_HIER.mstr1_arburst;
+assign mc_mstr1_axiMonIf.arlock  = `MC_HIER.mstr1_arlock;
+assign mc_mstr1_axiMonIf.arcache = `MC_HIER.mstr1_arcache;
+assign mc_mstr1_axiMonIf.arprot  = `MC_HIER.mstr1_arprot;
+assign mc_mstr1_axiMonIf.arid    = `MC_HIER.mstr1_arid;
+assign mc_mstr1_axiMonIf.arready = `MC_HIER.mstr1_arready;
+assign mc_mstr1_axiMonIf.wvalid  = `MC_HIER.mstr1_wvalid;
+assign mc_mstr1_axiMonIf.wlast   = `MC_HIER.mstr1_wlast;
+assign mc_mstr1_axiMonIf.wdata   = `MC_HIER.mstr1_wdata;
+assign mc_mstr1_axiMonIf.wstrb   = `MC_HIER.mstr1_wstrb;
+//     mc_mstr1_axiMonIf.wid     = `MC_HIER.mstr1_wid;
+assign mc_mstr1_axiMonIf.wready  = `MC_HIER.mstr1_wready;
+assign mc_mstr1_axiMonIf.rvalid  = `MC_HIER.mstr1_rvalid;
+assign mc_mstr1_axiMonIf.rlast   = `MC_HIER.mstr1_rlast;
+assign mc_mstr1_axiMonIf.rdata   = `MC_HIER.mstr1_rdata;
+assign mc_mstr1_axiMonIf.rresp   = `MC_HIER.mstr1_rresp;
+assign mc_mstr1_axiMonIf.rid     = `MC_HIER.mstr1_rid;
+assign mc_mstr1_axiMonIf.rready  = `MC_HIER.mstr1_rready;
+assign mc_mstr1_axiMonIf.bvalid  = `MC_HIER.mstr1_bvalid;
+assign mc_mstr1_axiMonIf.bresp   = `MC_HIER.mstr1_bresp;
+assign mc_mstr1_axiMonIf.bid     = `MC_HIER.mstr1_bid;
+assign mc_mstr1_axiMonIf.bready  = `MC_HIER.mstr1_bready;
+       `ifdef QUESTA_AXI4_MON
+              axi4_mon_wrap        #( .TRANSNAME     (     "logs/AXBAR_MC_trk_trn.axi4.log" ), 	// Wrapper Instance Type
+                                      .PHASENAME     (         "logs/AXBAR_MC_trk.axi4.log" ),  
+                                      .CHECKERNAME   (         "logs/AXBAR_MC_chk.axi4.log" ),  
+                                      .BUS_WIDTH     (                                127+1 ) ) 
+              mc_mstr1_wrapper      ( .monAxi4       (                    mc_mstr1_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                                      .aclk          (                  `MC_HIER.mstr1_aclk ),  
+                                      .aresetn       (               `MC_HIER.mstr1_aresetn ) );
+        initial begin
+                mc_mstr1_wrapper.monitor_on = 1;
+        end
+       `endif // QUESTA_AXI4_MON
+`endif // AXBAR_MC_MONITOR_ON
+
+
+// AXI4 Monitor Instantiation
+`ifdef VXBAR_MC_MONITOR_ON
+axi_if mc_mstr2_axiMonIf (`MC_HIER.mstr2_aclk);
+//     mc_mstr2_axiMonIf.aclk    = `MC_HIER.mstr2_aclk;
+assign mc_mstr2_axiMonIf.aresetn = `MC_HIER.mstr2_aresetn;
+assign mc_mstr2_axiMonIf.awvalid = `MC_HIER.mstr2_awvalid;
+assign mc_mstr2_axiMonIf.awaddr  = `MC_HIER.mstr2_awaddr;
+assign mc_mstr2_axiMonIf.awlen   = `MC_HIER.mstr2_awlen;
+assign mc_mstr2_axiMonIf.awsize  = `MC_HIER.mstr2_awsize;
+assign mc_mstr2_axiMonIf.awburst = `MC_HIER.mstr2_awburst;
+assign mc_mstr2_axiMonIf.awlock  = `MC_HIER.mstr2_awlock;
+assign mc_mstr2_axiMonIf.awcache = `MC_HIER.mstr2_awcache;
+assign mc_mstr2_axiMonIf.awprot  = `MC_HIER.mstr2_awprot;
+assign mc_mstr2_axiMonIf.awid    = `MC_HIER.mstr2_awid;
+assign mc_mstr2_axiMonIf.awready = `MC_HIER.mstr2_awready;
+assign mc_mstr2_axiMonIf.arvalid = `MC_HIER.mstr2_arvalid;
+assign mc_mstr2_axiMonIf.araddr  = `MC_HIER.mstr2_araddr;
+assign mc_mstr2_axiMonIf.arlen   = `MC_HIER.mstr2_arlen;
+assign mc_mstr2_axiMonIf.arsize  = `MC_HIER.mstr2_arsize;
+assign mc_mstr2_axiMonIf.arburst = `MC_HIER.mstr2_arburst;
+assign mc_mstr2_axiMonIf.arlock  = `MC_HIER.mstr2_arlock;
+assign mc_mstr2_axiMonIf.arcache = `MC_HIER.mstr2_arcache;
+assign mc_mstr2_axiMonIf.arprot  = `MC_HIER.mstr2_arprot;
+assign mc_mstr2_axiMonIf.arid    = `MC_HIER.mstr2_arid;
+assign mc_mstr2_axiMonIf.arready = `MC_HIER.mstr2_arready;
+assign mc_mstr2_axiMonIf.wvalid  = `MC_HIER.mstr2_wvalid;
+assign mc_mstr2_axiMonIf.wlast   = `MC_HIER.mstr2_wlast;
+assign mc_mstr2_axiMonIf.wdata   = `MC_HIER.mstr2_wdata;
+assign mc_mstr2_axiMonIf.wstrb   = `MC_HIER.mstr2_wstrb;
+//     mc_mstr2_axiMonIf.wid     = `MC_HIER.mstr2_wid;
+assign mc_mstr2_axiMonIf.wready  = `MC_HIER.mstr2_wready;
+assign mc_mstr2_axiMonIf.rvalid  = `MC_HIER.mstr2_rvalid;
+assign mc_mstr2_axiMonIf.rlast   = `MC_HIER.mstr2_rlast;
+assign mc_mstr2_axiMonIf.rdata   = `MC_HIER.mstr2_rdata;
+assign mc_mstr2_axiMonIf.rresp   = `MC_HIER.mstr2_rresp;
+assign mc_mstr2_axiMonIf.rid     = `MC_HIER.mstr2_rid;
+assign mc_mstr2_axiMonIf.rready  = `MC_HIER.mstr2_rready;
+assign mc_mstr2_axiMonIf.bvalid  = `MC_HIER.mstr2_bvalid;
+assign mc_mstr2_axiMonIf.bresp   = `MC_HIER.mstr2_bresp;
+assign mc_mstr2_axiMonIf.bid     = `MC_HIER.mstr2_bid;
+assign mc_mstr2_axiMonIf.bready  = `MC_HIER.mstr2_bready;
+       `ifdef QUESTA_AXI4_MON
+              axi4_mon_wrap        #( .TRANSNAME     (     "logs/VXBAR_MC_trk_trn.axi4.log" ), 	// Wrapper Instance Type
+                                      .PHASENAME     (         "logs/VXBAR_MC_trk.axi4.log" ),  
+                                      .CHECKERNAME   (         "logs/VXBAR_MC_chk.axi4.log" ),  
+                                      .BUS_WIDTH     (                                127+1 ) ) 
+              mc_mstr2_wrapper      ( .monAxi4       (                    mc_mstr2_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                                      .aclk          (                  `MC_HIER.mstr2_aclk ),  
+                                      .aresetn       (               `MC_HIER.mstr2_aresetn ) );
+        initial begin
+                mc_mstr2_wrapper.monitor_on = 1;
+        end
+       `endif // QUESTA_AXI4_MON
+`endif // VXBAR_MC_MONITOR_ON
+
+
+// AXI4 Monitor Instantiation
+`ifdef GXBAR_MC_MONITOR_ON
+axi_if mc_mstr3_axiMonIf (`MC_HIER.mstr3_aclk);
+//     mc_mstr3_axiMonIf.aclk    = `MC_HIER.mstr3_aclk;
+assign mc_mstr3_axiMonIf.aresetn = `MC_HIER.mstr3_aresetn;
+assign mc_mstr3_axiMonIf.awvalid = `MC_HIER.mstr3_awvalid;
+assign mc_mstr3_axiMonIf.awaddr  = `MC_HIER.mstr3_awaddr;
+assign mc_mstr3_axiMonIf.awlen   = `MC_HIER.mstr3_awlen;
+assign mc_mstr3_axiMonIf.awsize  = `MC_HIER.mstr3_awsize;
+assign mc_mstr3_axiMonIf.awburst = `MC_HIER.mstr3_awburst;
+assign mc_mstr3_axiMonIf.awlock  = `MC_HIER.mstr3_awlock;
+assign mc_mstr3_axiMonIf.awcache = `MC_HIER.mstr3_awcache;
+assign mc_mstr3_axiMonIf.awprot  = `MC_HIER.mstr3_awprot;
+assign mc_mstr3_axiMonIf.awid    = `MC_HIER.mstr3_awid;
+assign mc_mstr3_axiMonIf.awready = `MC_HIER.mstr3_awready;
+assign mc_mstr3_axiMonIf.arvalid = `MC_HIER.mstr3_arvalid;
+assign mc_mstr3_axiMonIf.araddr  = `MC_HIER.mstr3_araddr;
+assign mc_mstr3_axiMonIf.arlen   = `MC_HIER.mstr3_arlen;
+assign mc_mstr3_axiMonIf.arsize  = `MC_HIER.mstr3_arsize;
+assign mc_mstr3_axiMonIf.arburst = `MC_HIER.mstr3_arburst;
+assign mc_mstr3_axiMonIf.arlock  = `MC_HIER.mstr3_arlock;
+assign mc_mstr3_axiMonIf.arcache = `MC_HIER.mstr3_arcache;
+assign mc_mstr3_axiMonIf.arprot  = `MC_HIER.mstr3_arprot;
+assign mc_mstr3_axiMonIf.arid    = `MC_HIER.mstr3_arid;
+assign mc_mstr3_axiMonIf.arready = `MC_HIER.mstr3_arready;
+assign mc_mstr3_axiMonIf.wvalid  = `MC_HIER.mstr3_wvalid;
+assign mc_mstr3_axiMonIf.wlast   = `MC_HIER.mstr3_wlast;
+assign mc_mstr3_axiMonIf.wdata   = `MC_HIER.mstr3_wdata;
+assign mc_mstr3_axiMonIf.wstrb   = `MC_HIER.mstr3_wstrb;
+//     mc_mstr3_axiMonIf.wid     = `MC_HIER.mstr3_wid;
+assign mc_mstr3_axiMonIf.wready  = `MC_HIER.mstr3_wready;
+assign mc_mstr3_axiMonIf.rvalid  = `MC_HIER.mstr3_rvalid;
+assign mc_mstr3_axiMonIf.rlast   = `MC_HIER.mstr3_rlast;
+assign mc_mstr3_axiMonIf.rdata   = `MC_HIER.mstr3_rdata;
+assign mc_mstr3_axiMonIf.rresp   = `MC_HIER.mstr3_rresp;
+assign mc_mstr3_axiMonIf.rid     = `MC_HIER.mstr3_rid;
+assign mc_mstr3_axiMonIf.rready  = `MC_HIER.mstr3_rready;
+assign mc_mstr3_axiMonIf.bvalid  = `MC_HIER.mstr3_bvalid;
+assign mc_mstr3_axiMonIf.bresp   = `MC_HIER.mstr3_bresp;
+assign mc_mstr3_axiMonIf.bid     = `MC_HIER.mstr3_bid;
+assign mc_mstr3_axiMonIf.bready  = `MC_HIER.mstr3_bready;
+       `ifdef QUESTA_AXI4_MON
+              axi4_mon_wrap        #( .TRANSNAME     (     "logs/GXBAR_MC_trk_trn.axi3.log" ), 	// Wrapper Instance Type
+                                      .PHASENAME     (         "logs/GXBAR_MC_trk.axi3.log" ),  
+                                      .CHECKERNAME   (         "logs/GXBAR_MC_chk.axi3.log" ),  
+                                      .BUS_WIDTH     (                                255+1 ) ) 
+              mc_mstr3_wrapper      ( .monAxi4       (                    mc_mstr3_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                                      .aclk          (                  `MC_HIER.mstr3_aclk ),  
+                                      .aresetn       (               `MC_HIER.mstr3_aresetn ) );
+        initial begin
+                mc_mstr3_wrapper.monitor_on = 1;
+        end
+       `endif // QUESTA_AXI4_MON
+`endif // GXBAR_MC_MONITOR_ON
+
+
+// AXI4 Monitor Instantiation
+`ifdef IXBAR_MC_MONITOR_ON
+axi_if mc_mstr4_axiMonIf (`MC_HIER.mstr4_aclk);
+//     mc_mstr4_axiMonIf.aclk    = `MC_HIER.mstr4_aclk;
+assign mc_mstr4_axiMonIf.aresetn = `MC_HIER.mstr4_aresetn;
+assign mc_mstr4_axiMonIf.awvalid = `MC_HIER.mstr4_awvalid;
+assign mc_mstr4_axiMonIf.awaddr  = `MC_HIER.mstr4_awaddr;
+assign mc_mstr4_axiMonIf.awlen   = `MC_HIER.mstr4_awlen;
+assign mc_mstr4_axiMonIf.awsize  = `MC_HIER.mstr4_awsize;
+assign mc_mstr4_axiMonIf.awburst = `MC_HIER.mstr4_awburst;
+assign mc_mstr4_axiMonIf.awlock  = `MC_HIER.mstr4_awlock;
+assign mc_mstr4_axiMonIf.awcache = `MC_HIER.mstr4_awcache;
+assign mc_mstr4_axiMonIf.awprot  = `MC_HIER.mstr4_awprot;
+assign mc_mstr4_axiMonIf.awid    = `MC_HIER.mstr4_awid;
+assign mc_mstr4_axiMonIf.awready = `MC_HIER.mstr4_awready;
+assign mc_mstr4_axiMonIf.arvalid = `MC_HIER.mstr4_arvalid;
+assign mc_mstr4_axiMonIf.araddr  = `MC_HIER.mstr4_araddr;
+assign mc_mstr4_axiMonIf.arlen   = `MC_HIER.mstr4_arlen;
+assign mc_mstr4_axiMonIf.arsize  = `MC_HIER.mstr4_arsize;
+assign mc_mstr4_axiMonIf.arburst = `MC_HIER.mstr4_arburst;
+assign mc_mstr4_axiMonIf.arlock  = `MC_HIER.mstr4_arlock;
+assign mc_mstr4_axiMonIf.arcache = `MC_HIER.mstr4_arcache;
+assign mc_mstr4_axiMonIf.arprot  = `MC_HIER.mstr4_arprot;
+assign mc_mstr4_axiMonIf.arid    = `MC_HIER.mstr4_arid;
+assign mc_mstr4_axiMonIf.arready = `MC_HIER.mstr4_arready;
+assign mc_mstr4_axiMonIf.wvalid  = `MC_HIER.mstr4_wvalid;
+assign mc_mstr4_axiMonIf.wlast   = `MC_HIER.mstr4_wlast;
+assign mc_mstr4_axiMonIf.wdata   = `MC_HIER.mstr4_wdata;
+assign mc_mstr4_axiMonIf.wstrb   = `MC_HIER.mstr4_wstrb;
+//     mc_mstr4_axiMonIf.wid     = `MC_HIER.mstr4_wid;
+assign mc_mstr4_axiMonIf.wready  = `MC_HIER.mstr4_wready;
+assign mc_mstr4_axiMonIf.rvalid  = `MC_HIER.mstr4_rvalid;
+assign mc_mstr4_axiMonIf.rlast   = `MC_HIER.mstr4_rlast;
+assign mc_mstr4_axiMonIf.rdata   = `MC_HIER.mstr4_rdata;
+assign mc_mstr4_axiMonIf.rresp   = `MC_HIER.mstr4_rresp;
+assign mc_mstr4_axiMonIf.rid     = `MC_HIER.mstr4_rid;
+assign mc_mstr4_axiMonIf.rready  = `MC_HIER.mstr4_rready;
+assign mc_mstr4_axiMonIf.bvalid  = `MC_HIER.mstr4_bvalid;
+assign mc_mstr4_axiMonIf.bresp   = `MC_HIER.mstr4_bresp;
+assign mc_mstr4_axiMonIf.bid     = `MC_HIER.mstr4_bid;
+assign mc_mstr4_axiMonIf.bready  = `MC_HIER.mstr4_bready;
+       `ifdef QUESTA_AXI4_MON
+              axi4_mon_wrap        #( .TRANSNAME     (     "logs/IXBAR_MC_trk_trn.axi4.log" ), 	// Wrapper Instance Type
+                                      .PHASENAME     (         "logs/IXBAR_MC_trk.axi4.log" ),  
+                                      .CHECKERNAME   (         "logs/IXBAR_MC_chk.axi4.log" ),  
+                                      .BUS_WIDTH     (                                127+1 ) ) 
+              mc_mstr4_wrapper      ( .monAxi4       (                    mc_mstr4_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                                      .aclk          (                  `MC_HIER.mstr4_aclk ),  
+                                      .aresetn       (               `MC_HIER.mstr4_aresetn ) );
+        initial begin
+                mc_mstr4_wrapper.monitor_on = 1;
+        end
+       `endif // QUESTA_AXI4_MON
+`endif // IXBAR_MC_MONITOR_ON
+
+
+// AXI4 Monitor Instantiation
+`ifdef DHUB64_AXBAR_MONITOR_ON
+axi_if axbar_m0_axiMonIf (`AXBAR_HIER.aviosysclk);
+//     axbar_m0_axiMonIf.aclk    = `AXBAR_HIER.aviosysclk;
+assign axbar_m0_axiMonIf.aresetn = `AXBAR_HIER.aviosysresetn;
+assign axbar_m0_axiMonIf.awvalid = `AXBAR_HIER.awvalid_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.awaddr  = `AXBAR_HIER.awaddr_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.awlen   = `AXBAR_HIER.awlen_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.awsize  = `AXBAR_HIER.awsize_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.awburst = `AXBAR_HIER.awburst_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.awlock  = `AXBAR_HIER.awlock_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.awcache = `AXBAR_HIER.awcache_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.awprot  = `AXBAR_HIER.awprot_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.awid    = `AXBAR_HIER.awid_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.awready = `AXBAR_HIER.awready_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.arvalid = `AXBAR_HIER.arvalid_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.araddr  = `AXBAR_HIER.araddr_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.arlen   = `AXBAR_HIER.arlen_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.arsize  = `AXBAR_HIER.arsize_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.arburst = `AXBAR_HIER.arburst_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.arlock  = `AXBAR_HIER.arlock_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.arcache = `AXBAR_HIER.arcache_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.arprot  = `AXBAR_HIER.arprot_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.arid    = `AXBAR_HIER.arid_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.arready = `AXBAR_HIER.arready_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.wvalid  = `AXBAR_HIER.wvalid_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.wlast   = `AXBAR_HIER.wlast_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.wdata   = `AXBAR_HIER.wdata_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.wstrb   = `AXBAR_HIER.wstrb_dhub64_m0_s0_s1;
+//     axbar_m0_axiMonIf.wid     = `AXBAR_HIER.wid_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.wready  = `AXBAR_HIER.wready_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.rvalid  = `AXBAR_HIER.rvalid_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.rlast   = `AXBAR_HIER.rlast_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.rdata   = `AXBAR_HIER.rdata_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.rresp   = `AXBAR_HIER.rresp_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.rid     = `AXBAR_HIER.rid_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.rready  = `AXBAR_HIER.rready_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.bvalid  = `AXBAR_HIER.bvalid_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.bresp   = `AXBAR_HIER.bresp_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.bid     = `AXBAR_HIER.bid_dhub64_m0_s0_s1;
+assign axbar_m0_axiMonIf.bready  = `AXBAR_HIER.bready_dhub64_m0_s0_s1;
+       `ifdef QUESTA_AXI4_MON
+              axi4_mon_wrap        #( .TRANSNAME     ( "logs/DHUB64_AXBAR_trk_trn.axi4.log" ), 	// Wrapper Instance Type
+                                      .PHASENAME     (     "logs/DHUB64_AXBAR_trk.axi4.log" ),  
+                                      .CHECKERNAME   (     "logs/DHUB64_AXBAR_chk.axi4.log" ),  
+                                      .BUS_WIDTH     (                                 63+1 ) ) 
+              axbar_m0_wrapper      ( .monAxi4       (                    axbar_m0_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                                      .aclk          (               `AXBAR_HIER.aviosysclk ),  
+                                      .aresetn       (            `AXBAR_HIER.aviosysresetn ) );
+        initial begin
+                axbar_m0_wrapper.monitor_on = 1;
+        end
+       `endif // QUESTA_AXI4_MON
+`endif // DHUB64_AXBAR_MONITOR_ON
+
+
+// AXI4 Monitor Instantiation
+`ifdef DHUB128_AXBAR_MONITOR_ON
+axi_if axbar_m1_axiMonIf (`AXBAR_HIER.aviosysclk);
+//     axbar_m1_axiMonIf.aclk    = `AXBAR_HIER.aviosysclk;
+assign axbar_m1_axiMonIf.aresetn = `AXBAR_HIER.aviosysresetn;
+assign axbar_m1_axiMonIf.awvalid = `AXBAR_HIER.awvalid_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.awaddr  = `AXBAR_HIER.awaddr_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.awlen   = `AXBAR_HIER.awlen_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.awsize  = `AXBAR_HIER.awsize_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.awburst = `AXBAR_HIER.awburst_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.awlock  = `AXBAR_HIER.awlock_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.awcache = `AXBAR_HIER.awcache_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.awprot  = `AXBAR_HIER.awprot_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.awid    = `AXBAR_HIER.awid_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.awready = `AXBAR_HIER.awready_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.arvalid = `AXBAR_HIER.arvalid_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.araddr  = `AXBAR_HIER.araddr_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.arlen   = `AXBAR_HIER.arlen_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.arsize  = `AXBAR_HIER.arsize_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.arburst = `AXBAR_HIER.arburst_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.arlock  = `AXBAR_HIER.arlock_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.arcache = `AXBAR_HIER.arcache_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.arprot  = `AXBAR_HIER.arprot_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.arid    = `AXBAR_HIER.arid_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.arready = `AXBAR_HIER.arready_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.wvalid  = `AXBAR_HIER.wvalid_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.wlast   = `AXBAR_HIER.wlast_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.wdata   = `AXBAR_HIER.wdata_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.wstrb   = `AXBAR_HIER.wstrb_dhub128_m1_s0_s1;
+//     axbar_m1_axiMonIf.wid     = `AXBAR_HIER.wid_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.wready  = `AXBAR_HIER.wready_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.rvalid  = `AXBAR_HIER.rvalid_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.rlast   = `AXBAR_HIER.rlast_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.rdata   = `AXBAR_HIER.rdata_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.rresp   = `AXBAR_HIER.rresp_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.rid     = `AXBAR_HIER.rid_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.rready  = `AXBAR_HIER.rready_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.bvalid  = `AXBAR_HIER.bvalid_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.bresp   = `AXBAR_HIER.bresp_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.bid     = `AXBAR_HIER.bid_dhub128_m1_s0_s1;
+assign axbar_m1_axiMonIf.bready  = `AXBAR_HIER.bready_dhub128_m1_s0_s1;
+       `ifdef QUESTA_AXI4_MON
+              axi4_mon_wrap        #( .TRANSNAME     ( "logs/DHUB128_AXBAR_trk_trn.axi4.log" ), 	// Wrapper Instance Type
+                                      .PHASENAME     (    "logs/DHUB128_AXBAR_trk.axi4.log" ),  
+                                      .CHECKERNAME   (    "logs/DHUB128_AXBAR_chk.axi4.log" ),  
+                                      .BUS_WIDTH     (                                127+1 ) ) 
+              axbar_m1_wrapper      ( .monAxi4       (                    axbar_m1_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                                      .aclk          (               `AXBAR_HIER.aviosysclk ),  
+                                      .aresetn       (            `AXBAR_HIER.aviosysresetn ) );
+        initial begin
+                axbar_m1_wrapper.monitor_on = 1;
+        end
+       `endif // QUESTA_AXI4_MON
+`endif // DHUB128_AXBAR_MONITOR_ON
+
+
+// AXI3 Monitor Instantiation
+`ifdef HDCP_AXBAR_MONITOR_ON
+axi_if axbar_m2_axiMonIf (`AXBAR_HIER.esmclk);
+//     axbar_m2_axiMonIf.aclk    = `AXBAR_HIER.esmclk;
+assign axbar_m2_axiMonIf.aresetn = `AXBAR_HIER.esmresetn;
+assign axbar_m2_axiMonIf.awvalid = `AXBAR_HIER.awvalid_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.awaddr  = `AXBAR_HIER.awaddr_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.awlen   = `AXBAR_HIER.awlen_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.awsize  = `AXBAR_HIER.awsize_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.awburst = `AXBAR_HIER.awburst_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.awlock  = `AXBAR_HIER.awlock_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.awcache = `AXBAR_HIER.awcache_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.awprot  = `AXBAR_HIER.awprot_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.awid    = `AXBAR_HIER.awid_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.awready = `AXBAR_HIER.awready_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.arvalid = `AXBAR_HIER.arvalid_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.araddr  = `AXBAR_HIER.araddr_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.arlen   = `AXBAR_HIER.arlen_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.arsize  = `AXBAR_HIER.arsize_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.arburst = `AXBAR_HIER.arburst_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.arlock  = `AXBAR_HIER.arlock_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.arcache = `AXBAR_HIER.arcache_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.arprot  = `AXBAR_HIER.arprot_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.arid    = `AXBAR_HIER.arid_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.arready = `AXBAR_HIER.arready_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.wvalid  = `AXBAR_HIER.wvalid_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.wlast   = `AXBAR_HIER.wlast_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.wdata   = `AXBAR_HIER.wdata_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.wstrb   = `AXBAR_HIER.wstrb_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.wid     = `AXBAR_HIER.wid_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.wready  = `AXBAR_HIER.wready_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.rvalid  = `AXBAR_HIER.rvalid_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.rlast   = `AXBAR_HIER.rlast_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.rdata   = `AXBAR_HIER.rdata_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.rresp   = `AXBAR_HIER.rresp_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.rid     = `AXBAR_HIER.rid_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.rready  = `AXBAR_HIER.rready_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.bvalid  = `AXBAR_HIER.bvalid_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.bresp   = `AXBAR_HIER.bresp_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.bid     = `AXBAR_HIER.bid_hdcp_m2_s0_s1;
+assign axbar_m2_axiMonIf.bready  = `AXBAR_HIER.bready_hdcp_m2_s0_s1;
+       axi_mon_wrap         #( .TRANSNAME     (   "logs/HDCP_AXBAR_trk_trn.axi3.log" ), 	// Wrapper Instance Type
+                               .PHASENAME     (       "logs/HDCP_AXBAR_trk.axi3.log" ),  
+                               .CHECKERNAME   (       "logs/HDCP_AXBAR_chk.axi3.log" ),  
+                               .BUS_WIDTH     (                                 31+1 ) ) 
+       axbar_m2_wrapper      ( .monAxi        (                    axbar_m2_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                               .aclk          (                   `AXBAR_HIER.esmclk ),  
+                               .aresetn       (                `AXBAR_HIER.esmresetn ) );
+       initial begin
+               axbar_m2_wrapper.monitor_on = 1;
+       end
+`endif // HDCP_AXBAR_MONITOR_ON
+
+
+// AXI4 Monitor Instantiation
+`ifdef ISP0_IXBAR_MONITOR_ON
+axi_if ixbar_m0_axiMonIf (`IXBAR_HIER.isssysclk);
+//     ixbar_m0_axiMonIf.aclk    = `IXBAR_HIER.isssysclk;
+assign ixbar_m0_axiMonIf.aresetn = `IXBAR_HIER.isssysresetn;
+assign ixbar_m0_axiMonIf.awvalid = `IXBAR_HIER.awvalid_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.awaddr  = `IXBAR_HIER.awaddr_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.awlen   = `IXBAR_HIER.awlen_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.awsize  = `IXBAR_HIER.awsize_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.awburst = `IXBAR_HIER.awburst_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.awlock  = `IXBAR_HIER.awlock_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.awcache = `IXBAR_HIER.awcache_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.awprot  = `IXBAR_HIER.awprot_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.awid    = `IXBAR_HIER.awid_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.awready = `IXBAR_HIER.awready_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.arvalid = `IXBAR_HIER.arvalid_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.araddr  = `IXBAR_HIER.araddr_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.arlen   = `IXBAR_HIER.arlen_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.arsize  = `IXBAR_HIER.arsize_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.arburst = `IXBAR_HIER.arburst_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.arlock  = `IXBAR_HIER.arlock_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.arcache = `IXBAR_HIER.arcache_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.arprot  = `IXBAR_HIER.arprot_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.arid    = `IXBAR_HIER.arid_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.arready = `IXBAR_HIER.arready_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.wvalid  = `IXBAR_HIER.wvalid_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.wlast   = `IXBAR_HIER.wlast_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.wdata   = `IXBAR_HIER.wdata_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.wstrb   = `IXBAR_HIER.wstrb_isp_m0_s0_s1;
+//     ixbar_m0_axiMonIf.wid     = `IXBAR_HIER.wid_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.wready  = `IXBAR_HIER.wready_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.rvalid  = `IXBAR_HIER.rvalid_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.rlast   = `IXBAR_HIER.rlast_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.rdata   = `IXBAR_HIER.rdata_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.rresp   = `IXBAR_HIER.rresp_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.rid     = `IXBAR_HIER.rid_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.rready  = `IXBAR_HIER.rready_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.bvalid  = `IXBAR_HIER.bvalid_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.bresp   = `IXBAR_HIER.bresp_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.bid     = `IXBAR_HIER.bid_isp_m0_s0_s1;
+assign ixbar_m0_axiMonIf.bready  = `IXBAR_HIER.bready_isp_m0_s0_s1;
+       `ifdef QUESTA_AXI4_MON
+              axi4_mon_wrap        #( .TRANSNAME     (   "logs/ISP0_IXBAR_trk_trn.axi4.log" ), 	// Wrapper Instance Type
+                                      .PHASENAME     (       "logs/ISP0_IXBAR_trk.axi4.log" ),  
+                                      .CHECKERNAME   (       "logs/ISP0_IXBAR_chk.axi4.log" ),  
+                                      .BUS_WIDTH     (                                127+1 ) ) 
+              ixbar_m0_wrapper      ( .monAxi4       (                    ixbar_m0_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                                      .aclk          (                `IXBAR_HIER.isssysclk ),  
+                                      .aresetn       (             `IXBAR_HIER.isssysresetn ) );
+        initial begin
+                ixbar_m0_wrapper.monitor_on = 1;
+        end
+       `endif // QUESTA_AXI4_MON
+`endif // ISP0_IXBAR_MONITOR_ON
+
+
+// AXI4 Monitor Instantiation
+`ifdef ISP1_IXBAR_MONITOR_ON
+axi_if ixbar_m1_axiMonIf (`IXBAR_HIER.isssysclk);
+//     ixbar_m1_axiMonIf.aclk    = `IXBAR_HIER.isssysclk;
+assign ixbar_m1_axiMonIf.aresetn = `IXBAR_HIER.isssysresetn;
+assign ixbar_m1_axiMonIf.awvalid = `IXBAR_HIER.awvalid_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.awaddr  = `IXBAR_HIER.awaddr_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.awlen   = `IXBAR_HIER.awlen_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.awsize  = `IXBAR_HIER.awsize_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.awburst = `IXBAR_HIER.awburst_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.awlock  = `IXBAR_HIER.awlock_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.awcache = `IXBAR_HIER.awcache_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.awprot  = `IXBAR_HIER.awprot_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.awid    = `IXBAR_HIER.awid_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.awready = `IXBAR_HIER.awready_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.arvalid = `IXBAR_HIER.arvalid_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.araddr  = `IXBAR_HIER.araddr_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.arlen   = `IXBAR_HIER.arlen_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.arsize  = `IXBAR_HIER.arsize_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.arburst = `IXBAR_HIER.arburst_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.arlock  = `IXBAR_HIER.arlock_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.arcache = `IXBAR_HIER.arcache_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.arprot  = `IXBAR_HIER.arprot_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.arid    = `IXBAR_HIER.arid_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.arready = `IXBAR_HIER.arready_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.wvalid  = `IXBAR_HIER.wvalid_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.wlast   = `IXBAR_HIER.wlast_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.wdata   = `IXBAR_HIER.wdata_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.wstrb   = `IXBAR_HIER.wstrb_isp_m1_s0_s1;
+//     ixbar_m1_axiMonIf.wid     = `IXBAR_HIER.wid_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.wready  = `IXBAR_HIER.wready_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.rvalid  = `IXBAR_HIER.rvalid_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.rlast   = `IXBAR_HIER.rlast_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.rdata   = `IXBAR_HIER.rdata_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.rresp   = `IXBAR_HIER.rresp_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.rid     = `IXBAR_HIER.rid_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.rready  = `IXBAR_HIER.rready_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.bvalid  = `IXBAR_HIER.bvalid_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.bresp   = `IXBAR_HIER.bresp_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.bid     = `IXBAR_HIER.bid_isp_m1_s0_s1;
+assign ixbar_m1_axiMonIf.bready  = `IXBAR_HIER.bready_isp_m1_s0_s1;
+       `ifdef QUESTA_AXI4_MON
+              axi4_mon_wrap        #( .TRANSNAME     (   "logs/ISP1_IXBAR_trk_trn.axi4.log" ), 	// Wrapper Instance Type
+                                      .PHASENAME     (       "logs/ISP1_IXBAR_trk.axi4.log" ),  
+                                      .CHECKERNAME   (       "logs/ISP1_IXBAR_chk.axi4.log" ),  
+                                      .BUS_WIDTH     (                                127+1 ) ) 
+              ixbar_m1_wrapper      ( .monAxi4       (                    ixbar_m1_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                                      .aclk          (                `IXBAR_HIER.isssysclk ),  
+                                      .aresetn       (             `IXBAR_HIER.isssysresetn ) );
+        initial begin
+                ixbar_m1_wrapper.monitor_on = 1;
+        end
+       `endif // QUESTA_AXI4_MON
+`endif // ISP1_IXBAR_MONITOR_ON
+
+
+// AXI4 Monitor Instantiation
+`ifdef DHUB0_IXBAR_MONITOR_ON
+axi_if ixbar_m2_axiMonIf (`IXBAR_HIER.isssysclk);
+//     ixbar_m2_axiMonIf.aclk    = `IXBAR_HIER.isssysclk;
+assign ixbar_m2_axiMonIf.aresetn = `IXBAR_HIER.isssysresetn;
+assign ixbar_m2_axiMonIf.awvalid = `IXBAR_HIER.awvalid_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.awaddr  = `IXBAR_HIER.awaddr_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.awlen   = `IXBAR_HIER.awlen_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.awsize  = `IXBAR_HIER.awsize_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.awburst = `IXBAR_HIER.awburst_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.awlock  = `IXBAR_HIER.awlock_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.awcache = `IXBAR_HIER.awcache_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.awprot  = `IXBAR_HIER.awprot_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.awid    = `IXBAR_HIER.awid_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.awready = `IXBAR_HIER.awready_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.arvalid = `IXBAR_HIER.arvalid_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.araddr  = `IXBAR_HIER.araddr_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.arlen   = `IXBAR_HIER.arlen_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.arsize  = `IXBAR_HIER.arsize_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.arburst = `IXBAR_HIER.arburst_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.arlock  = `IXBAR_HIER.arlock_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.arcache = `IXBAR_HIER.arcache_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.arprot  = `IXBAR_HIER.arprot_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.arid    = `IXBAR_HIER.arid_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.arready = `IXBAR_HIER.arready_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.wvalid  = `IXBAR_HIER.wvalid_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.wlast   = `IXBAR_HIER.wlast_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.wdata   = `IXBAR_HIER.wdata_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.wstrb   = `IXBAR_HIER.wstrb_dhub0_m2_s0_s1;
+//     ixbar_m2_axiMonIf.wid     = `IXBAR_HIER.wid_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.wready  = `IXBAR_HIER.wready_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.rvalid  = `IXBAR_HIER.rvalid_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.rlast   = `IXBAR_HIER.rlast_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.rdata   = `IXBAR_HIER.rdata_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.rresp   = `IXBAR_HIER.rresp_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.rid     = `IXBAR_HIER.rid_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.rready  = `IXBAR_HIER.rready_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.bvalid  = `IXBAR_HIER.bvalid_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.bresp   = `IXBAR_HIER.bresp_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.bid     = `IXBAR_HIER.bid_dhub0_m2_s0_s1;
+assign ixbar_m2_axiMonIf.bready  = `IXBAR_HIER.bready_dhub0_m2_s0_s1;
+       `ifdef QUESTA_AXI4_MON
+              axi4_mon_wrap        #( .TRANSNAME     (  "logs/DHUB0_IXBAR_trk_trn.axi4.log" ), 	// Wrapper Instance Type
+                                      .PHASENAME     (      "logs/DHUB0_IXBAR_trk.axi4.log" ),  
+                                      .CHECKERNAME   (      "logs/DHUB0_IXBAR_chk.axi4.log" ),  
+                                      .BUS_WIDTH     (                                127+1 ) ) 
+              ixbar_m2_wrapper      ( .monAxi4       (                    ixbar_m2_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                                      .aclk          (                `IXBAR_HIER.isssysclk ),  
+                                      .aresetn       (             `IXBAR_HIER.isssysresetn ) );
+        initial begin
+                ixbar_m2_wrapper.monitor_on = 1;
+        end
+       `endif // QUESTA_AXI4_MON
+`endif // DHUB0_IXBAR_MONITOR_ON
+
+
+// AXI4 Monitor Instantiation
+`ifdef DHUB1_IXBAR_MONITOR_ON 
+axi_if ixbar_m3_axiMonIf (`IXBAR_HIER.isssysclk);
+//     ixbar_m3_axiMonIf.aclk    = `IXBAR_HIER.isssysclk;
+assign ixbar_m3_axiMonIf.aresetn = `IXBAR_HIER.isssysresetn;
+assign ixbar_m3_axiMonIf.awvalid = `IXBAR_HIER.awvalid_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.awaddr  = `IXBAR_HIER.awaddr_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.awlen   = `IXBAR_HIER.awlen_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.awsize  = `IXBAR_HIER.awsize_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.awburst = `IXBAR_HIER.awburst_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.awlock  = `IXBAR_HIER.awlock_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.awcache = `IXBAR_HIER.awcache_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.awprot  = `IXBAR_HIER.awprot_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.awid    = `IXBAR_HIER.awid_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.awready = `IXBAR_HIER.awready_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.arvalid = `IXBAR_HIER.arvalid_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.araddr  = `IXBAR_HIER.araddr_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.arlen   = `IXBAR_HIER.arlen_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.arsize  = `IXBAR_HIER.arsize_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.arburst = `IXBAR_HIER.arburst_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.arlock  = `IXBAR_HIER.arlock_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.arcache = `IXBAR_HIER.arcache_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.arprot  = `IXBAR_HIER.arprot_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.arid    = `IXBAR_HIER.arid_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.arready = `IXBAR_HIER.arready_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.wvalid  = `IXBAR_HIER.wvalid_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.wlast   = `IXBAR_HIER.wlast_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.wdata   = `IXBAR_HIER.wdata_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.wstrb   = `IXBAR_HIER.wstrb_dhub0_m3_s0_s1;
+//     ixbar_m3_axiMonIf.wid     = `IXBAR_HIER.wid_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.wready  = `IXBAR_HIER.wready_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.rvalid  = `IXBAR_HIER.rvalid_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.rlast   = `IXBAR_HIER.rlast_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.rdata   = `IXBAR_HIER.rdata_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.rresp   = `IXBAR_HIER.rresp_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.rid     = `IXBAR_HIER.rid_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.rready  = `IXBAR_HIER.rready_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.bvalid  = `IXBAR_HIER.bvalid_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.bresp   = `IXBAR_HIER.bresp_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.bid     = `IXBAR_HIER.bid_dhub0_m3_s0_s1;
+assign ixbar_m3_axiMonIf.bready  = `IXBAR_HIER.bready_dhub0_m3_s0_s1;
+       `ifdef QUESTA_AXI4_MON
+              axi4_mon_wrap        #( .TRANSNAME     (  "logs/DHUB1_IXBAR_trk_trn.axi4.log" ), 	// Wrapper Instance Type
+                                      .PHASENAME     (      "logs/DHUB1_IXBAR_trk.axi4.log" ),  
+                                      .CHECKERNAME   (      "logs/DHUB1_IXBAR_chk.axi4.log" ),  
+                                      .BUS_WIDTH     (                                127+1 ) ) 
+              ixbar_m3_wrapper      ( .monAxi4       (                    ixbar_m3_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                                      .aclk          (                `IXBAR_HIER.isssysclk ),  
+                                      .aresetn       (             `IXBAR_HIER.isssysresetn ) );
+        initial begin
+                ixbar_m3_wrapper.monitor_on = 1;
+        end
+       `endif // QUESTA_AXI4_MON
+`endif // DHUB1_IXBAR_MONITOR_ON 
+
+
+// AXI3 Monitor Instantiation
+`ifdef OVP_GXBAR_MONITOR_ON
+axi_if gxbar_m0_axiMonIf (`GXBAR_HIER.ovpclk);
+//     gxbar_m0_axiMonIf.aclk    = `GXBAR_HIER.ovpclk;
+assign gxbar_m0_axiMonIf.aresetn = `GXBAR_HIER.ovpresetn;
+assign gxbar_m0_axiMonIf.awvalid = `GXBAR_HIER.awvalid_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.awaddr  = `GXBAR_HIER.awaddr_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.awlen   = `GXBAR_HIER.awlen_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.awsize  = `GXBAR_HIER.awsize_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.awburst = `GXBAR_HIER.awburst_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.awlock  = `GXBAR_HIER.awlock_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.awcache = `GXBAR_HIER.awcache_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.awprot  = `GXBAR_HIER.awprot_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.awid    = `GXBAR_HIER.awid_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.awready = `GXBAR_HIER.awready_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.arvalid = `GXBAR_HIER.arvalid_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.araddr  = `GXBAR_HIER.araddr_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.arlen   = `GXBAR_HIER.arlen_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.arsize  = `GXBAR_HIER.arsize_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.arburst = `GXBAR_HIER.arburst_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.arlock  = `GXBAR_HIER.arlock_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.arcache = `GXBAR_HIER.arcache_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.arprot  = `GXBAR_HIER.arprot_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.arid    = `GXBAR_HIER.arid_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.arready = `GXBAR_HIER.arready_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.wvalid  = `GXBAR_HIER.wvalid_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.wlast   = `GXBAR_HIER.wlast_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.wdata   = `GXBAR_HIER.wdata_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.wstrb   = `GXBAR_HIER.wstrb_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.wid     = `GXBAR_HIER.wid_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.wready  = `GXBAR_HIER.wready_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.rvalid  = `GXBAR_HIER.rvalid_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.rlast   = `GXBAR_HIER.rlast_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.rdata   = `GXBAR_HIER.rdata_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.rresp   = `GXBAR_HIER.rresp_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.rid     = `GXBAR_HIER.rid_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.rready  = `GXBAR_HIER.rready_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.bvalid  = `GXBAR_HIER.bvalid_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.bresp   = `GXBAR_HIER.bresp_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.bid     = `GXBAR_HIER.bid_ovp_m0_s0;
+assign gxbar_m0_axiMonIf.bready  = `GXBAR_HIER.bready_ovp_m0_s0;
+       axi_mon_wrap         #( .TRANSNAME     (    "logs/OVP_GXBAR_trk_trn.axi3.log" ), 	// Wrapper Instance Type
+                               .PHASENAME     (        "logs/OVP_GXBAR_trk.axi3.log" ),  
+                               .CHECKERNAME   (        "logs/OVP_GXBAR_chk.axi3.log" ),  
+                               .BUS_WIDTH     (                                 63+1 ) ) 
+       gxbar_m1_wrapper      ( .monAxi        (                    gxbar_m0_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                               .aclk          (                   `GXBAR_HIER.ovpclk ),  
+                               .aresetn       (                `GXBAR_HIER.ovpresetn ) );
+       initial begin
+               gxbar_m1_wrapper.monitor_on = 1;
+       end
+`endif // OVP_GXBAR_MONITOR_ON
+
+
+// AXI4 Monitor Instantiation
+`ifdef V4G_GXBAR_MONITOR_ON
+axi_if gxbar_m1_axiMonIf (`GXBAR_HIER.v4gclk);
+//     gxbar_m1_axiMonIf.aclk    = `GXBAR_HIER.v4gclk;
+assign gxbar_m1_axiMonIf.aresetn = `GXBAR_HIER.v4gresetn;
+assign gxbar_m1_axiMonIf.awvalid = `GXBAR_HIER.awvalid_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.awaddr  = `GXBAR_HIER.awaddr_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.awlen   = `GXBAR_HIER.awlen_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.awsize  = `GXBAR_HIER.awsize_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.awburst = `GXBAR_HIER.awburst_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.awlock  = `GXBAR_HIER.awlock_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.awcache = `GXBAR_HIER.awcache_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.awprot  = `GXBAR_HIER.awprot_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.awid    = `GXBAR_HIER.awid_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.awready = `GXBAR_HIER.awready_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.arvalid = `GXBAR_HIER.arvalid_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.araddr  = `GXBAR_HIER.araddr_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.arlen   = `GXBAR_HIER.arlen_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.arsize  = `GXBAR_HIER.arsize_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.arburst = `GXBAR_HIER.arburst_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.arlock  = `GXBAR_HIER.arlock_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.arcache = `GXBAR_HIER.arcache_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.arprot  = `GXBAR_HIER.arprot_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.arid    = `GXBAR_HIER.arid_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.arready = `GXBAR_HIER.arready_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.wvalid  = `GXBAR_HIER.wvalid_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.wlast   = `GXBAR_HIER.wlast_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.wdata   = `GXBAR_HIER.wdata_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.wstrb   = `GXBAR_HIER.wstrb_v4g_m1_s0;
+//     gxbar_m1_axiMonIf.wid     = `GXBAR_HIER.wid_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.wready  = `GXBAR_HIER.wready_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.rvalid  = `GXBAR_HIER.rvalid_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.rlast   = `GXBAR_HIER.rlast_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.rdata   = `GXBAR_HIER.rdata_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.rresp   = `GXBAR_HIER.rresp_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.rid     = `GXBAR_HIER.rid_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.rready  = `GXBAR_HIER.rready_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.bvalid  = `GXBAR_HIER.bvalid_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.bresp   = `GXBAR_HIER.bresp_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.bid     = `GXBAR_HIER.bid_v4g_m1_s0;
+assign gxbar_m1_axiMonIf.bready  = `GXBAR_HIER.bready_v4g_m1_s0;
+       `ifdef QUESTA_AXI4_MON
+              axi4_mon_wrap        #( .TRANSNAME     (    "logs/V4G_GXBAR_trk_trn.axi4.log" ), 	// Wrapper Instance Type
+                                      .PHASENAME     (        "logs/V4G_GXBAR_trk.axi4.log" ),  
+                                      .CHECKERNAME   (        "logs/V4G_GXBAR_chk.axi4.log" ),  
+                                      .BUS_WIDTH     (                                127+1 ) ) 
+              gxbar_m2_wrapper      ( .monAxi4       (                    gxbar_m1_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                                      .aclk          (                   `GXBAR_HIER.v4gclk ),  
+                                      .aresetn       (                `GXBAR_HIER.v4gresetn ) );
+        initial begin
+                gxbar_m2_wrapper.monitor_on = 1;
+        end
+       `endif // QUESTA_AXI4_MON
+`endif // V4G_GXBAR_MONITOR_ON
+
+
+// AXI3 Monitor Instantiation
+`ifdef H1_GXBAR_MONITOR_ON
+axi_if gxbar_m2_axiMonIf (`GXBAR_HIER.h1clk);
+//     gxbar_m2_axiMonIf.aclk    = `GXBAR_HIER.h1clk;
+assign gxbar_m2_axiMonIf.aresetn = `GXBAR_HIER.h1resetn;
+assign gxbar_m2_axiMonIf.awvalid = `GXBAR_HIER.awvalid_h1_m2_s0;
+assign gxbar_m2_axiMonIf.awaddr  = `GXBAR_HIER.awaddr_h1_m2_s0;
+assign gxbar_m2_axiMonIf.awlen   = `GXBAR_HIER.awlen_h1_m2_s0;
+assign gxbar_m2_axiMonIf.awsize  = `GXBAR_HIER.awsize_h1_m2_s0;
+assign gxbar_m2_axiMonIf.awburst = `GXBAR_HIER.awburst_h1_m2_s0;
+assign gxbar_m2_axiMonIf.awlock  = `GXBAR_HIER.awlock_h1_m2_s0;
+assign gxbar_m2_axiMonIf.awcache = `GXBAR_HIER.awcache_h1_m2_s0;
+assign gxbar_m2_axiMonIf.awprot  = `GXBAR_HIER.awprot_h1_m2_s0;
+assign gxbar_m2_axiMonIf.awid    = `GXBAR_HIER.awid_h1_m2_s0;
+assign gxbar_m2_axiMonIf.awready = `GXBAR_HIER.awready_h1_m2_s0;
+assign gxbar_m2_axiMonIf.arvalid = `GXBAR_HIER.arvalid_h1_m2_s0;
+assign gxbar_m2_axiMonIf.araddr  = `GXBAR_HIER.araddr_h1_m2_s0;
+assign gxbar_m2_axiMonIf.arlen   = `GXBAR_HIER.arlen_h1_m2_s0;
+assign gxbar_m2_axiMonIf.arsize  = `GXBAR_HIER.arsize_h1_m2_s0;
+assign gxbar_m2_axiMonIf.arburst = `GXBAR_HIER.arburst_h1_m2_s0;
+assign gxbar_m2_axiMonIf.arlock  = `GXBAR_HIER.arlock_h1_m2_s0;
+assign gxbar_m2_axiMonIf.arcache = `GXBAR_HIER.arcache_h1_m2_s0;
+assign gxbar_m2_axiMonIf.arprot  = `GXBAR_HIER.arprot_h1_m2_s0;
+assign gxbar_m2_axiMonIf.arid    = `GXBAR_HIER.arid_h1_m2_s0;
+assign gxbar_m2_axiMonIf.arready = `GXBAR_HIER.arready_h1_m2_s0;
+assign gxbar_m2_axiMonIf.wvalid  = `GXBAR_HIER.wvalid_h1_m2_s0;
+assign gxbar_m2_axiMonIf.wlast   = `GXBAR_HIER.wlast_h1_m2_s0;
+assign gxbar_m2_axiMonIf.wdata   = `GXBAR_HIER.wdata_h1_m2_s0;
+assign gxbar_m2_axiMonIf.wstrb   = `GXBAR_HIER.wstrb_h1_m2_s0;
+assign gxbar_m2_axiMonIf.wid     = `GXBAR_HIER.wid_h1_m2_s0;
+assign gxbar_m2_axiMonIf.wready  = `GXBAR_HIER.wready_h1_m2_s0;
+assign gxbar_m2_axiMonIf.rvalid  = `GXBAR_HIER.rvalid_h1_m2_s0;
+assign gxbar_m2_axiMonIf.rlast   = `GXBAR_HIER.rlast_h1_m2_s0;
+assign gxbar_m2_axiMonIf.rdata   = `GXBAR_HIER.rdata_h1_m2_s0;
+assign gxbar_m2_axiMonIf.rresp   = `GXBAR_HIER.rresp_h1_m2_s0;
+assign gxbar_m2_axiMonIf.rid     = `GXBAR_HIER.rid_h1_m2_s0;
+assign gxbar_m2_axiMonIf.rready  = `GXBAR_HIER.rready_h1_m2_s0;
+assign gxbar_m2_axiMonIf.bvalid  = `GXBAR_HIER.bvalid_h1_m2_s0;
+assign gxbar_m2_axiMonIf.bresp   = `GXBAR_HIER.bresp_h1_m2_s0;
+assign gxbar_m2_axiMonIf.bid     = `GXBAR_HIER.bid_h1_m2_s0;
+assign gxbar_m2_axiMonIf.bready  = `GXBAR_HIER.bready_h1_m2_s0;
+       axi_mon_wrap         #( .TRANSNAME     (     "logs/H1_GXBAR_trk_trn.axi3.log" ), 	// Wrapper Instance Type
+                               .PHASENAME     (         "logs/H1_GXBAR_trk.axi3.log" ),  
+                               .CHECKERNAME   (         "logs/H1_GXBAR_chk.axi3.log" ),  
+                               .BUS_WIDTH     (                                 63+1 ) ) 
+       gxbar_m3_wrapper      ( .monAxi        (                    gxbar_m2_axiMonIf ), 	// Wrapper Instance Name( .Port  ( Interface ),
+                               .aclk          (                    `GXBAR_HIER.h1clk ),  
+                               .aresetn       (                 `GXBAR_HIER.h1resetn ) );
+       initial begin
+               gxbar_m3_wrapper.monitor_on = 1;
+       end
+`endif // H1_GXBAR_MONITOR_ON
+
+

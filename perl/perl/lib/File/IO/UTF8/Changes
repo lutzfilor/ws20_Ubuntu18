@@ -1,0 +1,34 @@
+# Revision history for Perl applicatition namespace File::IO::UTF8
+
+# Synopsis      FileIO has fundamentally changed and this change of encoding files in UTF8 should
+#               mark the end of supporting LATIN1(extended ASCII) or ASCII encoded file formats
+#               sadly for backward compatibility ASCII and LATIN will be supported for ever, but
+#               to end the discussion, this library should end this debate
+#
+#               ASCII       binary  format  fixed length  7 bit
+#               LATIN       text    format  fixed length  8 bit
+#               UTF8        text    format  variable length
+#               UTF16       text    format
+#               UTF32       text    format  fixed length 32 bit
+#               Binart      binary  format  packetize format to, use pack/unpack for data access 
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 01-21-2019                Created     perl/lib/UTF8.pm for tracking File related features 
+#               v1.01.01    Create      File::IO::UTF8::UTF8.pm
+#                           Layout      <project><_FileName>.xlsx Header worksheets
+#                           Add         File::Header::Add::add_header           ( $options );
+# 04-02-2019    v1.01.02    Create      File::IO::UTF8 namespace for UTF8 file handling
+#                           Refactor    lib/UTF8.pm
+#                           Add         File::IO::UTF8::UTF8.pm
+# 04-04-2019    v1.01.03    Add         Revision vString
+#               v1.01.04    Change      use lib             qw  (   ../lib );
+#                           To          use lib             qw  (   ~/ws/perl/lib   );
+#                                       avoid relative library path specifications
+# 04-12-2019    v1.01.05    Remove      use Excel::Writer::XLSX;        # Spreadsheet::WriteExcel
+#                           Remove      use Spreadsheet::ParseXLSX;
+#                           Remove      use Excel::CloneXLSX::Format;
+#                           Remove      use Safe::Isa;
+#                           Remove      use Logging::Record qw  (   log_msg
+#                                                                   log_lmsg    );
+# 05-07-2019

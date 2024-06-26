@@ -1,0 +1,30 @@
+Revision history for Perl extension IP_XACT/API.pm
+
+# Revision  VERSION     DATE            Description
+# ================================================================================================
+# History   1.01.01     2020/07/25      Create		p3::api             p3/api.pm
+#                                       Clone       module from DS.pm
+#           1.01.02                     Remove      all subroutines
+#           1.01.03                     Add         p3::API::get()
+#           1.01.04     2020/07/26      Refactor    p3::API             p3/API.pm
+#           1.01.05     2020/10/03      Refactor    IP_XACT::API        IP_XACT/API.pm
+#                                                   the path to the namespace must be added to @INC
+#                                       Debug       use lib             "$ENV{PERLPROJ}"."/IP_XACT";    #   Include path to @INC, specific
+#                                                   use lib             "$ENV{PERLPROJ}";               #   Include path to @INC, specific
+#           1.01.06     2020/10/03      Add feature IP_XACT::API::get_config()                          #   returns %config application specific
+#           1.01.07     2020/10/03      Debug       IP_XACT::API::get_api()    
+#                                                   return  %{$opts};                                   #   returns %opts from command line
+#           1.01.08     2020/10/04      Create      IP_XACT::App::new()                                 #   Create a new application
+#                                       From        IP_XACT::API::get_config()
+#                                                   IP_XACT::API::get_api()
+#           1.01.09     2020/10/06      Import      App::get_subs( [$Subdirectories] )
+#           1.01.10     2020/10/08      Add Feature 'debug|dbg=s@'      =>  \$options{dbg}
+#           1.01.11     2020/10/08      Remove      dead code, experimental code
+#           1.01.12     2020/10/09      Import      DS::Hash::prune_hash
+#                                                   remove hash entries/keys w/ undefined hash values
+#           1.10.13     2020/10/09      Import      Terminal::t_warn    ( $info, {$format} )
+#           1.10.14     2020/10/09      Import      Terminal::t_list    ( $list, {$format} )
+#           1.10.15     2020/10/12      Add Feature 'debugging|d'       =>  \$options{debugging}        #   global debugging switch
+#                                                   Add to the API description
+#           1.10.16     2020/10/19      Add Feature Commandline option --debugging                      #   static debug feature, it is long not to be used
+#                                                   Create $$self{debug} variable

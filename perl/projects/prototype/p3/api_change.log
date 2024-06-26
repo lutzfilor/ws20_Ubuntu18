@@ -1,0 +1,9 @@
+Revision history for Perl extension p3/API.pm
+
+# Revision  VERSION     DATE            Description
+# ================================================================================================
+# History   1.01.01     07/25/2020      Create		p3::api             p3/api.pm
+#                                       Clone       module from DS.pm
+#           1.01.02                     Remove      all subroutines
+#           1.01.03                     Add         p3::API::get()
+#           1.01.04     07/26/2020      Refactor    p3::API             p3/API.pm

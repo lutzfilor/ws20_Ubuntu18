@@ -1,0 +1,20 @@
+ ==========================================================================================
+ Logfile     : trace.log
+ Script      : parse_ahb_tracker.pl 1.04.02
+ Date        : 2019-00-08
+ Time        :   16:04:55
+ ==========================================================================================
+
+      1     209 tracker_trace/sample_only_writes.log
+                    file path           tracker_trace/
+                    file name           sample_only_writes
+                    file extension      .log
+                    test case           tracker_trace
+                    test point raw      sample_only_writes
+                    test point          sample_only_writes_
+
+                    report_path         tracker_trace/ahb_tracker_analysis
+                    logging_path        tracker_trace/ahb_tracker_analysis/sample_only_writes__logs
+                    analysis report     tracker_trace/ahb_tracker_analysis/sample_only_writes__analysis.rpt
+                    report_path     alt tracker_trace/ahb_tracker_analysis
+                    analysis report alt tracker_trace/ahb_tracker_analysis/sample_only_writes__analysis.rpt

@@ -1,0 +1,61 @@
+Revision history for Perl applicatition namespace ARM::Monitor::Add
+
+# DATE          VERSION     Description
+# ================================================================================================
+# 03-26-2019                Created perl/lib/ARM/Changes tracking ARM:: application namespace 
+#               v1.01.01    Create  ARM::Monitor::Add.pm
+#                           Layout  <project>_mon.xlsx Monitor,Signal worksheets
+#                           Add     ARM::Monitor::Add::add_new_monitor          ( $options );
+#                           Add     ARM::Monitor::Add::read_specification       ( $monitor );
+#                           Add     ARM::Monitor::Add::implement_specification  ( $monitor );
+#                           Add     ARM::Monitor::Add::instantiate_monitor      ( $monitor, $ix );
+#                           Add     ARM::Monitor::Add::conditional_directive    ( $monitor, $ix );
+# 03-27-2019    v1.01.02    Add     ARM::Monitor::Add::signal_connection        ( $monitor, $ix );
+#                           Add     ARM::Monitor::Add::Questa_directive         ( $monitor, $ix );
+# 04-01-2019    v1.01.03    Add     <project>_mon.xlsx Monitor worksheet wrapper column
+# 04-02-2019    v1.01.04    Change  Monitor Specification layout, full control in .xlsx
+# 04-12-2019    v1.01.05    Add     AXI3 protocol support
+#                           Add     log source file .svi feature
+# 05-02-2019    v1.01.06    Add     Signal name augmented at head or tail
+#               v1.01.07    Change  Reset signal exception
+#               v1.01.08    Bugfix  AXI3 port, Comment update
+#               v1.01.09    Bugfix  AXI3 port, Signal wid overwrite commenting
+#               v1.01.10    Bugfix  aclk, aresetn 
+# 05-07-2019    v1.01.11    Add     ARM::Monitor::Add::insert_fileheader        ( $monitor );
+# 05-08-2019    v1.01.12    Add     ARM IDwidth parameter, overwrite default setting
+#                           Rename  lib/ARM/Changes -> lib/ARM/Monitor/Add.changes
+# 05-13-2019    v1.01.13    Add     logs/read_specification.log
+#                                   remove specification logging from terminal
+#                           Add     terminal warning for empty elements, 
+#                                   for out of range active ranges
+#                           Bugfix  Worksheet names may not include Monitor or Signal RESERVED tabs
+#                           Refactor extract_array()
+# 05-14-2019    v1.01.14    Refactor implement_specification()
+#                           Refactor conditional_directive()    ->  implement_monitor( $monitor, $ix )
+#                           Add     Monitor ID, Protocol information
+#                           Change  silence terminal define_monitor()
+#                           Change  silence terminal signal_connecting()
+#                                   Monitor Protocol    - green
+#                                   Selection aclk      - blue
+#                                   Selection aresetn   - blue
+#                           Change  silence terminal Questa_directive()
+#                           Change  silence terminal instantiate_wrapper()
+#                                   Monitor Protocoll   - green
+#                           Change  silence terminal initial_statement()
+#                           Bugfix  $wire uninitialized
+#                           Bugfix  ARM::Monitor::Add::extract_array( $wkbook, $wksheet, $column, $logger )
+#                                   Ambigius::Matching  Master1 and Master10, Master11, ...  were all matching
+#                                   if ( $data[0][$col] =~ m/$col_header/ )  {		# search_field over search_pattern
+#                                   Fix:: Use Anchors
+#                                   if ( $data[0][$col] =~ m/^$col_header$/ )  {    # search_field over search_pattern
+# 05-16-2019    v1.01.15    Change  read_specification() align format
+#                           Change  implement_specification() order parameter reported
+# 05-30-2019    v1.01.16    Add     terminal warning when overwriting, detecting protocol mismatch
+#                                   Prevent specification error by USER
+#                                   unless ($wtyp ne $wrap) {
+# 05-31-2019    v1.01.17    Add     suppress signals from the port list, eg ID width is ZERO
+#                                   $signal =~ s/\/\///;                            # remove the comment directive
+#                                   my $ctrl= (${$comment_c}[$six])                 #   based on connector port protocol
+#                                           ||(${$comment_s}[$six]);                #   based on signal port
+#               v1.01.18    Add     compiling/synthesis log, to separate from the progress log of the terminal
+

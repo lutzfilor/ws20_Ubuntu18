@@ -1,0 +1,127 @@
+#   Revision history of the custom Perl framework ~/ws/perl/lib/App
+
+#   Why does it always takes three times as long to estimate any software project?
+#   Just look at the log change history of this namespage specification. Without this log file
+#   no data about the effort and the change history would be gathered. This is the third attempt
+#   to make software development more predictable. Predictablility is built on reuse, and preintegration
+#   and prespecification
+
+
+#   DATE        VERSION     Description
+# ================================================================================================
+#   2019/05/06              Created     perl/Application/Application.changes tracking said Namespace
+#               v1.01.01    Add         CLI namespace
+#   2019/05/08  v1.01.02    Add         Performance namespace
+#   2019/05/24  v1.01.03    Add         Constants namespace
+#   2019/05/30  v1.01.04    Move        perl/lib/Application/Performance/Performance.pm
+#                           to          perl/lib/Application/Performance/pm
+#                           Refactor    use lib qw  (   ~/ws/perl/lib );
+#                                       use lib			"$ENV{PERLPATH}";           # Add Include path to @INC
+#   2019/06/03  v1.01.05    Refactor    perl/Lib/Application/Constants.pm
+#                                       vs redefine "global/shared" constances
+#   2020/01/01  v1.02.00    Refactor    perl/lib/PPCOV/DataStructure/DS.pm          # design out
+#                                       perl/lib/DS.pm
+#   2020/03/20  v1.02.01    Refactor    perl/lib/Application
+#               v2.01.01    Create      perl/lib/App                                # Shorten Namespace hierachy
+#                           Refactor    perl/DS.pm
+#                                       perl/lib/App/DS.pm
+#               v2.02.02    Create      perl/lib/App/Modules.pm
+#                                       Provide introspection into Symboltables
+#                                       Provide automation for Debugging
+#   2020/03/20  v2.02.03    Refactor    perl/lib/Dbg.pm
+#                                       perl/lib/App/Dbg.pm
+#   2020/03/28  v2.02.04    Refactor    use Application::Performance    qw  (   sample_timingresolution
+#                           To          use App::Performance    qw  (   sample_timingresolution
+#               v2.02.05    Refactor    use Application::Constants  qw( :ALL );     #   Prove of concept, of external defined Constants
+#                           To          use App::Const          qw  ( :ALL  );      #   Prove of conceot, of external defined Constants    
+#               v2.02.06    Add Feature use App::Modules        qw  (   get_ModuleSearchpath
+#                                                                       ...
+#                                                                       get_all     );  #   Under development
+#               v2.02.07    Add         App::get_all_subroutines()
+#                                       Scan and autodetect all installed subroutines, for Application
+#               v2.02.08    Refactore   sub     maxwidth    {}                      #   Private subroutine
+#                                       use DS::Array       qw  /   maxwidth    /;  #   Reduce recoding, code reuse, import subroutine
+#   2020/06/22  v2.02.09    Remove      use Term::ANSIColor qw  (   :constants  );  #   available
+#                                       Reduction of Symbol table from 165 -> 79 symbol
+#   2020/06/22  v2.02.10    Remove      use Readonly;
+#   2020/07/22  v3.01.01    Add         elapse2  =>  `date +%S%N`,                  #   This is relative time no absolute time
+#   2020/07/23  v3.01.02    Add         App::get( $paramater );                     #   retrieve data references
+#   2020/07/25  v3.01.03    Debug       unknown = App=HASH(0x55e83834df08)
+#                           Replace     return  bless   $self, $class;
+#                           with        bless   $self, $class;
+#                                       return  $self;
+#   2020/08/01  v3.01.04    Critic      App.pm
+#                           Comment out our @EXPORT =    qw();  # implicit, default export is deprecated !!
+#               v3.01.05    Recode      subroutine interface,   --  Always unpack @_ first  
+#                           replace     my  $class  =   shift;  # Object Name
+#                                       my  %options=   @_;     # Allow Parameter Hash input
+#                           with        my  ( $class            # Object Name
+#                                           , %options )=   @_; # Allow Parameter Hash input
+#   2020/08/02  v3.01.06    Eliminate   implicit returns from subroutines
+#                                       all sub on all branches close with a 
+#                                       return;     #   bare default return statement
+#                                       App::update();
+#                                       App::inspect()
+#   2020/10/04  v3.01.07    Cleanup     Import section,
+#   2020/10/07  v3.01.08    Import      File::IO::Log::log_hashref() 
+#                                       File::IO::Log::log_arrayref()
+#               v3.01.09    Add Feature Logging the creation of datastructures (DS) #   Improve observability of initialization of App
+#   2020/10/07  v3.01.10    Debug       App::get
+#                                       App::get_Namespaces()
+#   2020/10/08  v3.01.11    Import      File::IO::Log::log2_hashref()
+#   2020/10/10  v3.01.12    Add Feature App::elaborate( {$self} )
+#                                       Feature is to expand the build and initialized data structure %self, 
+#                                       unpack all packed data structure, iterate %self, completeness
+#                           Import      A
+#   2020/10/11  v3.01.13    Debug       App::get(   $self, $parameter)
+#                           Change from $v  =   $$self{parameter};          #   Select the appliction parameter
+#                           To          $v  =   $$self{$parameter};         #   Select the appliction parameter
+#                                       Missing Sigil, turning bare word into variable
+#   2020/10/18  v3.01.14    Unlink      Dbg::debug()                        #   decommission
+#                                       Dbg::subroutine()                   #   decommission
+#                           delete      use Dbg qw  / debug subroutine /;   #   decommission
+#   2020/10/18  v3.01.15    Import      App::Dbg::debug()                   #   Clear make this the App:: framework debug() function
+#                           Import      App::Dbg::subroutine()
+#                                       use App::Dbg qw / debug subroutine /;
+#   2020/10/19  v3.01.16    Add Feature To debug App::elaborate()
+#                                       To debug App::Dbg::debug()          #   initialization
+#                                       To debug App::Dbg::ST::all_subs     #   System Tables
+#   2020/10/20  v3.01.17    Clean up    App::elaborate()
+#                           remove      dead code, - need to direct what to elaborate
+#                           delete      #while ( my($key, $value) = each ( %{$self} ) ) {
+#                           delete      #foreach my $key ( sort keys %{$self} ) {       #   not precise to elaborate
+#   2020/10/19  v3.01.18    Remove      App::load()                         #   Development 
+#   2020/10/20  v3.01.19    Debug       App::elaborate()
+#                           Insert      if ( $$self{debug} );               #   directed testing, need for observation --debugging (CLI)
+#                           Swapp       testing for Array ref with testing for Scalar
+#   2020/10/20  v3.01.20    Insert      test optional subscription exits 
+#                                       if ( exists $$self{$key} ) {        #   if the subscription exits in application, some only exist on CL
+#                                       }# for all existing (real) entries/subscription/keys
+#   2020/10/27  v3.01.21    Add Feature App::elaborate() logging create dbg feature --logging (CLI)
+#                                       logfile names set in <Project>::API::%config
+#   2020/10/28  v3.01.22    Debug       App::elaborate()    
+#                                       if ( $$self{logging} ){             #   following the last data transformation
+#                                       }# last codeblock before
+#                                       return; #statement
+#   2020/10/31  v3.01.23    Debug       App::elaborate()
+#                           Collision   $$self{debug} =    array2hash( $$self{d1} );
+#                           with        Create::API::
+#                                       my  %description=   (   'debug|dbg=s@'      =>  \$options{dbg}      #   Debug     Turn on debug feature on sub by sub base
+#                                                           ,   'debugging|d'       =>  \$options{debug}    #   debugging feature for App::, App::Dbg::ST::
+#                           Refactor                        ,   'debugging|d'       =>  \$options{debugging}#   rename from {debug} to {debugging}
+#
+#   2020/11/05  v3.01.24    Refactor    App::inpect_api()                               #   Debugging vestigial, silence function
+#                           Add         my  @tmp=   ( split(/::/, (caller(1))[3]) );    #   FunctionName which called THIS subroutine == App::Dbg::subroutine('name')
+#                                       my  $n  =   pop @tmp;                           #   [Fi]    Work around - Experimental pop on scalar is now forbidden at
+#                                       ....                                     
+#                                       my  $verbose    =  $self{debugging};            #   Commandline --debugging
+#                                       if( $verbose ) { ...
+#   2020/11/06  v3.01.25    Refactor    DS::intersect() ==> local clone required to create causality (Chicken and Egg problem)
+#                           Add         my  @tmp=   ( split(/::/, (caller(1))[3]) );    #   FunctionName which called THIS subroutine == App::Dbg::subroutine('name')
+#                                       my  $n  =   pop @tmp;                           #   [Fi]    Work around - Experimental pop on scalar is now forbidden at
+#                           
+#   2020/11/06  v3.01.25    Refactor    App::elaborate()                                #   Debugging vestigial
+#   2020/11/13  v3.01.26    Refactor    App::run()                                      #   Recode
+#                           Add         my  $n  =   subroutine('name');
+#                                       printf  "\n%*s%s( \$self{%s} )\n",5,'',$n,$parameter if ( debug($n) );
+#                           
